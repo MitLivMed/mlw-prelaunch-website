@@ -3,13 +3,13 @@ import wavesSvg from "@/assets/waves.svg";
 const WavesDivider = () => {
   return (
     <div 
-      className="w-full relative z-20 -mt-[40px] sm:-mt-[60px] md:-mt-[80px] lg:-mt-[100px]"
+      className="w-full relative z-20 -mt-[60px] sm:-mt-[80px] md:-mt-[100px] lg:-mt-[120px]"
     >
       <img
         src={wavesSvg}
         alt=""
-        className="w-full h-[60px] sm:h-[80px] md:h-[120px] lg:h-[160px] object-cover object-top"
-        style={{ objectPosition: "center top" }}
+        className="w-full h-[120px] sm:h-[160px] md:h-[200px] lg:h-[240px] object-cover"
+        style={{ objectPosition: "center 40%" }}
         aria-hidden="true"
       />
     </div>
