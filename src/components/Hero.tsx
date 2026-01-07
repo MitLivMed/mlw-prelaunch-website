@@ -8,13 +8,13 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative pt-24 pb-24 md:pt-32 md:pb-32 overflow-visible">
-      {/* Hero gradient background - fades to background color at bottom */}
+    <section className="relative pt-24 pb-56 md:pt-32 md:pb-72 overflow-visible">
+      {/* Hero gradient background - extends past section to be hidden by wave's opaque areas */}
       <div 
         className="absolute inset-x-0 top-0 pointer-events-none"
         style={{
-          background: "linear-gradient(180deg, rgba(128, 178, 253, 0.10) 0%, rgba(255, 123, 2, 0.19) 70%, hsl(40, 50%, 97.5%) 100%)",
-          height: "calc(100% + 200px)"
+          background: "linear-gradient(180deg, rgba(128, 178, 253, 0.10) 0%, rgba(255, 123, 2, 0.19) 100%)",
+          height: "calc(100% + 100px)"
         }}
       />
       

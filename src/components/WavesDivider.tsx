@@ -2,7 +2,7 @@ import wavesImage from "@/assets/waves-trans.png";
 
 const WavesDivider = () => {
   return (
-    <div className="w-full overflow-hidden relative -mt-12 md:-mt-16 z-10">
+    <div className="w-full overflow-hidden relative -mt-44 md:-mt-56 z-20">
       <img
         src={wavesImage}
         alt=""
