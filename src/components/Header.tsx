@@ -30,7 +30,7 @@ const Header = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[rgba(128,178,253,0.95)] backdrop-blur-sm shadow-sm' 
+          ? 'bg-[#EFF3F6] backdrop-blur-sm shadow-sm' 
           : 'bg-transparent'
       }`}
     >
@@ -38,10 +38,8 @@ const Header = () => {
         {/* Logo */}
         <a href="/" className="flex items-center gap-2">
           <img src={logo} alt="MitLivMed" className="h-8 w-auto" />
-          <span className={`font-logo font-semibold text-lg transition-colors ${
-            isScrolled ? 'text-white' : 'text-warm-black'
-          }`}>
-            MitLivMed<sup className={`text-xs ml-0.5 ${isScrolled ? 'text-white/70' : 'text-text-light'}`}>beta</sup>
+          <span className="font-logo font-semibold text-lg text-warm-black">
+            MitLivMed<sup className="text-xs ml-0.5 text-text-light">beta</sup>
           </span>
         </a>
 
@@ -49,11 +47,7 @@ const Header = () => {
         <nav className="hidden md:flex items-center gap-6">
           <a
             href="#about"
-            className={`transition-colors font-body text-sm ${
-              isScrolled 
-                ? 'text-white/90 hover:text-white' 
-                : 'text-text-medium hover:text-foreground'
-            }`}
+            className="text-text-medium hover:text-foreground transition-colors font-body text-sm"
           >
             Om os
           </a>
@@ -67,7 +61,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className={`md:hidden p-2 transition-colors ${isScrolled ? 'text-white' : 'text-foreground'}`}
+          className="md:hidden p-2 text-foreground"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? "Luk menu" : "Åbn menu"}
         >
