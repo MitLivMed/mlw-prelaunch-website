@@ -1,10 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Get hero section height to determine when to show solid background
+      const heroSection = document.querySelector('section');
+      const heroHeight = heroSection?.offsetHeight || 400;
+      setIsScrolled(window.scrollY > heroHeight - 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSignup = () => {
     const element = document.getElementById("signup");
@@ -13,13 +27,21 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-[rgba(128,178,253,0.95)] backdrop-blur-sm shadow-sm' 
+          : 'bg-transparent'
+      }`}
+    >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2">
           <img src={logo} alt="MitLivMed" className="h-8 w-auto" />
-          <span className="font-logo font-semibold text-warm-black text-lg">
-            MitLivMed<sup className="text-xs text-text-light ml-0.5">beta</sup>
+          <span className={`font-logo font-semibold text-lg transition-colors ${
+            isScrolled ? 'text-white' : 'text-warm-black'
+          }`}>
+            MitLivMed<sup className={`text-xs ml-0.5 ${isScrolled ? 'text-white/70' : 'text-text-light'}`}>beta</sup>
           </span>
         </a>
 
@@ -27,7 +49,11 @@ const Header = () => {
         <nav className="hidden md:flex items-center gap-6">
           <a
             href="#about"
-            className="text-text-medium hover:text-foreground transition-colors font-body text-sm"
+            className={`transition-colors font-body text-sm ${
+              isScrolled 
+                ? 'text-white/90 hover:text-white' 
+                : 'text-text-medium hover:text-foreground'
+            }`}
           >
             Om os
           </a>
@@ -41,7 +67,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-foreground"
+          className={`md:hidden p-2 transition-colors ${isScrolled ? 'text-white' : 'text-foreground'}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? "Luk menu" : "Åbn menu"}
         >
