@@ -8,8 +8,16 @@ const Hero = () => {
   };
 
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section className="relative pt-24 pb-8 md:pt-32 md:pb-12 overflow-hidden">
+      {/* Hero gradient background - matches brand spec */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(180deg, rgba(128, 178, 253, 0.10) 0%, rgba(255, 123, 2, 0.19) 100%)"
+        }}
+      />
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Centered Title */}
         <div className="text-center mb-12 md:mb-16 animate-fade-in">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold text-foreground leading-tight mb-2">
