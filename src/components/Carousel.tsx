@@ -161,15 +161,7 @@ const Carousel = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-background relative overflow-hidden">
-      {/* Subtle gradient background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 50% 0%, hsla(27, 91%, 54%, 0.04) 0%, transparent 50%)",
-        }}
-      />
-
+    <section className="pt-8 pb-16 md:pt-12 md:pb-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
         <div
