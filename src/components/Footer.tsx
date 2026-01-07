@@ -1,63 +1,72 @@
 import { useState } from "react";
 import CrisisModal from "./CrisisModal";
-import logo from "@/assets/logo.png";
+import { Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
   const [isCrisisModalOpen, setIsCrisisModalOpen] = useState(false);
 
   return (
     <>
-      <footer className="bg-warm-black text-background/90 py-12">
+      <footer className="bg-background text-text-dark py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            {/* Top row */}
-            <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-8">
-              {/* Logo */}
-              <div className="flex items-center gap-2">
-                <img src={logo} alt="MitLivMed" className="h-8 w-auto brightness-0 invert opacity-80" />
-                <span className="font-logo font-semibold text-lg">
-                  MitLivMed<sup className="text-xs opacity-60 ml-0.5">beta</sup>
-                </span>
+            {/* Two column layout */}
+            <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
+              {/* Left column - Brand */}
+              <div className="max-w-lg">
+                <h3 className="font-heading font-semibold text-xl text-foreground mb-3">
+                  MitLivMed
+                </h3>
+                <p className="text-text-medium font-body text-sm leading-relaxed mb-6">
+                  Vi styrker mennesker, der lever med psykiske lidelser, til at mestre hverdagen gennem relaterbar historiefortælling, guidet refleksion og et trygt fællesskab.
+                </p>
+                {/* Social icons */}
+                <div className="flex items-center gap-4">
+                  <a href="#" className="text-text-light hover:text-text-dark transition-colors">
+                    <Facebook className="w-5 h-5" />
+                  </a>
+                  <a href="#" className="text-text-light hover:text-text-dark transition-colors">
+                    <Instagram className="w-5 h-5" />
+                  </a>
+                  <a href="#" className="text-text-light hover:text-text-dark transition-colors">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                    </svg>
+                  </a>
+                </div>
               </div>
 
-              {/* Links */}
-              <nav className="flex flex-wrap items-center justify-center gap-6 text-sm font-body">
-                <a
-                  href="#about"
-                  className="hover:text-primary transition-colors"
-                >
-                  Om os
-                </a>
-                <a
-                  href="mailto:kontakt@mitlivmed.dk"
-                  className="hover:text-primary transition-colors"
-                >
-                  Kontakt
-                </a>
-                <button
-                  onClick={() => setIsCrisisModalOpen(true)}
-                  className="hover:text-primary transition-colors"
-                >
-                  Krisehjælp
-                </button>
-                <a
-                  href="#"
-                  className="hover:text-primary transition-colors"
-                >
-                  Privatlivspolitik
-                </a>
-              </nav>
+              {/* Right column - Links */}
+              <div>
+                <h4 className="font-heading font-semibold text-sm text-foreground mb-4">
+                  Virksomhed
+                </h4>
+                <nav className="flex flex-col gap-3 text-sm font-body text-text-medium">
+                  <a href="#about" className="hover:text-text-dark transition-colors">
+                    Om MitLivMed
+                  </a>
+                  <a href="mailto:kontakt@mitlivmed.dk" className="hover:text-text-dark transition-colors">
+                    Kontakt
+                  </a>
+                  <button
+                    onClick={() => setIsCrisisModalOpen(true)}
+                    className="text-left hover:text-text-dark transition-colors"
+                  >
+                    Vilkår og betingelser
+                  </button>
+                  <a href="#" className="hover:text-text-dark transition-colors">
+                    Privatlivspolitik
+                  </a>
+                  <a href="#" className="hover:text-text-dark transition-colors">
+                    Cookiepolitik
+                  </a>
+                </nav>
+              </div>
             </div>
 
-            {/* Divider */}
-            <div className="h-px bg-background/20 mb-8" />
-
             {/* Bottom row */}
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-background/60 font-body">
-              <p>© 2025 MitLivMed. Alle rettigheder forbeholdes.</p>
-              <p>
-                MitLivMed er ikke en lægelig tjeneste eller krisetjeneste.
-              </p>
+            <div className="text-center text-xs text-text-light font-body">
+              <p>© Copyright MitLivMed ApS 2026 - Built with kindness in Copenhagen</p>
             </div>
           </div>
         </div>

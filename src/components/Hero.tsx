@@ -8,13 +8,13 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative pt-24 pb-56 md:pt-32 md:pb-72 overflow-visible">
+    <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-visible">
       {/* Hero gradient background - extends past section to be hidden by wave's opaque areas */}
       <div 
         className="absolute inset-x-0 top-0 pointer-events-none"
         style={{
-          background: "linear-gradient(180deg, rgba(128, 178, 253, 0.10) 0%, rgba(255, 123, 2, 0.19) 100%)",
-          height: "calc(100% + 100px)"
+          background: "linear-gradient(180deg, rgba(128, 178, 253, 0.10) 0%, rgba(128, 178, 253, 0.10) 43%, rgba(255, 123, 2, 0.19) 100%)",
+          height: "calc(100% + 150px)"
         }}
       />
       
@@ -59,19 +59,17 @@ const Hero = () => {
           {/* Copy + CTA */}
           <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
             <p className="text-lg md:text-xl text-text-dark font-body leading-relaxed mb-4">
-              <strong className="font-semibold">Støtten stopper, når krisen stopper.</strong>
+              Støtten stopper, når krisen stopper.
               <br />
-              Mestringen af hverdagen er din egen del.
+              Mestringen af hverdagen er den svære del.
             </p>
-            <p className="text-base md:text-lg text-text-medium font-body leading-relaxed mb-6">
-              Vi bygger noget til det, der kommer efter:
+            <p className="text-base md:text-lg text-text-dark font-body leading-relaxed mb-4">
+              <strong className="font-semibold">Vi bygger noget til det, der kommer efter:</strong>
             </p>
-            <p className="text-base md:text-lg text-text-medium font-body leading-relaxed mb-2">
+            <p className="text-base md:text-lg text-text-medium font-body leading-relaxed mb-8">
               MitLivMed er et digitalt fællesskab, hvor mennesker med bipolar affektiv lidelse kan dele deres historier og erfaringer,{" "}
               <span className="underline decoration-primary decoration-2 underline-offset-2">skræddersyet til dig</span>.
-            </p>
-            <p className="text-sm text-text-light font-body mb-8">
-              Ikke medicinsk rådgivning. Ikke krisestøtte. Bare mennesker, der deler det, der hjælper dem med at leve godt med bipolar.
+              {" "}Ikke medicinsk rådgivning. Ikke krisestøtte. Bare mennesker, der deler det, der hjælper dem med at leve godt med bipolar.
             </p>
 
             <div className="space-y-3">
