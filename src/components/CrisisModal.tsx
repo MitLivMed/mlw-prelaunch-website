@@ -135,34 +135,34 @@ const CrisisModal = ({ isOpen, onClose }: CrisisModalProps) => {
             </h3>
             <div className="grid gap-3">
               {tier2Resources.map((resource) => (
-                <div
+                <a
                   key={resource.name}
-                  className="flex items-center gap-4 p-4 bg-muted/50 border border-border rounded-xl"
+                  href={resource.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 bg-muted/50 border border-border rounded-xl hover:bg-muted hover:border-primary/30 transition-colors group cursor-pointer"
                 >
                   <div className="flex-1">
-                    <div className="font-heading font-medium text-foreground">{resource.name}</div>
+                    <div className="font-heading font-medium text-foreground group-hover:text-primary transition-colors">{resource.name}</div>
                     <div className="text-sm text-text-light">{resource.target}</div>
                   </div>
                   <div className="flex items-center gap-3">
                     {resource.phone && (
-                      <a
-                        href={`tel:${resource.phone.replace(/\s/g, "")}`}
+                      <span
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          window.location.href = `tel:${resource.phone.replace(/\s/g, "")}`;
+                        }}
                         className="flex items-center gap-1.5 text-sm text-primary hover:text-secondary transition-colors font-medium"
                       >
                         <Phone className="w-4 h-4" />
                         {resource.phone}
-                      </a>
+                      </span>
                     )}
-                    <a
-                      href={resource.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-sm text-primary hover:text-secondary transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
+                    <ExternalLink className="w-4 h-4 text-text-light group-hover:text-primary transition-colors" />
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
