@@ -1,15 +1,12 @@
-import wavesSvg from "@/assets/waves.svg";
+import wavesImage from "@/assets/waves-trans.png";
 
 const WavesDivider = () => {
   return (
-    <div 
-      className="w-full relative z-20 -mt-[80px] sm:-mt-[100px] md:-mt-[140px] lg:-mt-[180px]"
-    >
+    <div className="w-full overflow-hidden relative -mt-16 sm:-mt-24 md:-mt-32 lg:-mt-44 z-20 -mb-4 sm:-mb-6 md:-mb-8">
       <img
-        src={wavesSvg}
+        src={wavesImage}
         alt=""
-        className="w-full h-[160px] sm:h-[200px] md:h-[280px] lg:h-[360px] object-cover"
-        style={{ objectPosition: "center 65%" }}
+        className="w-full h-auto object-cover"
         aria-hidden="true"
       />
     </div>
