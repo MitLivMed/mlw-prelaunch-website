@@ -66,12 +66,14 @@ const WhatIsSection = () => {
               </ul>
 
               {/* Crisis Help Button */}
-              <button
-                onClick={() => setIsCrisisModalOpen(true)}
-                className="mt-6 text-primary hover:text-secondary underline underline-offset-4 font-body font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-              >
-                Har du brug for hjælp? Klik her
-              </button>
+              <div className="mt-6 md:mt-6 text-center md:text-left">
+                <button
+                  onClick={() => setIsCrisisModalOpen(true)}
+                  className="text-primary hover:text-secondary underline underline-offset-4 font-body font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                >
+                  Har du brug for hjælp? Klik her
+                </button>
+              </div>
             </div>
           </div>
         </div>
