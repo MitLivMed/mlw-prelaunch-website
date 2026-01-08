@@ -32,7 +32,7 @@ const FinalCTA = () => {
         <img
           src={wavesImage}
           alt=""
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover opacity-90"
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
@@ -67,8 +67,9 @@ const FinalCTA = () => {
                 />
                 <Button
                   type="submit"
+                  size="lg"
                   disabled={!email || !consent || isLoading}
-                  className="h-12 px-8 bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100"
                 >
                   {isLoading ? "Sender..." : "Skriv dig op til tidlig adgang"}
                 </Button>

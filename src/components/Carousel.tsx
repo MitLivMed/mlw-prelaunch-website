@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const content = {
   header: "Kan du genkende det?",
@@ -150,12 +151,13 @@ const Carousel = () => {
         <p className="text-lg md:text-xl lg:text-2xl font-heading font-medium leading-relaxed max-w-2xl mb-8 text-text-dark">
           {content.closing}
         </p>
-        <button
+        <Button
           onClick={scrollToSignup}
-          className="px-8 py-4 font-heading font-semibold rounded-full transition-all duration-300 hover:scale-105 bg-primary text-primary-foreground cta-shadow hover:cta-shadow-hover"
+          size="lg"
+          className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
         >
           {content.cta}
-        </button>
+        </Button>
       </div>
     );
   };
