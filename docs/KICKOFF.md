@@ -1,125 +1,57 @@
 # Pre-Launch Website Development Kickoff
 
-**Date:** 2026-01-08
-**Project:** MitLivMed Pre-Launch Landing Page
+**Updated:** 2026-01-09
 **Linear Project:** [Pre-launch website](https://linear.app/mitlivmed/project/pre-launch-website-95067c272412)
+**Repo:** `git@github.com:MitLivMed/mlw-prelaunch-website.git`
 
 ---
 
-## What is MitLivMed?
+## Completed ✅
 
-MitLivMed ("MyLifeWith" in Danish) is a peer-support community for people with bipolar disorder. The product helps people navigate life after diagnosis by connecting them with others who share practical, lived experience.
+| ID | Title |
+|----|-------|
+| MIT-24 | Footer social icons (LinkedIn added, URLs updated) |
+| MIT-26 | About page (`/om-os`) |
+| MIT-27 | Legal placeholder pages (`/privatlivspolitik`, `/vilkaar`, `/cookies`) |
+| MIT-32.4 | Header "Om os" link fix |
 
-**Key positioning:**
-- Not therapy, not medical advice — peer support
-- Danish-first, building for international
-- Health-sensitive: ethics matter, minimize data collection
-- Product principle: "Dream big, act quick, start small, be kind"
-
----
-
-## Current State
-
-The landing page is built and functional. This sprint focuses on polish and launch readiness:
-- Fix visual bugs (waves divider, footer icons)
-- Add missing pages (About, Legal placeholders)
-- SEO infrastructure (meta tags, static files)
-- Form integration (Tally + HubSpot)
-- Testing
+**Also done:** Wave background effect on all new pages (90% opacity), button styling consistency.
 
 ---
 
-## Tasks (in execution order)
+## Next Up
 
-Work through these Linear issues in order:
+| ID | Title | Notes |
+|----|-------|-------|
+| MIT-29 | Static SEO files | Quick win: `robots.txt`, `sitemap.xml`, favicons |
+| MIT-28 | Meta tags & SEO | `react-helmet-async`, Layout component |
+| MIT-32 | Co-founder feedback | 8 remaining items (see below) |
+| MIT-30 | Tally + HubSpot | Form integration |
+| MIT-25 | Waves divider fix | May take time |
+| MIT-31 | Pre-launch testing | Last |
 
-| # | ID | Title | Key Files |
-|---|-----|-------|-----------|
-| 1 | MIT-24 | Footer social icons | `src/components/Footer.tsx` |
-| 2 | MIT-25 | Waves divider fix | `src/components/WavesDivider.tsx` |
-| 3 | MIT-26 | About page (/om-os) | Create `src/pages/About.tsx`, update `App.tsx` |
-| 4 | MIT-27 | Legal placeholder pages | Create pages for `/privatlivspolitik`, `/vilkaar`, `/cookies` |
-| 5 | MIT-28 | Meta tags & SEO infrastructure | Install `react-helmet-async`, create Layout component |
-| 6 | MIT-29 | Static SEO files | `public/robots.txt`, `public/sitemap.xml`, favicons |
-| 7 | MIT-30 | Tally.so + HubSpot integration | Form embed, welcome email automation |
-| 8 | MIT-31 | Pre-launch testing | Lighthouse, accessibility, cross-browser |
+**Blocked:** MIT-33 (hero video) - waiting for video link
 
 ---
 
-## Reference Documents
+## MIT-32: Co-founder Feedback (remaining items)
 
-All in `docs/`:
-
-| Document | Purpose |
-|----------|---------|
-| `Site copy.md` | Copy for About page (founder story) |
-| `mitlivmed-meta-tags.md` | Meta tag specifications |
-| `signup-form-prd.md` | Tally form field specifications |
-| `mitlivmed-welcome-email.md` | Welcome email copy for HubSpot |
-| `mitlivmed-launch-playbook.md` | Full launch checklist (reference) |
-| `landing-page-prp.md` | Product requirements (reference) |
+1. ~~Item 4: Om os link~~ ✅
+2. CTA copy change: "vær med i beta inden vi lancerer - test og hjælp"
+3. Remove waves divider, reduce spacing around testimonials
+5. Rewrite CTA: "Mitlivmed lancerer i 2026 - sign up som beta bruger"
+6. Add intro text about peers/movement
+7. Rewrite 4 journey stage descriptions (Ørkenen, Søen, etc.)
+8. Update journey images to match brand + female persona
+9. Add feedback tab with simple form
 
 ---
 
-## Task Details
+## Reference Docs (in `docs/`)
 
-### MIT-24: Footer Social Icons
-- Add LinkedIn icon (use Lucide `Linkedin`)
-- Update URLs:
-  - Instagram: `https://www.instagram.com/mitlivmed/`
-  - LinkedIn: `https://www.linkedin.com/company/mitlivmed/`
-  - Facebook: `#` (placeholder)
-  - TikTok: `#` (placeholder)
-
-### MIT-25: Waves Divider Fix
-- Current PNG doesn't scale properly across viewports
-- Test two approaches:
-  1. CSS fixed-height with `object-fit: cover`
-  2. Inline SVG (check if `design/images/waves.svg` exists or create from PNG)
-- Pick whichever looks better across 320px → 1440px
-
-### MIT-26: About Page
-- Route: `/om-os`
-- Content: Founder story from `docs/Site copy.md`
-- Match existing page styling
-- Add to navigation if appropriate
-
-### MIT-27: Legal Placeholder Pages
-- Routes: `/privatlivspolitik`, `/vilkaar`, `/cookies`
-- Placeholder text: "Denne side er under udarbejdelse." (This page is under construction)
-- Legal team is drafting real content
-- Link from footer
-
-### MIT-28: Meta Tags & SEO
-- Install `react-helmet-async`
-- Create reusable Layout/SEO component
-- Implement tags per `docs/mitlivmed-meta-tags.md`
-- Add JSON-LD structured data (Organization schema)
-
-### MIT-29: Static SEO Files
-- `public/robots.txt` - allow all, point to sitemap
-- `public/sitemap.xml` - list all pages
-- Favicons via realfavicongenerator.net (needs logo asset)
-- OG image (1200×630px) - may need design input
-
-### MIT-30: Tally + HubSpot
-- Form fields per `docs/signup-form-prd.md`
-- Hidden UTM fields for tracking
-- HubSpot integration for email automation
-- Welcome email copy in `docs/mitlivmed-welcome-email.md`
-
-### MIT-31: Testing
-**Automated:**
-- Lighthouse: Performance, Accessibility, SEO > 90
-- axe DevTools accessibility audit
-
-**Manual:**
-- Browsers: Chrome, Safari, Firefox, Edge
-- Viewports: 320px, 375px, 768px, 1024px, 1440px
-- Form submission end-to-end
-- Social share previews (use debuggers)
-- Keyboard navigation
-- Crisis modal focus trap
+- `mitlivmed-meta-tags.md` - Meta tag specs for MIT-28
+- `signup-form-prd.md` - Tally form fields for MIT-30
+- `mitlivmed-welcome-email.md` - HubSpot email copy
 
 ---
 
