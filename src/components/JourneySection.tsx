@@ -45,11 +45,11 @@ const JourneySection = () => {
         </div>
 
         {/* Landscape Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto items-stretch">
           {cards.map((card, index) => (
             <div
               key={card.id}
-              className="group animate-fade-in-up"
+              className="group animate-fade-in-up flex flex-col"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Card Header (Title + Description) */}
@@ -63,7 +63,7 @@ const JourneySection = () => {
               </div>
 
               {/* Card Image */}
-              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
+              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow mt-auto">
                 <img
                   src={card.image}
                   alt={card.title}
