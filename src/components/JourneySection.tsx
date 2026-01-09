@@ -8,25 +8,25 @@ const cards = [
     id: "desert",
     image: desertImage,
     title: "Ørkenen",
-    description: "Noget føles forkert. Du er ikke alene. Du har ikke ord for det endnu.",
+    description: "Noget føles forkert. Du kan mærke det, før du kan forklare det. Du er ikke alene, mens du finder ordene.",
   },
   {
     id: "lake",
     image: lakeImage,
     title: "Søen",
-    description: "Du fik diagnosen. Hvad nu? Du navigerer kaosset i en ny virkelighed.",
+    description: "Du har fået en diagnose. Hvad gør man så? Her kan du skabe overblik i alt det nye og høre andres oplevelser.",
   },
   {
     id: "plains",
     image: plainsImage,
     title: "Sletterne",
-    description: "Hverdagen er den svære del. Rutinen er det, der mangler kunne findes.",
+    description: "Hverdagen kan ofte være en svære del. Rutinerne er det, der kan skabe ro, og vi deler & bygger dem sammen i små skridt.",
   },
   {
     id: "mountain",
     image: mountainImage,
     title: "Bjerget",
-    description: "Du mestrer dig selv og din historie kan lyse vejen for andre.",
+    description: "Du kender dine mønstre og dine behov. Hvis du har lyst, kan din historier og erfaringer også blive et lys for andre.",
   },
 ];
 
