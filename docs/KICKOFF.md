@@ -1,6 +1,6 @@
 # Pre-Launch Website Development Kickoff
 
-**Updated:** 2026-01-09 (v2)
+**Updated:** 2026-01-09 (v3)
 **Linear Project:** [Pre-launch website](https://linear.app/mitlivmed/project/pre-launch-website-95067c272412)
 **Repo:** `git@github.com:MitLivMed/mlw-prelaunch-website.git`
 
@@ -13,8 +13,17 @@
 | MIT-24 | Footer social icons (LinkedIn added, URLs updated) |
 | MIT-26 | About page (`/om-os`) |
 | MIT-27 | Legal placeholder pages (`/privatlivspolitik`, `/vilkaar`, `/cookies`) |
+| MIT-32 | Cofounder feedback (CTA copy, microcopy, carousel spacing) |
+| MIT-33 | Hero video (YouTube embed) |
+| MIT-36 | Journey section refresh (new images + copy) |
 
-**Also done:** Wave background effect on all new pages (90% opacity), button styling consistency, header "Om os" link fix.
+**Also done:**
+- Wave background effect on all new pages (90% opacity)
+- Button styling consistency
+- Header "Om os" link fix
+- FinalCTA simplified to button only (prep for Tally.so)
+- Journey card image alignment fix (flexbox)
+- Removed `design/` folder from repo (belongs in planning project)
 
 ---
 
@@ -22,37 +31,12 @@
 
 | ID | Title | Notes |
 |----|-------|-------|
-| MIT-33 | Hero video | YouTube placeholder: `https://www.youtube.com/watch?v=VqFSCk_9NRA` |
-| MIT-32 | Cofounder feedback (copy + spacing) | See details below |
 | MIT-29 | Static SEO files | `robots.txt`, `sitemap.xml`, favicons |
 | MIT-28 | Meta tags & SEO | `react-helmet-async`, Layout component |
 | MIT-37 | Color scheme review | Less orange, more earth tones |
 | MIT-25 | Waves divider fix | PNG scaling + spacing issues |
 | MIT-30 | Tally + HubSpot | Form integration |
 | MIT-31 | Pre-launch testing | Last |
-
----
-
-## MIT-32: Cofounder Feedback (scoped)
-
-**Dev-ready items only:**
-
-1. **CTA button copy:** Change to "vær med i beta inden vi lancerer - test og hjælp"
-2. **Microcopy under CTA:** Change to "Mitlivmed lancerer i 2026 - sign up som beta bruger og hjælp allerede nu"
-3. **Spacing:** Reduce vertical padding around carousel/testimonials section
-
-**Note:** Waves divider stays - continue fixing in MIT-25.
-
----
-
-## MIT-33: Hero Video
-
-Embed this YouTube video as placeholder in hero section:
-```
-https://www.youtube.com/watch?v=VqFSCk_9NRA
-```
-
-Use responsive YouTube embed. Final video will replace this later.
 
 ---
 
@@ -77,7 +61,6 @@ Audit implementation and reduce orange where it's not a CTA.
 | ID | Title | Blocker |
 |----|-------|---------|
 | MIT-35 | Intro positioning text | CPO reviewing wording |
-| MIT-36 | Journey section refresh | Waiting for new images from CPO |
 | MIT-38 | Feedback tab | Backlog - deprioritized |
 
 ---
@@ -110,7 +93,7 @@ npm run dev
 npm run build
 
 # Type check
-npm run typecheck
+npx tsc --noEmit
 ```
 
 ---
