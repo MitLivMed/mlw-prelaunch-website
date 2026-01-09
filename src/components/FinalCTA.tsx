@@ -71,7 +71,7 @@ const FinalCTA = () => {
                   disabled={!email || !consent || isLoading}
                   className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100"
                 >
-                  {isLoading ? "Sender..." : "Skriv dig op til tidlig adgang"}
+                  {isLoading ? "Sender..." : "Skriv dig op som betatester"}
                 </Button>
               </div>
 
