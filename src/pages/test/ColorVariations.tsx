@@ -16,6 +16,7 @@ const variations = {
     colors: {
       "--background": "40 50% 97.5%",
       "--foreground": "0 0% 17%",
+      "--primary": "27 91% 54%",
       "--accent": "27 91% 54%",
       "--secondary": "183 38% 28%",
       "--desert": "36 45% 81%",
@@ -33,6 +34,7 @@ const variations = {
     colors: {
       "--background": "170 25% 97%",
       "--foreground": "183 30% 12%",
+      "--primary": "183 45% 32%",
       "--accent": "183 45% 32%",
       "--secondary": "183 38% 28%",
       "--desert": "180 20% 88%",
@@ -50,6 +52,7 @@ const variations = {
     colors: {
       "--background": "38 55% 96%",
       "--foreground": "28 25% 18%",
+      "--primary": "32 55% 42%",
       "--accent": "32 55% 42%",
       "--secondary": "28 40% 35%",
       "--desert": "36 50% 82%",
@@ -67,6 +70,7 @@ const variations = {
     colors: {
       "--background": "85 22% 96%",
       "--foreground": "95 20% 15%",
+      "--primary": "95 35% 38%",
       "--accent": "95 35% 38%",
       "--secondary": "100 25% 35%",
       "--desert": "80 18% 84%",
@@ -84,6 +88,7 @@ const variations = {
     colors: {
       "--background": "0 0% 100%",
       "--foreground": "0 0% 8%",
+      "--primary": "0 0% 15%",
       "--accent": "0 0% 15%",
       "--secondary": "0 0% 25%",
       "--desert": "0 0% 95%",
@@ -101,6 +106,7 @@ const variations = {
     colors: {
       "--background": "270 18% 97%",
       "--foreground": "270 25% 15%",
+      "--primary": "270 40% 50%",
       "--accent": "270 40% 50%",
       "--secondary": "280 35% 45%",
       "--desert": "265 18% 88%",
@@ -118,6 +124,7 @@ const variations = {
     colors: {
       "--background": "135 18% 96%",
       "--foreground": "145 30% 12%",
+      "--primary": "145 45% 32%",
       "--accent": "145 45% 32%",
       "--secondary": "150 40% 28%",
       "--desert": "138 18% 86%",
@@ -135,6 +142,7 @@ const variations = {
     colors: {
       "--background": "200 22% 97%",
       "--foreground": "210 32% 15%",
+      "--primary": "200 55% 42%",
       "--accent": "200 55% 42%",
       "--secondary": "205 50% 38%",
       "--desert": "42 28% 86%",
