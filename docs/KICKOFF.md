@@ -1,6 +1,6 @@
 # Pre-Launch Website Development Kickoff
 
-**Updated:** 2026-01-09
+**Updated:** 2026-01-09 (v2)
 **Linear Project:** [Pre-launch website](https://linear.app/mitlivmed/project/pre-launch-website-95067c272412)
 **Repo:** `git@github.com:MitLivMed/mlw-prelaunch-website.git`
 
@@ -13,37 +13,72 @@
 | MIT-24 | Footer social icons (LinkedIn added, URLs updated) |
 | MIT-26 | About page (`/om-os`) |
 | MIT-27 | Legal placeholder pages (`/privatlivspolitik`, `/vilkaar`, `/cookies`) |
-| MIT-32.4 | Header "Om os" link fix |
 
-**Also done:** Wave background effect on all new pages (90% opacity), button styling consistency.
+**Also done:** Wave background effect on all new pages (90% opacity), button styling consistency, header "Om os" link fix.
 
 ---
 
-## Next Up
+## Next Up (Priority Order)
 
 | ID | Title | Notes |
 |----|-------|-------|
-| MIT-29 | Static SEO files | Quick win: `robots.txt`, `sitemap.xml`, favicons |
+| MIT-33 | Hero video | YouTube placeholder: `https://www.youtube.com/watch?v=VqFSCk_9NRA` |
+| MIT-32 | Cofounder feedback (copy + spacing) | See details below |
+| MIT-29 | Static SEO files | `robots.txt`, `sitemap.xml`, favicons |
 | MIT-28 | Meta tags & SEO | `react-helmet-async`, Layout component |
-| MIT-32 | Co-founder feedback | 8 remaining items (see below) |
+| MIT-37 | Color scheme review | Less orange, more earth tones |
+| MIT-25 | Waves divider fix | PNG scaling + spacing issues |
 | MIT-30 | Tally + HubSpot | Form integration |
-| MIT-25 | Waves divider fix | May take time |
 | MIT-31 | Pre-launch testing | Last |
-
-**Blocked:** MIT-33 (hero video) - waiting for video link
 
 ---
 
-## MIT-32: Co-founder Feedback (remaining items)
+## MIT-32: Cofounder Feedback (scoped)
 
-1. ~~Item 4: Om os link~~ ✅
-2. CTA copy change: "vær med i beta inden vi lancerer - test og hjælp"
-3. Remove waves divider, reduce spacing around testimonials
-5. Rewrite CTA: "Mitlivmed lancerer i 2026 - sign up som beta bruger"
-6. Add intro text about peers/movement
-7. Rewrite 4 journey stage descriptions (Ørkenen, Søen, etc.)
-8. Update journey images to match brand + female persona
-9. Add feedback tab with simple form
+**Dev-ready items only:**
+
+1. **CTA button copy:** Change to "vær med i beta inden vi lancerer - test og hjælp"
+2. **Microcopy under CTA:** Change to "Mitlivmed lancerer i 2026 - sign up som beta bruger og hjælp allerede nu"
+3. **Spacing:** Reduce vertical padding around carousel/testimonials section
+
+**Note:** Waves divider stays - continue fixing in MIT-25.
+
+---
+
+## MIT-33: Hero Video
+
+Embed this YouTube video as placeholder in hero section:
+```
+https://www.youtube.com/watch?v=VqFSCk_9NRA
+```
+
+Use responsive YouTube embed. Final video will replace this later.
+
+---
+
+## MIT-37: Color Scheme Review
+
+Cofounder feedback: too much orange, should be more earth-toned.
+
+**Brandbook colors:**
+- **Lantern Orange #F58220** → Primary CTA only (use sparingly)
+- **Lake #2C5F63** → Links, dividers, charts
+- **Desert #E8D5B5** → Warm accent
+- **Plains #D4D9C1** → Surface/background blocks
+- **Off-white #FAFEFA** → Main background
+- **Charcoal #1A1612** → Main text
+
+Audit implementation and reduce orange where it's not a CTA.
+
+---
+
+## Blocked / CPO Review
+
+| ID | Title | Blocker |
+|----|-------|---------|
+| MIT-35 | Intro positioning text | CPO reviewing wording |
+| MIT-36 | Journey section refresh | Waiting for new images from CPO |
+| MIT-38 | Feedback tab | Backlog - deprioritized |
 
 ---
 
