@@ -1,4 +1,3 @@
-import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
@@ -36,23 +35,16 @@ const Hero = () => {
 
         {/* Two Column Layout */}
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-5xl mx-auto">
-          {/* Video Placeholder */}
+          {/* Video */}
           <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            <div className="relative aspect-video bg-gradient-to-br from-desert/50 to-plains/50 rounded-xl overflow-hidden group cursor-pointer shadow-lg">
-              {/* Placeholder thumbnail */}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />
-              
-              {/* Play button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-primary rounded-full flex items-center justify-center cta-shadow group-hover:scale-110 transition-transform">
-                  <Play className="w-8 h-8 md:w-10 md:h-10 text-primary-foreground ml-1" fill="currentColor" />
-                </div>
-              </div>
-
-              {/* Coming soon overlay */}
-              <div className="absolute bottom-4 left-4 bg-foreground/80 text-background px-3 py-1 rounded-full text-xs font-body">
-                Video kommer snart
-              </div>
+            <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/VqFSCk_9NRA"
+                title="MitLivMed video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
           </div>
 
@@ -78,10 +70,10 @@ const Hero = () => {
                 size="lg"
                 className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
               >
-                Skriv dig op til tidlig adgang
+                Skriv dig op som betatester
               </Button>
               <p className="text-sm text-text-light font-body">
-                MitLivMed åbner i starten af 2026
+                MitLivMed lancerer i 2026. Er du nysgerrig eller har du lyst til at hjælpe os, så skriv dig op som betatester og sæt dit præg på MitLivMed.
               </p>
             </div>
           </div>

@@ -56,7 +56,7 @@ const Header = () => {
             onClick={scrollToSignup}
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-medium cta-shadow hover:cta-shadow-hover transition-all"
           >
-            Skriv dig op →
+            Skriv dig op som betatester →
           </Button>
         </nav>
 
@@ -85,7 +85,7 @@ const Header = () => {
               onClick={scrollToSignup}
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-medium cta-shadow w-full"
             >
-              Skriv dig op →
+              Skriv dig op som betatester →
             </Button>
           </nav>
         </div>

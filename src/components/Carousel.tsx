@@ -27,7 +27,7 @@ const content = {
     },
   ],
   closing: "Det her er ikke tomme ord. Det er dokumenteret, og det er derfor, vi bygger MitLivMed.",
-  cta: "Kom i gang",
+  cta: "Skriv dig op som betatester",
   footnotes: [
     {
       text: 'Stein BD, et al. "Outpatient Follow-up After Psychiatric Hospitalization." PMC, 2021.',
@@ -163,7 +163,7 @@ const Carousel = () => {
   };
 
   return (
-    <section className="pt-8 pb-16 md:pt-12 md:pb-24 bg-background relative overflow-hidden">
+    <section className="pt-4 pb-8 md:pt-6 md:pb-12 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
         <div

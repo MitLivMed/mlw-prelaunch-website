@@ -1,25 +1,9 @@
-import { useState } from "react";
 import wavesImage from "@/assets/waves-trans.png";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { CheckCircle } from "lucide-react";
 
 const FinalCTA = () => {
-  const [email, setEmail] = useState("");
-  const [consent, setConsent] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !consent) return;
-
-    setIsLoading(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitted(true);
-    setIsLoading(false);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -44,53 +28,13 @@ const FinalCTA = () => {
             Vær med fra start når vi lancerer MitLivMed i 2026
           </h2>
 
-          {isSubmitted ? (
-            <div className="animate-scale-in bg-secondary/10 border border-secondary/30 rounded-2xl p-8">
-              <CheckCircle className="w-16 h-16 text-secondary mx-auto mb-4" />
-              <p className="text-xl font-heading font-medium text-foreground mb-2">
-                Tak! Du er skrevet op.
-              </p>
-              <p className="text-text-medium font-body">
-                Vi sender dig besked, når MitLivMed åbner.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Input
-                  type="email"
-                  placeholder="Din e-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="sm:w-80 h-12 text-base font-body border-border focus:border-primary focus:ring-primary"
-                />
-                <Button
-                  type="submit"
-                  size="lg"
-                  disabled={!email || !consent || isLoading}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100"
-                >
-                  {isLoading ? "Sender..." : "Skriv dig op til tidlig adgang"}
-                </Button>
-              </div>
-
-              <div className="flex items-start gap-3 justify-center max-w-md mx-auto">
-                <Checkbox
-                  id="consent"
-                  checked={consent}
-                  onCheckedChange={(checked) => setConsent(checked === true)}
-                  className="mt-1 border-border data-[state=checked]:bg-primary data-[state=checked]:border-primary"
-                />
-                <label
-                  htmlFor="consent"
-                  className="text-sm text-text-medium font-body text-left cursor-pointer"
-                >
-                  Jeg accepterer, at MitLivMed må kontakte mig via e-mail om lanceringen.
-                </label>
-              </div>
-            </form>
-          )}
+          <Button
+            onClick={scrollToTop}
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
+          >
+            Skriv dig op som betatester
+          </Button>
         </div>
       </div>
     </section>
