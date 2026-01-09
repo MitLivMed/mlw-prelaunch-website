@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
@@ -45,12 +46,12 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          <a
-            href="#about"
+          <Link
+            to="/om-os"
             className="text-text-medium hover:text-foreground transition-colors font-body text-sm"
           >
             Om os
-          </a>
+          </Link>
           <Button
             onClick={scrollToSignup}
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-medium cta-shadow hover:cta-shadow-hover transition-all"
@@ -73,13 +74,13 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg animate-fade-in">
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            <a
-              href="#about"
+            <Link
+              to="/om-os"
               className="text-text-medium hover:text-foreground transition-colors font-body py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Om os
-            </a>
+            </Link>
             <Button
               onClick={scrollToSignup}
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-medium cta-shadow w-full"
