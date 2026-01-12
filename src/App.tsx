@@ -8,7 +8,6 @@ import About from "./pages/About";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
-import ColorVariations from "./pages/test/ColorVariations";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,7 +24,6 @@ const App = () => (
           <Route path="/privatlivspolitik" element={<Privacy />} />
           <Route path="/vilkaar" element={<Terms />} />
           <Route path="/cookies" element={<Cookies />} />
-          <Route path="/test/color-variations" element={<ColorVariations />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
