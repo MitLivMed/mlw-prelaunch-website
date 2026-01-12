@@ -2,10 +2,6 @@ import wavesImage from "@/assets/waves-trans.png";
 import { Button } from "@/components/ui/button";
 
 const FinalCTA = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <section
       id="signup"
@@ -29,7 +25,9 @@ const FinalCTA = () => {
           </h2>
 
           <Button
-            onClick={scrollToTop}
+            data-tally-open="0Q87J0"
+            data-tally-emoji-text="👋"
+            data-tally-emoji-animation="wave"
             size="lg"
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
           >

@@ -1,11 +1,6 @@
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
-  const scrollToSignup = () => {
-    const element = document.getElementById("signup");
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="relative pt-24 pb-12 sm:pb-14 md:pt-32 md:pb-18 lg:pb-22 overflow-visible">
       {/* Hero gradient background - extends past section to be hidden by wave's opaque areas */}
@@ -69,7 +64,9 @@ const Hero = () => {
 
             <div className="space-y-3">
               <Button
-                onClick={scrollToSignup}
+                data-tally-open="0Q87J0"
+                data-tally-emoji-text="👋"
+                data-tally-emoji-animation="wave"
                 size="lg"
                 className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
               >

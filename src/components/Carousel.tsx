@@ -79,11 +79,6 @@ const Carousel = () => {
     return "closing";
   };
 
-  const scrollToSignup = () => {
-    const element = document.getElementById("signup");
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const getSlideContent = () => {
     // Quote slides (0-4)
     if (currentSlide < content.quotes.length) {
@@ -152,7 +147,9 @@ const Carousel = () => {
           {content.closing}
         </p>
         <Button
-          onClick={scrollToSignup}
+          data-tally-open="0Q87J0"
+          data-tally-emoji-text="👋"
+          data-tally-emoji-animation="wave"
           size="lg"
           className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
         >

@@ -19,12 +19,6 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSignup = () => {
-    const element = document.getElementById("signup");
-    element?.scrollIntoView({ behavior: "smooth" });
-    setIsMenuOpen(false);
-  };
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
@@ -51,7 +45,9 @@ const Header = () => {
             Om os
           </Link>
           <Button
-            onClick={scrollToSignup}
+            data-tally-open="0Q87J0"
+            data-tally-emoji-text="👋"
+            data-tally-emoji-animation="wave"
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-medium cta-shadow hover:cta-shadow-hover transition-all"
           >
             Skriv dig op som betatester →
@@ -80,7 +76,10 @@ const Header = () => {
               Om os
             </Link>
             <Button
-              onClick={scrollToSignup}
+              data-tally-open="0Q87J0"
+              data-tally-emoji-text="👋"
+              data-tally-emoji-animation="wave"
+              onClick={() => setIsMenuOpen(false)}
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-medium cta-shadow w-full"
             >
               Skriv dig op som betatester →
