@@ -103,7 +103,7 @@ const Carousel = () => {
       return (
         <div className="flex flex-col items-center justify-center min-h-64 px-6 text-center">
           <div className="w-16 h-px mb-8 bg-gradient-to-r from-transparent via-primary to-transparent" />
-          <p className="text-xl md:text-2xl lg:text-3xl font-heading font-semibold leading-tight max-w-2xl text-secondary">
+          <p className="text-xl md:text-2xl lg:text-3xl font-heading font-semibold leading-tight max-w-2xl text-primary">
             {content.transition}
           </p>
           <div className="w-16 h-px mt-8 bg-gradient-to-r from-transparent via-primary to-transparent" />
@@ -123,7 +123,7 @@ const Carousel = () => {
           <p className="text-base md:text-lg max-w-xl mb-4 text-text-medium font-body leading-relaxed">
             {fact.text}
           </p>
-          <p className="text-base md:text-lg font-medium max-w-xl mb-6 text-secondary font-body">
+          <p className="text-base md:text-lg font-semibold max-w-xl mb-6 text-plains-text font-body">
             {fact.highlight}
           </p>
           {/* Inline footnote */}

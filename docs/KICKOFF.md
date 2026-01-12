@@ -1,6 +1,6 @@
 # Pre-Launch Website Development Kickoff
 
-**Updated:** 2026-01-12 (v8)
+**Updated:** 2026-01-12 (v9)
 **Linear Project:** [Pre-launch website](https://linear.app/mitlivmed/project/pre-launch-website-95067c272412)
 **Repo:** `git@github.com:MitLivMed/mlw-prelaunch-website.git`
 
@@ -21,25 +21,14 @@
 | MIT-25 | Waves divider removed (divider component only, background effect kept) |
 | MIT-42 | Founder photo on About page (large photo + mission/belief copy) |
 | MIT-29 | Static SEO files (favicons, webmanifest) |
+| MIT-37 | Color scheme (variation 4 "Plains-Minimal" styling) |
 
 **Also done (this session):**
-- About page redesign: Mission statement, core belief callout, founder story, large photo at bottom
-- Title updated to "Grundlægger og adm. direktør"
-- Favicon setup: all variants + webmanifest with brand colors
-
----
-
-## In Progress / CPO Review
-
-| ID | Title | Status |
-|----|-------|--------|
-| MIT-37 | Color scheme review | Feedback collected, ready to implement |
-
-**MIT-37:** Feedback collected from Lena, Dea, Louise, CPO:
-- **Winner:** #1 Baseline
-- **Tweak:** Journey section → `bg-plains/40` (green tint, calmer feel from #4)
-- **Keep:** Orange card titles
-- Live variations at `/test/color-variations` (press 1-8)
+- MIT-37: Journey section green bg, olive-green card titles, plains-text body
+- Warmer sand background for main page
+- Hero title first line now regular weight (not bold)
+- Carousel transition text now brand orange
+- Carousel fact highlights now plains-text + semibold
 
 ---
 
@@ -47,7 +36,6 @@
 
 | ID | Title | Notes |
 |----|-------|-------|
-| MIT-37 | Color scheme | Implement agreed changes (Journey bg) |
 | MIT-28 | Meta tags & SEO | `react-helmet-async`, Layout component |
 | MIT-30 | Tally + HubSpot | Form integration |
 | MIT-31 | Pre-launch testing | Last |

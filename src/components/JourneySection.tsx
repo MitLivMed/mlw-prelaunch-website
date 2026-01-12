@@ -32,14 +32,14 @@ const cards = [
 
 const JourneySection = () => {
   return (
-    <section className="py-16 md:py-24 bg-desert/40">
+    <section className="py-16 md:py-24 bg-plains/40">
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <div className="text-center mb-12 md:mb-16 max-w-3xl mx-auto">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-semibold text-foreground leading-tight mb-4">
             Livet efter diagnosen er ikke én vej.
           </h2>
-          <p className="text-lg md:text-xl text-text-medium font-body">
+          <p className="text-lg md:text-xl text-plains-text font-body">
             Den består af en række landskaber, mange genkender
           </p>
         </div>
@@ -54,10 +54,10 @@ const JourneySection = () => {
             >
               {/* Card Header (Title + Description) */}
               <div className="mb-3">
-                <h3 className="text-lg md:text-xl font-heading font-semibold text-primary mb-1">
+                <h3 className="text-lg md:text-xl font-heading font-semibold text-plains-accent mb-1">
                   {card.title}
                 </h3>
-                <p className="text-sm text-text-medium font-body leading-relaxed">
+                <p className="text-sm text-plains-text font-body leading-relaxed">
                   {card.description}
                 </p>
               </div>

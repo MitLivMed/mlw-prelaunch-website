@@ -52,6 +52,8 @@ export default {
         lake: "hsl(var(--secondary))",
         desert: "hsl(var(--desert))",
         plains: "hsl(var(--plains))",
+        "plains-accent": "hsl(var(--plains-accent))",
+        "plains-text": "hsl(var(--plains-text))",
         mountain: "hsl(var(--mountain))",
         "warm-black": "hsl(var(--warm-black))",
         "text-dark": "hsl(var(--text-dark))",

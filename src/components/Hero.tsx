@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Centered Title */}
         <div className="text-center mb-12 md:mb-16 animate-fade-in">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold text-foreground leading-tight mb-2">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-normal text-foreground leading-tight mb-2">
             Det ingen taler om..
           </h1>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold leading-tight">

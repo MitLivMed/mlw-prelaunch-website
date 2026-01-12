@@ -9,10 +9,10 @@
 @layer base {
   :root {
     /* MitLivMed Brand Colors (HSL) */
-    --background: 40 50% 97.5%;
+    --background: 38 55% 96%;
     --foreground: 0 0% 17%;
 
-    --card: 40 50% 97.5%;
+    --card: 38 55% 96%;
     --card-foreground: 0 0% 17%;
 
     --popover: 0 0% 100%;
@@ -33,6 +33,8 @@
     /* Plains Green */
     --plains: 72 22% 81%;
     --plains-foreground: 0 0% 17%;
+    --plains-accent: 95 35% 38%;
+    --plains-text: 90 15% 40%;
 
     /* Mountain Light */
     --mountain: 216 25% 96%;
