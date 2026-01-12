@@ -1,6 +1,6 @@
 # Pre-Launch Website Development Kickoff
 
-**Updated:** 2026-01-09 (v3)
+**Updated:** 2026-01-12 (v5)
 **Linear Project:** [Pre-launch website](https://linear.app/mitlivmed/project/pre-launch-website-95067c272412)
 **Repo:** `git@github.com:MitLivMed/mlw-prelaunch-website.git`
 
@@ -24,6 +24,19 @@
 - FinalCTA simplified to button only (prep for Tally.so)
 - Journey card image alignment fix (flexbox)
 - Removed `design/` folder from repo (belongs in planning project)
+- Deployment setup: dual-remote for Vercel free tier (see CLAUDE.md)
+- Added `vercel.json` for SPA routing (fixes 404 on direct URL access)
+
+---
+
+## In Progress / CPO Review
+
+| ID | Title | Status |
+|----|-------|--------|
+| MIT-37 | Color scheme review | Live at `/test/color-variations` for CPO review |
+| MIT-35 | Intro positioning text | CPO reviewing wording |
+
+**MIT-37 output:** 8 color variations with live switcher UI at [/test/color-variations](https://mlwlandingpage.vercel.app/test/color-variations). Press 1-8 to switch. Shows full site with real components.
 
 ---
 
@@ -33,40 +46,40 @@
 |----|-------|-------|
 | MIT-29 | Static SEO files | `robots.txt`, `sitemap.xml`, favicons |
 | MIT-28 | Meta tags & SEO | `react-helmet-async`, Layout component |
-| MIT-37 | Color scheme review | Less orange, more earth tones |
 | MIT-25 | Waves divider fix | PNG scaling + spacing issues |
 | MIT-30 | Tally + HubSpot | Form integration |
 | MIT-31 | Pre-launch testing | Last |
 
 ---
 
-## MIT-37: Color Scheme Review
-
-Cofounder feedback: too much orange, should be more earth-toned.
-
-**Brandbook colors:**
-- **Lantern Orange #F58220** → Primary CTA only (use sparingly)
-- **Lake #2C5F63** → Links, dividers, charts
-- **Desert #E8D5B5** → Warm accent
-- **Plains #D4D9C1** → Surface/background blocks
-- **Off-white #FAFEFA** → Main background
-- **Charcoal #1A1612** → Main text
-
-Audit implementation and reduce orange where it's not a CTA.
-
----
-
-## Blocked / CPO Review
+## Blocked / Backlog
 
 | ID | Title | Blocker |
 |----|-------|---------|
-| MIT-35 | Intro positioning text | CPO reviewing wording |
+| MIT-40 | Wave divider alternatives | Backlog - fact box concept with 3 copy variations |
 | MIT-38 | Feedback tab | Backlog - deprioritized |
+
+---
+
+## Deployment
+
+Vercel free tier requires personal repo. Dual-remote setup:
+
+```bash
+# Deploy to production (push to both)
+git push origin main && git push personal main --force
+```
+
+- `origin` = MitLivMed org repo (source of truth)
+- `personal` = Fuhr/mlw-prelaunch-website (Vercel deploys from here)
+
+See `/deploy` skill or CLAUDE.md for details.
 
 ---
 
 ## Reference Docs (in `docs/`)
 
+- `color-variations.html` - 8 color schemes for CPO review (MIT-37)
 - `mitlivmed-meta-tags.md` - Meta tag specs for MIT-28
 - `signup-form-prd.md` - Tally form fields for MIT-30
 - `mitlivmed-welcome-email.md` - HubSpot email copy
@@ -94,6 +107,9 @@ npm run build
 
 # Type check
 npx tsc --noEmit
+
+# Deploy to production
+git push origin main && git push personal main --force
 ```
 
 ---
