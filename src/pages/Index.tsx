@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import WavesDivider from "@/components/WavesDivider";
 import Carousel from "@/components/Carousel";
 import JourneySection from "@/components/JourneySection";
 import WhatIsSection from "@/components/WhatIsSection";
@@ -25,7 +24,6 @@ const Index = () => {
 
       <main id="main-content">
         <Hero />
-        <WavesDivider />
         <Carousel />
         <JourneySection />
         <WhatIsSection />

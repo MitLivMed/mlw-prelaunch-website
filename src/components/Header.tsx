@@ -10,10 +10,8 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Get hero section height to determine when to show solid background
-      const heroSection = document.querySelector('section');
-      const heroHeight = heroSection?.offsetHeight || 400;
-      setIsScrolled(window.scrollY > heroHeight - 100);
+      // Show glassmorphism after scrolling a small amount
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -28,10 +26,10 @@ const Header = () => {
   };
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-[#EFF3F6] backdrop-blur-sm shadow-sm' 
+        isScrolled
+          ? 'bg-white/70 backdrop-blur-md shadow-sm'
           : 'bg-transparent'
       }`}
     >

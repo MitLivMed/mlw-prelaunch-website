@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import WavesDivider from "@/components/WavesDivider";
 import Carousel from "@/components/Carousel";
 import JourneySection from "@/components/JourneySection";
 import WhatIsSection from "@/components/WhatIsSection";
@@ -281,7 +280,6 @@ const ColorVariations = () => {
 
       <main>
         <Hero />
-        <WavesDivider />
         <Carousel />
         <JourneySection />
         <WhatIsSection />
