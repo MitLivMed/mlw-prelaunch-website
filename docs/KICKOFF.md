@@ -1,6 +1,6 @@
 # Pre-Launch Website Development Kickoff
 
-**Updated:** 2026-01-12 (v10)
+**Updated:** 2026-01-12 (v11)
 **Linear Project:** [Pre-launch website](https://linear.app/mitlivmed/project/pre-launch-website-95067c272412)
 **Repo:** `git@github.com:MitLivMed/mlw-prelaunch-website.git`
 
@@ -23,23 +23,10 @@
 | MIT-29 | Static SEO files (favicons, webmanifest) |
 | MIT-37 | Color scheme (variation 4 "Plains-Minimal" styling) |
 | MIT-28 | Meta tags & SEO (react-helmet-async, OG image, sitemap, JSON-LD) |
+| MIT-30 | Tally.so signup form (popup on all CTAs) |
+| MIT-31 | Pre-launch testing (image optimization: 8.8MB → 718KB) |
 
-**Also done (this session):**
-- MIT-37: Journey section green bg, olive-green card titles, plains-text body
-- Warmer sand background for main page
-- Hero title first line now regular weight (not bold)
-- Carousel transition text now brand orange
-- Carousel fact highlights now plains-text + semibold
-- OG image created: `public/og-image.png` (1x) + `og-image2x.png` (2x) via `scripts/generate-og-image.mjs`
-
----
-
-## Next Up (Priority Order)
-
-| ID | Title | Notes |
-|----|-------|-------|
-| MIT-30 | Tally + HubSpot | Form integration |
-| MIT-31 | Pre-launch testing | Last |
+**Pre-launch website is now live at https://mitlivmed.dk**
 
 ---
 
@@ -47,8 +34,8 @@
 
 | ID | Title | Notes |
 |----|-------|-------|
-| MIT-41 | Section divider alternatives | Created this session - explore options after wave divider removal |
-| MIT-40 | Wave divider alternatives | Fact box concept with 3 copy variations |
+| MIT-15 | Newsletter Automation Platform | HubSpot integration + welcome email |
+| MIT-41 | Section divider alternatives | Fact box concept with 3 copy variations (merged from MIT-40) |
 | MIT-38 | Feedback tab | Deprioritized |
 
 ---
