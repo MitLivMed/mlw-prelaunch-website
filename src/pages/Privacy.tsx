@@ -1,10 +1,16 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import wavesImage from "@/assets/waves-trans.png";
 
 const Privacy = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Privatlivspolitik"
+        description="Læs om hvordan MitLivMed indsamler, bruger og beskytter dine personlige oplysninger."
+        path="/privatlivspolitik"
+      />
       {/* Film grain overlay */}
       <div className="film-grain" aria-hidden="true" />
 

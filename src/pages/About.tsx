@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import wavesImage from "@/assets/waves-trans.png";
 import jWhiteImage from "@/assets/j-white.jpg";
 
@@ -11,6 +12,11 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Om os"
+        description="Mød teamet bag MitLivMed og lær om vores mission: at hjælpe mennesker med bipolar med at mestre hverdagen gennem fællesskab og delte erfaringer."
+        path="/om-os"
+      />
       {/* Film grain overlay */}
       <div className="film-grain" aria-hidden="true" />
 

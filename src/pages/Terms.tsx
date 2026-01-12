@@ -1,10 +1,16 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import wavesImage from "@/assets/waves-trans.png";
 
 const Terms = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Vilkår og betingelser"
+        description="Læs vilkår og betingelser for brug af MitLivMed."
+        path="/vilkaar"
+      />
       {/* Film grain overlay */}
       <div className="film-grain" aria-hidden="true" />
 

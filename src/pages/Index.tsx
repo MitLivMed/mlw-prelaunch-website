@@ -5,10 +5,12 @@ import JourneySection from "@/components/JourneySection";
 import WhatIsSection from "@/components/WhatIsSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO />
       {/* Film grain overlay */}
       <div className="film-grain" aria-hidden="true" />
 

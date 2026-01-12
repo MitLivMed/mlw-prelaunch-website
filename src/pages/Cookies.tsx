@@ -1,10 +1,16 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import wavesImage from "@/assets/waves-trans.png";
 
 const Cookies = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Cookiepolitik"
+        description="Læs om hvordan MitLivMed bruger cookies på vores hjemmeside."
+        path="/cookies"
+      />
       {/* Film grain overlay */}
       <div className="film-grain" aria-hidden="true" />
 
