@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import wavesImage from "@/assets/waves-trans.png";
 
 const Privacy = () => {
   return (
@@ -17,7 +18,17 @@ const Privacy = () => {
 
       <Header />
 
-      <main id="main-content" className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-background to-desert/30">
+      <main id="main-content" className="relative py-16 md:py-24 overflow-hidden">
+        {/* Waves background */}
+        <div className="absolute inset-0">
+          <img
+            src={wavesImage}
+            alt=""
+            className="w-full h-full object-cover opacity-90"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+        </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto">
