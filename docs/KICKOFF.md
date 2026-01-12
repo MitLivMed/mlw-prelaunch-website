@@ -1,6 +1,6 @@
 # Pre-Launch Website Development Kickoff
 
-**Updated:** 2026-01-12 (v9)
+**Updated:** 2026-01-12 (v10)
 **Linear Project:** [Pre-launch website](https://linear.app/mitlivmed/project/pre-launch-website-95067c272412)
 **Repo:** `git@github.com:MitLivMed/mlw-prelaunch-website.git`
 
@@ -22,6 +22,7 @@
 | MIT-42 | Founder photo on About page (large photo + mission/belief copy) |
 | MIT-29 | Static SEO files (favicons, webmanifest) |
 | MIT-37 | Color scheme (variation 4 "Plains-Minimal" styling) |
+| MIT-28 | Meta tags & SEO (react-helmet-async, OG image, sitemap, JSON-LD) |
 
 **Also done (this session):**
 - MIT-37: Journey section green bg, olive-green card titles, plains-text body
@@ -29,6 +30,7 @@
 - Hero title first line now regular weight (not bold)
 - Carousel transition text now brand orange
 - Carousel fact highlights now plains-text + semibold
+- OG image created: `public/og-image.png` (1x) + `og-image2x.png` (2x) via `scripts/generate-og-image.mjs`
 
 ---
 
@@ -36,7 +38,6 @@
 
 | ID | Title | Notes |
 |----|-------|-------|
-| MIT-28 | Meta tags & SEO | `react-helmet-async`, Layout component |
 | MIT-30 | Tally + HubSpot | Form integration |
 | MIT-31 | Pre-launch testing | Last |
 
