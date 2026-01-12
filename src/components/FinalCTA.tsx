@@ -1,4 +1,3 @@
-import wavesImage from "@/assets/waves-trans.png";
 import { Button } from "@/components/ui/button";
 
 const FinalCTA = () => {
@@ -9,18 +8,8 @@ const FinalCTA = () => {
   return (
     <section
       id="signup"
-      className="relative py-16 md:py-24 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-background to-desert/30"
     >
-      {/* Waves background */}
-      <div className="absolute inset-0">
-        <img
-          src={wavesImage}
-          alt=""
-          className="w-full h-full object-cover opacity-90"
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
-      </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl mx-auto text-center">
