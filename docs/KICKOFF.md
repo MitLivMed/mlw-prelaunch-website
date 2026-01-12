@@ -1,6 +1,6 @@
 # Pre-Launch Website Development Kickoff
 
-**Updated:** 2026-01-12 (v5)
+**Updated:** 2026-01-12 (v6)
 **Linear Project:** [Pre-launch website](https://linear.app/mitlivmed/project/pre-launch-website-95067c272412)
 **Repo:** `git@github.com:MitLivMed/mlw-prelaunch-website.git`
 
@@ -16,16 +16,18 @@
 | MIT-32 | Cofounder feedback (CTA copy, microcopy, carousel spacing) |
 | MIT-33 | Hero video (YouTube embed) |
 | MIT-36 | Journey section refresh (new images + copy) |
+| MIT-35 | Intro positioning text ("bevægelse" copy in hero) |
+| MIT-39 | Glassmorphism navbar (transparent→blur on scroll) |
+| MIT-25 | Waves divider removed (divider component only, background effect kept) |
 
-**Also done:**
-- Wave background effect on all new pages (90% opacity)
-- Button styling consistency
-- Header "Om os" link fix
-- FinalCTA simplified to button only (prep for Tally.so)
-- Journey card image alignment fix (flexbox)
-- Removed `design/` folder from repo (belongs in planning project)
-- Deployment setup: dual-remote for Vercel free tier (see CLAUDE.md)
-- Added `vercel.json` for SPA routing (fixes 404 on direct URL access)
+**Also done (this session):**
+- Hero copy: Added "Vi er en bevægelse..." positioning paragraph
+- Hero text colors unified to `text-text-dark`
+- Hero layout: Video/copy aligned to top (`items-start`)
+- Carousel padding increased (~15% more top/bottom)
+- Navbar: Glassmorphism effect (`bg-white/70 + backdrop-blur-md`) triggers after 50px scroll
+- WavesDivider component removed between Hero and Carousel
+- Waves background effect preserved on FinalCTA, About, Terms, Privacy, Cookies pages
 
 ---
 
@@ -34,9 +36,14 @@
 | ID | Title | Status |
 |----|-------|--------|
 | MIT-37 | Color scheme review | Live at `/test/color-variations` for CPO review |
-| MIT-35 | Intro positioning text | CPO reviewing wording |
+| MIT-42 | Founder photo on About page | WIP - toggle UI built, needs design iteration (photo too small) |
 
-**MIT-37 output:** 8 color variations with live switcher UI at [/test/color-variations](https://mlwlandingpage.vercel.app/test/color-variations). Press 1-8 to switch. Shows full site with real components.
+**MIT-37:** 8 color variations with live switcher at `/test/color-variations`. Press 1-8 to switch.
+
+**MIT-42:** About page (`/om-os`) has toggle controls for:
+- Layout: "Hero" vs "Inline" placement
+- Photo: `j-white.jpg` vs `j-orange.jpg`
+- **Feedback:** Photo too small, needs bigger/better placement. Continue in next session.
 
 ---
 
@@ -44,26 +51,27 @@
 
 | ID | Title | Notes |
 |----|-------|-------|
+| MIT-42 | Founder photo | Continue design iteration |
 | MIT-29 | Static SEO files | `robots.txt`, `sitemap.xml`, favicons |
 | MIT-28 | Meta tags & SEO | `react-helmet-async`, Layout component |
-| MIT-25 | Waves divider fix | PNG scaling + spacing issues |
 | MIT-30 | Tally + HubSpot | Form integration |
 | MIT-31 | Pre-launch testing | Last |
 
 ---
 
-## Blocked / Backlog
+## Backlog
 
-| ID | Title | Blocker |
-|----|-------|---------|
-| MIT-40 | Wave divider alternatives | Backlog - fact box concept with 3 copy variations |
-| MIT-38 | Feedback tab | Backlog - deprioritized |
+| ID | Title | Notes |
+|----|-------|-------|
+| MIT-41 | Section divider alternatives | Created this session - explore options after wave divider removal |
+| MIT-40 | Wave divider alternatives | Fact box concept with 3 copy variations |
+| MIT-38 | Feedback tab | Deprioritized |
 
 ---
 
 ## Deployment
 
-Vercel free tier requires personal repo. Dual-remote setup:
+Domain is now live. Dual-remote setup for Vercel:
 
 ```bash
 # Deploy to production (push to both)
@@ -72,8 +80,6 @@ git push origin main && git push personal main --force
 
 - `origin` = MitLivMed org repo (source of truth)
 - `personal` = Fuhr/mlw-prelaunch-website (Vercel deploys from here)
-
-See `/deploy` skill or CLAUDE.md for details.
 
 ---
 
