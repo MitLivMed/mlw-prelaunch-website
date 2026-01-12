@@ -189,14 +189,14 @@ const Carousel = () => {
           {/* Navigation arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-plains hover:text-primary transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-primary hover:text-primary/70 transition-colors"
             aria-label="Forrige slide"
           >
             <ChevronLeft className="w-8 h-8" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-plains hover:text-primary transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-primary hover:text-primary/70 transition-colors"
             aria-label="Næste slide"
           >
             <ChevronRight className="w-8 h-8" />
