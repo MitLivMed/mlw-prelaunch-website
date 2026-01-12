@@ -1,6 +1,6 @@
 # Pre-Launch Website Development Kickoff
 
-**Updated:** 2026-01-12 (v6)
+**Updated:** 2026-01-12 (v7)
 **Linear Project:** [Pre-launch website](https://linear.app/mitlivmed/project/pre-launch-website-95067c272412)
 **Repo:** `git@github.com:MitLivMed/mlw-prelaunch-website.git`
 
@@ -19,15 +19,11 @@
 | MIT-35 | Intro positioning text ("bevægelse" copy in hero) |
 | MIT-39 | Glassmorphism navbar (transparent→blur on scroll) |
 | MIT-25 | Waves divider removed (divider component only, background effect kept) |
+| MIT-42 | Founder photo on About page (large photo + mission/belief copy) |
 
 **Also done (this session):**
-- Hero copy: Added "Vi er en bevægelse..." positioning paragraph
-- Hero text colors unified to `text-text-dark`
-- Hero layout: Video/copy aligned to top (`items-start`)
-- Carousel padding increased (~15% more top/bottom)
-- Navbar: Glassmorphism effect (`bg-white/70 + backdrop-blur-md`) triggers after 50px scroll
-- WavesDivider component removed between Hero and Carousel
-- Waves background effect preserved on FinalCTA, About, Terms, Privacy, Cookies pages
+- About page redesign: Mission statement, core belief callout, founder story, large photo at bottom
+- Title updated to "Grundlægger og adm. direktør"
 
 ---
 
@@ -36,14 +32,8 @@
 | ID | Title | Status |
 |----|-------|--------|
 | MIT-37 | Color scheme review | Live at `/test/color-variations` for CPO review |
-| MIT-42 | Founder photo on About page | WIP - toggle UI built, needs design iteration (photo too small) |
 
 **MIT-37:** 8 color variations with live switcher at `/test/color-variations`. Press 1-8 to switch.
-
-**MIT-42:** About page (`/om-os`) has toggle controls for:
-- Layout: "Hero" vs "Inline" placement
-- Photo: `j-white.jpg` vs `j-orange.jpg`
-- **Feedback:** Photo too small, needs bigger/better placement. Continue in next session.
 
 ---
 
@@ -51,7 +41,6 @@
 
 | ID | Title | Notes |
 |----|-------|-------|
-| MIT-42 | Founder photo | Continue design iteration |
 | MIT-29 | Static SEO files | `robots.txt`, `sitemap.xml`, favicons |
 | MIT-28 | Meta tags & SEO | `react-helmet-async`, Layout component |
 | MIT-30 | Tally + HubSpot | Form integration |
