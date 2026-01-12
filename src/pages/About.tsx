@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import wavesImage from "@/assets/waves-trans.png";
-import jWhiteImage from "@/assets/j-white.jpg";
+import founderImage from "@/assets/j-bcg.png";
 
 const About = () => {
   const mission = {
@@ -121,7 +121,7 @@ const About = () => {
                   <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 via-desert/30 to-secondary/20 rounded-2xl" />
 
                   <img
-                    src={jWhiteImage}
+                    src={founderImage}
                     alt="Jesper Ohrt Juel Jensen, grundlægger af MitLivMed"
                     className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-cover object-top rounded-2xl shadow-2xl"
                   />
