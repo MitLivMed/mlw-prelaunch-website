@@ -1,6 +1,6 @@
 # Pre-Launch Website Development Kickoff
 
-**Updated:** 2026-01-12 (v11)
+**Updated:** 2026-01-13 (v12)
 **Linear Project:** [Pre-launch website](https://linear.app/mitlivmed/project/pre-launch-website-95067c272412)
 **Repo:** `git@github.com:MitLivMed/mlw-prelaunch-website.git`
 
@@ -25,6 +25,7 @@
 | MIT-28 | Meta tags & SEO (react-helmet-async, OG image, sitemap, JSON-LD) |
 | MIT-30 | Tally.so signup form (popup on all CTAs) |
 | MIT-31 | Pre-launch testing (image optimization: 8.8MB → 718KB) |
+| MIT-43 | Co-founder copy feedback round 2 (Hero hooks, About page story/mission/belief, Carousel bipolar fact, WhatIsSection, Volunteer section) |
 
 **Pre-launch website is now live at https://mitlivmed.dk**
 
