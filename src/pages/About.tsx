@@ -137,6 +137,27 @@ const About = () => {
               </div>
             </div>
           </div>
+
+          {/* Volunteer section */}
+          <div className="pb-16 md:pb-24">
+            <div className="container mx-auto px-4">
+              <div className="max-w-2xl mx-auto text-center">
+                <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-4">
+                  Bliv Frivillig
+                </h2>
+                <p className="font-body text-text-medium leading-relaxed">
+                  Hvis du har lyst til at hjælpe på anden måde end som betatester før lancering, så skriv til os på{" "}
+                  <a
+                    href="mailto:kontakt@mitlivmed.dk?subject=Frivillig%20i%20MitLivMed"
+                    className="text-primary hover:text-primary/80 underline transition-colors"
+                  >
+                    kontakt@mitlivmed.dk
+                  </a>
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
 

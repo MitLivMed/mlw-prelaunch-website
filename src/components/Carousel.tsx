@@ -14,9 +14,10 @@ const content = {
   transition: "Det er ikke dig, der er forkert. Det er hullet efter behandlingen.",
   facts: [
     {
-      stat: "42-51%",
-      text: "bliver sendt hjem uden opfølgning den første måned — netop når risikoen er størst.",
-      highlight: "Tidlig kontakt reducerer den risiko med 18%.",
+      stat: "60.000-120.000",
+      text: "danskere skønnes at lide af bipolar lidelse,",
+      subtext: "svarende til ca. 1-2 % af voksenbefolkningen.",
+      highlight: "De fleste adspurgte har udtrykt manglende støtte efter initial behandling.",
       footnote: 1,
     },
     {
@@ -30,8 +31,8 @@ const content = {
   cta: "Skriv dig op som betatester",
   footnotes: [
     {
-      text: 'Stein BD, et al. "Outpatient Follow-up After Psychiatric Hospitalization." PMC, 2021.',
-      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8695636/",
+      text: "Bipolar Databasen, © Sundhedsvæsenets Kvalitetsinstitut 2025.",
+      url: "https://www.sundk.dk/media/j3tlyl12/bipolar_evidensrapport_dansk-bipolardatabase_final_21012025.pdf",
     },
     {
       text: "Høgh Egmose C, et al. Copenhagen Research Center for Mental Health. Psychiatric Services, 2023.",
@@ -117,6 +118,12 @@ const Carousel = () => {
           </div>
           <p className="text-base md:text-lg max-w-xl mb-4 text-text-medium font-body leading-relaxed">
             {fact.text}
+            {fact.subtext && (
+              <>
+                <br />
+                {fact.subtext}
+              </>
+            )}
           </p>
           <p className="text-base md:text-lg font-semibold max-w-xl mb-6 text-plains-text font-body">
             {fact.highlight}
