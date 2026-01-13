@@ -6,8 +6,8 @@ import founderImage from "@/assets/founder.jpg";
 
 const About = () => {
   const mission = {
-    statement: "Vi hjælper mennesker med psykiske lidelser med at mestre hverdagen gennem fortællinger man kan spejle sig i, guidet refleksion og et trygt fællesskab.",
-    belief: "Folk har ikke brug for flere diagnoser eller quick fixes. De har brug for rollemodeller, følelsesmæssig forståelse og værktøjer til at klare hverdagen — pakket ind i et fællesskab der føles menneskeligt.",
+    statement: "Vi hjælper mennesker med psykiske lidelser, ligesom os selv, med at mestre hverdagen gennem fortællinger man kan spejle sig i, guidet refleksion og et trygt fællesskab.",
+    belief: "Vi har brug for rollemodeller, følelsesmæssig forståelse og værktøjer til at klare hverdagen - pakket ind i et fællesskab der føles menneskeligt og med teknologi der støtter op og gør aspekter af livet nemmere.",
   };
 
   return (
@@ -74,7 +74,7 @@ const About = () => {
                   </p>
 
                   <p>
-                    For nogle år siden blev jeg ramt af en depression, der vendte alt på hovedet. Jeg ledte efter andre med bipolar, som jeg kunne spejle sig i. Ikke for at få råd eller diagnoser — bare for at se, at man godt kan få et godt liv alligevel.
+                    For år tilbage blev jeg ramt af en depression, der vendte alt på hovedet og senere blev jeg diagnosticeret som bipolar. Jeg ledte efter andre med bipolar, som jeg kunne spejle sig i. Ikke for at få råd eller diagnoser, bare for at se, at man godt kan få et godt liv alligevel og træde i andres spor.
                   </p>
 
                   <p>
@@ -86,11 +86,11 @@ const About = () => {
                   <ul className="space-y-2 ml-1">
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
-                      <span>Nogen der har prøvet det, og kan sige højt, hvad der faktisk hjalp</span>
+                      <span>Nogen der har prøvet det, jeg gik igennem og kan sige højt, hvad der faktisk hjalp</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
-                      <span>Nogen der står i det nu, så man ikke føler sig alene</span>
+                      <span>Nogen der står i samme situationer nu, så man ikke føler sig alene</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
@@ -99,11 +99,11 @@ const About = () => {
                   </ul>
 
                   <p className="pt-4">
-                    Det blev startskuddet. Derfor bygger vi <strong className="text-foreground">MitLivMed</strong> — et modereret digitalt fællesskab for mennesker med bipolar, hvor du kan møde andres erfaringer, når du har brug for det.
+                    Det blev startskuddet. Derfor bygger vi <strong className="text-foreground">MitLivMed</strong> - et modereret digitalt fællesskab for mennesker med bipolar, hvor du kan møde andres erfaringer, når du har brug for det.
                   </p>
 
                   <p className="text-lg text-foreground font-medium pt-2">
-                    Det handler om det, der kommer efter: hverdagen, relationerne, rutinerne, og håbet der føles ægte.
+                    Det handler om det, der kommer efter: hverdagen, relationerne, rutinerne, og håbet, der føles ægte.
                   </p>
                 </div>
               </div>

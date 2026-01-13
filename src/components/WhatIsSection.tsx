@@ -22,13 +22,13 @@ const WhatIsSection = () => {
                   Det er til dig, der savner støtte og spejling efter diagnosen. Måske leder du efter håb, genkendelse, eller bare nogen der har stået der før.
                 </p>
                 <p>
-                  Du behøver ikke dele noget selv. Du kan følge med, lære, reflektere — eller bidrage, hvis du har lyst. Du bestemmer.
+                  Du behøver ikke dele noget selv. Du kan følge med, lære, reflektere, eller bidrage, hvis du har lyst. Du bestemmer.
                 </p>
                 <p>
-                  Alt indhold bliver gennemgået, og fællesskabet er modereret og guidet af fagpersoner, så din oplevelse føles trygt med respekt for dit privatliv.
+                  Alt indhold bliver gennemgået, og fællesskabet er modereret og efter retningslinjer fra fagpersoner, så din oplevelse føles trygt med respekt for dit privatliv.
                 </p>
                 <p className="text-text-dark font-medium">
-                  Pårørende er også velkomne. Partnere, familie og venner til mennesker med bipolar kan deltage, så længe de følger fællesskabets retningslinjer.
+                  Pårørende er også velkomne. Partnere, familie og venner til mennesker med bipolar kan deltage, så længe de følger fællesskabets retningslinjer og respekterer, at den primære del af fællesskabet tilhører dem med diagnosen - eller dem som mistænker at de har den.
                 </p>
               </div>
             </div>
