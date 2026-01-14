@@ -12,16 +12,54 @@ const tier1Resources = [
 ];
 
 const tier2Resources = [
-  { name: "Psykiatrifondens Rådgivning", url: "https://psykiatrifonden.dk", target: "Angst, depression, pårørende" },
-  { name: "SIND Rådgivning", url: "https://sindraadgivning.dk", target: "Dig og pårørende" },
-  { name: "DepressionsLinien", phone: "33124774", phoneDisplay: "33 12 47 74", url: "https://depressionsforeningen.dk", target: "Voksne 18+ med depression/bipolar" },
-  { name: "headspace", url: "https://headspace.dk", target: "Unge 12-25, gratis og anonymt" },
-  { name: "BørneTelefonen", phone: "116111", phoneDisplay: "116 111", url: "https://bornetelefonen.dk", target: "Børn og unge, gratis og anonymt" },
+  {
+    name: "Psykiatrifondens Rådgivning",
+    url: "https://psykiatrifonden.dk",
+    phone: "39252525",
+    phoneDisplay: "39 25 25 25",
+    target: "For dig med psykiske udfordringer og for pårørende.",
+    hours: "Man-tor 10-22, fre-søn 10-18",
+    extra: "Du kan også kontakte chatrådgivning eller brevkasse."
+  },
+  {
+    name: "SIND Rådgivning",
+    url: "https://sindraadgivning.dk",
+    phone: "70232750",
+    phoneDisplay: "70 23 27 50",
+    target: "For dig med psykiske udfordringer og for pårørende.",
+    hours: "Man/ons/fre 9-15, tir/tor 10-16"
+  },
+  {
+    name: "DepressionsLinien (DepressionsForeningen)",
+    phone: "33124774",
+    phoneDisplay: "33 12 47 74",
+    url: "https://depressionsforeningen.dk",
+    target: "For voksne (18+) med depression eller bipolar lidelse samt pårørende.",
+    hours: "Man-fre kl. 19-21 (undtagen helligdage)"
+  },
+  {
+    name: "Headspace",
+    url: "https://headspace.dk",
+    target: "Gratis og anonym rådgivning til unge 12-25 år (chat og samtaler)."
+  },
+  {
+    name: "SocialSpace",
+    url: "https://socialspace.dk",
+    target: "Anonymt overblik i appen over gratis rådgivning og hjælpetilbud, så du kan finde det, der passer til det, der fylder."
+  },
+  {
+    name: "BørneTelefonen",
+    phone: "116111",
+    phoneDisplay: "116 111",
+    url: "https://bornetelefonen.dk",
+    target: "Gratis og anonym hjælp til børn og unge.",
+    hours: "Åben 24 timer i døgnet inkl. helligdage"
+  },
 ];
 
 const tier3Resources = [
-  { name: "Sundhedsstyrelsens \"Akut hjælp\"", url: "https://www.sundhed.dk", note: "samler relevante tilbud" },
-  { name: "Lægevagten", url: "https://www.laegevagten.dk", note: "hjælp udenfor egen læges åbningstid" },
+  { name: "Sundhedsstyrelsens \"Akut hjælp\" (EN AF OS)", url: "https://www.sst.dk/en-af-os/akut-hjaelp", note: "Overblik over akuttilbud og psykiatriske akutmodtagelser i din region." },
+  { name: "Lægevagten", url: "https://www.borger.dk/sundhed-og-sygdom/akut-behov-for-hjaelp/Laegevagten", note: "Hjælp udenfor egen læges åbningstid (nummer afhænger af region)." },
 ];
 
 const CrisisModal = ({ isOpen, onClose }: CrisisModalProps) => {
@@ -131,7 +169,7 @@ const CrisisModal = ({ isOpen, onClose }: CrisisModalProps) => {
           {/* Tier 2: Talk to someone */}
           <div>
             <h3 className="text-xs sm:text-sm font-heading font-semibold text-text-light uppercase tracking-wide mb-3 sm:mb-4">
-              Tal med nogen i dag
+              Tal med nogen i dag - Gratis og Anonymt
             </h3>
             <div className="grid gap-2 sm:gap-3">
               {tier2Resources.map((resource) => (
@@ -140,27 +178,35 @@ const CrisisModal = ({ isOpen, onClose }: CrisisModalProps) => {
                   href={resource.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-muted/50 border border-border rounded-xl hover:bg-muted hover:border-primary/30 transition-colors group cursor-pointer"
+                  className="block p-3 sm:p-4 bg-muted/50 border border-border rounded-xl hover:bg-muted hover:border-primary/30 transition-colors group cursor-pointer"
                 >
-                  <div className="flex-1 min-w-0">
-                    <div className="font-heading font-medium text-sm sm:text-base text-foreground group-hover:text-primary transition-colors">{resource.name}</div>
-                    <div className="text-xs sm:text-sm text-text-light">{resource.target}</div>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-                    {resource.phone && (
-                      <span
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          window.location.href = `tel:${resource.phone}`;
-                        }}
-                        className="flex items-center gap-1 text-xs sm:text-sm text-primary hover:text-secondary transition-colors font-medium whitespace-nowrap"
-                      >
-                        <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
-                        <span className="hidden sm:inline">{resource.phoneDisplay}</span>
-                      </span>
-                    )}
-                    <ExternalLink className="w-4 h-4 text-text-light group-hover:text-primary transition-colors" />
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="font-heading font-medium text-sm sm:text-base text-foreground group-hover:text-primary transition-colors">{resource.name}</div>
+                      <div className="text-xs sm:text-sm text-text-medium mt-0.5">{resource.target}</div>
+                      {resource.phone && (
+                        <div className="text-xs sm:text-sm text-text-light mt-1">
+                          Tlf.{" "}
+                          <span
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              window.location.href = `tel:${resource.phone}`;
+                            }}
+                            className="text-primary hover:text-secondary transition-colors font-medium"
+                          >
+                            {resource.phoneDisplay}
+                          </span>
+                        </div>
+                      )}
+                      {resource.hours && (
+                        <div className="text-xs text-text-light mt-0.5">{resource.hours}</div>
+                      )}
+                      {resource.extra && (
+                        <div className="text-xs text-text-light mt-0.5">{resource.extra}</div>
+                      )}
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-text-light group-hover:text-primary transition-colors flex-shrink-0" />
                   </div>
                 </a>
               ))}
@@ -170,20 +216,22 @@ const CrisisModal = ({ isOpen, onClose }: CrisisModalProps) => {
           {/* Tier 3: Local help */}
           <div>
             <h3 className="text-xs sm:text-sm font-heading font-semibold text-text-light uppercase tracking-wide mb-3 sm:mb-4">
-              Find lokal hjælp
+              Find lokal akut hjælp
             </h3>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {tier3Resources.map((resource) => (
                 <a
                   key={resource.name}
                   href={resource.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-wrap items-center gap-1 sm:gap-2 text-sm sm:text-base text-primary hover:text-secondary transition-colors font-body underline underline-offset-2"
+                  className="block text-sm sm:text-base font-body group"
                 >
-                  <span>{resource.name}</span>
-                  <span className="text-text-light no-underline">— {resource.note}</span>
-                  <ExternalLink className="w-3 h-3 flex-shrink-0" />
+                  <span className="text-primary hover:text-secondary transition-colors underline underline-offset-2 group-hover:text-secondary">
+                    {resource.name}
+                  </span>
+                  <ExternalLink className="w-3 h-3 inline-block ml-1 text-primary group-hover:text-secondary" />
+                  <span className="block text-text-light text-xs sm:text-sm mt-0.5">{resource.note}</span>
                 </a>
               ))}
             </div>

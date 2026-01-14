@@ -35,7 +35,7 @@ const Hero = () => {
             <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/VqFSCk_9NRA"
+                src="https://www.youtube-nocookie.com/embed/VqFSCk_9NRA"
                 title="MitLivMed video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

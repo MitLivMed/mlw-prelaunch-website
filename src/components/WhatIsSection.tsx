@@ -71,7 +71,7 @@ const WhatIsSection = () => {
                   onClick={() => setIsCrisisModalOpen(true)}
                   className="text-primary hover:text-secondary underline underline-offset-4 font-body font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                 >
-                  Har du brug for hjælp? Klik her
+                  Er du i krise eller har brug for hjælp? Klik her
                 </button>
               </div>
             </div>
