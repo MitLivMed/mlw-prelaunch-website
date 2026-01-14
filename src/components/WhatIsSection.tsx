@@ -1,8 +1,10 @@
 import { useState } from "react";
 import CrisisModal from "./CrisisModal";
+import { useCrisisModalTracking } from "@/hooks/use-analytics";
 
 const WhatIsSection = () => {
   const [isCrisisModalOpen, setIsCrisisModalOpen] = useState(false);
+  const { trackCrisisModalOpen } = useCrisisModalTracking();
 
   return (
     <>
@@ -68,7 +70,10 @@ const WhatIsSection = () => {
               {/* Crisis Help Button */}
               <div className="mt-6 md:mt-6 text-center md:text-left">
                 <button
-                  onClick={() => setIsCrisisModalOpen(true)}
+                  onClick={() => {
+                    trackCrisisModalOpen();
+                    setIsCrisisModalOpen(true);
+                  }}
                   className="text-primary hover:text-secondary underline underline-offset-4 font-body font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                 >
                   Er du i krise eller har brug for hjælp? Klik her

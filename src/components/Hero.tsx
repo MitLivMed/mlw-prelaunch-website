@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { openSignupForm } from "@/lib/tally";
+import YouTubePlayer from "./YouTubePlayer";
 
 const Hero = () => {
+
   return (
     <section className="relative pt-24 pb-12 sm:pb-14 md:pt-32 md:pb-18 lg:pb-22 overflow-visible">
       {/* Hero gradient background - extends past section to be hidden by wave's opaque areas */}
@@ -33,12 +36,9 @@ const Hero = () => {
           {/* Video */}
           <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube-nocookie.com/embed/VqFSCk_9NRA"
+              <YouTubePlayer
+                videoId="VqFSCk_9NRA"
                 title="MitLivMed video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
               />
             </div>
           </div>
@@ -64,10 +64,8 @@ const Hero = () => {
 
             <div className="space-y-3">
               <Button
-                data-tally-open="0Q87J0"
-                data-tally-emoji-text="👋"
-                data-tally-emoji-animation="wave"
                 size="lg"
+                onClick={() => openSignupForm('hero')}
                 className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
               >
                 Skriv dig op som betatester

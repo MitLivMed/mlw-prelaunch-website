@@ -6,8 +6,12 @@ import WhatIsSection from "@/components/WhatIsSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import { usePageView, useScrollDepth } from "@/hooks/use-analytics";
 
 const Index = () => {
+  usePageView();
+  useScrollDepth();
+
   return (
     <div className="min-h-screen bg-background">
       <SEO />

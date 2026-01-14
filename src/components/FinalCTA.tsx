@@ -1,7 +1,9 @@
 import wavesImage from "@/assets/waves-trans.png";
 import { Button } from "@/components/ui/button";
+import { openSignupForm } from "@/lib/tally";
 
 const FinalCTA = () => {
+
   return (
     <section
       id="signup"
@@ -25,10 +27,8 @@ const FinalCTA = () => {
           </h2>
 
           <Button
-            data-tally-open="0Q87J0"
-            data-tally-emoji-text="👋"
-            data-tally-emoji-animation="wave"
             size="lg"
+            onClick={() => openSignupForm('final_cta')}
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
           >
             Skriv dig op som betatester

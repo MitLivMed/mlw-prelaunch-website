@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
+import { openSignupForm } from "@/lib/tally";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,9 +46,7 @@ const Header = () => {
             Om os
           </Link>
           <Button
-            data-tally-open="0Q87J0"
-            data-tally-emoji-text="👋"
-            data-tally-emoji-animation="wave"
+            onClick={() => openSignupForm('header_desktop')}
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-medium cta-shadow hover:cta-shadow-hover transition-all"
           >
             Skriv dig op som betatester →
@@ -76,10 +75,10 @@ const Header = () => {
               Om os
             </Link>
             <Button
-              data-tally-open="0Q87J0"
-              data-tally-emoji-text="👋"
-              data-tally-emoji-animation="wave"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                openSignupForm('header_mobile');
+                setIsMenuOpen(false);
+              }}
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-medium cta-shadow w-full"
             >
               Skriv dig op som betatester →
