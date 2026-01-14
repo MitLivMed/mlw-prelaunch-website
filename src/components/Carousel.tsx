@@ -7,7 +7,7 @@ const content = {
   quotes: [
     "Jeg er så træt af at forklare mig til folk, der ikke forstår.",
     "Det er ikke episoderne, der slider mig ned. Det er hverdagen imellem.",
-    "Jeg har googlet mig gennem alt. Det meste er støj — eller direkte skadeligt.",
+    "Jeg har googlet mig gennem alt. Det meste er støj, eller direkte skadeligt.",
     "Jeg vil gerne tro på, at det bliver bedre. Men ikke hvis det føles som en løgn.",
     "Nogle gange har jeg bare brug for at vide, at nogen har stået her før mig.",
   ],

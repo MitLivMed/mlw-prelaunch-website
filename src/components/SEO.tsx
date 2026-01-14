@@ -8,7 +8,7 @@ interface SEOProps {
 }
 
 const SITE_URL = "https://mitlivmed.dk";
-const DEFAULT_TITLE = "MitLivMed — Fællesskab for mennesker med bipolar";
+const DEFAULT_TITLE = "MitLivMed | Fællesskab for mennesker med bipolar";
 const DEFAULT_DESCRIPTION =
   "Hverdagen efter diagnosen er den svære del. MitLivMed er et peer-support fællesskab, hvor mennesker med bipolar deler det, der faktisk hjælper. Åbner 2026.";
 
