@@ -29,9 +29,6 @@ const WhatIsSection = () => {
                 <p>
                   Alt indhold bliver gennemgået, og fællesskabet er modereret og efter retningslinjer fra fagpersoner, så din oplevelse føles trygt med respekt for dit privatliv.
                 </p>
-                <p className="text-text-dark font-medium">
-                  Pårørende er også velkomne. Partnere, familie og venner til mennesker med bipolar kan deltage, så længe de følger fællesskabets retningslinjer og respekterer, at den primære del af fællesskabet tilhører dem med diagnosen - eller dem som mistænker at de har den.
-                </p>
               </div>
             </div>
 
@@ -41,6 +38,14 @@ const WhatIsSection = () => {
                 Hvad er MitLivMed ikke?
               </h2>
               <ul className="space-y-4 text-text-medium font-body leading-relaxed">
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <span>
+                    <strong className="text-text-dark">Ikke for pårørende, dobbeltdiagnoser, og andre diagnoser (Vi arbejder på det 🙂)</strong>
+                    <br />
+                    Vi starter med et eksklusivt fokus på bipolar affektiv lidelse, og udvider senere til pårørende, dobbeltdiagnoser og dem, der føler sig mellem to stole eller ikke helt kan spejle sig i diagnosen.
+                  </span>
+                </li>
                 <li className="flex gap-3">
                   <span className="text-primary font-bold">•</span>
                   <span>

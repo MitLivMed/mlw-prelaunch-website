@@ -19,7 +19,7 @@ const cards = [
   {
     id: "plains",
     image: plainsImage,
-    title: "Sletterne",
+    title: "Sletten",
     description: "Hverdagen kan ofte være en svære del. Rutinerne er det, der kan skabe ro, og vi deler & bygger dem sammen i små skridt.",
   },
   {

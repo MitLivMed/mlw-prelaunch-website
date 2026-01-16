@@ -132,7 +132,7 @@ const About = () => {
                   <p className="font-heading text-xl md:text-2xl font-semibold text-foreground">
                     Jesper Ohrt Juel Jensen
                   </p>
-                  <p className="text-text-medium mt-1">Grundlægger og adm. direktør</p>
+                  <p className="text-text-medium mt-1">Grundlægger og adm. direktør | Diagnoseret bipolar type 1</p>
                 </div>
               </div>
             </div>

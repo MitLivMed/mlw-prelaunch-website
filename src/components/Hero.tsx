@@ -46,17 +46,17 @@ const Hero = () => {
           {/* Copy + CTA */}
           <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
             <p className="text-lg md:text-xl text-text-dark font-body leading-relaxed mb-4">
-              Diagnosen er startskuddet, ikke målstregen.
+              Diagnosen er startskuddet - ikke målstregen.
               <br />
               Der er hjælp, men hverdagen kan føles svær.
             </p>
             <p className="text-base md:text-lg text-text-dark font-body leading-relaxed mb-4">
-              <strong className="font-semibold">Vi bygger noget til det, der kommer efter: resten af ens liv</strong>
+              <strong className="font-semibold">Vi bygger noget til det, der kommer efter: resten af livet</strong>
             </p>
             <p className="text-base md:text-lg text-text-dark font-body leading-relaxed mb-4">
-              MitLivMed er et digitalt fællesskab, hvor mennesker med bipolar affektiv lidelse kan dele deres historier og erfaringer,{" "}
-              <span className="underline decoration-primary decoration-2 underline-offset-2">skræddersyet til dig</span>.
-              {" "}Ikke medicinsk rådgivning. Ikke krisestøtte.
+              MitLivMed er et digitalt fællesskab,{" "}
+              <span className="underline decoration-foreground decoration-2 underline-offset-2">skræddersyet til dig</span>
+              , hvor mennesker med bipolar affektiv lidelse kan dele deres historier og erfaringer. Ikke medicinsk rådgivning. Ikke krisestøtte.
             </p>
             <p className="text-base md:text-lg text-text-dark font-body leading-relaxed mb-8">
               Vi er en bevægelse af mennesker, der deler det, der hjælper os med at leve godt med bipolar, i håb om at vi kan lære af at gå i hinandens fodspor.
