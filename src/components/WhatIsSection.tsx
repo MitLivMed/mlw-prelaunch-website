@@ -16,20 +16,24 @@ const WhatIsSection = () => {
               <h2 className="text-2xl md:text-3xl font-heading font-semibold text-foreground mb-6">
                 Hvad er MitLivMed?
               </h2>
-              <div className="space-y-4 text-text-medium font-body leading-relaxed">
-                <p>
-                  MitLivMed er et modereret digitalt fællesskab for mennesker med bipolar. Her deler vi levede erfaringer gennem videoer og indlæg med fokus på det der faktisk har hjulpet os i hverdagen.
-                </p>
-                <p>
-                  Det er til dig, der savner støtte og spejling efter diagnosen. Måske leder du efter håb, genkendelse, eller bare nogen der har stået der før.
-                </p>
-                <p>
-                  Du behøver ikke dele noget selv. Du kan følge med, lære, reflektere, eller bidrage, hvis du har lyst. Du bestemmer.
-                </p>
-                <p>
-                  Alt indhold bliver gennemgået, og fællesskabet er modereret og efter retningslinjer fra fagpersoner, så din oplevelse føles trygt med respekt for dit privatliv.
-                </p>
-              </div>
+              <ul className="space-y-4 text-text-medium font-body leading-relaxed">
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <span>MitLivMed er et modereret digitalt fællesskab for mennesker med bipolar. Her deler vi levede erfaringer gennem videoer og indlæg med fokus på det der faktisk har hjulpet os i hverdagen.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <span>Det er til dig, der savner støtte og spejling efter diagnosen. Måske leder du efter håb, genkendelse, eller bare nogen der har stået der før.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <span>Du behøver ikke dele noget selv. Du kan følge med, lære, reflektere, eller bidrage, hvis du har lyst. Du bestemmer.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <span>Alt indhold bliver gennemgået, og fællesskabet er modereret og efter retningslinjer fra fagpersoner, så din oplevelse føles trygt med respekt for dit privatliv.</span>
+                </li>
+              </ul>
             </div>
 
             {/* What ISN'T MitLivMed */}
@@ -41,9 +45,9 @@ const WhatIsSection = () => {
                 <li className="flex gap-3">
                   <span className="text-primary font-bold">•</span>
                   <span>
-                    <strong className="text-text-dark">Ikke for pårørende, dobbeltdiagnoser, og andre diagnoser (Vi arbejder på det 🙂)</strong>
+                    <strong className="text-text-dark">Ikke for pårørende, dobbeltdiagnoser, og andre diagnoser (endnu)</strong>
                     <br />
-                    Vi starter med et eksklusivt fokus på bipolar affektiv lidelse, og udvider senere til pårørende, dobbeltdiagnoser og dem, der føler sig mellem to stole eller ikke helt kan spejle sig i diagnosen.
+                    Pårørende, dobbeltdiagnoser, og andre diagnoser er velkomne. Vi arbejder specifikt på noget mere målrettet her på sigt 🙂
                   </span>
                 </li>
                 <li className="flex gap-3">

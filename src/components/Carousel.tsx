@@ -66,7 +66,12 @@ const Carousel = () => {
   // Autoplay logic
   useEffect(() => {
     if (!isAutoPlaying) return;
-    const duration = currentSlide === lastSlideIndex ? 8000 : 3000;
+    const duration = (() => {
+      if (currentSlide === lastSlideIndex) return 8000;           // CTA slide
+      if (currentSlide < content.quotes.length) return 6500;      // Quote slides (0-4)
+      if (currentSlide === content.quotes.length) return 5000;    // Transition slide (5)
+      return 7500;                                                 // Fact slides (6-7)
+    })();
     const timer = setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides);
     }, duration);

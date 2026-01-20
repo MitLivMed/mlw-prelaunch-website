@@ -6,8 +6,8 @@ import founderImage from "@/assets/founder.jpg";
 
 const About = () => {
   const mission = {
-    statement: "Vi hjælper mennesker med psykiske lidelser, ligesom os selv, med at mestre hverdagen gennem fortællinger man kan spejle sig i, guidet refleksion og et trygt fællesskab.",
-    belief: "Vi har brug for rollemodeller, følelsesmæssig forståelse og værktøjer til at klare hverdagen - pakket ind i et fællesskab der føles menneskeligt og med teknologi der støtter op og gør aspekter af livet nemmere.",
+    statement: "Vi hjælper mennesker med psykiske lidelser, ligesom os selv, med at mestre hverdagen gennem fortællinger man kan spejle sig i, guidet refleksion, og et trygt fællesskab.",
+    belief: "Vi har brug for rollemodeller, følelsesmæssig forståelse, og værktøjer til at klare hverdagen - pakket ind i et fællesskab der føles menneskeligt og med teknologi der støtter op og gør aspekter af livet nemmere.",
   };
 
   return (
