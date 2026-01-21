@@ -1,6 +1,6 @@
 # Pre-Launch Website Development Kickoff
 
-**Updated:** 2026-01-14 (v13)
+**Updated:** 2026-01-16 (v14)
 **Linear Project:** [Pre-launch website](https://linear.app/mitlivmed/project/pre-launch-website-95067c272412)
 **Repo:** `git@github.com:MitLivMed/mlw-prelaunch-website.git`
 
@@ -28,6 +28,7 @@
 | MIT-43 | Co-founder copy feedback round 2 (Hero hooks, About page story/mission/belief, Carousel bipolar fact, WhatIsSection, Volunteer section) |
 | — | Crisis modal refresh (new resources with hours, SocialSpace, fixed links, improved layout) |
 | — | YouTube privacy mode (youtube-nocookie.com embed) |
+| — | Copy updates session (Hero punctuation/rearrangement, About founder bio with diagnosis, Journey "Sletten" rename, WhatIs scope clarification, new "Three Challenges" section) |
 
 **Pre-launch website is now live at https://mitlivmed.dk**
 

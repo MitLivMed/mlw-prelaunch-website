@@ -52,9 +52,6 @@ const Footer = () => {
                   <a href="mailto:kontakt@mitlivmed.dk" className="hover:text-text-dark transition-colors">
                     Kontakt
                   </a>
-                  <Link to="/vilkaar" className="hover:text-text-dark transition-colors">
-                    Vilkår og betingelser
-                  </Link>
                   <Link to="/privatlivspolitik" className="hover:text-text-dark transition-colors">
                     Privatlivspolitik
                   </Link>
