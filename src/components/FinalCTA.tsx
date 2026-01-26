@@ -31,7 +31,7 @@ const FinalCTA = () => {
             onClick={() => openSignupForm('final_cta')}
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
           >
-            Skriv dig op som betatester
+            Skriv dig på ventelisten
           </Button>
         </div>
       </div>

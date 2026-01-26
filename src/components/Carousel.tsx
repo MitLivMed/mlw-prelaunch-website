@@ -28,7 +28,7 @@ const content = {
     },
   ],
   closing: "Det her er ikke tomme ord. Det er dokumenteret, og det er derfor, vi bygger MitLivMed.",
-  cta: "Skriv dig op som betatester",
+  cta: "Skriv dig på ventelisten",
   footnotes: [
     {
       text: "Bipolar Databasen, © Sundhedsvæsenets Kvalitetsinstitut 2025.",

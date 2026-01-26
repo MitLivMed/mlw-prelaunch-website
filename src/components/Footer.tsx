@@ -15,9 +15,14 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
               {/* Left column - Brand */}
               <div className="max-w-lg">
-                <h3 className="font-heading font-semibold text-xl text-foreground mb-3">
-                  MitLivMed
+                <h3 className="font-heading font-semibold text-xl text-foreground mb-1">
+                  MitLivMed ApS
                 </h3>
+                <p className="text-text-light font-body text-xs mb-3">
+                  Gothersgade 103, 4. th.<br />
+                  1123 København K<br />
+                  CVR: 46193040
+                </p>
                 <p className="text-text-medium font-body text-sm leading-relaxed mb-6">
                   Vi styrker mennesker, der lever med psykiske lidelser, til at mestre hverdagen gennem relaterbar historiefortælling, guidet refleksion og et trygt fællesskab.
                 </p>

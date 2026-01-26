@@ -49,7 +49,7 @@ const Header = () => {
             onClick={() => openSignupForm('header_desktop')}
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-medium cta-shadow hover:cta-shadow-hover transition-all"
           >
-            Skriv dig op som betatester →
+            Skriv dig på ventelisten →
           </Button>
         </nav>
 
@@ -81,7 +81,7 @@ const Header = () => {
               }}
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-medium cta-shadow w-full"
             >
-              Skriv dig op som betatester →
+              Skriv dig på ventelisten →
             </Button>
           </nav>
         </div>

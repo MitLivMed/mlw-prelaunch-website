@@ -58,7 +58,7 @@ const Hero = () => {
                 onClick={() => openSignupForm('hero')}
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
               >
-                Skriv dig op som betatester
+                Skriv dig på ventelisten
               </Button>
               <p className="text-sm text-text-light font-body">
                 MitLivMed lancerer i 2026. Er du nysgerrig eller har du lyst til at hjælpe os, så skriv dig op som betatester og sæt dit præg på MitLivMed.
@@ -81,7 +81,7 @@ const Hero = () => {
                 onClick={() => openSignupForm('hero')}
                 className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
               >
-                Skriv dig op som betatester
+                Skriv dig på ventelisten
               </Button>
               <p className="text-sm text-text-light font-body">
                 MitLivMed lancerer i 2026. Er du nysgerrig eller har du lyst til at hjælpe os, så skriv dig op som betatester og sæt dit præg på MitLivMed.
