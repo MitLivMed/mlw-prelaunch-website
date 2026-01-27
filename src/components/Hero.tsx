@@ -34,7 +34,7 @@ const Hero = () => {
           <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
               <YouTubePlayer
-                videoId="VqFSCk_9NRA"
+                videoId="PTrt_nbEaEE"
                 title="MitLivMed video"
               />
             </div>
