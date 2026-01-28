@@ -19,19 +19,35 @@ const WhatIsSection = () => {
               <ul className="space-y-4 text-text-medium font-body leading-relaxed">
                 <li className="flex gap-3">
                   <span className="text-primary font-bold">•</span>
-                  <span>MitLivMed er et modereret digitalt fællesskab for mennesker med bipolar. Her deler vi levede erfaringer gennem videoer og indlæg med fokus på det der faktisk har hjulpet os i hverdagen.</span>
+                  <span>
+                    <strong className="text-text-dark">MitLivMed er et modereret digitalt fællesskab for mennesker med bipolar.</strong>
+                    <br />
+                    Her deler vi levede erfaringer gennem videoer og indlæg med fokus på det der faktisk har hjulpet os i hverdagen.
+                  </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-primary font-bold">•</span>
-                  <span>Det er til dig, der savner støtte og spejling efter diagnosen. Måske leder du efter håb, genkendelse, eller bare nogen der har stået der før.</span>
+                  <span>
+                    <strong className="text-text-dark">Det er til dig, der savner støtte og spejling efter diagnosen.</strong>
+                    <br />
+                    Måske leder du efter håb, genkendelse, eller bare nogen der har stået der før.
+                  </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-primary font-bold">•</span>
-                  <span>Du behøver ikke dele noget selv. Du kan følge med, lære, reflektere, eller bidrage, hvis du har lyst. Du bestemmer.</span>
+                  <span>
+                    <strong className="text-text-dark">Du behøver ikke dele noget selv.</strong>
+                    <br />
+                    Du kan følge med, lære, reflektere, eller bidrage, hvis du har lyst. Du bestemmer.
+                  </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-primary font-bold">•</span>
-                  <span>Alt indhold bliver gennemgået, og fællesskabet er modereret og efter retningslinjer fra fagpersoner, så din oplevelse føles trygt med respekt for dit privatliv.</span>
+                  <span>
+                    <strong className="text-text-dark">Alt indhold bliver gennemgået.</strong>
+                    <br />
+                    Fællesskabet er modereret og efter retningslinjer fra fagpersoner, så din oplevelse føles trygt med respekt for dit privatliv.
+                  </span>
                 </li>
               </ul>
             </div>
@@ -45,9 +61,9 @@ const WhatIsSection = () => {
                 <li className="flex gap-3">
                   <span className="text-primary font-bold">•</span>
                   <span>
-                    <strong className="text-text-dark">Ikke for pårørende, dobbeltdiagnoser, og andre diagnoser (endnu)</strong>
+                    <strong className="text-text-dark">Ikke for pårørende (endnu)</strong>
                     <br />
-                    Pårørende, dobbeltdiagnoser, og andre diagnoser er velkomne. Vi arbejder specifikt på noget mere målrettet her på sigt 🙂
+                    Pårørende er velkomne på sigt. Vi arbejder på noget mere målrettet 🙂
                   </span>
                 </li>
                 <li className="flex gap-3">
