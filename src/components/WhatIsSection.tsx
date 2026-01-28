@@ -20,7 +20,7 @@ const WhatIsSection = () => {
                 <li className="flex gap-3">
                   <span className="text-primary font-bold">•</span>
                   <span>
-                    <strong className="text-text-dark">MitLivMed er et modereret digitalt fællesskab for mennesker med bipolar.</strong>
+                    <strong className="text-text-dark">MitLivMed er et trygt digitalt fællesskab for mennesker med bipolar.</strong>
                     <br />
                     Her deler vi levede erfaringer gennem videoer og indlæg med fokus på det der faktisk har hjulpet os i hverdagen.
                   </span>
