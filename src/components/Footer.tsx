@@ -19,8 +19,8 @@ const Footer = () => {
                   MitLivMed ApS
                 </h3>
                 <p className="text-text-light font-body text-xs mb-3">
-                  Gothersgade 103, 4. th.<br />
-                  1123 København K<br />
+                  Otto Busses Vej 5, 2. tv<br />
+                  2450 København<br />
                   CVR: 46193040
                 </p>
                 <p className="text-text-medium font-body text-sm leading-relaxed mb-6">
