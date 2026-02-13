@@ -19,7 +19,7 @@ const Hero = () => {
         {/* Centered Title */}
         <div className="text-center mb-12 md:mb-16 animate-fade-in">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-normal text-foreground leading-tight mb-2">
-            Det ingen taler om..
+            Det ingen taler om...
           </h1>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold leading-tight">
             Hvad sker der{" "}

@@ -105,11 +105,11 @@ async function generateOGImage() {
   const centerX = WIDTH / 2;
   const hookY = HEIGHT * 0.38;
 
-  // Line 1: "Det ingen taler om.." - Satoshi Medium (regular weight)
+  // Line 1: "Det ingen taler om..." - Satoshi Medium (regular weight)
   ctx.fillStyle = colors.text;
   ctx.font = `500 ${52 * SCALE}px "Satoshi Medium"`;
   ctx.textAlign = 'center';
-  ctx.fillText('Det ingen taler om..', centerX, hookY);
+  ctx.fillText('Det ingen taler om...', centerX, hookY);
 
   // Line 2: "Hvad sker der efter diagnosen?"
   // Need to draw "efter" with underline in orange
