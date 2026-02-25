@@ -1,73 +1,47 @@
-# Welcome to your Lovable project
+# MitLivMed
 
-## Project info
+**What no one talks about: what happens after the diagnosis?**
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+MitLivMed is a recovery companion for people living with bipolar disorder and other serious mental health conditions. We focus on everyday life *after* diagnosis — not clinical intervention, but the stuff that actually helps: lived experience, peer support, and hope that feels real.
 
-## How can I edit this code?
+This repo is the pre-launch website at [mitlivmed.dk](https://mitlivmed.dk).
 
-There are several ways of editing your application.
+## About the project
 
-**Use Lovable**
+MitLivMed started with a simple question: *where do you go when the doctor's appointment is over, but life still feels hard?*
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+We're building a community and platform rooted in lived experience — where people share what helped them, not what a textbook says should help. Think of it as walking in each other's footsteps.
 
-Changes made via Lovable will be committed automatically to this repo.
+We're based in Copenhagen and currently launching in Danish, with international ambitions.
 
-**Use your preferred IDE**
+## Tech stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **React** + **TypeScript**
+- **Vite** for builds
+- **Tailwind CSS** + **shadcn/ui**
+- Deployed on **Vercel**
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Local development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repo
+git clone https://github.com/MitLivMed/mlw-prelaunch-website.git
+cd mlw-prelaunch-website
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Copy environment template and fill in your keys
+cp .env.example .env
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start dev server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Contributing
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+We're a small team in early stages. If you're curious about what we're building or want to get involved, reach out at [kontakt@mitlivmed.dk](mailto:kontakt@mitlivmed.dk).
 
-**Use GitHub Codespaces**
+## License
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+All rights reserved. This code is shared publicly for transparency, not for reuse.
