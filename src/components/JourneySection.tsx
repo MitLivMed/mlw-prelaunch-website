@@ -1,7 +1,8 @@
 import desertImage from "@/assets/desert.png";
 import lakeImage from "@/assets/lake.png";
 import plainsImage from "@/assets/plains.png";
-import mountainImage from "@/assets/mountain.png";
+import valleyImage from "@/assets/valley.png";
+import mountainImage from "@/assets/mountainv5.png";
 
 const cards = [
   {
@@ -21,6 +22,13 @@ const cards = [
     image: plainsImage,
     title: "Sletten",
     description: "Hverdagen kan ofte være en svære del. Rutinerne er det, der kan skabe ro, og vi deler & bygger dem sammen i små skridt.",
+  },
+  {
+    id: "valley",
+    image: valleyImage,
+    title: "Dalen",
+    description: "Nogle dage er det bare for tungt at bære alene. Her behøver du ikke forklare det eller pakke det pænt ind. Du må bare lægge det fra dig.",
+    imgClassName: "object-bottom md:object-center",
   },
   {
     id: "mountain",
@@ -45,7 +53,7 @@ const JourneySection = () => {
         </div>
 
         {/* Landscape Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-6 max-w-3xl md:max-w-6xl mx-auto items-stretch">
           {cards.map((card, index) => (
             <div
               key={card.id}
@@ -53,7 +61,7 @@ const JourneySection = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Card Header (Title + Description) */}
-              <div className="mb-3">
+              <div className="mb-3 px-2 md:px-0">
                 <h3 className="text-lg md:text-xl font-heading font-semibold text-plains-accent mb-1">
                   {card.title}
                 </h3>
@@ -63,11 +71,12 @@ const JourneySection = () => {
               </div>
 
               {/* Card Image */}
-              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow mt-auto">
+              <div className="relative aspect-[16/9] md:aspect-[3/4] rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow mt-auto">
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${card.imgClassName ?? ""}`}
                 />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
