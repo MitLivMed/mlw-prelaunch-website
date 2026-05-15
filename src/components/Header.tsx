@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logos/logo.svg";
 import { Button } from "@/components/ui/button";
 import { openSignupForm } from "@/lib/tally";
 
@@ -32,9 +32,6 @@ const Header = () => {
         {/* Logo */}
         <a href="/" className="flex items-center gap-2">
           <img src={logo} alt="MitLivMed" className="h-8 w-auto" />
-          <span className="font-logo font-semibold text-lg text-warm-black">
-            MitLivMed<sup className="text-xs ml-0.5 text-text-light">beta</sup>
-          </span>
         </a>
 
         {/* Desktop Navigation */}
