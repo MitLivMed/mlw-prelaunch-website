@@ -61,9 +61,10 @@ export default {
         "text-light": "hsl(var(--text-light))",
       },
       fontFamily: {
-        heading: ['Satoshi', 'sans-serif'],
-        body: ['Figtree', 'sans-serif'],
-        logo: ['"Reddit Sans"', 'sans-serif'],
+        title: ['"Crimson Pro"', 'serif'],
+        heading: ['"DM Sans"', 'sans-serif'],
+        body: ['"DM Sans"', 'sans-serif'],
+        logo: ['"Crimson Pro"', 'serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
