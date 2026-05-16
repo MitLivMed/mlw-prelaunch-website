@@ -56,7 +56,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 onClick={() => openSignupForm('hero')}
-                className="w-full bg-mountain-orange hover:bg-mountain-orange text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
+                className="w-full bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
               >
                 Skriv dig på ventelisten
               </Button>
@@ -79,7 +79,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 onClick={() => openSignupForm('hero')}
-                className="w-full sm:w-auto bg-mountain-orange hover:bg-mountain-orange text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
+                className="w-full sm:w-auto bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
               >
                 Skriv dig på ventelisten
               </Button>

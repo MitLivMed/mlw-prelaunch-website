@@ -163,7 +163,7 @@ const Carousel = () => {
           data-tally-emoji-text="👋"
           data-tally-emoji-animation="wave"
           size="lg"
-          className="bg-mountain-orange hover:bg-mountain-orange text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
+          className="bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
         >
           {content.cta}
         </Button>
@@ -201,14 +201,14 @@ const Carousel = () => {
           {/* Navigation arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-mountain-orange hover:text-mountain-orange transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-mountain-orange hover:text-mountain-orange/70 transition-colors"
             aria-label="Forrige slide"
           >
             <ChevronLeft className="w-8 h-8" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-mountain-orange hover:text-mountain-orange transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-mountain-orange hover:text-mountain-orange/70 transition-colors"
             aria-label="Næste slide"
           >
             <ChevronRight className="w-8 h-8" />
