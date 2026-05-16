@@ -62,6 +62,37 @@
     --text-dark: 0 0% 18%;
     --text-medium: 0 0% 35%;
     --text-light: 0 0% 54%;
+
+    /* New Color Template */
+    --white: #FFFFFF;
+    --warm-white: #FAF6F5;
+    --dark-brown: #332926;
+    --soft-black: #000000;
+
+    --mountain-orange: #BF5B39;
+    --mountain-orange-110: #663D29;
+    --mountain-orange-30: #E5B2A1;
+    --mountain-orange-10: #F2D7CE;
+
+    --plain-green: #7ACC88;
+    --plain-green-110: #4D8055;
+    --plain-green-30: #C3E5C9;
+    --plain-green-10: #EDFAEF;
+
+    --lake-blue: #82AED9;
+    --lake-blue-110: #46698C;
+    --lake-blue-30: #DAE6F2;
+    --lake-blue-10: #EDF4FA;
+
+    --dessert-yellow: #F2BE55;
+    --dessert-yellow-110: #A67A21;
+    --dessert-yellow-30: #FFEECC;
+    --dessert-yellow-10: #FAF6F5;
+
+    --valley-purple: #8C609F;
+    --valley-purple-110: #5A3266;
+    --valley-purple-30: #C5A8D3;
+    --valley-purple-10: #EDE7F4;
   }
 }
 
