@@ -29,7 +29,7 @@ const FinalCTA = () => {
           <Button
             size="lg"
             onClick={() => openSignupForm('final_cta')}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
+            className="bg-mountain-orange hover:bg-mountain-orange text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
           >
             Skriv dig på ventelisten
           </Button>
