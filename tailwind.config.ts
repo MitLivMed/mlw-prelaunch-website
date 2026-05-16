@@ -59,6 +59,41 @@ export default {
         "text-dark": "hsl(var(--text-dark))",
         "text-medium": "hsl(var(--text-medium))",
         "text-light": "hsl(var(--text-light))",
+        white: "#FFFFFF",
+        "warm-white": "#FAF6F5",
+        "dark-brown": "#332926",
+        "soft-black": "#000000",
+
+        "mountain-orange": {
+          DEFAULT: "#BF5B39",
+          110: "#663D29",
+          30: "#E5B2A1",
+          10: "#F2D7CE",
+        },
+        "plain-green": {
+          DEFAULT: "#7ACC88",
+          110: "#4D8055",
+          30: "#C3E5C9",
+          10: "#EDFAEF",
+        },
+        "lake-blue": {
+          DEFAULT: "#82AED9",
+          110: "#46698C",
+          30: "#DAE6F2",
+          10: "#EDF4FA",
+        },
+        "dessert-yellow": {
+          DEFAULT: "#F2BE55",
+          110: "#A67A21",
+          30: "#FFEECC",
+          10: "#FAF6F5",
+        },
+        "valley-purple": {
+          DEFAULT: "#8C609F",
+          110: "#5A3266",
+          30: "#C5A8D3",
+          10: "#EDE7F4",
+        },
       },
       fontFamily: {
         heading: ['Satoshi', 'sans-serif'],
