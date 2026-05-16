@@ -49,7 +49,7 @@ const About = () => {
               <div className="max-w-2xl mx-auto">
                 {/* Mission statement */}
                 <div className="text-center mb-12">
-                  <p className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-4">
+                  <p className="text-xs font-semibold text-mountain-orange uppercase tracking-[0.2em] mb-4">
                     Vores mission
                   </p>
                   <h1 className="font-heading text-2xl md:text-3xl lg:text-4xl text-foreground leading-snug max-w-3xl mx-auto">
@@ -85,15 +85,15 @@ const About = () => {
 
                   <ul className="space-y-2 ml-1">
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-mountain-orange mt-2.5 flex-shrink-0" />
                       <span>Nogen der har prøvet det, jeg gik igennem og kan sige højt, hvad der faktisk hjalp</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-mountain-orange mt-2.5 flex-shrink-0" />
                       <span>Nogen der står i samme situationer nu, så man ikke føler sig alene</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-mountain-orange mt-2.5 flex-shrink-0" />
                       <span>Nogen der kan give håb, uden at det bliver "positivt på kommando"</span>
                     </li>
                   </ul>
@@ -149,7 +149,7 @@ const About = () => {
                   Hvis du har lyst til at hjælpe på anden måde end som betatester før lancering, så skriv til os på{" "}
                   <a
                     href="mailto:kontakt@mitlivmed.dk?subject=Frivillig%20i%20MitLivMed"
-                    className="text-primary hover:text-primary/80 underline transition-colors"
+                    className="text-mountain-orange hover:text-mountain-orange/80 underline transition-colors"
                   >
                     kontakt@mitlivmed.dk
                   </a>
