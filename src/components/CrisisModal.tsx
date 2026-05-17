@@ -128,7 +128,7 @@ const CrisisModal = ({ isOpen, onClose }: CrisisModalProps) => {
           <button
             ref={closeButtonRef}
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-muted transition-colors focus:outline-none focus:ring-2 focus:ring-primary flex-shrink-0"
+            className="p-2 rounded-full hover:bg-muted transition-colors focus:outline-none focus:ring-2 focus:ring-mountain-orange flex-shrink-0"
             aria-label="Luk"
           >
             <X className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -178,11 +178,11 @@ const CrisisModal = ({ isOpen, onClose }: CrisisModalProps) => {
                   href={resource.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-3 sm:p-4 bg-muted/50 border border-border rounded-xl hover:bg-muted hover:border-primary/30 transition-colors group cursor-pointer"
+                  className="block p-3 sm:p-4 bg-dessert-yellow-30 border border-border rounded-xl hover:bg-dessert-yellow-100 hover:border-mountain-orange-30 transition-colors group cursor-pointer"
                 >
                   <div className="flex items-center gap-3 sm:gap-4">
                     <div className="flex-1 min-w-0">
-                      <div className="font-heading font-medium text-sm sm:text-base text-foreground group-hover:text-primary transition-colors">{resource.name}</div>
+                      <div className="font-heading font-medium text-sm sm:text-base text-foreground group-hover:text-mountain-orange transition-colors">{resource.name}</div>
                       <div className="text-xs sm:text-sm text-text-medium mt-0.5">{resource.target}</div>
                       {resource.phone && (
                         <div className="text-xs sm:text-sm text-text-light mt-1">
@@ -193,7 +193,7 @@ const CrisisModal = ({ isOpen, onClose }: CrisisModalProps) => {
                               e.stopPropagation();
                               window.location.href = `tel:${resource.phone}`;
                             }}
-                            className="text-primary hover:text-secondary transition-colors font-medium"
+                            className="text-mountain-orange hover:text-lake-blue-110 transition-colors font-medium"
                           >
                             {resource.phoneDisplay}
                           </span>
@@ -227,7 +227,7 @@ const CrisisModal = ({ isOpen, onClose }: CrisisModalProps) => {
                   rel="noopener noreferrer"
                   className="block text-sm sm:text-base font-body group"
                 >
-                  <span className="text-primary hover:text-secondary transition-colors underline underline-offset-2 group-hover:text-secondary">
+                  <span className="text-mountain-orange hover:text-mountain-orange/70 transition-colors underline underline-offset-2 group-hover:text-mountain-orange/70">
                     {resource.name}
                   </span>
                   <ExternalLink className="w-3 h-3 inline-block ml-1 text-primary group-hover:text-secondary" />

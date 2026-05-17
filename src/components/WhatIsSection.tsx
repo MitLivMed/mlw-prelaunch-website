@@ -18,7 +18,7 @@ const WhatIsSection = () => {
               </h2>
               <ul className="space-y-4 text-text-medium font-body leading-relaxed">
                 <li className="flex gap-3">
-                  <span className="text-primary font-bold">•</span>
+                  <span className="text-mountain-orange font-bold">•</span>
                   <span>
                     <strong className="text-text-dark">MitLivMed er et trygt digitalt fællesskab for mennesker med bipolar.</strong>
                     <br />
@@ -26,7 +26,7 @@ const WhatIsSection = () => {
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-primary font-bold">•</span>
+                  <span className="text-mountain-orange font-bold">•</span>
                   <span>
                     <strong className="text-text-dark">Det er til dig, der savner støtte og spejling efter diagnosen.</strong>
                     <br />
@@ -34,7 +34,7 @@ const WhatIsSection = () => {
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-primary font-bold">•</span>
+                  <span className="text-mountain-orange font-bold">•</span>
                   <span>
                     <strong className="text-text-dark">Du behøver ikke dele noget selv.</strong>
                     <br />
@@ -42,7 +42,7 @@ const WhatIsSection = () => {
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-primary font-bold">•</span>
+                  <span className="text-mountain-orange font-bold">•</span>
                   <span>
                     <strong className="text-text-dark">Alt indhold bliver gennemgået.</strong>
                     <br />
@@ -59,7 +59,7 @@ const WhatIsSection = () => {
               </h2>
               <ul className="space-y-4 text-text-medium font-body leading-relaxed">
                 <li className="flex gap-3">
-                  <span className="text-primary font-bold">•</span>
+                  <span className="text-mountain-orange font-bold">•</span>
                   <span>
                     <strong className="text-text-dark">Ikke for pårørende (endnu)</strong>
                     <br />
@@ -67,7 +67,7 @@ const WhatIsSection = () => {
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-primary font-bold">•</span>
+                  <span className="text-mountain-orange font-bold">•</span>
                   <span>
                     <strong className="text-text-dark">Ikke terapi eller behandling.</strong>
                     <br />
@@ -75,7 +75,7 @@ const WhatIsSection = () => {
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-primary font-bold">•</span>
+                  <span className="text-mountain-orange font-bold">•</span>
                   <span>
                     <strong className="text-text-dark">Ikke medicinsk rådgivning.</strong>
                     <br />
@@ -83,7 +83,7 @@ const WhatIsSection = () => {
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-primary font-bold">•</span>
+                  <span className="text-mountain-orange font-bold">•</span>
                   <span>
                     <strong className="text-text-dark">Ikke krisestøtte.</strong>
                     <br />
@@ -99,7 +99,7 @@ const WhatIsSection = () => {
                     trackCrisisModalOpen();
                     setIsCrisisModalOpen(true);
                   }}
-                  className="text-primary hover:text-secondary underline underline-offset-4 font-body font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  className="text-mountain-orange hover:text-mountain-orange/70 underline underline-offset-4 font-body font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-mountain-orange focus:ring-offset-2 rounded"
                 >
                   Er du i krise eller har brug for hjælp? Klik her
                 </button>

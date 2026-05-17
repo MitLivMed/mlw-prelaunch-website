@@ -23,7 +23,7 @@ const Hero = () => {
           </h1>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold leading-tight">
             Hvad sker der{" "}
-<span className="text-primary">efter</span>{" "}
+<span className="text-mountain-orange">efter</span>{" "}
             diagnosen?
           </h2>
         </div>
@@ -56,7 +56,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 onClick={() => openSignupForm('hero')}
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
+                className="w-full bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
               >
                 Skriv dig på ventelisten
               </Button>
@@ -79,7 +79,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 onClick={() => openSignupForm('hero')}
-                className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-heading font-semibold text-base px-8 py-6 cta-shadow hover:cta-shadow-hover hover:scale-105 transition-all"
+                className="w-full sm:w-auto bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
               >
                 Skriv dig på ventelisten
               </Button>
