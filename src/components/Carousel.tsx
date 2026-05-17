@@ -172,7 +172,7 @@ const Carousel = () => {
   };
 
   return (
-    <section className="pt-[74px] pb-14 md:pt-[92px] md:pb-[74px] bg-background relative overflow-hidden">
+    <section className="pt-[74px] pb-14 md:pt-[92px] md:pb-[74px] bg-desert-yellow-30/50">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
         <div

@@ -40,7 +40,7 @@ const cards = [
 
 const JourneySection = () => {
   return (
-    <section className="py-16 md:py-24 bg-plain-green-10">
+    <section className="py-16 md:py-24 bg-plain-green-10 relative overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <div className="text-center mb-12 md:mb-16 max-w-3xl mx-auto">

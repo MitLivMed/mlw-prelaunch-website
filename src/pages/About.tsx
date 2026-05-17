@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import wavesImage from "@/assets/waves-trans.png";
-import founderImage from "@/assets/founder.jpg";
+import founderImage from "@/assets/founders/jesper-founder-photo.png";
 
 const About = () => {
   const mission = {
@@ -11,7 +11,7 @@ const About = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-warm-white">
       <SEO
         title="Om os"
         description="Mød teamet bag MitLivMed og lær om vores mission: at hjælpe mennesker med bipolar med at mestre hverdagen gennem fællesskab og delte erfaringer."
@@ -31,16 +31,7 @@ const About = () => {
       <Header />
 
       <main id="main-content" className="relative overflow-hidden">
-        {/* Waves background */}
-        <div className="absolute inset-0">
-          <img
-            src={wavesImage}
-            alt=""
-            className="w-full h-full object-cover opacity-70"
-            aria-hidden="true"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
-        </div>
+
 
         <div className="relative z-10">
           {/* Mission & Story section */}

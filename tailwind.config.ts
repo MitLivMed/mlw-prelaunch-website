@@ -82,7 +82,7 @@ export default {
           30: "#DAE6F2",
           10: "#EDF4FA",
         },
-        "dessert-yellow": {
+        "desert-yellow": {
           DEFAULT: "#F2BE55",
           110: "#A67A21",
           30: "#FFEECC",

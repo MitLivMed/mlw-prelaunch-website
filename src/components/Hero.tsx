@@ -10,8 +10,7 @@ const Hero = () => {
       <div
         className="absolute inset-x-0 top-0 pointer-events-none"
         style={{
-          background: "linear-gradient(180deg, rgba(128, 178, 253, 0.10) 0%, rgba(128, 178, 253, 0.10) 43%, rgba(255, 123, 2, 0.19) 100%)",
-          height: "calc(100% + 150px)"
+          background: "var(--warm-white)"
         }}
       />
 
