@@ -1,8 +1,8 @@
-import desertImage from "@/assets/desert.png";
-import lakeImage from "@/assets/lake.png";
-import plainsImage from "@/assets/plains.png";
-import valleyImage from "@/assets/valley.png";
-import mountainImage from "@/assets/mountainv5.png";
+import desertImage from "@/assets/journey/desert.png";
+import lakeImage from "@/assets/journey/lake.png";
+import plainsImage from "@/assets/journey/plains.png";
+import valleyImage from "@/assets/journey/valley.png";
+import mountainImage from "@/assets/journey/mountain.png";
 
 const cards = [
   {
@@ -40,7 +40,7 @@ const cards = [
 
 const JourneySection = () => {
   return (
-    <section className="py-16 md:py-24 bg-plains/40">
+    <section className="py-16 md:py-24 bg-plain-green-10">
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <div className="text-center mb-12 md:mb-16 max-w-3xl mx-auto">
@@ -75,8 +75,10 @@ const JourneySection = () => {
                 <img
                   src={card.image}
                   alt={card.title}
-                  loading="lazy"
-                  className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${card.imgClassName ?? ""}`}
+                  loading="eager"
+                  decoding="sync"
+                  className={`w-full h-full object-cover [backface-visibility:hidden] group-hover:scale-105 transition-transform duration-500 ${card.imgClassName ?? ""}`}
+                  style={{ imageRendering: "-webkit-optimize-contrast" }}
                 />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
