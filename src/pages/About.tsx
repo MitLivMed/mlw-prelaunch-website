@@ -122,7 +122,7 @@ const About = () => {
 
                   <img
                     src={founderImage}
-                    alt="Jesper Ohrt Juel Jensen, grundlægger af MitLivMed"
+                    alt="Jesper Ohrt Juel Jensen, stifter af MitLivMed"
                     className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-cover object-top rounded-2xl shadow-2xl"
                   />
                 </div>
@@ -132,7 +132,7 @@ const About = () => {
                   <p className="font-heading text-xl md:text-2xl font-semibold text-foreground">
                     Jesper Ohrt Juel Jensen
                   </p>
-                  <p className="text-text-medium mt-1">Grundlægger og adm. direktør | Diagnoseret bipolar type 1</p>
+                  <p className="text-text-medium mt-1">Stifter af MitLivMed | Diagnoseret bipolar type 1</p>
                 </div>
               </div>
             </div>

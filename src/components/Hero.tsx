@@ -42,7 +42,7 @@ const Hero = () => {
 
           {/* Copy + CTA */}
           <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-            <p className="text-lg md:text-xl text-text-dark font-body leading-relaxed mb-4">
+            <p className="text-lg md:text-lg text-text-dark font-body leading-relaxed mb-4">
               Diagnosen er startskuddet - ikke målstregen.
               <br />
               Der er hjælp, men hverdagen kan føles svær.
