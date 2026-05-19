@@ -128,7 +128,7 @@ const CrisisModal = ({ isOpen, onClose }: CrisisModalProps) => {
           <button
             ref={closeButtonRef}
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-muted transition-colors focus:outline-none focus:ring-2 focus:ring-mountain-orange flex-shrink-0"
+            className="p-2 rounded-full hover:bg-mountain-orange-10 transition-colors focus:outline-none flex-shrink-0"
             aria-label="Luk"
           >
             <X className="w-5 h-5 sm:w-6 sm:h-6" />

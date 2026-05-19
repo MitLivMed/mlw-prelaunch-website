@@ -142,7 +142,7 @@ const Carousel = () => {
                 href={content.footnotes[fact.footnote - 1].url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline text-mountain-orange hover:text-secondary transition-colors"
+                className="underline text-mountain-orange hover:text-mountain-orange/80 transition-colors"
               >
                 Kilde ↗
               </a>
