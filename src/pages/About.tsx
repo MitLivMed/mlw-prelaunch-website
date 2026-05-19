@@ -17,9 +17,6 @@ const About = () => {
         description="Mød teamet bag MitLivMed og lær om vores mission: at hjælpe mennesker med bipolar med at mestre hverdagen gennem fællesskab og delte erfaringer."
         path="/om-os"
       />
-      {/* Film grain overlay */}
-      <div className="film-grain" aria-hidden="true" />
-
       {/* Skip link for accessibility */}
       <a
         href="#main-content"
@@ -49,8 +46,8 @@ const About = () => {
                 </div>
 
                 {/* Core belief callout */}
-                <div className="bg-secondary/5 border border-secondary/20 rounded-2xl p-6 md:p-8 mb-12">
-                  <p className="text-xs font-semibold text-secondary uppercase tracking-[0.2em] mb-3">
+                <div className="bg-lake-blue-10 border border-lake-blue rounded-2xl p-6 md:p-8 mb-12">
+                  <p className="text-xs font-semibold text-lake-blue-110 uppercase tracking-[0.2em] mb-3">
                     Det vi tror på
                   </p>
                   <p className="font-body text-text-medium leading-relaxed">
