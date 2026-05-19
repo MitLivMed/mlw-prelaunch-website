@@ -109,7 +109,7 @@ const CrisisModal = ({ isOpen, onClose }: CrisisModalProps) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-foreground/60 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-warm-white/10 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -117,11 +117,11 @@ const CrisisModal = ({ isOpen, onClose }: CrisisModalProps) => {
     >
       <div
         ref={modalRef}
-        className="bg-background rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-scale-in"
+        className="bg-warm-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="sticky top-0 bg-background border-b border-border px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+        <div className="sticky top-0 bg-warm-white backdrop-blur-sm border-b border-border px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <h2 id="crisis-modal-title" className="text-lg sm:text-xl md:text-2xl font-heading font-semibold text-foreground">
             Har du brug for hjælp nu?
           </h2>

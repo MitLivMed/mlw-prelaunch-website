@@ -5,7 +5,7 @@ import wavesImage from "@/assets/waves-trans.png";
 
 const Cookies = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-warm-white">
       <SEO
         title="Cookiepolitik"
         description="Læs om hvordan MitLivMed bruger cookies på vores hjemmeside."
@@ -25,17 +25,6 @@ const Cookies = () => {
       <Header />
 
       <main id="main-content" className="relative py-16 md:py-24 overflow-hidden">
-        {/* Waves background */}
-        <div className="absolute inset-0">
-          <img
-            src={wavesImage}
-            alt=""
-            className="w-full h-full object-cover opacity-90"
-            aria-hidden="true"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
-        </div>
-
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto">
             <h1 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
@@ -44,7 +33,7 @@ const Cookies = () => {
 
             {/* Version badge */}
             <div className="flex items-center gap-3 mb-10">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-plain-green-10 text-plain-green-100 border border-plain-green-30">
                 Version 1.0
               </span>
               <span className="text-sm text-text-light">
@@ -53,7 +42,7 @@ const Cookies = () => {
             </div>
 
             {/* Highlight box - "Den korte version" */}
-            <div className="bg-primary/10 border border-primary/20 rounded-lg p-6 mb-10">
+            <div className="bg-plain-green-10 border border-plain-green-30 rounded-lg p-6 mb-10">
               <h2 className="font-heading text-lg font-semibold text-foreground mb-2">
                 Den korte version
               </h2>
@@ -88,7 +77,7 @@ const Cookies = () => {
               <div className="overflow-x-auto mb-4">
                 <table className="w-full border-collapse rounded-lg overflow-hidden border border-border">
                   <thead>
-                    <tr className="bg-primary/10">
+                    <tr className="bg-mountain-orange/10">
                       <th className="text-left px-4 py-3 font-heading font-medium text-foreground border-b border-border">
                         Type
                       </th>
@@ -101,26 +90,26 @@ const Cookies = () => {
                     </tr>
                   </thead>
                   <tbody className="font-body text-text-medium">
-                    <tr className="bg-background">
+                    <tr className="bg-warm-white">
                       <td className="px-4 py-3 border-b border-border">Tracking-cookies</td>
                       <td className="px-4 py-3 border-b border-border">Nej</td>
                       <td className="px-4 py-3 border-b border-border">
                         Vi bruger PostHog i cookieless mode
                       </td>
                     </tr>
-                    <tr className="bg-muted/30">
+                    <tr className="bg-mountain-orange/10">
                       <td className="px-4 py-3 border-b border-border">Reklame-cookies</td>
                       <td className="px-4 py-3 border-b border-border">Nej</td>
                       <td className="px-4 py-3 border-b border-border">Vi viser ingen reklamer</td>
                     </tr>
-                    <tr className="bg-background">
+                    <tr className="bg-warm-white">
                       <td className="px-4 py-3 border-b border-border">Session-cookies</td>
                       <td className="px-4 py-3 border-b border-border">Nej</td>
                       <td className="px-4 py-3 border-b border-border">
                         Landingpage er statisk uden login
                       </td>
                     </tr>
-                    <tr className="bg-muted/30">
+                    <tr className="bg-mountain-orange/10">
                       <td className="px-4 py-3">Nødvendige cookies</td>
                       <td className="px-4 py-3">Nej*</td>
                       <td className="px-4 py-3">
@@ -184,7 +173,7 @@ const Cookies = () => {
                 Kontakt os på{" "}
                 <a
                   href="mailto:privacy@mitlivmed.dk"
-                  className="text-primary hover:underline font-semibold"
+                  className="text-mountain-orange hover:text-mountain-orange/90 underline font-semibold"
                 >
                   privacy@mitlivmed.dk
                 </a>{" "}
@@ -200,7 +189,7 @@ const Cookies = () => {
               <p className="font-body text-text-medium leading-relaxed">
                 Vi opdaterer denne cookiepolitik, når det er nødvendigt. Den seneste version findes{" "}
                 <strong>altid</strong> på{" "}
-                <a href="/cookies" className="text-primary hover:underline">
+                <a href="/cookies" className="text-mountain-orange hover:text-mountain-orange/90">
                   mitlivmed.dk/cookies
                 </a>
                 .
