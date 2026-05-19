@@ -18,17 +18,17 @@ const cards = [
     description: "Du har fået en diagnose. Hvad gør man så? Her kan du skabe overblik i alt det nye og høre andres oplevelser.",
   },
   {
-    id: "plains",
-    image: plainsImage,
-    title: "Sletten",
-    description: "Hverdagen kan ofte være en svære del. Rutinerne er det, der kan skabe ro, og vi deler & bygger dem sammen i små skridt.",
-  },
-  {
     id: "valley",
     image: valleyImage,
     title: "Dalen",
     description: "Nogle dage er det bare for tungt at bære alene. Her behøver du ikke forklare det eller pakke det pænt ind. Du må bare lægge det fra dig.",
     imgClassName: "object-bottom md:object-center",
+  },
+  {
+    id: "plains",
+    image: plainsImage,
+    title: "Sletten",
+    description: "Hverdagen kan ofte være en svære del. Rutinerne er det, der kan skabe ro, og vi deler & bygger dem sammen i små skridt.",
   },
   {
     id: "mountain",
