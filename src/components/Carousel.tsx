@@ -22,7 +22,7 @@ const content = {
     },
     {
       stat: "1 ud af 5",
-      text: "opnår meningsfuld bedring gennem peer-støtte.",
+      text: "opnår meningsfuld bedring gennem fællesskabsstøtte.",
       highlight: "Effekter der holder i mindst 6-9 måneder.",
       footnote: 2,
     },
