@@ -13,11 +13,9 @@ const Index = () => {
   useScrollDepth();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <SEO />
-      {/* Film grain overlay */}
-      <div className="film-grain" aria-hidden="true" />
-
+    
       {/* Skip link for accessibility */}
       <a
         href="#main-content"

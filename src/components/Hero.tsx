@@ -5,14 +5,7 @@ import YouTubePlayer from "./YouTubePlayer";
 const Hero = () => {
 
   return (
-    <section className="relative pt-24 pb-12 sm:pb-14 md:pt-32 md:pb-18 lg:pb-22 overflow-visible">
-      {/* Hero gradient background - extends past section to be hidden by wave's opaque areas */}
-      <div
-        className="absolute inset-x-0 top-0 pointer-events-none"
-        style={{
-          background: "var(--warm-white)"
-        }}
-      />
+    <section className="relative pt-24 pb-12 sm:pb-14 md:pt-32 md:pb-18 lg:pb-22 bg-warm-white overflow-visible">
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Centered Title */}

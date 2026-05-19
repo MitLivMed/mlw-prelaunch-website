@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-background text-text-dark py-16">
+      <footer className="bg-warm-white text-text-dark py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             {/* Two column layout */}

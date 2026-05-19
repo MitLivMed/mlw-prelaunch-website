@@ -78,7 +78,7 @@ const Header = () => {
                 openSignupForm('header_mobile');
                 setIsMenuOpen(false);
               }}
-              className="bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-medium cta-shadow w-full"
+              className="bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-medium w-full"
             >
               Skriv dig på ventelisten →
             </Button>
