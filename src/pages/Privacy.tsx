@@ -5,19 +5,17 @@ import wavesImage from "@/assets/waves-trans.png";
 
 const Privacy = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-warm-white">
       <SEO
         title="Privatlivspolitik"
         description="Læs om hvordan MitLivMed indsamler, bruger og beskytter dine personlige oplysninger."
         path="/privatlivspolitik"
       />
-      {/* Film grain overlay */}
-      <div className="film-grain" aria-hidden="true" />
 
       {/* Skip link for accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-md"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-mountain-orange focus:text-mountain-orange-foreground focus:px-4 focus:py-2 focus:rounded-md"
       >
         Spring til indhold
       </a>
@@ -25,17 +23,6 @@ const Privacy = () => {
       <Header />
 
       <main id="main-content" className="relative py-16 md:py-24 overflow-hidden">
-        {/* Waves background */}
-        <div className="absolute inset-0">
-          <img
-            src={wavesImage}
-            alt=""
-            className="w-full h-full object-cover opacity-90"
-            aria-hidden="true"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
-        </div>
-
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto">
             <h1 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
@@ -44,7 +31,7 @@ const Privacy = () => {
 
             {/* Version badge */}
             <div className="flex items-center gap-3 mb-10">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-plain-green-30 text-plain-green-100 border border-plain-green-30">
                 Version 1.0
               </span>
               <span className="text-sm text-text-light">
@@ -66,7 +53,7 @@ const Privacy = () => {
                   E-mail:{" "}
                   <a
                     href="mailto:privacy@mitlivmed.dk"
-                    className="text-primary hover:underline"
+                    className="text-mountain-orange hover:text-mountain-orange/90 underline"
                   >
                     privacy@mitlivmed.dk
                   </a>
@@ -85,7 +72,7 @@ const Privacy = () => {
               <div className="overflow-x-auto mb-4">
                 <table className="w-full border-collapse rounded-lg overflow-hidden border border-border">
                   <thead>
-                    <tr className="bg-primary/10">
+                    <tr className="bg-mountain-orange-10">
                       <th className="text-left px-4 py-3 font-heading font-medium text-foreground border-b border-border">
                         Data
                       </th>
@@ -95,19 +82,19 @@ const Privacy = () => {
                     </tr>
                   </thead>
                   <tbody className="font-body text-text-medium">
-                    <tr className="bg-background">
+                    <tr className="bg-warm-white">
                       <td className="px-4 py-3 border-b border-border">E-mailadresse</td>
                       <td className="px-4 py-3 border-b border-border">Din tilmelding</td>
                     </tr>
-                    <tr className="bg-muted/30">
+                    <tr className="bg-mountain-orange-10">
                       <td className="px-4 py-3 border-b border-border">Navn (valgfrit)</td>
                       <td className="px-4 py-3 border-b border-border">Din tilmelding</td>
                     </tr>
-                    <tr className="bg-background">
+                    <tr className="bg-warm-white">
                       <td className="px-4 py-3 border-b border-border">Evt. fritekst</td>
                       <td className="px-4 py-3 border-b border-border">Din tilmelding</td>
                     </tr>
-                    <tr className="bg-muted/30">
+                    <tr className="bg-mountain-orange-10">
                       <td className="px-4 py-3">Pårørende (Ja/Nej)</td>
                       <td className="px-4 py-3">Din tilmelding</td>
                     </tr>
@@ -164,7 +151,7 @@ const Privacy = () => {
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse rounded-lg overflow-hidden border border-border">
                   <thead>
-                    <tr className="bg-primary/10">
+                    <tr className="bg-mountain-orange-10">
                       <th className="text-left px-4 py-3 font-heading font-medium text-foreground border-b border-border">
                         Databehandler
                       </th>
@@ -177,17 +164,17 @@ const Privacy = () => {
                     </tr>
                   </thead>
                   <tbody className="font-body text-text-medium">
-                    <tr className="bg-background">
+                    <tr className="bg-warm-white">
                       <td className="px-4 py-3 border-b border-border">Tally.so</td>
                       <td className="px-4 py-3 border-b border-border">Formular/tilmelding</td>
                       <td className="px-4 py-3 border-b border-border">Belgien (EU)</td>
                     </tr>
-                    <tr className="bg-muted/30">
+                    <tr className="bg-mountain-orange-10">
                       <td className="px-4 py-3 border-b border-border">Google Workspace</td>
                       <td className="px-4 py-3 border-b border-border">E-mail (manuel håndtering)</td>
                       <td className="px-4 py-3 border-b border-border">EU (med US backup)</td>
                     </tr>
-                    <tr className="bg-background">
+                    <tr className="bg-warm-white">
                       <td className="px-4 py-3">Vercel</td>
                       <td className="px-4 py-3">Webhosting</td>
                       <td className="px-4 py-3">EU region</td>
@@ -209,7 +196,7 @@ const Privacy = () => {
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse rounded-lg overflow-hidden border border-border">
                   <thead>
-                    <tr className="bg-primary/10">
+                    <tr className="bg-mountain-orange-10">
                       <th className="text-left px-4 py-3 font-heading font-medium text-foreground border-b border-border">
                         Leverandør
                       </th>
@@ -222,17 +209,17 @@ const Privacy = () => {
                     </tr>
                   </thead>
                   <tbody className="font-body text-text-medium">
-                    <tr className="bg-background">
+                    <tr className="bg-warm-white">
                       <td className="px-4 py-3 border-b border-border">Google Workspace</td>
                       <td className="px-4 py-3 border-b border-border">EU</td>
                       <td className="px-4 py-3 border-b border-border">EU-US Data Privacy Framework</td>
                     </tr>
-                    <tr className="bg-muted/30">
+                    <tr className="bg-mountain-orange-10">
                       <td className="px-4 py-3 border-b border-border">Vercel</td>
                       <td className="px-4 py-3 border-b border-border">EU region</td>
                       <td className="px-4 py-3 border-b border-border">Standard Contractual Clauses (SCC)</td>
                     </tr>
-                    <tr className="bg-background">
+                    <tr className="bg-warm-white">
                       <td className="px-4 py-3">Tally.so</td>
                       <td className="px-4 py-3">Belgien (EU)</td>
                       <td className="px-4 py-3">Ingen tredjelandsoverførsel</td>
@@ -267,7 +254,7 @@ const Privacy = () => {
               <div className="overflow-x-auto mb-4">
                 <table className="w-full border-collapse rounded-lg overflow-hidden border border-border">
                   <thead>
-                    <tr className="bg-primary/10">
+                    <tr className="bg-mountain-orange-10">
                       <th className="text-left px-4 py-3 font-heading font-medium text-foreground border-b border-border">
                         Rettighed
                       </th>
@@ -277,37 +264,37 @@ const Privacy = () => {
                     </tr>
                   </thead>
                   <tbody className="font-body text-text-medium">
-                    <tr className="bg-background">
+                    <tr className="bg-warm-white">
                       <td className="px-4 py-3 border-b border-border font-semibold">Indsigt</td>
                       <td className="px-4 py-3 border-b border-border">
                         Du kan få oplyst, hvilke data vi har om dig
                       </td>
                     </tr>
-                    <tr className="bg-muted/30">
+                    <tr className="bg-mountain-orange-10">
                       <td className="px-4 py-3 border-b border-border font-semibold">Berigtigelse</td>
                       <td className="px-4 py-3 border-b border-border">
                         Du kan få rettet ukorrekte oplysninger
                       </td>
                     </tr>
-                    <tr className="bg-background">
+                    <tr className="bg-warm-white">
                       <td className="px-4 py-3 border-b border-border font-semibold">Sletning</td>
                       <td className="px-4 py-3 border-b border-border">
                         Du kan bede os slette dine data
                       </td>
                     </tr>
-                    <tr className="bg-muted/30">
+                    <tr className="bg-mountain-orange-10">
                       <td className="px-4 py-3 border-b border-border font-semibold">Begrænsning</td>
                       <td className="px-4 py-3 border-b border-border">
                         Du kan bede os begrænse behandlingen
                       </td>
                     </tr>
-                    <tr className="bg-background">
+                    <tr className="bg-warm-white">
                       <td className="px-4 py-3 border-b border-border font-semibold">Dataportabilitet</td>
                       <td className="px-4 py-3 border-b border-border">
                         Du kan få udleveret dine data i et maskinlæsbart format
                       </td>
                     </tr>
-                    <tr className="bg-muted/30">
+                    <tr className="bg-mountain-orange-10">
                       <td className="px-4 py-3 font-semibold">Indsigelse</td>
                       <td className="px-4 py-3">Du kan gøre indsigelse mod behandlingen</td>
                     </tr>
@@ -318,7 +305,7 @@ const Privacy = () => {
                 For at udøve dine rettigheder, kontakt os på:{" "}
                 <a
                   href="mailto:privacy@mitlivmed.dk"
-                  className="text-primary hover:underline font-semibold"
+                  className="text-mountain-orange hover:text-mountain-orange/90 font-semibold"
                 >
                   privacy@mitlivmed.dk
                 </a>
@@ -341,7 +328,7 @@ const Privacy = () => {
                   Sende en e-mail til{" "}
                   <a
                     href="mailto:privacy@mitlivmed.dk"
-                    className="text-primary hover:underline"
+                    className="text-mountain-orange hover:text-mountain-orange/90"
                   >
                     privacy@mitlivmed.dk
                   </a>
@@ -363,7 +350,7 @@ const Privacy = () => {
                 Hvis du er utilfreds med vores behandling af dine personoplysninger, kan du klage
                 til:
               </p>
-              <div className="bg-muted/50 border border-border rounded-lg p-4 font-body text-text-medium space-y-1">
+              <div className="bg-white border border-mountain-orange-10 rounded-lg p-4 font-body text-lake-blue-100 space-y-1">
                 <p className="font-semibold text-foreground">Datatilsynet</p>
                 <p>Carl Jacobsens Vej 35</p>
                 <p>2500 Valby</p>
@@ -371,7 +358,7 @@ const Privacy = () => {
                   E-mail:{" "}
                   <a
                     href="mailto:dt@datatilsynet.dk"
-                    className="text-primary hover:underline"
+                    className="text-mountain-orange hover:text-mountain-orange/90"
                   >
                     dt@datatilsynet.dk
                   </a>
@@ -383,7 +370,7 @@ const Privacy = () => {
                     href="https://www.datatilsynet.dk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:underline"
+                    className="text-mountain-orange hover:text-mountain-orange/90"
                   >
                     datatilsynet.dk
                   </a>
@@ -399,7 +386,7 @@ const Privacy = () => {
               <p className="font-body text-text-medium leading-relaxed">
                 Vi opdaterer denne privatlivspolitik, når det er nødvendigt. Ved væsentlige
                 ændringer informerer vi dig via e-mail. Den seneste version kan altid findes på{" "}
-                <a href="/privatlivspolitik" className="text-primary hover:underline">
+                <a href="/privatlivspolitik" className="text-mountain-orange hover:text-mountain-orange/90">
                   mitlivmed.dk/privatlivspolitik
                 </a>
                 .

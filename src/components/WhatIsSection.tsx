@@ -8,7 +8,7 @@ const WhatIsSection = () => {
 
   return (
     <>
-      <section id="about" className="py-16 md:py-24 bg-background">
+      <section id="about" className="py-16 md:py-24 bg-warm-white relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 max-w-6xl mx-auto">
             {/* What IS MitLivMed */}

@@ -90,11 +90,11 @@ const Carousel = () => {
     if (currentSlide < content.quotes.length) {
       return (
         <div className="flex flex-col items-center justify-center min-h-64 px-6 text-center">
-          <div className="text-5xl md:text-6xl opacity-60 mb-4 text-mountain-orange font-serif">"</div>
+          <div className="text-5xl md:text-6xl opacity-60 mb-4 text-lake-blue-110 font-serif">"</div>
           <p className="text-lg md:text-xl lg:text-2xl font-body font-light leading-relaxed max-w-2xl italic text-text-dark">
             {content.quotes[currentSlide]}
           </p>
-          <div className="text-5xl md:text-6xl opacity-60 mt-4 rotate-180 text-mountain-orange font-serif">"</div>
+          <div className="text-5xl md:text-6xl opacity-60 mt-4 rotate-180 text-lake-blue-110 font-serif">"</div>
         </div>
       );
     }
@@ -103,11 +103,11 @@ const Carousel = () => {
     if (currentSlide === content.quotes.length) {
       return (
         <div className="flex flex-col items-center justify-center min-h-64 px-6 text-center">
-          <div className="w-16 h-px mb-8 bg-gradient-to-r from-transparent via-mountain-orange to-transparent" />
-          <p className="text-xl md:text-2xl lg:text-3xl font-heading font-semibold leading-tight max-w-2xl text-mountain-orange">
+          <div className="w-16 h-px mb-8 bg-gradient-to-r from-transparent via-lake-blue-110 to-transparent" />
+          <p className="text-xl md:text-2xl lg:text-3xl font-heading font-semibold leading-tight max-w-2xl text-lake-blue-110">
             {content.transition}
           </p>
-          <div className="w-16 h-px mt-8 bg-gradient-to-r from-transparent via-mountain-orange to-transparent" />
+          <div className="w-16 h-px mt-8 bg-gradient-to-r from-transparent via-lake-blue-110 to-transparent" />
         </div>
       );
     }
@@ -118,7 +118,7 @@ const Carousel = () => {
       const fact = content.facts[factIndex];
       return (
         <div className="flex flex-col items-center justify-center min-h-64 px-6 text-center">
-          <div className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 tracking-tight text-mountain-orange">
+          <div className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 tracking-tight text-lake-blue-110">
             {fact.stat}
           </div>
           <p className="text-base md:text-lg max-w-xl mb-4 text-text-medium font-body leading-relaxed">
@@ -134,17 +134,16 @@ const Carousel = () => {
             {fact.highlight}
           </p>
           {/* Inline footnote */}
-          <div className="max-w-lg px-4 py-3 rounded-lg bg-primary/5">
-            <p className="text-xs text-mountain-orange font-body leading-relaxed">
-              <sup className="mr-1 text-mountain-orange">{fact.footnote}</sup>
-              {content.footnotes[fact.footnote - 1].text}{" "}
+          <div className="max-w-lg px-4 py-3 rounded-lg">
+            <p className="text-xs text-lake-blue-110 font-body leading-relaxed">
+             <span className="text-soft-black">Kilde: </span>
               <a
                 href={content.footnotes[fact.footnote - 1].url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline text-mountain-orange hover:text-secondary transition-colors"
+                className="underline text-lake-blue-110 hover:text-lake-blue-110/80 transition-colors"
               >
-                Kilde ↗
+                 {content.footnotes[fact.footnote - 1].text}{" "}
               </a>
             </p>
           </div>
@@ -172,12 +171,12 @@ const Carousel = () => {
   };
 
   return (
-    <section className="pt-[74px] pb-14 md:pt-[92px] md:pb-[74px] bg-background relative overflow-hidden">
+    <section className="pt-[74px] pb-14 md:pt-[92px] md:pb-[74px] bg-lake-blue-10 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
         <div
           className={`text-center mb-8 md:mb-12 transition-all duration-500 ${
-            getSlideType() === "quote" ? "opacity-100" : "opacity-40"
+            getSlideType() === "quote" ? "opacity-100" : "opacity-20"
           }`}
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-medium text-text-dark">
@@ -201,14 +200,14 @@ const Carousel = () => {
           {/* Navigation arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-mountain-orange hover:text-mountain-orange/70 transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-lake-blue-110 hover:text-lake-blue/90 transition-colors"
             aria-label="Forrige slide"
           >
             <ChevronLeft className="w-8 h-8" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-mountain-orange hover:text-mountain-orange/70 transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-lake-blue-110 hover:text-lake-blue/70 transition-colors"
             aria-label="Næste slide"
           >
             <ChevronRight className="w-8 h-8" />
@@ -235,10 +234,10 @@ const Carousel = () => {
                 style={{
                   backgroundColor: isActive
                     ? isFactOrTransition
-                      ? "var(--mountain-orange)"
+                      ? "var(--lake-blue-110)"
                       : "var(--plain-green)"
                     : isFactOrTransition
-                    ? "var(--mountain-orange-30)"
+                    ? "var(--lake-blue)"
                     : "var(--plain-green-30)",
                 }}
                 aria-label={`Gå til slide ${index + 1}`}
@@ -251,7 +250,7 @@ const Carousel = () => {
         <div className="text-center mt-4 text-xs text-text-light font-body">
           {isAutoPlaying ? (
             <span className="flex items-center justify-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-mountain-orange" />
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-lake-blue-110" />
               Automatisk afspilning
             </span>
           ) : (

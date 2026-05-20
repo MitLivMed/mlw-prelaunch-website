@@ -7,19 +7,9 @@ const FinalCTA = () => {
   return (
     <section
       id="signup"
-      className="relative py-16 md:py-24 overflow-hidden"
+      className="relative py-16 md:py-24 bg-warm-white overflow-hidden"
     >
-      {/* Waves background */}
-      <div className="absolute inset-0">
-        <img
-          src={wavesImage}
-          alt=""
-          className="w-full h-full object-cover opacity-90"
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
-      </div>
-
+      
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-semibold text-foreground mb-8">

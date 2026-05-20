@@ -5,15 +5,7 @@ import YouTubePlayer from "./YouTubePlayer";
 const Hero = () => {
 
   return (
-    <section className="relative pt-24 pb-12 sm:pb-14 md:pt-32 md:pb-18 lg:pb-22 overflow-visible">
-      {/* Hero gradient background - extends past section to be hidden by wave's opaque areas */}
-      <div
-        className="absolute inset-x-0 top-0 pointer-events-none"
-        style={{
-          background: "linear-gradient(180deg, rgba(128, 178, 253, 0.10) 0%, rgba(128, 178, 253, 0.10) 43%, rgba(255, 123, 2, 0.19) 100%)",
-          height: "calc(100% + 150px)"
-        }}
-      />
+    <section className="relative pt-24 pb-12 sm:pb-14 md:pt-32 md:pb-18 lg:pb-22 bg-warm-white overflow-visible">
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Centered Title */}
@@ -43,12 +35,12 @@ const Hero = () => {
           {/* Copy + CTA */}
           <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
             <p className="text-lg md:text-lg text-text-dark font-body leading-relaxed mb-4">
-              Diagnosen er startskuddet - ikke målstregen.
+              Diagnosen er startskuddet, ikke målstregen.
               <br />
               Der er hjælp, men hverdagen kan føles svær.
             </p>
             <p className="text-base md:text-lg text-text-dark font-body leading-relaxed mb-4 md:mb-4">
-              <strong className="font-semibold">Vi bygger noget til det, der kommer efter: resten af livet</strong>
+              <strong className="font-bold">Vi bygger noget til det, der kommer efter: resten af livet</strong>
             </p>
 
             {/* CTA - mobile only (above the fold) */}
