@@ -46,8 +46,8 @@ const About = () => {
                 </div>
 
                 {/* Core belief callout */}
-                <div className="bg-lake-blue-10 border border-lake-blue rounded-2xl p-6 md:p-8 mb-12">
-                  <p className="text-xs font-semibold text-lake-blue-110 uppercase tracking-[0.2em] mb-3">
+                <div className="bg-plain-green-10 border border-plain-green rounded-2xl p-6 md:p-8 mb-12">
+                  <p className="text-xs font-semibold text-plain-green-110 uppercase tracking-[0.2em] mb-3">
                     Det vi tror på
                   </p>
                   <p className="font-body text-text-medium leading-relaxed">

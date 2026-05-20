@@ -56,13 +56,13 @@ export default {
         "plains-text": "hsl(var(--plains-text))",
         mountain: "hsl(var(--mountain))",
         "warm-black": "hsl(var(--warm-black))",
-        "text-dark": "hsl(var(--text-dark))",
+        "text-dark": "hsl(var(--soft-black))",
         "text-medium": "hsl(var(--text-medium))",
         "text-light": "hsl(var(--text-light))",
-        white: "#FFFFFF",
+        "white": "#FFFFFF",
         "warm-white": "#FAF6F5",
-        "dark-brown": "#332926",
-        "soft-black": "#000000",
+        "soft-black": "#332926",
+        "black": "#000000",
 
         "mountain-orange": {
           DEFAULT: "#BF5B39",

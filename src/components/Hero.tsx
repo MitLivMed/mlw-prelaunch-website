@@ -35,12 +35,12 @@ const Hero = () => {
           {/* Copy + CTA */}
           <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
             <p className="text-lg md:text-lg text-text-dark font-body leading-relaxed mb-4">
-              Diagnosen er startskuddet - ikke målstregen.
+              Diagnosen er startskuddet, ikke målstregen.
               <br />
               Der er hjælp, men hverdagen kan føles svær.
             </p>
             <p className="text-base md:text-lg text-text-dark font-body leading-relaxed mb-4 md:mb-4">
-              <strong className="font-semibold">Vi bygger noget til det, der kommer efter: resten af livet</strong>
+              <strong className="font-bold">Vi bygger noget til det, der kommer efter: resten af livet</strong>
             </p>
 
             {/* CTA - mobile only (above the fold) */}

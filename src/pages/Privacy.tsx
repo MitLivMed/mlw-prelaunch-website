@@ -350,7 +350,7 @@ const Privacy = () => {
                 Hvis du er utilfreds med vores behandling af dine personoplysninger, kan du klage
                 til:
               </p>
-              <div className="bg-lake-blue-10 border border-lake-blue-30 rounded-lg p-4 font-body text-lake-blue-100 space-y-1">
+              <div className="bg-white border border-mountain-orange-10 rounded-lg p-4 font-body text-lake-blue-100 space-y-1">
                 <p className="font-semibold text-foreground">Datatilsynet</p>
                 <p>Carl Jacobsens Vej 35</p>
                 <p>2500 Valby</p>
