@@ -24,9 +24,9 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isMenuOpen
-          ? 'bg-background'
+          ? 'bg-warm-white'
           : isScrolled
-            ? 'bg-white/70 backdrop-blur-md shadow-sm'
+            ? 'bg-warm-white/70 backdrop-blur-md shadow-sm'
             : 'bg-transparent'
       }`}
     >
@@ -64,7 +64,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg animate-fade-in">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-warm-white border-b border-border shadow-lg animate-fade-in">
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
             <Link
               to="/om-os"
