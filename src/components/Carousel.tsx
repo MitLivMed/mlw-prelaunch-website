@@ -103,11 +103,11 @@ const Carousel = () => {
     if (currentSlide === content.quotes.length) {
       return (
         <div className="flex flex-col items-center justify-center min-h-64 px-6 text-center">
-          <div className="w-16 h-px mb-8 bg-gradient-to-r from-transparent via-mountain-orange to-transparent" />
-          <p className="text-xl md:text-2xl lg:text-3xl font-heading font-semibold leading-tight max-w-2xl text-mountain-orange">
+          <div className="w-16 h-px mb-8 bg-gradient-to-r from-transparent via-lake-blue-110 to-transparent" />
+          <p className="text-xl md:text-2xl lg:text-3xl font-heading font-semibold leading-tight max-w-2xl text-lake-blue-110">
             {content.transition}
           </p>
-          <div className="w-16 h-px mt-8 bg-gradient-to-r from-transparent via-mountain-orange to-transparent" />
+          <div className="w-16 h-px mt-8 bg-gradient-to-r from-transparent via-lake-blue-110 to-transparent" />
         </div>
       );
     }
