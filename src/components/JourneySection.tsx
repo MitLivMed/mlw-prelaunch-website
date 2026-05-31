@@ -1,5 +1,5 @@
 import desertImage from "@/assets/journey/desert.png";
-import lakeImage from "@/assets/journey/lake.png";
+import jungleImage from "@/assets/journey/jungle.png";
 import plainsImage from "@/assets/journey/plains.png";
 import valleyImage from "@/assets/journey/valley.png";
 import mountainImage from "@/assets/journey/mountain.png";
@@ -12,9 +12,9 @@ const cards = [
     description: "Noget føles forkert. Du kan mærke det, før du kan forklare det. Du er ikke alene, mens du finder ordene.",
   },
   {
-    id: "lake",
-    image: lakeImage,
-    title: "Søen",
+    id: "jungle",
+    image: jungleImage,
+    title: "Junglen",
     description: "Du har fået en diagnose. Hvad gør man så? Her kan du skabe overblik i alt det nye og høre andres oplevelser.",
   },
   {
