@@ -21,9 +21,9 @@ const content = {
       footnote: 1,
     },
     {
-      stat: "1 ud af 5",
-      text: "opnår meningsfuld bedring gennem fællesskabsstøtte.",
-      highlight: "Effekter der holder i mindst 6-9 måneder.",
+      stat: "Fællesskabsstøtte virker",
+      text: "Analyser viser signifikant bedring i personlig recovery og reduktion af angst",
+      highlight: "Baseret på en meta-analyse af 49 studier med 12.477 deltagere.",
       footnote: 2,
     },
   ],
