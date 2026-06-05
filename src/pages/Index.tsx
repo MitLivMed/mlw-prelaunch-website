@@ -1,3 +1,4 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Carousel from "@/components/Carousel";
@@ -5,12 +6,16 @@ import JourneySection from "@/components/JourneySection";
 import WhatIsSection from "@/components/WhatIsSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import CrisisModal from "@/components/CrisisModal";
 import SEO from "@/components/SEO";
 import { usePageView, useScrollDepth } from "@/hooks/use-analytics";
 
 const Index = () => {
   usePageView();
   useScrollDepth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isCrisisOpen = location.pathname === "/akut";
 
   return (
     <div className="min-h-screen">
@@ -35,6 +40,7 @@ const Index = () => {
       </main>
 
       <Footer />
+      <CrisisModal isOpen={isCrisisOpen} onClose={() => navigate("/")} />
     </div>
   );
 };

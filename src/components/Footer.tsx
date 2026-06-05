@@ -1,14 +1,9 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import CrisisModal from "./CrisisModal";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
-  const [isCrisisModalOpen, setIsCrisisModalOpen] = useState(false);
-
   return (
-    <>
-      <footer className="bg-warm-white text-text-dark py-16">
+    <footer className="bg-warm-white text-text-dark py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             {/* Two column layout */}
@@ -72,14 +67,11 @@ const Footer = () => {
 
             {/* Bottom row */}
             <div className="text-center text-xs text-text-light font-body">
-              <p>© Copyright MitLivMed ApS 2026 - Built with kindness in Copenhagen</p>
+              <p>© Copyright 2026 MitLivMed™ ApS · Bygget med hjertet, i København</p>
             </div>
           </div>
         </div>
       </footer>
-
-      <CrisisModal isOpen={isCrisisModalOpen} onClose={() => setIsCrisisModalOpen(false)} />
-    </>
   );
 };
 
