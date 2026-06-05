@@ -84,7 +84,7 @@ const JourneyCardModal = ({ card, onClose }: JourneyCardModalProps) => {
 
       <div
         ref={modalRef}
-        className="relative bg-warm-white md:bg-warm-white/70 md:backdrop-blur-md rounded-2xl shadow-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto animate-scale-in p-5 sm:p-8"
+        className="relative bg-warm-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto animate-scale-in p-5 sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -94,7 +94,7 @@ const JourneyCardModal = ({ card, onClose }: JourneyCardModalProps) => {
           className="absolute top-3 right-3 p-2 rounded-full hover:bg-mountain-orange-10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-mountain-orange"
           aria-label="Luk"
         >
-          <X className="w-5 h-5 sm:w-6 sm:h-6 text-plains-accent" />
+          <X className="w-5 h-5 sm:w-6 sm:h-6 text-soft-black" />
         </button>
 
         {/* Landscape image */}
@@ -109,14 +109,13 @@ const JourneyCardModal = ({ card, onClose }: JourneyCardModalProps) => {
         {/* Title */}
         <h2
           id={titleId}
-          className="font-title text-3xl md:text-4xl font-semibold text-plains-accent mb-4"
+          className="font-title text-3xl md:text-4xl font-semibold text-soft-black mb-4"
         >
           {details.modalTitle}
-          {details.emoji && <span className="ml-2">{details.emoji}</span>}
         </h2>
 
         {/* Content */}
-        <div className="space-y-4 font-body text-plains-text leading-relaxed">
+        <div className="space-y-4 font-body text-soft-black leading-relaxed">
           {details.intro.map((paragraph, i) => (
             <p key={`intro-${i}`}>{paragraph}</p>
           ))}
@@ -124,7 +123,7 @@ const JourneyCardModal = ({ card, onClose }: JourneyCardModalProps) => {
           {details.sections.map((section, i) => (
             <div key={`section-${i}`} className="space-y-2">
               <p>
-                <span className="font-semibold text-plains-accent">
+                <span className="font-semibold text-soft-black">
                   {section.header}
                 </span>
                 {section.body && <> {section.body}</>}
@@ -150,7 +149,7 @@ const JourneyCardModal = ({ card, onClose }: JourneyCardModalProps) => {
           )}
 
           {details.quote && (
-            <p className="italic text-center text-plains-accent pt-2">
+            <p className="italic text-center text-soft-black pt-2">
               "{details.quote}"
             </p>
           )}

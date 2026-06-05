@@ -180,7 +180,7 @@ const JourneySection = () => {
   const { slug } = useParams();
   const sectionRef = useRef<HTMLElement>(null);
 
-  const activeCard = cards.find((c) => c.id === slug) ?? null;
+  const activeCard = cards.find((c) => c.title.toLowerCase() === slug) ?? null;
 
   // Keep the journey section framed behind the overlay (and on close)
   useEffect(() => {
@@ -213,11 +213,11 @@ const JourneySection = () => {
               key={card.id}
               role="button"
               tabIndex={0}
-              onClick={() => navigate(`/journey/${card.id}`)}
+              onClick={() => navigate(`/landskaber/${card.title.toLowerCase()}`)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  navigate(`/journey/${card.id}`);
+                  navigate(`/landskaber/${card.title.toLowerCase()}`);
                 }
               }}
               className="group animate-fade-in-up flex flex-col cursor-pointer rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-mountain-orange focus-visible:ring-offset-2 focus-visible:ring-offset-plain-green-10"
