@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { X } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 
 export type CardDetails = {
@@ -23,9 +23,11 @@ export type JourneyCard = {
 interface JourneyCardModalProps {
   card: JourneyCard | null;
   onClose: () => void;
+  onPrev?: () => void;
+  onNext?: () => void;
 }
 
-const JourneyCardModal = ({ card, onClose }: JourneyCardModalProps) => {
+const JourneyCardModal = ({ card, onClose, onPrev, onNext }: JourneyCardModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -37,6 +39,8 @@ const JourneyCardModal = ({ card, onClose }: JourneyCardModalProps) => {
       if (e.key === "Escape") {
         onClose();
       }
+      if (e.key === "ArrowLeft") onPrev?.();
+      if (e.key === "ArrowRight") onNext?.();
 
       if (e.key === "Tab" && modalRef.current) {
         const focusable = modalRef.current.querySelectorAll<HTMLElement>(
@@ -82,9 +86,31 @@ const JourneyCardModal = ({ card, onClose }: JourneyCardModalProps) => {
         <title>{details.modalTitle} | MitLivMed</title>
       </Helmet>
 
+      {/* Prev arrow */}
+      {onPrev && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onPrev(); }}
+          className="absolute left-2 sm:left-6 p-2 rounded-full bg-warm-white/80 hover:bg-warm-white shadow transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-mountain-orange"
+          aria-label="Forrige landskab"
+        >
+          <ChevronLeft className="w-6 h-6 text-soft-black" />
+        </button>
+      )}
+
+      {/* Next arrow */}
+      {onNext && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onNext(); }}
+          className="absolute right-2 sm:right-6 p-2 rounded-full bg-warm-white/80 hover:bg-warm-white shadow transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-mountain-orange"
+          aria-label="Næste landskab"
+        >
+          <ChevronRight className="w-6 h-6 text-soft-black" />
+        </button>
+      )}
+
       <div
         ref={modalRef}
-        className="relative bg-warm-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto animate-scale-in p-5 sm:p-8"
+        className="relative bg-warm-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-scale-in p-5 sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}

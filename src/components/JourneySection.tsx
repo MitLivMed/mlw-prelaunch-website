@@ -180,7 +180,10 @@ const JourneySection = () => {
   const { slug } = useParams();
   const sectionRef = useRef<HTMLElement>(null);
 
-  const activeCard = cards.find((c) => c.title.toLowerCase() === slug) ?? null;
+  const activeIndex = cards.findIndex((c) => c.title.toLowerCase() === slug);
+  const activeCard = activeIndex !== -1 ? cards[activeIndex] : null;
+  const prevCard = activeIndex > 0 ? cards[activeIndex - 1] : null;
+  const nextCard = activeIndex < cards.length - 1 ? cards[activeIndex + 1] : null;
 
   // Keep the journey section framed behind the overlay (and on close)
   useEffect(() => {
@@ -290,7 +293,12 @@ const JourneySection = () => {
         </div>
       </div>
 
-      <JourneyCardModal card={activeCard} onClose={() => navigate("/")} />
+      <JourneyCardModal
+        card={activeCard}
+        onClose={() => navigate("/")}
+        onPrev={prevCard ? () => navigate(`/landskaber/${prevCard.title.toLowerCase()}`) : undefined}
+        onNext={nextCard ? () => navigate(`/landskaber/${nextCard.title.toLowerCase()}`) : undefined}
+      />
     </section>
   );
 };
