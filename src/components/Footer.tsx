@@ -67,7 +67,7 @@ const Footer = () => {
 
             {/* Bottom row */}
             <div className="text-center text-xs text-text-light font-body">
-              <p>© Copyright MitLivMed ApS 2026 - Built with kindness in Copenhagen</p>
+              <p>© Copyright 2026 MitLivMed™ ApS · Bygget med hjertet, i København</p>
             </div>
           </div>
         </div>
