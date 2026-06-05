@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 
@@ -10,6 +11,7 @@ export type CardDetails = {
   outro?: string[];
   quote?: string;
   callout?: string;
+  calloutAction?: { label: string; href: string };
 };
 
 export type JourneyCard = {
@@ -193,6 +195,14 @@ const JourneyCardModal = ({ card, onClose, prevCard, nextCard, onPrev, onNext }:
           {details.callout && (
             <div className="bg-plain-green-10 border-l-4 border-plain-green rounded-lg p-4 text-sm">
               {details.callout}
+              {details.calloutAction && (
+                <> <Link
+                  to={details.calloutAction.href}
+                  className="underline font-medium text-mountain-orange hover:text-mountain-orange/70 transition-colors"
+                >
+                  {details.calloutAction.label}
+                </Link></>
+              )}
             </div>
           )}
 

@@ -104,7 +104,8 @@ const cards: (JourneyCard & { description: string })[] = [
         "Du kan falde hertil fra alle steder. Det er ikke din skyld, og du er ikke alene.",
       ],
       callout:
-        "🤍 Vigtigt: Alt, der deles her, er personlige erfaringer — ikke medicinsk rådgivning. Har du brug for akut hjælp? Se Hjælp & SOS.",
+        "🤍 Vigtigt: Alt, der deles her, er personlige erfaringer — ikke medicinsk rådgivning. Har du brug for akut hjælp? Se",
+      calloutAction: { label: "Hjælp & SOS", href: "/akut" },
     },
   },
   {

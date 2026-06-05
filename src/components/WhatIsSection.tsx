@@ -1,9 +1,8 @@
-import { useState } from "react";
-import CrisisModal from "./CrisisModal";
+import { useNavigate } from "react-router-dom";
 import { useCrisisModalTracking } from "@/hooks/use-analytics";
 
 const WhatIsSection = () => {
-  const [isCrisisModalOpen, setIsCrisisModalOpen] = useState(false);
+  const navigate = useNavigate();
   const { trackCrisisModalOpen } = useCrisisModalTracking();
 
   return (
@@ -97,7 +96,7 @@ const WhatIsSection = () => {
                 <button
                   onClick={() => {
                     trackCrisisModalOpen();
-                    setIsCrisisModalOpen(true);
+                    navigate("/akut");
                   }}
                   className="text-mountain-orange hover:text-mountain-orange/70 underline underline-offset-4 font-body font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-mountain-orange focus:ring-offset-2 rounded"
                 >
@@ -109,7 +108,6 @@ const WhatIsSection = () => {
         </div>
       </section>
 
-      <CrisisModal isOpen={isCrisisModalOpen} onClose={() => setIsCrisisModalOpen(false)} />
     </>
   );
 };
