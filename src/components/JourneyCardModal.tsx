@@ -23,11 +23,13 @@ export type JourneyCard = {
 interface JourneyCardModalProps {
   card: JourneyCard | null;
   onClose: () => void;
+  prevCard?: JourneyCard;
+  nextCard?: JourneyCard;
   onPrev?: () => void;
   onNext?: () => void;
 }
 
-const JourneyCardModal = ({ card, onClose, onPrev, onNext }: JourneyCardModalProps) => {
+const JourneyCardModal = ({ card, onClose, prevCard, nextCard, onPrev, onNext }: JourneyCardModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -86,25 +88,45 @@ const JourneyCardModal = ({ card, onClose, onPrev, onNext }: JourneyCardModalPro
         <title>{details.modalTitle} | MitLivMed</title>
       </Helmet>
 
-      {/* Prev arrow */}
-      {onPrev && (
+      {/* Prev card nav */}
+      {onPrev && prevCard && (
         <button
           onClick={(e) => { e.stopPropagation(); onPrev(); }}
-          className="absolute left-2 sm:left-6 p-2 rounded-full bg-warm-white/80 hover:bg-warm-white shadow transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-mountain-orange"
-          aria-label="Forrige landskab"
+          className="hidden lg:block absolute left-6 top-1/2 -translate-y-1/2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-mountain-orange rounded-xl"
+          aria-label={`Forrige: ${prevCard.title}`}
         >
-          <ChevronLeft className="w-6 h-6 text-soft-black" />
+          <div className="relative w-36 rounded-xl overflow-hidden shadow-md group-hover:shadow-lg transition-shadow">
+            <img
+              src={prevCard.image}
+              alt={prevCard.title}
+              className={`absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${prevCard.imgClassName ?? ""}`}
+            />
+            <div className="relative m-[20%] bg-warm-white rounded-lg flex flex-row items-center justify-center gap-1 py-1 pl-3 pr-3">
+              <ChevronLeft className="w-4 h-4 text-soft-black flex-shrink-0" />
+              <span className="text-[14px] font-heading text-soft-black text-center leading-tight">{prevCard.title}</span>
+            </div>
+          </div>
         </button>
       )}
 
-      {/* Next arrow */}
-      {onNext && (
+      {/* Next card nav */}
+      {onNext && nextCard && (
         <button
           onClick={(e) => { e.stopPropagation(); onNext(); }}
-          className="absolute right-2 sm:right-6 p-2 rounded-full bg-warm-white/80 hover:bg-warm-white shadow transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-mountain-orange"
-          aria-label="Næste landskab"
+          className="hidden lg:block absolute right-6 top-1/2 -translate-y-1/2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-mountain-orange rounded-xl"
+          aria-label={`Næste: ${nextCard.title}`}
         >
-          <ChevronRight className="w-6 h-6 text-soft-black" />
+          <div className="relative w-36 rounded-xl overflow-hidden shadow-md group-hover:shadow-lg transition-shadow">
+            <img
+              src={nextCard.image}
+              alt={nextCard.title}
+              className={`absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${nextCard.imgClassName ?? ""}`}
+            />
+            <div className="relative m-[20%] bg-warm-white rounded-lg flex flex-row items-center justify-center gap-1 py-1 pl-3 pr-3">
+              <span className="text-[14px] font-heading text-soft-black text-center leading-tight">{nextCard.title}</span>
+              <ChevronRight className="w-4 h-4 text-soft-black flex-shrink-0" />
+            </div>
+          </div>
         </button>
       )}
 

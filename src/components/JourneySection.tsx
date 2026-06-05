@@ -296,6 +296,8 @@ const JourneySection = () => {
       <JourneyCardModal
         card={activeCard}
         onClose={() => navigate("/")}
+        prevCard={prevCard ?? undefined}
+        nextCard={nextCard ?? undefined}
         onPrev={prevCard ? () => navigate(`/landskaber/${prevCard.title.toLowerCase()}`) : undefined}
         onNext={nextCard ? () => navigate(`/landskaber/${nextCard.title.toLowerCase()}`) : undefined}
       />
