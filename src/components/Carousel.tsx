@@ -22,8 +22,8 @@ const content = {
     },
     {
       stat: "Fællesskabsstøtte virker",
-      text: "Analyser viser signifikant bedring i personlig recovery og reduktion af angst",
-      highlight: "Baseret på en meta-analyse af 49 studier med 12.477 deltagere.",
+      text: "En meta-analyse af 49 studier med 12.477 deltagere viser signifikant bedring i personlig recovery og reduktion af angst.",
+      highlight: "12.477 mennesker. Samme konklusion: erfaringer fra andre gør en forskel.",
       footnote: 2,
     },
   ],
