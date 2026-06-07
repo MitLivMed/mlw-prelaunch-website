@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useRef } from "react";
+import { useModalKeyboard } from "@/hooks/use-modal-keyboard";
 import { Link } from "react-router-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
@@ -35,43 +36,12 @@ const JourneyCardModal = ({ card, onClose, prevCard, nextCard, onPrev, onNext }:
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Focus trap, Esc handling and body scroll lock (mirrors CrisisModal)
-  useEffect(() => {
-    if (!card) return;
+  const handleArrowKeys = useCallback((e: KeyboardEvent) => {
+    if (e.key === "ArrowLeft") onPrev?.();
+    if (e.key === "ArrowRight") onNext?.();
+  }, [onPrev, onNext]);
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-      if (e.key === "ArrowLeft") onPrev?.();
-      if (e.key === "ArrowRight") onNext?.();
-
-      if (e.key === "Tab" && modalRef.current) {
-        const focusable = modalRef.current.querySelectorAll<HTMLElement>(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    closeButtonRef.current?.focus();
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
-    };
-  }, [card, onClose]);
+  useModalKeyboard({ isOpen: !!card, modalRef, closeButtonRef, onClose, onExtraKeyDown: handleArrowKeys });
 
   if (!card) return null;
 
