@@ -42,19 +42,6 @@ export function useCtaTracking() {
   return { trackCtaClick };
 }
 
-// Form tracking (for Tally embeds)
-export function useFormTracking() {
-  const trackFormStart = useCallback((formId: string) => {
-    posthog.capture('form_start', { form_id: formId });
-  }, []);
-
-  const trackFormSubmit = useCallback((formId: string) => {
-    posthog.capture('form_submit', { form_id: formId });
-  }, []);
-
-  return { trackFormStart, trackFormSubmit };
-}
-
 // Crisis modal tracking
 export function useCrisisModalTracking() {
   const trackCrisisModalOpen = useCallback(() => {

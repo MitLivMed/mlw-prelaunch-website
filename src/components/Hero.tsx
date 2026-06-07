@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { openSignupForm } from "@/lib/tally";
+import { useCtaTracking } from "@/hooks/use-analytics";
 import YouTubePlayer from "./YouTubePlayer";
 
 const Hero = () => {
+  const { trackCtaClick } = useCtaTracking();
 
   return (
     <section className="relative pt-24 pb-12 sm:pb-14 md:pt-32 md:pb-18 lg:pb-22 bg-warm-white overflow-visible">
@@ -57,7 +59,7 @@ const Hero = () => {
             <div className="space-y-3">
               <Button
                 size="lg"
-                onClick={() => openSignupForm('hero')}
+                onClick={() => { openSignupForm('hero'); trackCtaClick('hero'); }}
                 className="w-full md:w-auto bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
               >
                 Skriv dig på ventelisten
