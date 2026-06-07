@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { openSignupForm } from "@/lib/tally";
 
 const content = {
   header: "Kan du genkende det?",
@@ -158,9 +159,7 @@ const Carousel = () => {
           {content.closing}
         </p>
         <Button
-          data-tally-open="0Q87J0"
-          data-tally-emoji-text="👋"
-          data-tally-emoji-animation="wave"
+          onClick={() => openSignupForm('carousel')}
           size="lg"
           className="bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
         >
