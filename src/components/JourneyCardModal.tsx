@@ -2,7 +2,7 @@ import { useCallback, useRef } from "react";
 import { useModalKeyboard } from "@/hooks/use-modal-keyboard";
 import { Link } from "react-router-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
 
 export type CardDetails = {
   emoji: string;
@@ -56,9 +56,7 @@ const JourneyCardModal = ({ card, onClose, prevCard, nextCard, onPrev, onNext }:
       aria-modal="true"
       aria-labelledby={titleId}
     >
-      <Helmet>
-        <title>{details.modalTitle} | MitLivMed</title>
-      </Helmet>
+      <SEO title={details.modalTitle} />
 
       {/* Prev card nav */}
       {onPrev && prevCard && (
