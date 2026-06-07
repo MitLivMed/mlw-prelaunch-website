@@ -4,10 +4,12 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/logos/logo.svg";
 import { Button } from "@/components/ui/button";
 import { openSignupForm } from "@/lib/tally";
+import { useCtaTracking } from "@/hooks/use-analytics";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { trackCtaClick } = useCtaTracking();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +47,7 @@ const Header = () => {
             Om os
           </Link>
           <Button
-            onClick={() => openSignupForm('header_desktop')}
+            onClick={() => { openSignupForm('header_desktop'); trackCtaClick('header_desktop'); }}
             className="bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-medium hover:scale-105 transition-all"
           >
             Skriv dig på ventelisten →
@@ -76,6 +78,7 @@ const Header = () => {
             <Button
               onClick={() => {
                 openSignupForm('header_mobile');
+                trackCtaClick('header_mobile');
                 setIsMenuOpen(false);
               }}
               className="bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-medium w-full"
