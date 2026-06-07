@@ -1,4 +1,3 @@
-import wavesImage from "@/assets/waves-trans.png";
 import { Button } from "@/components/ui/button";
 import { openSignupForm } from "@/lib/tally";
 import { useCtaTracking } from "@/hooks/use-analytics";
