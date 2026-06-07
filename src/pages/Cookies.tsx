@@ -1,8 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import wavesImage from "@/assets/waves-trans.png";
-
 const Cookies = () => {
   return (
     <div className="min-h-screen bg-warm-white">

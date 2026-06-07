@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import wavesImage from "@/assets/waves-trans.png";
 import founderImage from "@/assets/founders/jesper-founder-photo.png";
 
 const About = () => {
