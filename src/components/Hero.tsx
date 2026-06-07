@@ -43,19 +43,6 @@ const Hero = () => {
               <strong className="font-bold">Vi bygger noget til det, der kommer efter: resten af livet</strong>
             </p>
 
-            {/* CTA - mobile only (above the fold) */}
-            <div className="md:hidden space-y-3 mb-6">
-              <Button
-                size="lg"
-                onClick={() => openSignupForm('hero')}
-                className="w-full bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
-              >
-                Skriv dig på ventelisten
-              </Button>
-              <p className="text-sm text-text-light font-body">
-                MitLivMed lancerer i 2026. Er du nysgerrig eller har du lyst til at hjælpe os, så skriv dig op som betatester og sæt dit præg på MitLivMed.
-              </p>
-            </div>
 
             <p className="text-base md:text-lg text-text-dark font-body leading-relaxed mb-4">
               MitLivMed er et digitalt fællesskab,{" "}
@@ -66,12 +53,12 @@ const Hero = () => {
               Vi er en bevægelse af mennesker, der deler det, der hjælper os med at leve godt med bipolar, i håb om at vi kan lære af at gå i hinandens fodspor.
             </p>
 
-            {/* CTA - desktop only */}
-            <div className="hidden md:block space-y-3">
+            {/* CTA */}
+            <div className="space-y-3">
               <Button
                 size="lg"
                 onClick={() => openSignupForm('hero')}
-                className="w-full sm:w-auto bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
+                className="w-full md:w-auto bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-semibold text-base px-8 py-6 hover:scale-105 transition-all"
               >
                 Skriv dig på ventelisten
               </Button>
