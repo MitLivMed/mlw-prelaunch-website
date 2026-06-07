@@ -52,6 +52,9 @@ const Footer = () => {
                   <Link to="/om-os" className="hover:text-text-dark transition-colors">
                     Om MitLivMed
                   </Link>
+                  <a href="https://shop.mitlivmed.dk" className="hover:text-text-dark transition-colors" target="_blank" rel="noopener noreferrer">
+                    Butik
+                  </a>
                   <a href="mailto:kontakt@mitlivmed.dk" className="hover:text-text-dark transition-colors">
                     Kontakt
                   </a>

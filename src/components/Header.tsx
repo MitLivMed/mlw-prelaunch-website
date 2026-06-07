@@ -46,6 +46,14 @@ const Header = () => {
           >
             Om os
           </Link>
+          <a
+            href="https://shop.mitlivmed.dk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-medium hover:text-foreground transition-colors font-body text-sm"
+          >
+            Butik
+          </a>
           <Button
             onClick={() => { openSignupForm('header_desktop'); trackCtaClick('header_desktop'); }}
             className="bg-mountain-orange hover:bg-mountain-orange/90 text-warm-white font-heading font-medium hover:scale-105 transition-all"
@@ -75,6 +83,15 @@ const Header = () => {
             >
               Om os
             </Link>
+            <a
+              href="https://shop.mitlivmed.dk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-text-medium hover:text-foreground transition-colors font-body py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Butik
+            </a>
             <Button
               onClick={() => {
                 openSignupForm('header_mobile');
