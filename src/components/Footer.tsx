@@ -43,28 +43,40 @@ const Footer = () => {
                 </div>
               </div>
 
-              {/* Right column - Links */}
-              <div>
-                <h4 className="font-heading font-semibold text-sm text-foreground mb-4">
-                  Virksomhed
-                </h4>
-                <nav className="flex flex-col gap-3 text-sm font-body text-text-medium">
-                  <Link to="/om-os" className="hover:text-text-dark transition-colors">
-                    Om MitLivMed
-                  </Link>
-                  <a href="https://shop.mitlivmed.dk" className="hover:text-text-dark transition-colors" target="_blank" rel="noopener noreferrer">
-                    Butik
-                  </a>
-                  <a href="mailto:kontakt@mitlivmed.dk" className="hover:text-text-dark transition-colors">
-                    Kontakt
-                  </a>
-                  <Link to="/privatlivspolitik" className="hover:text-text-dark transition-colors">
-                    Privatlivspolitik
-                  </Link>
-                  <Link to="/cookies" className="hover:text-text-dark transition-colors">
-                    Cookiepolitik
-                  </Link>
-                </nav>
+              {/* Right columns - Links */}
+              <div className="flex flex-row gap-12">
+                {/* Company links */}
+                <div>
+                  <h4 className="font-heading font-semibold text-sm text-foreground mb-4">
+                    Virksomhed
+                  </h4>
+                  <nav className="flex flex-col gap-3 text-sm font-body text-text-medium">
+                    <Link to="/om-os" className="hover:text-text-dark transition-colors">
+                      Om MitLivMed
+                    </Link>
+                    <a href="mailto:kontakt@mitlivmed.dk" className="hover:text-text-dark transition-colors">
+                      Kontakt
+                    </a>
+                    <a href="https://shop.mitlivmed.dk" className="hover:text-text-dark transition-colors" target="_blank" rel="noopener noreferrer">
+                      Butik
+                    </a>
+                  </nav>
+                </div>
+
+                {/* Policy links */}
+                <div>
+                  <h4 className="font-heading font-semibold text-sm text-foreground mb-4">
+                    Politikker
+                  </h4>
+                  <nav className="flex flex-col gap-3 text-sm font-body text-text-medium">
+                    <Link to="/privatlivspolitik" className="hover:text-text-dark transition-colors">
+                      Privatlivspolitik
+                    </Link>
+                    <Link to="/cookies" className="hover:text-text-dark transition-colors">
+                      Cookiepolitik
+                    </Link>
+                  </nav>
+                </div>
               </div>
             </div>
 
