@@ -32,10 +32,10 @@ const Privacy = () => {
             {/* Version badge */}
             <div className="flex items-center gap-3 mb-10">
               <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-plain-green-30 text-plain-green-100 border border-plain-green-30">
-                Version 1.0
+                Version 1.1
               </span>
               <span className="text-sm text-text-light">
-                Sidst opdateret: 20. januar 2026
+                Sidst opdateret: 7. juni 2026
               </span>
             </div>
 
@@ -47,8 +47,8 @@ const Privacy = () => {
               <div className="font-body text-text-medium leading-relaxed space-y-1">
                 <p className="font-semibold text-foreground">MitLivMed ApS</p>
                 <p>CVR: 46193040</p>
-                <p>Gothersgade 103, 4. th.</p>
-                <p>1123 København K</p>
+                <p>Otto Busses Vej 5, 2. tv</p>
+                <p>2450 København</p>
                 <p className="pt-2">
                   E-mail:{" "}
                   <a
@@ -175,9 +175,14 @@ const Privacy = () => {
                       <td className="px-4 py-3 border-b border-border">EU (med US backup)</td>
                     </tr>
                     <tr className="bg-warm-white">
-                      <td className="px-4 py-3">Vercel</td>
-                      <td className="px-4 py-3">Webhosting</td>
-                      <td className="px-4 py-3">EU region</td>
+                      <td className="px-4 py-3 border-b border-border">Vercel</td>
+                      <td className="px-4 py-3 border-b border-border">Webhosting</td>
+                      <td className="px-4 py-3 border-b border-border">EU region</td>
+                    </tr>
+                    <tr className="bg-mountain-orange-10">
+                      <td className="px-4 py-3">PostHog</td>
+                      <td className="px-4 py-3">Websiteanalyse (sidevisninger, brugeradfærd)</td>
+                      <td className="px-4 py-3">EU (eu.posthog.com)</td>
                     </tr>
                   </tbody>
                 </table>
@@ -220,8 +225,13 @@ const Privacy = () => {
                       <td className="px-4 py-3 border-b border-border">Standard Contractual Clauses (SCC)</td>
                     </tr>
                     <tr className="bg-warm-white">
-                      <td className="px-4 py-3">Tally.so</td>
-                      <td className="px-4 py-3">Belgien (EU)</td>
+                      <td className="px-4 py-3 border-b border-border">Tally.so</td>
+                      <td className="px-4 py-3 border-b border-border">Belgien (EU)</td>
+                      <td className="px-4 py-3 border-b border-border">Ingen tredjelandsoverførsel</td>
+                    </tr>
+                    <tr className="bg-mountain-orange-10">
+                      <td className="px-4 py-3">PostHog</td>
+                      <td className="px-4 py-3">EU (eu.posthog.com)</td>
                       <td className="px-4 py-3">Ingen tredjelandsoverførsel</td>
                     </tr>
                   </tbody>
