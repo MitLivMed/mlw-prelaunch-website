@@ -8,7 +8,7 @@
 @layer base {
   :root {
     /* MitLivMed Brand Colors (HSL) */
-    --background: var(--warm-white);
+    --background: 12 33% 97%; /* = #FAF6F5 (warm-white); must be an HSL triplet because Tailwind wraps it in hsl() */
     --foreground: 0 0% 17%;
 
     --card: 38 55% 96%;
