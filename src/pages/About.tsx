@@ -1,7 +1,58 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import founderImage from "@/assets/founders/jesper-founder-photo.png";
+
+// Images for team members (replace stock photo with actual photos when available)
+import photoJesper from "@/assets/staff/jesper-photo.png";
+import photoAlex from "@/assets/staff/alex-photo.png";
+import photoHelena from "@/assets/staff/helena-photo.png";
+import photoHelenaB from "@/assets/staff/helena-b-photo.png";
+import photoLisa from "@/assets/staff/lisa-photo.png";
+import photoStock from "@/assets/staff/stock-photo.png";
+
+type TeamMember = {
+  name: string;
+  title: string;
+  photo: string | null;
+};
+
+const teamMembers: TeamMember[] = [
+  {
+    name: "Jesper Ohrt Juel Jensen",
+    title: "Medstifter & Daglig Leder | Diagnoseret bipolar type 1",
+    photo: photoJesper,
+  },
+  {
+    name: "Helena Levison",
+    title: "Medstifter, Fællesskab & Events",
+    photo: photoHelena,
+  },
+  {
+    name: "Alex Vilfort",
+    title: "Producer",
+    photo: photoAlex,
+  },
+  {
+    name: "Sanne Hermann",
+    title: "Moderator",
+    photo: photoStock,
+  },
+  {
+    name: "Lisa Brix Pedersen",
+    title: "Redaktør",
+    photo: photoLisa,
+  },
+  {
+    name: "Helena Bright",
+    title: "Sociale Medier & Klipper",
+    photo: photoHelenaB,
+  },
+  {
+    name: "Tonni Hyldgaard",
+    title: "IT-ansvarlig",
+    photo: photoStock,
+  },
+];
 
 const About = () => {
   const mission = {
@@ -97,29 +148,35 @@ const About = () => {
             </div>
           </div>
 
-          {/* Founder photo section */}
+          {/* Team section */}
           <div className="pb-16 md:pb-24">
             <div className="container mx-auto px-4">
-              <div className="max-w-4xl mx-auto text-center">
-                {/* Large centered photo */}
-                <div className="relative inline-block mb-8">
-                  {/* Decorative elements */}
-                  <div className="absolute -inset-4 md:-inset-6 bg-gradient-to-br from-primary/10 via-desert/20 to-secondary/10 rounded-3xl blur-xl" />
-                  <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 via-desert/30 to-secondary/20 rounded-2xl" />
-
-                  <img
-                    src={founderImage}
-                    alt="Jesper Ohrt Juel Jensen, stifter af MitLivMed"
-                    className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-cover object-top rounded-2xl shadow-2xl"
-                  />
-                </div>
-
-                {/* Founder name */}
-                <div>
-                  <p className="font-heading text-xl md:text-2xl font-semibold text-foreground">
-                    Jesper Ohrt Juel Jensen
-                  </p>
-                  <p className="text-text-medium mt-1">Stifter af MitLivMed | Diagnoseret bipolar type 1</p>
+              <div className="max-w-4xl mx-auto">
+                <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground text-center mb-10">
+                  Holdet bag MitLivMed
+                </h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
+                  {teamMembers.map((member) => (
+                    <div key={member.name} className="flex flex-col items-center text-center">
+                      {member.photo ? (
+                        <img
+                          src={member.photo}
+                          alt={member.name}
+                          className="w-36 h-36 md:w-44 md:h-44 object-cover object-top rounded-2xl shadow-md mb-4"
+                        />
+                      ) : (
+                        <div className="w-36 h-36 md:w-44 md:h-44 rounded-2xl shadow-md mb-4 bg-primary/10 flex items-center justify-center">
+                          <span className="font-heading text-3xl font-semibold text-primary/60">
+                            {member.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+                          </span>
+                        </div>
+                      )}
+                      <p className="font-heading text-base font-semibold text-foreground">
+                        {member.name}
+                      </p>
+                      <p className="text-sm text-text-medium mt-1">{member.title}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
