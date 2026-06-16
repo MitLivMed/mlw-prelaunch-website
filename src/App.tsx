@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
 import Cookies from "./pages/Cookies";
+import SupportMembership from "./pages/SupportMembership";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/om-os" element={<About />} />
             <Route path="/privatlivspolitik" element={<Privacy />} />
             <Route path="/cookies" element={<Cookies />} />
+            <Route path="/stoettemedlemskab" element={<SupportMembership />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
