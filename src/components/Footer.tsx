@@ -54,6 +54,9 @@ const Footer = () => {
                     <Link to="/om-os" className="hover:text-text-dark transition-colors">
                       Om MitLivMed
                     </Link>
+                    {/* <Link to="/stoettemedlemskab" className="hover:text-text-dark transition-colors">
+                      Støt
+                    </Link> */}
                     <a href="mailto:kontakt@mitlivmed.dk" className="hover:text-text-dark transition-colors">
                       Kontakt
                     </a>

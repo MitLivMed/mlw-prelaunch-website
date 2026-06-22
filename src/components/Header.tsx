@@ -46,6 +46,12 @@ const Header = () => {
           >
             Om os
           </Link>
+          {/* <Link
+            to="/stoettemedlemskab"
+            className="text-text-medium hover:text-foreground transition-colors font-body text-sm"
+          >
+            Støt
+          </Link> */}
           <a
             href="https://shop.mitlivmed.dk"
             target="_blank"
@@ -83,6 +89,13 @@ const Header = () => {
             >
               Om os
             </Link>
+            {/* <Link
+              to="/stoettemedlemskab"
+              className="text-text-medium hover:text-foreground transition-colors font-body py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Støt
+            </Link> */}
             <a
               href="https://shop.mitlivmed.dk"
               target="_blank"
