@@ -1,11 +1,22 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import { DonationDialog } from "@/components/donation/DonationDialog";
+import { FundStatus } from "@/components/donation/FundStatus";
 
 const HUBSPOT_LINK =
   "https://meetings-eu1.hubspot.com/jesper24/mitlivmed";
 
 const SupportMembership = () => {
+  const [donationOpen, setDonationOpen] = useState(false);
+  const [presetAmount, setPresetAmount] = useState<number | undefined>(undefined);
+
+  const openDonation = (amount?: number) => {
+    setPresetAmount(amount);
+    setDonationOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-warm-white">
       <SEO
@@ -44,14 +55,13 @@ const SupportMembership = () => {
             eneste måned.
           </p>
           <div className="relative flex flex-wrap items-center justify-center gap-3">
-            <a
-              href={HUBSPOT_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => { openDonation(); }}
               className="inline-block rounded-md bg-mountain-orange px-8 py-3.5 font-body text-[15px] font-medium text-white transition-colors hover:bg-mountain-orange-110"
             >
               Bliv støttemedlem →
-            </a>
+            </button>
             <a
               href="#scholarship"
               className="inline-block rounded-md border-[1.5px] border-mountain-orange px-7 py-[11px] font-body text-sm font-medium text-mountain-orange transition-colors hover:bg-mountain-orange/5"
@@ -157,26 +167,40 @@ const SupportMembership = () => {
                 Der er ingen forkert pris. Ethvert beløb over minimumsgrænsen
                 går direkte til stipendiepuljen.
               </p>
+              <FundStatus className="mx-auto mt-3 max-w-[460px] text-sm text-text-medium" />
             </div>
 
             <div className="mb-4 grid gap-4 md:grid-cols-3">
-              <PriceCard amount={50} description={"Grundbidrag.\nGiver adgang til fællesskabet."} />
+              <PriceCard
+                amount={50}
+                description={"Grundbidrag.\nGiver adgang til fællesskabet."}
+                onSelect={openDonation}
+              />
               <PriceCard
                 amount={75}
                 description={"Dækker dig selv\n+ bidrager til én anden."}
                 featured
+                onSelect={openDonation}
               />
-              <PriceCard amount={100} description={"Stærkt bidrag.\nGiver to andre adgang."} />
+              <PriceCard
+                amount={100}
+                description={"Stærkt bidrag.\nGiver to andre adgang."}
+                onSelect={openDonation}
+              />
             </div>
 
-            <div className="rounded-lg border-[1.5px] border-dashed border-[#E8DDD2] bg-warm-white px-5 py-4 text-center text-[13px] text-text-medium">
+            <button
+              type="button"
+              onClick={() => { openDonation(); }}
+              className="w-full rounded-lg border-[1.5px] border-dashed border-[#E8DDD2] bg-warm-white px-5 py-4 text-center text-[13px] text-text-medium transition-colors hover:border-mountain-orange"
+            >
               Vil du bidrage med mere?{" "}
               <strong className="text-mountain-orange">
                 Vælg selv dit beløb
               </strong>{" "}
               fra 50 kr/md ved tilmelding. Alle beløb over bundniveau går
               uafkortet til stipendier.
-            </div>
+            </button>
           </div>
         </section>
 
@@ -224,14 +248,13 @@ const SupportMembership = () => {
             depression, ADHD, OCD og PTSD.
           </p>
           <div className="relative">
-            <a
-              href={HUBSPOT_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => { openDonation(); }}
               className="inline-block rounded-md bg-mountain-orange px-10 py-4 font-body text-base font-medium text-white transition-colors hover:bg-mountain-orange-110"
             >
               Bliv støttemedlem i dag →
-            </a>
+            </button>
           </div>
           <p className="relative mt-4 text-xs text-white/40">
             Opsig når som helst. Ingen binding.
@@ -240,6 +263,12 @@ const SupportMembership = () => {
       </main>
 
       <Footer />
+
+      <DonationDialog
+        open={donationOpen}
+        onOpenChange={setDonationOpen}
+        initialAmount={presetAmount}
+      />
     </div>
   );
 };
@@ -296,14 +325,18 @@ function PriceCard({
   amount,
   description,
   featured,
+  onSelect,
 }: {
   amount: number;
   description: string;
   featured?: boolean;
+  onSelect?: (amount: number) => void;
 }) {
   return (
-    <div
-      className={`relative cursor-pointer rounded-lg border-[1.5px] px-5 py-6 text-center transition-all hover:border-mountain-orange hover:shadow-md ${
+    <button
+      type="button"
+      onClick={() => onSelect?.(amount)}
+      className={`relative block w-full cursor-pointer rounded-lg border-[1.5px] px-5 py-6 text-center transition-all hover:border-mountain-orange hover:shadow-md ${
         featured
           ? "border-mountain-orange bg-mountain-orange-10"
           : "border-[#E8DDD2] bg-warm-white"
@@ -323,7 +356,7 @@ function PriceCard({
       <div className="whitespace-pre-line text-xs leading-snug text-text-medium">
         {description}
       </div>
-    </div>
+    </button>
   );
 }
 
