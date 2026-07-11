@@ -253,6 +253,11 @@ export function DonationDialog({
             <p className="mt-3 text-center text-xs text-text-light">
               {recurring ? "Opsig når som helst. Ingen binding." : "Enkelt bidrag."}
             </p>
+            <p className="mt-2 text-center text-xs text-text-light">
+              MitLivMed ApS er en virksomhed, ikke en forening. Dit bidrag er ikke
+              skattefradragsberettiget og udstedes ikke som en fradragsberettiget
+              donation.
+            </p>
           </form>
         )}
       </DialogContent>

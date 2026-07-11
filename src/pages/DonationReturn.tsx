@@ -23,7 +23,7 @@ const DonationReturn = () => {
     <div className="min-h-screen bg-warm-white">
       <SEO
         title="Tak for din støtte"
-        description="Kvittering for dit støttebidrag til MitLivMed."
+        description="Betalingsbekræftelse for dit støttebidrag til MitLivMed."
         path="/donation/retur"
       />
       <Header />
@@ -34,8 +34,8 @@ const DonationReturn = () => {
               Vi kunne ikke bekræfte betalingen
             </h1>
             <p className="mt-3 text-text-medium">
-              Hvis beløbet er trukket, modtager du en kvittering på e-mail. Ellers
-              prøv igen.
+              Hvis beløbet er trukket, modtager du en betalingsbekræftelse på
+              e-mail. Ellers prøv igen.
             </p>
           </>
         ) : isLoading ? (
@@ -52,7 +52,11 @@ const DonationReturn = () => {
             </h1>
             <p className="mt-3 max-w-md text-text-medium">
               Dit bidrag går direkte til at give et andet menneske adgang til
-              fællesskabet. Du modtager en kvittering på e-mail.
+              fællesskabet. Du modtager en betalingsbekræftelse på e-mail.
+            </p>
+            <p className="mt-2 max-w-md text-xs text-text-light">
+              Bemærk: MitLivMed ApS er en virksomhed. Bidraget er ikke
+              skattefradragsberettiget.
             </p>
             <FundStatus className="mt-6 text-sm text-text-medium" />
           </>
