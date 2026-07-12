@@ -21,7 +21,7 @@ const SupportMembership = () => {
     <div className="min-h-screen bg-warm-white">
       <SEO
         title="Støttemedlemskab"
-        description="Bliv støttemedlem i MitLivMed. Din betaling åbner døre for andre – du betaler for dig selv og giver adgang til fællesskabet for et andet menneske."
+        description="Bliv støttemedlem i MitLivMed. Som støttemedlem er du med til at holde fællesskabet kørende og sikre, at mennesker med bipolar ikke behøver stå alene med det."
         path="/stoettemedlemskab"
       />
       <a
@@ -42,17 +42,16 @@ const SupportMembership = () => {
           <p className="relative mb-4 text-[11px] font-semibold uppercase tracking-[2px] text-mountain-orange">
             Månedligt støttemedlemskab
           </p>
-          <h1 className="relative mx-auto mb-5 max-w-lg font-title text-4xl font-semibold leading-[1.1] text-soft-black md:text-5xl">
-            Din betaling
+          <h1 className="relative mx-auto mb-5 max-w-2xl font-title text-4xl font-semibold leading-[1.1] text-soft-black md:text-5xl">
+            At leve med bipolar er svært.
             <br />
-            åbner døre
-            <br />
-            for <em className="text-mountain-orange">andre</em>
+            At finde ud af det alene er{" "}
+            <em className="text-mountain-orange">sværere</em>.
           </h1>
           <p className="relative mx-auto mb-9 max-w-[520px] text-base leading-relaxed text-text-medium">
-            Som støttemedlem betaler du ikke kun for dig selv. Du giver adgang
-            til fællesskabet for et andet menneske, der ikke havde råd. Hver
-            eneste måned.
+            Som støttemedlem er du med til at holde fællesskabet kørende og
+            sikre, at mennesker med bipolar ikke behøver stå alene med det. Dit
+            bidrag skaber events, artikler, videoer og fællesskabet.
           </p>
           <div className="relative flex flex-wrap items-center justify-center gap-3">
             <button
@@ -62,24 +61,23 @@ const SupportMembership = () => {
             >
               Bliv støttemedlem →
             </button>
-            <a
-              href="#scholarship"
+            <button
+              type="button"
+              onClick={() => { openDonation(); }}
               className="inline-block rounded-md border-[1.5px] border-mountain-orange px-7 py-[11px] font-body text-sm font-medium text-mountain-orange transition-colors hover:bg-mountain-orange/5"
             >
-              Søg stipendium
-            </a>
+              Donér et beløb
+            </button>
           </div>
         </section>
 
         {/* Impact Bar */}
         <div className="flex flex-wrap items-center justify-around gap-4 bg-mountain-orange px-6 py-7 md:px-12">
-          <ImpactItem number="2.700+" label="Medlemmer i fællesskabet" />
+          <ImpactItem number="55.000" label="Danskere med bipolar" />
           <ImpactDivider />
-          <ImpactItem number="45M+" label="Europæere lever med bipolar" />
+          <ImpactItem number="20%" label="Dør ved selvmord" />
           <ImpactDivider />
-          <ImpactItem number="100%" label="Stipendier finansieret af støttemedlemmer" />
-          <ImpactDivider />
-          <ImpactItem number="gratis" label="Community-adgang for alle" />
+          <ImpactItem number="100%" label="Gratis fællesskabsadgang" />
         </div>
 
         {/* Cause + Benefits */}
@@ -97,9 +95,10 @@ const SupportMembership = () => {
               </h2>
               <p className="text-sm leading-[1.75] text-text-medium">
                 De fleste der søger hjælp efter en bipolar diagnose finder
-                generelle sundhedsapps, lange ventelister, eller
-                Facebook-grupper uden struktur. MitLivMed er skabt til det liv,
-                der sker efter diagnosen.
+                litteratur, ressourcer fra sundhedssystemet eller
+                Facebook-grupper. Det hjælper, men det er svært at finde
+                mennesker du kan spejle dig i. MitLivMed er bygget til dem der
+                vil trives med bipolar, ikke bare overleve det.
               </p>
 
               <div className="my-5 rounded-r-md border-l-[3px] border-mountain-orange bg-warm-white px-5 py-4">
@@ -113,40 +112,35 @@ const SupportMembership = () => {
               </div>
 
               <p className="text-sm leading-[1.75] text-text-medium">
-                Som støttemedlem er dit bidrag direkte årsagen til, at et andet
-                menneske kan få adgang til fællesskab og struktureret støtte,
-                selvom deres økonomi ikke tillader det.
+                Som støttemedlem sikrer du at folk med bipolar finder
+                fællesskab og støtte når de har brug for det mest.
               </p>
             </div>
 
             {/* Right: Benefits */}
             <div>
               <p className="mb-3 text-[10px] font-semibold uppercase tracking-[2px] text-mountain-orange">
-                Hvad du får som støttemedlem
+                Hvad et støttemedlemskab giver
               </p>
               <h2 className="mb-4 font-title text-[28px] font-semibold leading-[1.2] text-soft-black md:text-[30px]">
                 Fællesskab, indhold og{" "}
-                <em className="text-mountain-orange">fordele</em>
+                <em className="text-mountain-orange">værdi</em>
               </h2>
               <ul className="mt-1 list-none">
                 <BenefitItem>
-                  <strong>6–12 arrangementer om året</strong> på tværs af
+                  <strong>3–5 arrangementer om året</strong> på tværs af
                   Danmark, fysisk og online
                 </BenefitItem>
                 <BenefitItem>
-                  <strong>Månedligt nyhedsbrev</strong> med indsigt, erfaringer
-                  og ny viden fra fællesskabet
+                  <strong>Artikler og videoer</strong> om livet med bipolar der
+                  gør en forskel
                 </BenefitItem>
                 <BenefitItem>
-                  <strong>20% rabat på merchandise</strong> fra MitLivMed
-                </BenefitItem>
-                <BenefitItem>
-                  <strong>Tidlig adgang og besparelser</strong> på kommende
-                  selvhjælpsgrupper og kliniske partnerskaber (2026)
+                  <strong>Månedligt nyhedsbrev</strong> med indsigter,
+                  erfaringer og ny viden fra fællesskabet
                 </BenefitItem>
                 <BenefitItem last>
-                  <strong>Du finansierer stipendier</strong> til dem, der ikke
-                  kan betale. Dit beløb gør en direkte forskel
+                  <strong>20% rabat på merchandise</strong> fra MitLivMed
                 </BenefitItem>
               </ul>
             </div>
@@ -164,8 +158,8 @@ const SupportMembership = () => {
                 Minimum 50 kr/md. Betal hvad du kan.
               </h2>
               <p className="mx-auto mt-2 max-w-[460px] text-sm leading-[1.75] text-text-medium">
-                Der er ingen forkert pris. Ethvert beløb over minimumsgrænsen
-                går direkte til stipendiepuljen.
+                Der er ingen forkert pris. Mange små bidrag = én stor forskel.
+                Opsig når som helst. Ingen binding.
               </p>
               <FundStatus className="mx-auto mt-3 max-w-[460px] text-sm text-text-medium" />
             </div>
@@ -173,18 +167,18 @@ const SupportMembership = () => {
             <div className="mb-4 grid gap-4 md:grid-cols-3">
               <PriceCard
                 amount={50}
-                description={"Grundbidrag.\nGiver adgang til fællesskabet."}
+                description={"Du er med til at holde\nfællesskabet kørende."}
                 onSelect={openDonation}
               />
               <PriceCard
                 amount={75}
-                description={"Dækker dig selv\n+ bidrager til én anden."}
+                description={"Du støtter fællesskabet\nog fortsætter udviklingen."}
                 featured
                 onSelect={openDonation}
               />
               <PriceCard
                 amount={100}
-                description={"Stærkt bidrag.\nGiver to andre adgang."}
+                description={"Størst bidrag.\nDu gør en mærkbar forskel for flere."}
                 onSelect={openDonation}
               />
             </div>
@@ -198,8 +192,7 @@ const SupportMembership = () => {
               <strong className="text-mountain-orange">
                 Vælg selv dit beløb
               </strong>{" "}
-              fra 50 kr/md ved tilmelding. Alle beløb over bundniveau går
-              uafkortet til stipendier.
+              fra 50 kr/md ved tilmelding.
             </button>
           </div>
         </section>
@@ -219,10 +212,11 @@ const SupportMembership = () => {
             </svg>
           </div>
           <p className="text-[13px] leading-relaxed text-text-medium">
-            <strong className="text-soft-black">Kan du ikke betale?</strong>{" "}
-            Community-adgang er altid gratis, uden ansøgning. Circle-pakken
-            (ugentlige gruppeforløb) er tilgængelig via vores stipendieprogram
-            for dem der ikke kan betale.{" "}
+            <strong className="text-soft-black">
+              Vil du gøre mere end at bidrage økonomisk?
+            </strong>{" "}
+            Vi vil altid gerne høre fra mennesker der vil være med til at bygge
+            noget der betyder noget.{" "}
             <a
               href={HUBSPOT_LINK}
               target="_blank"
@@ -245,7 +239,7 @@ const SupportMembership = () => {
           </h2>
           <p className="relative mx-auto mb-8 max-w-[460px] text-[15px] leading-relaxed text-white/65">
             Støttemedlemskabet starter med bipolar. Vi udvider snart til angst,
-            depression, ADHD, OCD og PTSD.
+            depression, ADHD og PTSD.
           </p>
           <div className="relative">
             <button
