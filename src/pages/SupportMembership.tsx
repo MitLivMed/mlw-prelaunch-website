@@ -34,9 +34,7 @@ const SupportMembership = () => {
 
       <main id="main-content">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-[#F2EAE0] px-6 py-16 pt-28 text-center md:px-12 md:py-20 md:pt-36">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-mountain-orange-10 opacity-35 md:h-72 md:w-72" />
-          <div className="pointer-events-none absolute -bottom-20 -left-10 h-52 w-52 rounded-full bg-plain-green-30 opacity-60 md:h-56 md:w-56" />
+        <section className="relative overflow-hidden bg-warm-white px-6 py-16 pt-28 text-center md:px-12 md:py-20 md:pt-36">
 
           <p className="relative mb-4 text-[11px] font-semibold uppercase tracking-[2px] text-mountain-orange">
             Månedligt støttemedlemskab
@@ -73,7 +71,7 @@ const SupportMembership = () => {
         </div>
 
         {/* Cause + Benefits */}
-        <section className="bg-plain-green-30 px-6 py-14 md:px-12">
+        <section className="bg-lake-blue-10 px-6 py-14 md:px-12">
           <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:gap-12">
             {/* Left: Cause */}
             <div>
@@ -191,10 +189,10 @@ const SupportMembership = () => {
           </div>
         </section>
 
-        {/* Scholarship */}
+        {/* Active support */}
         <div
-          id="scholarship"
-          className="flex flex-col items-start gap-4 border-t border-[#E8DDD2] bg-[#F2EAE0] px-6 py-5 sm:flex-row sm:items-center md:px-12"
+          id="active-support"
+          className="flex flex-col items-start gap-4 border-t border-[#E8DDD2] bg-desert-yellow-30/50 px-6 py-5 sm:flex-row sm:items-center md:px-12"
         >
           <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-mountain-orange-10">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -224,7 +222,6 @@ const SupportMembership = () => {
 
         {/* CTA */}
         <section className="relative overflow-hidden bg-soft-black px-6 py-14 text-center md:px-12">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-mountain-orange/15" />
 
           <h2 className="relative mx-auto mb-3.5 max-w-lg font-title text-3xl font-semibold text-white md:text-4xl">
             Vær med til at bygge
