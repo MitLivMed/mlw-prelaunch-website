@@ -154,9 +154,7 @@ const SupportMembership = () => {
                 <br />
                 Mange små bidrag = én stor forskel.
                 <br />
-                Opsig når som helst.
-                <br />
-                Ingen binding.
+                Opsig når som helst. Ingen binding.
               </p>
             </div>
 
