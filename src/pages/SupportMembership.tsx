@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { DonationDialog } from "@/components/donation/DonationDialog";
-import { FundStatus } from "@/components/donation/FundStatus";
 
 const HUBSPOT_LINK =
   "https://meetings-eu1.hubspot.com/jesper24/mitlivmed";
@@ -61,13 +60,6 @@ const SupportMembership = () => {
             >
               Bliv støttemedlem →
             </button>
-            <button
-              type="button"
-              onClick={() => { openDonation(); }}
-              className="inline-block rounded-md border-[1.5px] border-mountain-orange px-7 py-[11px] font-body text-sm font-medium text-mountain-orange transition-colors hover:bg-mountain-orange/5"
-            >
-              Donér et beløb
-            </button>
           </div>
         </section>
 
@@ -107,7 +99,7 @@ const SupportMembership = () => {
                   <strong>kendte det</strong>."
                 </p>
                 <cite className="mt-2 block text-[11px] not-italic text-text-light">
-                  Betatester, 34 år, diagnosticeret 2021
+                  Kvinde, 34 år, diagnosticeret 2021
                 </cite>
               </div>
 
@@ -139,7 +131,7 @@ const SupportMembership = () => {
                   <strong>Månedligt nyhedsbrev</strong> med indsigter,
                   erfaringer og ny viden fra fællesskabet
                 </BenefitItem>
-                <BenefitItem last>
+                <BenefitItem>
                   <strong>20% rabat på merchandise</strong> fra MitLivMed
                 </BenefitItem>
               </ul>
@@ -158,10 +150,14 @@ const SupportMembership = () => {
                 Minimum 50 kr/md. Betal hvad du kan.
               </h2>
               <p className="mx-auto mt-2 max-w-[460px] text-sm leading-[1.75] text-text-medium">
-                Der er ingen forkert pris. Mange små bidrag = én stor forskel.
-                Opsig når som helst. Ingen binding.
+                Der er ingen forkert pris.
+                <br />
+                Mange små bidrag = én stor forskel.
+                <br />
+                Opsig når som helst.
+                <br />
+                Ingen binding.
               </p>
-              <FundStatus className="mx-auto mt-3 max-w-[460px] text-sm text-text-medium" />
             </div>
 
             <div className="mb-4 grid gap-4 md:grid-cols-3">
@@ -286,20 +282,10 @@ function ImpactDivider() {
   );
 }
 
-function BenefitItem({
-  children,
-  last,
-}: {
-  children: React.ReactNode;
-  last?: boolean;
-}) {
+function BenefitItem({ children }: { children: React.ReactNode }) {
   return (
-    <li
-      className={`flex items-start gap-2.5 py-2.5 text-sm leading-snug text-soft-black ${
-        last ? "" : "border-b border-[#E8DDD2]"
-      }`}
-    >
-      <span className="mt-0.5 flex h-[22px] w-[22px] flex-shrink-0 items-center justify-center rounded-full bg-mountain-orange">
+    <li className="flex items-center gap-2.5 py-2.5 text-sm leading-snug text-soft-black">
+      <span className="flex h-[22px] w-[22px] flex-shrink-0 items-center justify-center rounded-full bg-mountain-orange">
         <svg
           viewBox="0 0 12 12"
           className="h-3 w-3"
