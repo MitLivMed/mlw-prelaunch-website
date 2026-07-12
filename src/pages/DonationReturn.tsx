@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import { FundStatus } from "@/components/donation/FundStatus";
 import { getSessionStatus } from "@/lib/donations";
 
 const DonationReturn = () => {
@@ -58,7 +57,6 @@ const DonationReturn = () => {
               Bemærk: MitLivMed ApS er en virksomhed. Bidraget er ikke
               skattefradragsberettiget.
             </p>
-            <FundStatus className="mt-6 text-sm text-text-medium" />
           </>
         ) : (
           <>
