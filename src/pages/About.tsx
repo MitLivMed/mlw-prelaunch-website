@@ -39,7 +39,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: "Lisa Brix Pedersen",
-    title: "Redaktør",
+    title: "Redaktør | Diagnoseret bipolar type 1",
     photo: photoLisa,
   },
   {
