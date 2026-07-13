@@ -62,7 +62,7 @@ const SupportMembership = () => {
         </section>
 
         {/* Impact Bar */}
-        <div className="flex flex-wrap items-center justify-around gap-4 bg-mountain-orange px-6 py-7 md:px-12">
+        <div className="flex flex-wrap items-center justify-around gap-4 bg-plain-green-110 text-soft-black px-6 py-7 md:px-12">
           <ImpactItem number="55.000" label="Danskere med bipolar" />
           <ImpactDivider />
           <ImpactItem number="20%" label="Dør ved selvmord" />
@@ -71,7 +71,7 @@ const SupportMembership = () => {
         </div>
 
         {/* Cause + Benefits */}
-        <section className="bg-lake-blue-10 px-6 py-14 md:px-12">
+        <section className="bg-plain-green-30 px-6 py-14 md:px-12">
           <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:gap-12">
             {/* Left: Cause */}
             <div>
@@ -151,8 +151,6 @@ const SupportMembership = () => {
                 Der er ingen forkert pris.
                 <br />
                 Mange små bidrag = én stor forskel.
-                <br />
-                Opsig når som helst. Ingen binding.
               </p>
             </div>
 
@@ -173,6 +171,12 @@ const SupportMembership = () => {
                 description={"Størst bidrag.\nDu gør en mærkbar forskel for flere."}
                 onSelect={openDonation}
               />
+            </div>
+
+            <div className="mb-9 text-center">
+              <p className="mx-auto mt-2 max-w-[460px] text-sm leading-[1.75] text-text-medium">
+                Opsig når som helst. Ingen binding.
+              </p>
             </div>
 
             <button
