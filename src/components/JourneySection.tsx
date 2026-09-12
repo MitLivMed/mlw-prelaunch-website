@@ -46,99 +46,31 @@ const cards: (JourneyCard & { description: string })[] = [
     id: "jungle",
     image: jungleImage,
     title: "Junglen",
-    description: "Du har fået en diagnose. Hvad gør man så? Her kan du skabe overblik i alt det nye og høre andres oplevelser.",
+    description: "I skoven leves det meste af livet med bipolar: dage hvor du finder overblik, dage hvor det hele er tungt, og dage hvor du bare følger stien.",
     details: {
-      emoji: "🌊",
-      modalTitle: "Velkommen til Junglen",
+      emoji: "🌲",
+      modalTitle: "Velkommen til Skoven",
       intro: [
-        "Du har fået svar — men nu skal du lære at leve med dem. En ny virkelighed, du ikke valgte, men som du skal navigere i. Vandet er dybt, og det bevæger sig.",
+        "Skoven er for dig, der er midt i alt det, en diagnose bringer med sig - nyt sprog, ny behandling, ny hverdag. For dig, der har fundet en rytme i det. For dig, når hverdagen kan være meget at bære alene.",
       ],
       sections: [
         {
-          header: "Søen er for dig, der er midt i store forandringer",
-          body: "— diagnose, behandling, medicin, identitet. Alt det, der vælter rundt, når du prøver at finde fodfæste i noget nyt.",
-        },
-        {
           header: "Her deler vi ting som:",
           bullets: [
-            "Behandling og medicinrejsen",
+            "Identitet - hvem er jeg nu?",
+            "Erfaringer med behandling Rutiner der (måske) virker, og hverdagens små sejre",
             "Sorg over det liv, du troede du ville have",
-            "Nye rutiner, der (måske) virker",
-            "Identitet — hvem er jeg nu?",
-            "At lære at svømme, én dag ad gangen",
+            "Arbejde, relationer og alt det praktiske",
+            "De dage hvor du bare må lægge det fra dig uden at forklare",
           ],
         },
       ],
       outro: [
-        "Det er rodet. Det er svært. Og det er helt normalt. Du behøver ikke have styr på noget for at være her.",
+        "Det er rodet. Det er hverdag. Du behøver ikke have styr på noget, præstere noget eller pakke det pænt ind for at være her.",
       ],
-      quote: "Heling er rodet og ikke-lineær. Her flyder du med andre, der forstår.",
-    },
-  },
-  {
-    id: "valley",
-    image: valleyImage,
-    title: "Dalen",
-    description: "Nogle dage er det bare for tungt at bære alene. Her behøver du ikke forklare det eller pakke det pænt ind. Du må bare lægge det fra dig.",
-    imgClassName: "object-bottom md:object-center",
-    details: {
-      emoji: "🌄",
-      modalTitle: "Velkommen til Dalen",
-      intro: [
-        "Nogle dage er det bare for meget. Du kan ikke forklare det. Du kan ikke pakke det pænt ind. Det er bare tungt, og du bærer det alene.",
-        "Dalen er for dig, der har brug for at lægge det fra dig. Ikke løse det. Ikke forklare det. Bare slippe det.",
-      ],
-      sections: [
-        {
-          header: "Her må du:",
-          bullets: [
-            "Skrive det, du ikke kan sige til nogen du kender",
-            "Lade det være rodet, grimt og ufiltreret",
-            "Dumpe det hele, uden at pakke det ind",
-            "Eksistere i det tunge, uden at skulle præstere noget",
-          ],
-        },
-      ],
-      outro: [
-        'Du behøver ikke skrive trigger advarsel. Du behøver ikke afslutte med "men jeg har det nok godt". Du behøver ikke svare nogen, og medmindre du beder om det, forventes folk ikke at svare.',
-        "Du kan falde hertil fra alle steder. Det er ikke din skyld, og du er ikke alene.",
-      ],
-      callout:
-        "🤍 Vigtigt: Alt, der deles her, er personlige erfaringer — ikke medicinsk rådgivning. Har du brug for akut hjælp? Se",
-      calloutAction: { label: "Hjælp & SOS", href: "/akut" },
-    },
-  },
-  {
-    id: "plains",
-    image: plainsImage,
-    title: "Sletten",
-    description: "Hverdagen kan ofte være en svære del. Rutinerne er det, der kan skabe ro, og vi deler & bygger dem sammen i små skridt.",
-    details: {
-      emoji: "🌾",
-      modalTitle: "Velkommen til Sletten",
-      intro: [
-        "Du følger din behandling. Går på arbejde. Prøver at holde balancen. Det er ikke nødvendigvis glamourøst, men det er dit liv — og du lever det.",
-      ],
-      sections: [
-        {
-          header: "Sletten er for dig, der har fundet en rytme",
-          body: "— ikke perfekt, men funktionel. Du ved, hvad der virker for dig det meste af tiden. Du lever dit liv uden eller mellem episoderne.",
-        },
-        {
-          header: "Her deler vi ting som:",
-          bullets: [
-            "Hverdagens små sejre (og nederlag)",
-            "Rutiner, der holder dig på sporet",
-            "Arbejde, relationer, og alt det praktiske",
-            "Motivation på de dage, hvor det hele føles fladt",
-            "Tips og tricks fra hverdagen",
-          ],
-        },
-      ],
-      outro: [
-        "Her fejrer vi det, andre ikke ser. En hel uge uden at aflyse planer. En god nats søvn. At huske sin medicin.",
-      ],
-      quote: "Det uglamourøse slid er der, hvor det rigtige liv sker, eller bygges op.",
+      callout: "💚Vigtigt: Alt, der deles her, er personlige erfaringer - ikke medicinsk rådgivning. Har du brug for akut hjælp? Se ",
+      calloutAction: { label: "Hjælp & SOS", href: "https://www.mitlivmed.dk/akut" },
+      quote: "I Skoven går du i dit eget tempo sammen med andre, der kender stierne.",
     },
   },
   {
