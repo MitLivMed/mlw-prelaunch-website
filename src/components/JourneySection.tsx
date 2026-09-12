@@ -43,9 +43,9 @@ const cards: (JourneyCard & { description: string })[] = [
     },
   },
   {
-    id: "jungle",
+    id: "forrest",
     image: jungleImage,
-    title: "Junglen",
+    title: "Skoven",
     description: "I skoven leves det meste af livet med bipolar: dage hvor du finder overblik, dage hvor det hele er tungt, og dage hvor du bare følger stien.",
     details: {
       emoji: "🌲",
