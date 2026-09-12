@@ -143,7 +143,7 @@ const JourneySection = () => {
         </div>
 
         {/* Landscape Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-6 max-w-3xl md:max-w-6xl mx-auto items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 max-w-3xl md:max-w-4xl mx-auto items-stretch">
           {cards.map((card, index) => (
             <div
               key={card.id}
