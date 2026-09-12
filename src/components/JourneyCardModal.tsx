@@ -164,12 +164,14 @@ const JourneyCardModal = ({ card, onClose, prevCard, nextCard, onPrev, onNext }:
             <div className="bg-plain-green-10 border-l-4 border-plain-green rounded-lg p-4 text-sm">
               {details.callout}
               {details.calloutAction && (
-                <> <Link
-                  to={details.calloutAction.href}
+                <> <a
+                  href={details.calloutAction.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="underline font-medium text-mountain-orange hover:text-mountain-orange/70 transition-colors"
                 >
                   {details.calloutAction.label}
-                </Link></>
+                </a></>
               )}
             </div>
           )}
