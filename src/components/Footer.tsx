@@ -66,6 +66,21 @@ const Footer = () => {
                   </nav>
                 </div>
 
+                {/* Services links */}
+                <div>
+                  <h4 className="font-heading font-semibold text-sm text-foreground mb-4">
+                    Services
+                  </h4>
+                  <nav className="flex flex-col gap-3 text-sm font-body text-text-medium">
+                    <Link to="/trivselsgruppe" className="hover:text-text-dark transition-colors">
+                      Trivsels Grupper
+                    </Link>
+                    {/* <Link to="/forum" className="hover:text-text-dark transition-colors">
+                      Forum
+                    </Link> */}
+                  </nav>
+                </div>
+
                 {/* Policy links */}
                 <div>
                   <h4 className="font-heading font-semibold text-sm text-foreground mb-4">
