@@ -55,7 +55,7 @@ const TrivselsGrupper = () => {
       <main id="main-content">
         {/* HERO */}
         <section className="bg-warm-white px-8 pt-32 pb-20 md:pt-40 md:pb-24">
-          <div className="max-w-[780px]">
+          <div className="max-w-[780px] mx-auto">
             <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-mountain-orange mb-4 font-body">
               Trivsels Grupper
             </p>
