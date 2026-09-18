@@ -55,14 +55,14 @@ const TrivselsGrupper = () => {
       <main id="main-content">
         {/* HERO */}
         <section className="bg-warm-white px-8 pt-32 pb-20 md:pt-40 md:pb-24">
-          <div className="max-w-[780px] mx-auto">
+          <div className="max-w-[780px] mx-auto text-center">
             <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-mountain-orange mb-4 font-body">
               Trivsels Grupper
             </p>
             <h1 className="font-title text-4xl md:text-[54px] font-bold leading-[1.15] text-soft-black mb-6">
               Først kom diagnosen, nu kommer trivslen.
             </h1>
-            <p className="text-[19px] leading-[1.55] text-text-medium max-w-[640px] mb-9 font-body">
+            <p className="text-[19px] leading-[1.55] text-text-medium max-w-[640px] mx-auto mb-9 font-body">
               Trivsels Grupper er en lille, fast gruppe for mennesker, der lever med det samme som dig. Her lærer du redskaber og øver dem sammen med andre, igen og igen. Det gør en forskel i din hverdag, og med tiden også i måden, du ser på dit liv med bipolar.
             </p>
             <a
