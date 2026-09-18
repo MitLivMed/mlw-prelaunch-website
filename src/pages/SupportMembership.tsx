@@ -7,6 +7,16 @@ import { DonationDialog } from "@/components/donation/DonationDialog";
 const HUBSPOT_LINK =
   "https://meetings-eu1.hubspot.com/jesper24/mitlivmed";
 
+const Wave = ({ from, to, flip = false }: { from: string; to: string; flip?: boolean }) => (
+  <div style={{ lineHeight: 0, background: to }}>
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 38 }}>
+      {flip
+        ? <path d="M0,0 L1440,0 L1440,21 C1200,15 960,26 720,20 C480,14 240,25 0,19 Z" fill={from} />
+        : <path d="M0,0 L1440,0 L1440,20 C1200,26 960,15 720,21 C480,27 240,15 0,22 Z" fill={from} />}
+    </svg>
+  </div>
+);
+
 const SupportMembership = () => {
   const [donationOpen, setDonationOpen] = useState(false);
   const [presetAmount, setPresetAmount] = useState<number | undefined>(undefined);
@@ -35,7 +45,6 @@ const SupportMembership = () => {
       <main id="main-content">
         {/* Hero */}
         <section className="relative overflow-hidden bg-warm-white px-6 py-16 pt-28 text-center md:px-12 md:py-20 md:pt-36">
-
           <p className="relative mb-4 text-[11px] font-semibold uppercase tracking-[2px] text-mountain-orange">
             Månedligt støttemedlemskab
           </p>
@@ -61,14 +70,18 @@ const SupportMembership = () => {
           </div>
         </section>
 
+        <Wave from="#FAF6F5" to="#4D8055" />
+
         {/* Impact Bar */}
         <div className="flex flex-wrap items-center justify-around gap-4 bg-plain-green-110 text-soft-black px-6 py-7 md:px-12">
           <ImpactItem number="55.000" label="Danskere med bipolar" />
           <ImpactDivider />
-          <ImpactItem number="20%" label="Dør ved selvmord" />
+          <ImpactItem number="11–20 år" label="Kortere levetid end resten af befolkningen" />
           <ImpactDivider />
           <ImpactItem number="100%" label="Gratis fællesskabsadgang" />
         </div>
+
+        <Wave from="#4D8055" to="#C3E5C9" flip />
 
         {/* Cause + Benefits */}
         <section className="bg-plain-green-30 px-6 py-14 md:px-12">
@@ -118,16 +131,19 @@ const SupportMembership = () => {
               </h2>
               <ul className="mt-1 list-none">
                 <BenefitItem>
-                  <strong>3–5 arrangementer om året</strong> på tværs af
-                  Danmark, fysisk og online
+                  Sikre at vi kan blive ved med at udgive{" "}
+                  <strong>kvalitetsartikler og videoer</strong> om livet med
+                  bipolar. Spejling i rollemodeller er værdifuld for at fastholde
+                  troen på et bedre liv.
                 </BenefitItem>
                 <BenefitItem>
-                  <strong>Artikler og videoer</strong> om livet med bipolar der
-                  gør en forskel
+                  <strong>5–10 arrangementer om året</strong> på tværs af
+                  Danmark, fysisk og online. Sikre adgang for alle uanset
+                  indkomstgrupper.
                 </BenefitItem>
                 <BenefitItem>
-                  <strong>Månedligt nyhedsbrev</strong> med indsigter,
-                  erfaringer og ny viden fra fællesskabet
+                  <strong>Kvartalsvist nyhedsbrev</strong> hvor du bliver
+                  opdateret på hvad MitLivMed laver.
                 </BenefitItem>
                 <BenefitItem>
                   <strong>20% rabat på merchandise</strong> fra MitLivMed
@@ -137,8 +153,10 @@ const SupportMembership = () => {
           </div>
         </section>
 
+        <Wave from="#C3E5C9" to="#FAF6F5" />
+
         {/* Pricing */}
-        <section className="bg-warm-white px-6 py-14 md:px-12">
+        <section className="bg-warm-white px-6 py-14 md:px-12" id="pricing">
           <div className="mx-auto max-w-3xl">
             <div className="mb-9 text-center">
               <p className="mb-3 text-[10px] font-semibold uppercase tracking-[2px] text-mountain-orange">
@@ -193,19 +211,16 @@ const SupportMembership = () => {
           </div>
         </section>
 
+        <Wave from="#FAF6F5" to="#FFEECC" flip />
+
         {/* Active support */}
         <div
           id="active-support"
-          className="flex flex-col items-start gap-4 border-t border-[#E8DDD2] bg-desert-yellow-30/50 px-6 py-5 sm:flex-row sm:items-center md:px-12"
+          className="flex flex-col items-start gap-4 px-6 py-5 sm:flex-row sm:items-center md:px-12"
+          style={{ background: "#FFEECC" }}
         >
           <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-mountain-orange-10">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path
-                d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z"
-                fill="#BF5B39"
-                opacity="0.7"
-              />
-            </svg>
+            <span style={{ fontSize: 20 }}>★</span>
           </div>
           <p className="text-[13px] leading-relaxed text-text-medium">
             <strong className="text-soft-black">
@@ -224,17 +239,68 @@ const SupportMembership = () => {
           </p>
         </div>
 
-        {/* CTA */}
-        <section className="relative overflow-hidden bg-soft-black px-6 py-14 text-center md:px-12">
+        <Wave from="#FFEECC" to="#FFFBF3" />
 
-          <h2 className="relative mx-auto mb-3.5 max-w-lg font-title text-3xl font-semibold text-white md:text-4xl">
-            Vær med til at bygge
-            <br />
-            noget <em className="text-mountain-orange-30">der virker</em>
+        {/* Stipendie */}
+        <section className="px-6 py-14 md:px-12" style={{ background: "#FFFBF3" }}>
+          <div className="mx-auto max-w-[640px]">
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[2px] text-mountain-orange">
+              Din støtte går til medlemsstipendier
+            </p>
+            <h2 className="mb-6 font-title text-[32px] font-semibold leading-[1.2] text-soft-black md:text-[36px]">
+              Adgang for alle
+            </h2>
+            <p className="mb-4 text-[17px] leading-[1.7] text-text-medium">
+              Fællesskabet på MitLivMed er gratis for alle. Men noget af vores
+              mere strukturerede støtte koster penge, og ikke alle har mulighed
+              for selv at betale.
+            </p>
+            <p className="mb-4 text-[17px] leading-[1.7] text-text-medium">
+              Derfor findes MitLivMed Stipendier, så mennesker med mere
+              økonomisk overskud kan lave en meningsfuld håndsrækning til
+              udfordrede mennesker.
+            </p>
+            <p className="text-[17px] leading-[1.7] text-text-medium">
+              Når du støtter MitLivMed, er du med til at gøre den adgang
+              mulig. Dit bidrag bliver til konkret hjælp for et menneske der
+              har brug for det.
+            </p>
+          </div>
+        </section>
+
+        <Wave from="#FFFBF3" to="#EDFAEF" flip />
+
+        {/* Room For All */}
+        <section className="bg-plain-green-10 px-6 py-14 text-center md:px-12">
+          <div className="mx-auto max-w-[680px]">
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[2px] text-mountain-orange">
+              Uanset hvor man er på rejsen
+            </p>
+            <h2 className="mb-6 font-title text-[32px] font-semibold leading-[1.2] text-soft-black md:text-[36px]">
+              Plads til alle
+            </h2>
+            <p className="text-[19px] leading-[1.7] text-text-medium">
+              Bipolar er en følgesvend resten af livet, men med MitLivMed vil
+              rejsen være i selskab med ligesindede og spækket med redskaber
+              der gør livet lettere at navigere i.
+              <br />
+              <br />
+              Ingen går nogensinde alene igen.
+            </p>
+          </div>
+        </section>
+
+        <Wave from="#EDFAEF" to="#C3E5C9" />
+
+        {/* Footer CTA */}
+        <section className="relative overflow-hidden bg-plain-green-30 px-6 py-14 text-center md:px-12">
+          <h2 className="relative mx-auto mb-3.5 max-w-lg font-title text-3xl font-semibold text-soft-black md:text-4xl">
+            Vær med til at bygge noget{" "}
+            <em className="text-mountain-orange">der virker</em>
           </h2>
-          <p className="relative mx-auto mb-8 max-w-[460px] text-[15px] leading-relaxed text-white/65">
-            Støttemedlemskabet starter med bipolar. Vi udvider snart til angst,
-            depression, ADHD og PTSD.
+          <p className="relative mx-auto mb-8 max-w-[460px] text-[15px] leading-relaxed text-text-medium">
+            Vi planlægger at udvide til andre psykiske lidelser og andre lande i
+            2027, med din og fællesskabets hjælp.
           </p>
           <div className="relative">
             <button
@@ -245,7 +311,7 @@ const SupportMembership = () => {
               Bliv støttemedlem i dag →
             </button>
           </div>
-          <p className="relative mt-4 text-xs text-white/40">
+          <p className="relative mt-4 text-xs text-text-light">
             Opsig når som helst. Ingen binding.
           </p>
         </section>
@@ -283,8 +349,8 @@ function ImpactDivider() {
 
 function BenefitItem({ children }: { children: React.ReactNode }) {
   return (
-    <li className="flex items-center gap-2.5 py-2.5 text-sm leading-snug text-soft-black">
-      <span className="flex h-[22px] w-[22px] flex-shrink-0 items-center justify-center rounded-full bg-mountain-orange">
+    <li className="flex items-start gap-2.5 py-2.5 text-sm leading-snug text-soft-black">
+      <span className="flex h-[22px] w-[22px] flex-shrink-0 items-center justify-center rounded-full bg-mountain-orange mt-0.5">
         <svg
           viewBox="0 0 12 12"
           className="h-3 w-3"
