@@ -41,7 +41,7 @@ const TrivselsGrupper = () => {
       <SEO
         title="Trivsels Grupper"
         description="Trivsels Grupper er en lille, fast gruppe for mennesker, der lever med det samme som dig. Her lærer du redskaber og øver dem sammen med andre."
-        path="/trivsels-gruppe"
+        path="/trivselsgruppe"
       />
       <a
         href="#main-content"
