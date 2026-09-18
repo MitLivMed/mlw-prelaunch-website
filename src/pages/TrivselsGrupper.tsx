@@ -78,11 +78,11 @@ const TrivselsGrupper = () => {
 
         {/* RECOGNITION */}
         <section className="bg-white px-8 py-20">
-          <div className="max-w-[1040px] mx-auto">
-            <h2 className="font-title text-[34px] font-bold text-soft-black text-center mb-12">
+          <div className="max-w-[1040px] mx-auto text-center">
+            <h2 className="font-title text-[34px] font-bold text-soft-black mb-12">
               Kan du genkende det?
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
               {[
                 "Du har måske været på et kursus og fået det basale at vide. Eller måske slet ingenting? Men at have det godt med bipolar er ikke noget, man lærer én gang. Det er noget, man arbejder med hele vejen.",
                 "Uanset hvor du starter, lærer du redskaber her. Sammen med andre finder du hurtigt ud af, hvad der virker for dig.",
@@ -109,18 +109,18 @@ const TrivselsGrupper = () => {
 
         {/* HOW IT WORKS */}
         <section className="bg-plain-green-10 px-8 py-20">
-          <div className="max-w-[1040px] mx-auto">
+          <div className="max-w-[1040px] mx-auto text-center">
             <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-mountain-orange mb-4 font-body">
               Sådan fungerer det
             </p>
             <h2 className="font-title text-[34px] font-bold text-soft-black mb-4">
               En fast gruppe. Ikke et åbent forum.
             </h2>
-            <p className="text-[19px] leading-[1.55] text-text-medium max-w-[640px] mb-10 font-body">
+            <p className="text-[19px] leading-[1.55] text-text-medium max-w-[640px] mx-auto mb-10 font-body">
               Vi holder grupperne små med vilje. Der er nok til, at du aldrig er den eneste, der siger noget, men få nok til, at du ikke forsvinder i mængden.
             </p>
 
-            <div className="bg-white border border-[#E8DED4] rounded-[20px] p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+            <div className="bg-white border border-[#E8DED4] rounded-[20px] p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-16 text-left">
               {[
                 { num: "Maks. 12 deltagere", lbl: "Plads nok til alle, men ikke så stor, at du ikke når at lære de andre at kende." },
                 { num: "Hver 2. uge", lbl: "Hver 2. uge møder du de andre online. Det ligger fast i din kalender, så du slipper for at booke igen og igen." },
@@ -137,11 +137,11 @@ const TrivselsGrupper = () => {
             <h3 className="font-title text-[22px] font-bold text-soft-black mb-3">
               Fire greb, du øver sammen med de andre
             </h3>
-            <p className="text-base text-text-medium font-body max-w-[640px] mb-8">
+            <p className="text-base text-text-medium font-body max-w-[640px] mx-auto mb-8">
               Grupperne handler om konkrete greb til hverdagen med bipolar. Du vender tilbage til dem session efter session. Det er ikke en liste, du krydser af og bliver færdig med.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 text-left">
               {[
                 { title: "Motivation og retning", body: "At holde fast i, hvorfor du gør en indsats, også på de svære dage." },
                 { title: "Genkende dine egne mønstre", body: "At blive bedre til at spotte dine tidlige tegn og reagere på dem i tide." },
@@ -164,18 +164,18 @@ const TrivselsGrupper = () => {
 
         {/* SELF-HELP TOOLS */}
         <section className="bg-lake-blue-10 px-8 py-20">
-          <div className="max-w-[1040px] mx-auto">
+          <div className="max-w-[1040px] mx-auto text-center">
             <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-mountain-orange mb-4 font-body">
               Selvhjælpsværktøjer på vej
             </p>
             <h2 className="font-title text-[34px] font-bold text-soft-black mb-4">
               Hjælp, lige når du har brug for den
             </h2>
-            <p className="text-[19px] leading-[1.55] text-text-medium max-w-[640px] mb-9 font-body">
+            <p className="text-[19px] leading-[1.55] text-text-medium max-w-[640px] mx-auto mb-9 font-body">
               Vi er ved at lave redskaberne fra grupperne om til selvhjælpsværktøjer, der lever online, helt gratis. Det er ikke en smagsprøve på gruppen. Vi gør det, fordi hjælp skal være til at få fat i, når det er svært, og ikke kun når gruppen mødes.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-7 text-left">
               <div className="bg-white rounded-[18px] p-8">
                 <span className="inline-block font-body text-[12px] font-bold uppercase tracking-[0.05em] text-soft-black bg-lake-blue-30 px-3 py-1 rounded-full mb-3">
                   Online, gratis, når det passer dig
@@ -209,18 +209,18 @@ const TrivselsGrupper = () => {
 
         {/* LIFE STAGES */}
         <section className="bg-white px-8 py-20">
-          <div className="max-w-[1040px] mx-auto">
+          <div className="max-w-[1040px] mx-auto text-center">
             <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-mountain-orange mb-4 font-body">
               3 livsfaser
             </p>
             <h2 className="font-title text-[34px] font-bold text-soft-black mb-4">
               Din gruppe baseres på din livsfase
             </h2>
-            <p className="text-[19px] leading-[1.55] text-text-medium max-w-[640px] mb-10 font-body">
+            <p className="text-[19px] leading-[1.55] text-text-medium max-w-[640px] mx-auto mb-10 font-body">
               De spørgsmål, der fylder mest i livet med bipolar, ændrer sig over tid. Derfor bliver din gruppe sammensat af andre i samme livsfase.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
               {/* Ungdom */}
               <div className="rounded-2xl p-7 flex flex-col" style={{ background: "#FAF3D9" }}>
                 <div className="flex items-center gap-2 font-body text-[13px] font-bold uppercase tracking-[0.06em] mb-3" style={{ color: "#9c7a1f" }}>
@@ -297,14 +297,14 @@ const TrivselsGrupper = () => {
 
         {/* TRUST */}
         <section className="bg-warm-white px-8 py-20">
-          <div className="max-w-[1040px] mx-auto">
+          <div className="max-w-[1040px] mx-auto text-center">
             <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-mountain-orange mb-4 font-body">
               Ledet med omtanke
             </p>
             <h2 className="font-title text-[34px] font-bold text-soft-black mb-8">
               Trygheden er ikke tilfældig
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start text-left">
               <div className="space-y-4">
                 {[
                   "Grupperne ledes af facilitatorer, der er uddannet til lige præcis de her grupper, og som får faglig supervision undervejs. De stiller ikke diagnoser og behandler ikke. Deres opgave er at holde rummet trygt og sørge for, at hver session har en fast form.",
@@ -353,7 +353,7 @@ const TrivselsGrupper = () => {
 
         {/* METHOD HERITAGE */}
         <section className="px-8 py-20 bg-lake-blue-30">
-          <div className="max-w-[720px] mx-auto">
+          <div className="max-w-[720px] mx-auto text-center">
             <h2 className="font-title text-[34px] font-bold text-soft-black mb-6">
               Bygget på metoder med over 50 års historik
             </h2>
@@ -370,14 +370,14 @@ const TrivselsGrupper = () => {
 
         {/* IS / IS NOT */}
         <section className="bg-warm-white px-8 py-20">
-          <div className="max-w-[1040px] mx-auto">
+          <div className="max-w-[1040px] mx-auto text-center">
             <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-mountain-orange mb-4 font-body">
               Vigtigt at vide
             </p>
             <h2 className="font-title text-[34px] font-bold text-soft-black mb-8">
               Hvad Trivsels Grupper er, og ikke er
             </h2>
-            <div className="bg-white border border-[#E8DED4] rounded-2xl overflow-hidden">
+            <div className="bg-white border border-[#E8DED4] rounded-2xl overflow-hidden text-left">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="p-8 md:border-r border-[#E8DED4] border-t-4" style={{ borderTopColor: "#4FAE62" }}>
                   <h3 className="font-title text-[18px] font-bold text-soft-black mb-4">Gruppen er</h3>
@@ -540,7 +540,7 @@ const TrivselsGrupper = () => {
         {/* SIGN UP */}
         <section className="bg-white px-8 py-20" id="tilmelding">
           <div className="max-w-[1040px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
-            <div>
+            <div className="text-center">
               <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-mountain-orange mb-4 font-body">
                 Ingen betaling. Ingen binding.
               </p>
@@ -624,7 +624,7 @@ const TrivselsGrupper = () => {
         {/* FAQ */}
         <section className="bg-warm-white px-8 py-20">
           <div className="max-w-[1040px] mx-auto">
-            <h2 className="font-title text-[34px] font-bold text-soft-black mb-8">
+            <h2 className="font-title text-[34px] font-bold text-soft-black mb-8 text-center">
               Ofte stillede spørgsmål
             </h2>
             <div className="divide-y divide-[#E8DED4] border-t border-[#E8DED4]">
