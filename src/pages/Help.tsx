@@ -5,6 +5,34 @@ import SEO from "@/components/SEO";
 
 const telHref = (num: string) => `tel:${num.replace(/\s+/g, "")}`;
 
+// Postal codes whose delivery area straddles a kommune border and genuinely
+// belongs to two regions (source: Danmarks Adresser Web API, api.dataforsyningen.dk).
+const DUAL_REGION_POSTCODES: Record<string, [string, string]> = {
+  "2640": ["Hovedstaden", "Sjælland"],
+  "3670": ["Hovedstaden", "Sjælland"],
+  "4000": ["Hovedstaden", "Sjælland"],
+  "6830": ["Syddanmark", "Midtjylland"],
+  "6870": ["Syddanmark", "Midtjylland"],
+  "6880": ["Syddanmark", "Midtjylland"],
+  "7100": ["Syddanmark", "Midtjylland"],
+  "7120": ["Syddanmark", "Midtjylland"],
+  "7160": ["Syddanmark", "Midtjylland"],
+  "7200": ["Syddanmark", "Midtjylland"],
+  "7260": ["Syddanmark", "Midtjylland"],
+  "7270": ["Syddanmark", "Midtjylland"],
+  "7323": ["Syddanmark", "Midtjylland"],
+  "7330": ["Syddanmark", "Midtjylland"],
+  "7361": ["Syddanmark", "Midtjylland"],
+  "8721": ["Syddanmark", "Midtjylland"],
+  "7760": ["Midtjylland", "Nordjylland"],
+  "8970": ["Midtjylland", "Nordjylland"],
+  "8990": ["Midtjylland", "Nordjylland"],
+  "9500": ["Midtjylland", "Nordjylland"],
+  "9550": ["Midtjylland", "Nordjylland"],
+  "9620": ["Midtjylland", "Nordjylland"],
+  "9631": ["Midtjylland", "Nordjylland"],
+};
+
 const PhoneIcon = () => (
   <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
     <path d="M6.6 10.8c1.5 3 4 5.5 7 7l2.3-2.3c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C10.9 22 2 13.1 2 2c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1L6.6 10.8z" />
@@ -55,7 +83,7 @@ const ResourceCard = ({ name, href, description, hours, phone, badge }: Resource
 
 const Help = () => {
   const [postnr, setPostnr] = useState("");
-  const [regionFound, setRegionFound] = useState<string | null>(null);
+  const [regionFound, setRegionFound] = useState<string | string[] | null>(null);
   const [regionError, setRegionError] = useState<string | null>(null);
 
   const handleFindRegion = (e: React.FormEvent) => {
@@ -67,6 +95,11 @@ const Help = () => {
 
     if (!trimmed || isNaN(code) || trimmed.length !== 4) {
       setRegionError("Skriv et postnummer med 4 cifre, fx 8000.");
+      return;
+    }
+
+    if (DUAL_REGION_POSTCODES[trimmed]) {
+      setRegionFound(DUAL_REGION_POSTCODES[trimmed]);
       return;
     }
 
@@ -255,7 +288,18 @@ const Help = () => {
               </form>
               {regionFound && (
                 <p className="text-sm text-soft-black mt-2">
-                  Du hører til <strong className="text-[#4D8055]">Region {regionFound}</strong>.
+                  {Array.isArray(regionFound) ? (
+                    <>
+                      Dit postnummer dækker både{" "}
+                      <strong className="text-[#4D8055]">Region {regionFound[0]}</strong> og{" "}
+                      <strong className="text-[#4D8055]">Region {regionFound[1]}</strong> — se tabellen ovenfor for
+                      begge numre.
+                    </>
+                  ) : (
+                    <>
+                      Du hører til <strong className="text-[#4D8055]">Region {regionFound}</strong>.
+                    </>
+                  )}
                 </p>
               )}
               {regionError && (
