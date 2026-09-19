@@ -2,7 +2,6 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import { POSTAL_CODE_REGIONS } from "@/data/postal-code-regions";
 
 const telHref = (num: string) => `tel:${num.replace(/\s+/g, "")}`;
 
@@ -56,7 +55,7 @@ const ResourceCard = ({ name, href, description, hours, phone, badge }: Resource
 
 const Help = () => {
   const [postnr, setPostnr] = useState("");
-  const [regionFound, setRegionFound] = useState<string | string[] | null>(null);
+  const [regionFound, setRegionFound] = useState<string | null>(null);
   const [regionError, setRegionError] = useState<string | null>(null);
 
   const handleFindRegion = (e: React.FormEvent) => {
@@ -71,7 +70,14 @@ const Help = () => {
       return;
     }
 
-    const region = POSTAL_CODE_REGIONS[trimmed];
+    let region = "";
+    if (code >= 1000 && code <= 3699) region = "Hovedstaden";
+    else if (code >= 3700 && code <= 3799) region = "Hovedstaden (Bornholm)";
+    else if (code >= 3800 && code <= 3999) region = "Hovedstaden";
+    else if (code >= 4000 && code <= 4999) region = "Sjælland";
+    else if (code >= 5000 && code <= 6999) region = "Syddanmark";
+    else if (code >= 7000 && code <= 8999) region = "Midtjylland";
+    else if (code >= 9000 && code <= 9999) region = "Nordjylland";
 
     if (region) {
       setRegionFound(region);
@@ -249,18 +255,7 @@ const Help = () => {
               </form>
               {regionFound && (
                 <p className="text-sm text-soft-black mt-2">
-                  {Array.isArray(regionFound) ? (
-                    <>
-                      Dit postnummer dækker både{" "}
-                      <strong className="text-[#4D8055]">Region {regionFound[0]}</strong> og{" "}
-                      <strong className="text-[#4D8055]">Region {regionFound[1]}</strong> — se tabellen ovenfor for
-                      begge numre.
-                    </>
-                  ) : (
-                    <>
-                      Du hører til <strong className="text-[#4D8055]">Region {regionFound}</strong>.
-                    </>
-                  )}
+                  Du hører til <strong className="text-[#4D8055]">Region {regionFound}</strong>.
                 </p>
               )}
               {regionError && (
