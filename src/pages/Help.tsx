@@ -174,8 +174,8 @@ const Help = () => {
                 <thead>
                   <tr>
                     <th className="text-left bg-[#EDFAEF] text-[#4D8055] text-[10px] uppercase tracking-[2px] font-semibold px-5 py-3">Region</th>
-                    <th className="text-left bg-[#EDFAEF] text-[#4D8055] text-[10px] uppercase tracking-[2px] font-semibold px-5 py-3">Lægevagt / akuttelefon</th>
-                    <th className="text-left bg-[#EDFAEF] text-[#4D8055] text-[10px] uppercase tracking-[2px] font-semibold px-5 py-3">Åbningstid</th>
+                    <th className="text-left bg-[#EDFAEF] text-[#4D8055] text-[10px] uppercase tracking-[2px] font-semibold pl-5 pr-2 py-3">Lægevagt / akuttelefon</th>
+                    <th className="text-left bg-[#EDFAEF] text-[#4D8055] text-[10px] uppercase tracking-[2px] font-semibold pl-2 pr-5 py-3">Åbningstid</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -190,10 +190,10 @@ const Help = () => {
                       <td className="px-5 py-3.5 border-t border-[#EFE6E1] font-semibold text-soft-black">
                         {row.region}
                       </td>
-                      <td className="px-5 py-3.5 border-t border-[#EFE6E1] font-semibold text-mountain-orange whitespace-nowrap">
+                      <td className="pl-5 pr-2 py-3.5 border-t border-[#EFE6E1] font-semibold text-mountain-orange whitespace-nowrap">
                         {row.num}
                       </td>
-                      <td className="px-5 py-3.5 border-t border-[#EFE6E1] text-text-medium whitespace-pre-line">
+                      <td className="pl-2 pr-5 py-3.5 border-t border-[#EFE6E1] text-text-medium whitespace-pre-line">
                         {row.hours}
                       </td>
                     </tr>
