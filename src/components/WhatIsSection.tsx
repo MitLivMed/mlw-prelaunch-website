@@ -96,7 +96,7 @@ const WhatIsSection = () => {
                 <button
                   onClick={() => {
                     trackCrisisModalOpen();
-                    navigate("/akut");
+                    navigate("/hjaelp");
                   }}
                   className="text-mountain-orange hover:text-mountain-orange/70 underline underline-offset-4 font-body font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-mountain-orange focus:ring-offset-2 rounded"
                 >
