@@ -20,7 +20,7 @@ interface ResourceCardProps {
 
 const ResourceCard = ({ name, href, description, hours, phone, badge }: ResourceCardProps) => (
   <div className="bg-white border border-[#EFE6E1] rounded-2xl p-5">
-    <h3 className="font-body font-bold text-base text-soft-black mb-2 flex items-center gap-2 flex-wrap">
+    <h3 className="font-semibold text-base text-soft-black mb-2 flex items-center gap-2 flex-wrap">
       <a
         href={href}
         target="_blank"
@@ -33,14 +33,14 @@ const ResourceCard = ({ name, href, description, hours, phone, badge }: Resource
         ↗
       </span>
       {badge && (
-        <span className="text-[10px] font-bold tracking-wide uppercase text-lake-blue bg-[#EDF4FA] px-2 py-0.5 rounded-full">
+        <span className="text-[10px] font-semibold tracking-wide uppercase text-lake-blue bg-[#EDF4FA] px-2 py-0.5 rounded-full">
           {badge}
         </span>
       )}
     </h3>
-    <p className="text-text-medium text-sm mb-1 font-body">{description}</p>
-    {hours && <p className="text-text-medium text-sm font-body">{hours}</p>}
-    {phone && <p className="font-bold text-mountain-orange text-base mt-2 font-title">{phone}</p>}
+    <p className="text-text-medium text-sm mb-1">{description}</p>
+    {hours && <p className="text-text-medium text-sm">{hours}</p>}
+    {phone && <p className="font-semibold text-mountain-orange text-base mt-2 font-title">{phone}</p>}
   </div>
 );
 
@@ -97,18 +97,18 @@ const Help = () => {
         {/* Hero */}
         <section className="bg-warm-white px-6 pt-32 pb-10 md:pt-40 md:pb-14">
           <div className="max-w-[1040px] mx-auto">
-            <h1 className="font-title text-4xl md:text-5xl font-bold leading-[1.12] text-soft-black mb-4">
+            <h1 className="font-title text-4xl md:text-5xl font-semibold leading-[1.12] text-soft-black mb-4">
               Har du brug for hjælp?
             </h1>
-            <p className="text-[17px] text-text-medium max-w-[600px] mb-5 font-body leading-relaxed">
+            <p className="text-[17px] text-text-medium max-w-[600px] mb-5 leading-relaxed">
               Uanset om det er akut, eller om du bare har brug for nogen at tale med i dag, er der hjælp at få. Se
               hvilke muligheder der er, og ræk ud til dem der passer bedst til din situation.
             </p>
-            <div className="bg-white border border-[#F2D7CE] rounded-2xl px-5 py-4 max-w-[640px] text-sm text-text-medium font-body mb-5">
+            <div className="bg-white border border-[#F2D7CE] rounded-2xl px-5 py-4 max-w-[640px] text-sm text-text-medium mb-5">
               MitLivMed® er ikke en krisetjeneste. Vi opfordrer dig til at bruge ressourcerne herunder, hvis du har
               brug for akut eller professionel hjælp.
             </div>
-            <p className="text-sm text-text-medium font-body">
+            <p className="text-sm text-text-medium">
               <strong className="text-soft-black">Sidst opdateret: 18. august 2026.</strong> Opdateres løbende.
             </p>
           </div>
@@ -117,8 +117,8 @@ const Help = () => {
         {/* Akut fare */}
         <section id="akut-fare" className="bg-warm-white px-6 py-10">
           <div className="max-w-[1040px] mx-auto">
-            <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-text-medium mb-2 font-body">Akut fare</p>
-            <h2 className="font-title text-[1.75rem] font-bold text-soft-black mb-5">
+            <p className="text-[10px] font-semibold uppercase tracking-[2px] text-text-medium mb-2">Akut fare</p>
+            <h2 className="font-title text-[1.75rem] font-semibold text-soft-black mb-5">
               Ring her, hvis du er i fare
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -128,11 +128,11 @@ const Help = () => {
                     <PhoneIcon />
                   </span>
                   <div>
-                    <p className="font-title font-bold text-xl text-soft-black mb-0.5">Ring 112</p>
-                    <p className="text-text-medium text-sm font-body">Akut fare</p>
+                    <p className="font-title font-semibold text-xl text-soft-black mb-0.5">Ring 112</p>
+                    <p className="text-text-medium text-sm">Akut fare</p>
                   </div>
                 </div>
-                <div className="font-title text-[1.9rem] font-bold text-mountain-orange whitespace-nowrap">112</div>
+                <div className="font-title text-[1.9rem] font-semibold text-mountain-orange whitespace-nowrap">112</div>
               </div>
               <div className="bg-[#FBE3E0] border-2 border-mountain-orange rounded-2xl px-6 py-5 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
@@ -140,15 +140,15 @@ const Help = () => {
                     <PhoneIcon />
                   </span>
                   <div>
-                    <p className="font-title font-bold text-xl text-soft-black mb-0.5">Ring Livslinien</p>
-                    <p className="text-text-medium text-sm font-body">
+                    <p className="font-title font-semibold text-xl text-soft-black mb-0.5">Ring Livslinien</p>
+                    <p className="text-text-medium text-sm">
                       Krise og selvmordstanker
                       <br />
                       Alle dage kl. 09–05
                     </p>
                   </div>
                 </div>
-                <div className="font-title text-[1.9rem] font-bold text-mountain-orange whitespace-nowrap">
+                <div className="font-title text-[1.9rem] font-semibold text-mountain-orange whitespace-nowrap">
                   70 20 12 01
                 </div>
               </div>
@@ -159,9 +159,9 @@ const Help = () => {
         {/* Regional hjælp */}
         <section className="bg-warm-white px-6 py-10">
           <div className="max-w-[1040px] mx-auto">
-            <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-text-medium mb-2 font-body">Regional hjælp</p>
-            <h2 className="font-title text-[1.75rem] font-bold text-soft-black mb-3">Find lokal akut hjælp</h2>
-            <p className="text-text-medium text-sm font-body max-w-[640px] mb-6">
+            <p className="text-[10px] font-semibold uppercase tracking-[2px] text-text-medium mb-2">Regional hjælp</p>
+            <h2 className="font-title text-[1.75rem] font-semibold text-soft-black mb-3">Find lokal akut hjælp</h2>
+            <p className="text-text-medium text-sm max-w-[640px] mb-6">
               Uden for din egen læges åbningstid kan du kontakte din regions lægevagt. Siden august 2026 har alle fem
               regioners lægevagter psykiatrifaglig rådgivning direkte på samme nummer, du behøver ikke ringe et andet
               sted hen for psykiatrisk hjælp.
@@ -171,9 +171,9 @@ const Help = () => {
               <table className="w-full border-collapse text-sm">
                 <thead>
                   <tr>
-                    <th className="text-left bg-[#EDFAEF] text-[#4D8055] text-[11px] uppercase tracking-[0.04em] font-bold px-5 py-3 font-body">Region</th>
-                    <th className="text-left bg-[#EDFAEF] text-[#4D8055] text-[11px] uppercase tracking-[0.04em] font-bold px-5 py-3 font-body">Lægevagt / akuttelefon</th>
-                    <th className="text-left bg-[#EDFAEF] text-[#4D8055] text-[11px] uppercase tracking-[0.04em] font-bold px-5 py-3 font-body">Åbningstid</th>
+                    <th className="text-left bg-[#EDFAEF] text-[#4D8055] text-[10px] uppercase tracking-[2px] font-semibold px-5 py-3">Region</th>
+                    <th className="text-left bg-[#EDFAEF] text-[#4D8055] text-[10px] uppercase tracking-[2px] font-semibold px-5 py-3">Lægevagt / akuttelefon</th>
+                    <th className="text-left bg-[#EDFAEF] text-[#4D8055] text-[10px] uppercase tracking-[2px] font-semibold px-5 py-3">Åbningstid</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -185,13 +185,13 @@ const Help = () => {
                     { region: "Nordjylland", num: "70 15 03 00", hours: "Hverdage 16–08.\nDøgnåbent i weekend/helligdage." },
                   ].map((row) => (
                     <tr key={row.region}>
-                      <td className="px-5 py-3.5 border-t border-[#EFE6E1] font-bold text-soft-black font-body">
+                      <td className="px-5 py-3.5 border-t border-[#EFE6E1] font-semibold text-soft-black">
                         {row.region}
                       </td>
-                      <td className="px-5 py-3.5 border-t border-[#EFE6E1] font-bold text-mountain-orange whitespace-nowrap font-body">
+                      <td className="px-5 py-3.5 border-t border-[#EFE6E1] font-semibold text-mountain-orange whitespace-nowrap">
                         {row.num}
                       </td>
-                      <td className="px-5 py-3.5 border-t border-[#EFE6E1] text-text-medium font-body whitespace-pre-line">
+                      <td className="px-5 py-3.5 border-t border-[#EFE6E1] text-text-medium whitespace-pre-line">
                         {row.hours}
                       </td>
                     </tr>
@@ -200,7 +200,7 @@ const Help = () => {
               </table>
             </div>
 
-            <div className="bg-[#EDFAEF] border border-[#4D8055] text-[#4D8055] rounded-xl px-4 py-3 text-sm font-body mb-4">
+            <div className="bg-[#EDFAEF] border border-[#4D8055] text-[#4D8055] rounded-xl px-4 py-3 text-sm mb-4">
               📣 Nyt siden august 2026: alle regioner har nu en fælles akutlinje til psykisk krise, integreret i
               lægevagten. Du ringer samme sted hen, uanset om det er en fysisk eller psykisk krise.
             </div>
@@ -211,8 +211,8 @@ const Help = () => {
                 regionFound ? "bg-[#EDFAEF] border-[#4D8055]" : "bg-[#FFEECC] border-[#A67A21]"
               }`}
             >
-              <p className="font-bold text-sm text-soft-black mb-1 font-body">📍 Kender du ikke din region?</p>
-              <p className="text-sm text-text-medium font-body mb-3">
+              <p className="font-semibold text-sm text-soft-black mb-1">📍 Kender du ikke din region?</p>
+              <p className="text-sm text-text-medium mb-3">
                 Indtast dit postnummer, og se hvilken region der gælder for dig.
               </p>
               <form onSubmit={handleFindRegion} className="flex items-center gap-2 flex-wrap">
@@ -223,35 +223,34 @@ const Help = () => {
                   placeholder="fx 8000"
                   maxLength={4}
                   inputMode="numeric"
-                  className="w-28 px-3 py-2 rounded-lg border border-[#EFE6E1] text-sm font-body bg-white"
+                  className="w-28 px-3 py-2 rounded-lg border border-[#EFE6E1] text-sm bg-white"
                 />
                 <button
                   type="submit"
-                  className={`px-4 h-9 rounded-lg font-bold text-sm text-white font-body transition-colors ${
+                  className={`px-4 h-9 rounded-lg font-medium text-sm text-white transition-colors ${
                     regionFound ? "bg-[#4D8055]" : "bg-soft-black"
                   }`}
                 >
                   Find region
                 </button>
                 {regionFound && (
-                  <span className="text-sm font-body text-soft-black">
-                    Du hører til{" "}
-                    <strong className="text-[#4D8055]">Region {regionFound}</strong>.
+                  <span className="text-sm text-soft-black">
+                    Du hører til <strong className="text-[#4D8055]">Region {regionFound}</strong>.
                   </span>
                 )}
                 {regionError && (
-                  <span className="text-sm font-body text-soft-black">{regionError}</span>
+                  <span className="text-sm text-soft-black">{regionError}</span>
                 )}
               </form>
             </div>
 
-            <p className="text-sm text-text-medium font-body">
+            <p className="text-sm text-text-medium">
               Læs mere:{" "}
               <a
                 href="https://www.sst.dk/en-af-os/akut-hjaelp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-mountain-orange font-semibold hover:underline"
+                className="text-mountain-orange font-medium hover:underline"
               >
                 Sundhedsstyrelsens "Akut hjælp" (EN AF OS)
               </a>
@@ -260,7 +259,7 @@ const Help = () => {
                 href="https://www.borger.dk/sundhed-og-sygdom/akut-behov-for-hjaelp/Laegevagten"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-mountain-orange font-semibold hover:underline"
+                className="text-mountain-orange font-medium hover:underline"
               >
                 Lægevagten på borger.dk
               </a>
@@ -269,7 +268,7 @@ const Help = () => {
                 href="https://www.sst.dk/nyheder/2026/akuttelefon-til-mennesker-i-akut-psykisk-krise-er-etableret-i-hele-landet"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-mountain-orange font-semibold hover:underline"
+                className="text-mountain-orange font-medium hover:underline"
               >
                 Akuttelefon til psykisk krise, etableret i hele landet (SST, aug. 2026)
               </a>
@@ -283,9 +282,9 @@ const Help = () => {
         {/* Ring / Gratis rådgivning */}
         <section id="ring" className="bg-warm-white px-6 py-10">
           <div className="max-w-[1040px] mx-auto">
-            <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-text-medium mb-2 font-body">Ring</p>
-            <h2 className="font-title text-[1.75rem] font-bold text-soft-black mb-2">Tal med nogen i dag</h2>
-            <p className="text-text-medium text-sm font-body mb-6">Gratis og anonymt. Du behøver ikke oplyse dit navn.</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[2px] text-text-medium mb-2">Ring</p>
+            <h2 className="font-title text-[1.75rem] font-semibold text-soft-black mb-2">Tal med nogen i dag</h2>
+            <p className="text-text-medium text-sm mb-6">Gratis og anonymt. Du behøver ikke oplyse dit navn.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <ResourceCard
                 name="Psykiatrifondens Rådgivning"
@@ -322,14 +321,14 @@ const Help = () => {
         {/* Skriv */}
         <section className="bg-warm-white px-6 py-10">
           <div className="max-w-[1040px] mx-auto">
-            <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-text-medium mb-2 font-body">Skriv</p>
-            <h2 className="font-title text-[1.75rem] font-bold text-soft-black mb-2">Online hjælp</h2>
-            <p className="text-text-medium text-sm font-body mb-6">Hvis det er lettere at skrive end at ringe.</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[2px] text-text-medium mb-2">Skriv</p>
+            <h2 className="font-title text-[1.75rem] font-semibold text-soft-black mb-2">Online hjælp</h2>
+            <p className="text-text-medium text-sm mb-6">Hvis det er lettere at skrive end at ringe.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[680px]">
               <ResourceCard
                 name="Livslinien (chat)"
                 href="https://livslinien.dk"
-                description='Krise og selvmordstanker. Chat på hjemmesiden i stedet for at ringe.'
+                description="Krise og selvmordstanker. Chat på hjemmesiden i stedet for at ringe."
                 hours='Chatten har åbent man–fre 17–21, lør–søn 13–17. (Telefonlinjen har længere åbent, se "Akut fare" ovenfor.)'
               />
               <ResourceCard
@@ -345,12 +344,12 @@ const Help = () => {
         {/* Målrettet hjælp */}
         <section className="bg-warm-white px-6 py-10">
           <div className="max-w-[1040px] mx-auto">
-            <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-text-medium mb-2 font-body">Målrettet hjælp</p>
-            <h2 className="font-title text-[1.75rem] font-bold text-soft-black mb-6">Hjælp til unge og pårørende</h2>
+            <p className="text-[10px] font-semibold uppercase tracking-[2px] text-text-medium mb-2">Målrettet hjælp</p>
+            <h2 className="font-title text-[1.75rem] font-semibold text-soft-black mb-6">Hjælp til unge og pårørende</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-mountain-orange mb-2 font-body">Til dig under 25</p>
-                <p className="text-sm text-text-medium font-body mb-4">Tilbud der er lavet specifikt til dig.</p>
+                <p className="text-[10px] font-semibold uppercase tracking-[2px] text-mountain-orange mb-2">Til dig under 25</p>
+                <p className="text-sm text-text-medium mb-4">Tilbud der er lavet specifikt til dig.</p>
                 <div className="flex flex-col gap-4">
                   <ResourceCard
                     name="Headspace"
@@ -375,8 +374,8 @@ const Help = () => {
                 </div>
               </div>
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-mountain-orange mb-2 font-body">Til pårørende</p>
-                <p className="text-sm text-text-medium font-body mb-4">
+                <p className="text-[10px] font-semibold uppercase tracking-[2px] text-mountain-orange mb-2">Til pårørende</p>
+                <p className="text-sm text-text-medium mb-4">
                   Du behøver ikke have en diagnose for at søge hjælp. Pårørende har også brug for støtte, og det er
                   okay at række ud.
                 </p>
@@ -404,17 +403,17 @@ const Help = () => {
         {/* Om MitLivMed */}
         <section className="bg-warm-white px-6 py-10">
           <div className="max-w-[1040px] mx-auto">
-            <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-text-medium mb-2 font-body">Om MitLivMed</p>
-            <h2 className="font-title text-[1.75rem] font-bold text-soft-black mb-2">
+            <p className="text-[10px] font-semibold uppercase tracking-[2px] text-text-medium mb-2">Om MitLivMed</p>
+            <h2 className="font-title text-[1.75rem] font-semibold text-soft-black mb-2">
               Er MitLivMed det rette for mig lige nu?
             </h2>
-            <p className="text-text-medium text-sm font-body max-w-[640px] mb-6">
+            <p className="text-text-medium text-sm max-w-[640px] mb-6">
               MitLivMed er et fællesskab for mennesker med bipolar affektiv lidelse, ikke en krisetjeneste eller et
               behandlingstilbud.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="bg-white border border-[#EFE6E1] rounded-2xl p-7">
-                <h3 className="font-title text-[1.1rem] font-bold text-[#4D8055] mb-4">Vi er</h3>
+                <h3 className="font-title text-[1.1rem] font-semibold text-[#4D8055] mb-4">Vi er</h3>
                 <ul className="m-0 p-0 list-none">
                   {[
                     "Eksperter på vores eget emne: livet med bipolar lidelse.",
@@ -423,7 +422,7 @@ const Help = () => {
                   ].map((item, i) => (
                     <li
                       key={i}
-                      className={`py-3 text-sm text-text-medium font-body ${i > 0 ? "border-t border-[#EFE6E1]" : ""}`}
+                      className={`py-3 text-sm text-text-medium ${i > 0 ? "border-t border-[#EFE6E1]" : ""}`}
                     >
                       {item}
                     </li>
@@ -431,7 +430,7 @@ const Help = () => {
                 </ul>
               </div>
               <div className="bg-white border border-[#EFE6E1] rounded-2xl p-7">
-                <h3 className="font-title text-[1.1rem] font-bold text-mountain-orange mb-4">Vi er ikke</h3>
+                <h3 className="font-title text-[1.1rem] font-semibold text-mountain-orange mb-4">Vi er ikke</h3>
                 <ul className="m-0 p-0 list-none">
                   {[
                     "De rette til at hjælpe med aktive selvmordstanker eller en akut psykisk krise.",
@@ -439,14 +438,14 @@ const Help = () => {
                   ].map((item, i) => (
                     <li
                       key={i}
-                      className={`py-3 text-sm text-text-medium font-body ${i > 0 ? "border-t border-[#EFE6E1]" : ""}`}
+                      className={`py-3 text-sm text-text-medium ${i > 0 ? "border-t border-[#EFE6E1]" : ""}`}
                     >
                       {item}
                     </li>
                   ))}
-                  <li className="py-3 text-sm text-text-medium font-body border-t border-[#EFE6E1]">
+                  <li className="py-3 text-sm text-text-medium border-t border-[#EFE6E1]">
                     <strong className="text-soft-black">Har du brug for hjælp nu?</strong> Ring{" "}
-                    <span className="text-mountain-orange font-bold">112</span>, eller se stederne ovenfor.
+                    <span className="text-mountain-orange font-semibold">112</span>, eller se stederne ovenfor.
                   </li>
                 </ul>
               </div>
@@ -459,10 +458,10 @@ const Help = () => {
           <div className="max-w-[1040px] mx-auto">
             <div className="bg-white border border-[#EFE6E1] rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 flex-wrap">
               <div>
-                <h2 className="font-title text-[1.35rem] font-bold text-soft-black mb-2">
+                <h2 className="font-title text-[1.35rem] font-semibold text-soft-black mb-2">
                   Kender du en god ressource, vi mangler?
                 </h2>
-                <p className="text-sm text-text-medium font-body max-w-[460px]">
+                <p className="text-sm text-text-medium max-w-[460px]">
                   Denne liste opdateres løbende. Har du et forslag til en rådgivning, en linje eller et tilbud, vi bør
                   have med, eller har du fundet noget der er forkert, forældet eller ikke virker (fx et dødt link eller
                   et forkert nummer), så hører vi gerne fra dig.
@@ -479,11 +478,11 @@ const Help = () => {
                   name="forslag"
                   placeholder="Skriv dit forslag eller din rettelse her…"
                   required
-                  className="flex-1 px-4 py-3 rounded-xl border border-[#EFE6E1] text-sm font-body bg-warm-white"
+                  className="flex-1 px-4 py-3 rounded-xl border border-[#EFE6E1] text-sm bg-warm-white"
                 />
                 <button
                   type="submit"
-                  className="bg-mountain-orange text-white border-none rounded-xl px-5 font-bold text-sm font-body cursor-pointer hover:bg-mountain-orange/90 transition-colors"
+                  className="bg-mountain-orange text-white rounded-xl px-5 font-medium text-sm cursor-pointer hover:bg-mountain-orange/90 transition-colors"
                 >
                   Send →
                 </button>
