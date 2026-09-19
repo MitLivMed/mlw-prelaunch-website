@@ -122,7 +122,7 @@ const Help = () => {
               Ring her, hvis du er i fare
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-[#FBE3E0] border-2 border-mountain-orange rounded-2xl px-6 py-5 flex items-center justify-between gap-4">
+              <div className="bg-[#FBE3E0] border-2 border-mountain-orange rounded-2xl px-6 py-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
                 <div className="flex items-center gap-4">
                   <span className="w-12 h-12 rounded-full bg-mountain-orange flex items-center justify-center flex-shrink-0">
                     <PhoneIcon />
@@ -132,9 +132,9 @@ const Help = () => {
                     <p className="text-text-medium text-sm">Akut fare</p>
                   </div>
                 </div>
-                <div className="font-title text-[1.9rem] font-semibold text-mountain-orange whitespace-nowrap">112</div>
+                <div className="font-title text-[2rem] font-semibold text-mountain-orange">112</div>
               </div>
-              <div className="bg-[#FBE3E0] border-2 border-mountain-orange rounded-2xl px-6 py-5 flex items-center justify-between gap-4">
+              <div className="bg-[#FBE3E0] border-2 border-mountain-orange rounded-2xl px-6 py-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
                 <div className="flex items-center gap-4">
                   <span className="w-12 h-12 rounded-full bg-mountain-orange flex items-center justify-center flex-shrink-0">
                     <PhoneIcon />
@@ -148,7 +148,7 @@ const Help = () => {
                     </p>
                   </div>
                 </div>
-                <div className="font-title text-[1.9rem] font-semibold text-mountain-orange whitespace-nowrap">
+                <div className="font-title text-[2rem] font-semibold text-mountain-orange">
                   70 20 12 01
                 </div>
               </div>
@@ -215,7 +215,7 @@ const Help = () => {
               <p className="text-sm text-text-medium mb-3">
                 Indtast dit postnummer, og se hvilken region der gælder for dig.
               </p>
-              <form onSubmit={handleFindRegion} className="flex items-center gap-2 flex-wrap">
+              <form onSubmit={handleFindRegion} className="flex items-center gap-2">
                 <input
                   type="text"
                   value={postnr}
@@ -233,15 +233,15 @@ const Help = () => {
                 >
                   Find region
                 </button>
-                {regionFound && (
-                  <span className="text-sm text-soft-black">
-                    Du hører til <strong className="text-[#4D8055]">Region {regionFound}</strong>.
-                  </span>
-                )}
-                {regionError && (
-                  <span className="text-sm text-soft-black">{regionError}</span>
-                )}
               </form>
+              {regionFound && (
+                <p className="text-sm text-soft-black mt-2">
+                  Du hører til <strong className="text-[#4D8055]">Region {regionFound}</strong>.
+                </p>
+              )}
+              {regionError && (
+                <p className="text-sm text-soft-black mt-2">{regionError}</p>
+              )}
             </div>
 
             <p className="text-sm text-text-medium">
