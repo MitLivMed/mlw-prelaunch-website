@@ -3,6 +3,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import jesperPhoto from "@/assets/staff/jesper-photo.png";
+import {
+  submitTrivselSignup,
+  type TrivselLifeStage,
+} from "@/lib/trivsel";
 
 const Wave = ({ from, to, flip = false }: { from: string; to: string; flip?: boolean }) => (
   <div style={{ lineHeight: 0, background: to }}>
@@ -18,11 +22,27 @@ const CheckIcon = ({ color }: { color: string }) => (
   <span style={{ color, fontWeight: 700, flexShrink: 0 }}>✓</span>
 );
 
+const stages: { key: TrivselLifeStage; label: string }[] = [
+  { key: "ungdom", label: "Ungdom · 16–25 år" },
+  { key: "midtliv", label: "Midtliv · 26–49 år" },
+  { key: "erfaren", label: "Erfaren · 50+ år" },
+];
+
 const TrivselsGrupper = () => {
   const [stipendieOpen, setStipendieOpen] = useState(false);
   const [leaveConfirmOpen, setLeaveConfirmOpen] = useState(false);
-  const [selectedStage, setSelectedStage] = useState<string | null>(null);
+  const [selectedStage, setSelectedStage] = useState<TrivselLifeStage | null>(null);
   const [formHasContent, setFormHasContent] = useState(false);
+
+  // Signup form state
+  const [signupName, setSignupName] = useState("");
+  const [signupEmail, setSignupEmail] = useState("");
+  const [signupPhone, setSignupPhone] = useState("");
+  const [signupNote, setSignupNote] = useState("");
+  const [signupConsent, setSignupConsent] = useState(false);
+  const [signupStatus, setSignupStatus] = useState<
+    "idle" | "submitting" | "success" | "already" | "error"
+  >("idle");
 
   const openStipendie = () => setStipendieOpen(true);
 
@@ -34,7 +54,29 @@ const TrivselsGrupper = () => {
     }
   };
 
-  const stages = ["Ungdom · 16–25 år", "Midtliv · 26–49 år", "Erfaren · 50+ år"];
+  const signupValid =
+    signupName.trim().length > 0 &&
+    /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(signupEmail.trim()) &&
+    selectedStage !== null &&
+    signupConsent;
+
+  const handleSignup = async () => {
+    if (!signupValid || selectedStage === null) return;
+    setSignupStatus("submitting");
+    try {
+      const result = await submitTrivselSignup({
+        name: signupName.trim(),
+        email: signupEmail.trim(),
+        phone: signupPhone.trim() || undefined,
+        lifeStage: selectedStage,
+        note: signupNote.trim() || undefined,
+        consent: signupConsent,
+      });
+      setSignupStatus("alreadySignedUp" in result ? "already" : "success");
+    } catch {
+      setSignupStatus("error");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-warm-white">
@@ -552,69 +594,106 @@ const TrivselsGrupper = () => {
               </p>
             </div>
             <div className="bg-white border border-[#E8DED4] rounded-[20px] p-10">
-              <div className="space-y-5">
-                <div>
-                  <label className="block font-body text-[14px] font-bold text-soft-black mb-2">Navn</label>
-                  <input
-                    type="text"
-                    className="w-full font-body text-[15px] px-4 py-3.5 rounded-xl border border-[#E8DED4] bg-warm-white text-soft-black outline-none focus:border-mountain-orange transition-colors"
-                  />
+              {signupStatus === "success" || signupStatus === "already" ? (
+                <div className="text-center py-6">
+                  <h3 className="font-title text-[24px] font-bold text-soft-black mb-3">
+                    {signupStatus === "already" ? "Du er allerede skrevet op" : "Tak — du er skrevet op!"}
+                  </h3>
+                  <p className="font-body text-[15px] leading-[1.6] text-text-medium">
+                    {signupStatus === "already"
+                      ? "Vi har allerede din tilmelding. Vi kontakter dig, så snart der er en gruppe klar til dig."
+                      : "Vi kontakter dig, så snart der er en gruppe klar til din livsfase. Du behøver ikke gøre mere."}
+                  </p>
                 </div>
-                <div>
-                  <label className="block font-body text-[14px] font-bold text-soft-black mb-2">Email</label>
-                  <input
-                    type="email"
-                    className="w-full font-body text-[15px] px-4 py-3.5 rounded-xl border border-[#E8DED4] bg-warm-white text-soft-black outline-none focus:border-mountain-orange transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block font-body text-[14px] font-bold text-soft-black mb-2">Telefon (valgfrit)</label>
-                  <input
-                    type="tel"
-                    className="w-full font-body text-[15px] px-4 py-3.5 rounded-xl border border-[#E8DED4] bg-warm-white text-soft-black outline-none focus:border-mountain-orange transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block font-body text-[14px] font-bold text-soft-black mb-2">Livsfase</label>
-                  <div className="flex flex-wrap gap-2.5">
-                    {stages.map((stage) => (
-                      <button
-                        key={stage}
-                        type="button"
-                        onClick={() => setSelectedStage(stage)}
-                        className="font-body text-[14px] px-4 py-2.5 rounded-full border transition-colors"
-                        style={{
-                          borderColor: selectedStage === stage ? "#BF5B39" : "#E8DED4",
-                          background: selectedStage === stage ? "#F2D7CE" : "#FAF6F5",
-                          color: selectedStage === stage ? "#BF5B39" : "#5c5650",
-                        }}
-                      >
-                        {stage}
-                      </button>
-                    ))}
+              ) : (
+                <div className="space-y-5">
+                  <div>
+                    <label className="block font-body text-[14px] font-bold text-soft-black mb-2">Navn</label>
+                    <input
+                      type="text"
+                      value={signupName}
+                      onChange={e => setSignupName(e.target.value)}
+                      className="w-full font-body text-[15px] px-4 py-3.5 rounded-xl border border-[#E8DED4] bg-warm-white text-soft-black outline-none focus:border-mountain-orange transition-colors"
+                    />
                   </div>
+                  <div>
+                    <label className="block font-body text-[14px] font-bold text-soft-black mb-2">Email</label>
+                    <input
+                      type="email"
+                      value={signupEmail}
+                      onChange={e => setSignupEmail(e.target.value)}
+                      className="w-full font-body text-[15px] px-4 py-3.5 rounded-xl border border-[#E8DED4] bg-warm-white text-soft-black outline-none focus:border-mountain-orange transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-body text-[14px] font-bold text-soft-black mb-2">Telefon (valgfrit)</label>
+                    <input
+                      type="tel"
+                      value={signupPhone}
+                      onChange={e => setSignupPhone(e.target.value)}
+                      className="w-full font-body text-[15px] px-4 py-3.5 rounded-xl border border-[#E8DED4] bg-warm-white text-soft-black outline-none focus:border-mountain-orange transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-body text-[14px] font-bold text-soft-black mb-2">Livsfase</label>
+                    <div className="flex flex-wrap gap-2.5">
+                      {stages.map((stage) => (
+                        <button
+                          key={stage.key}
+                          type="button"
+                          onClick={() => setSelectedStage(stage.key)}
+                          className="font-body text-[14px] px-4 py-2.5 rounded-full border transition-colors"
+                          style={{
+                            borderColor: selectedStage === stage.key ? "#BF5B39" : "#E8DED4",
+                            background: selectedStage === stage.key ? "#F2D7CE" : "#FAF6F5",
+                            color: selectedStage === stage.key ? "#BF5B39" : "#5c5650",
+                          }}
+                        >
+                          {stage.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block font-body text-[14px] font-bold text-soft-black mb-2">
+                      Hvad vil du gerne have til fælles med de andre i din gruppe? (valgfrit)
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={signupNote}
+                      onChange={e => setSignupNote(e.target.value)}
+                      className="w-full font-body text-[15px] px-4 py-3.5 rounded-xl border border-[#E8DED4] bg-warm-white text-soft-black outline-none focus:border-mountain-orange transition-colors resize-y"
+                    />
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <input
+                      type="checkbox"
+                      id="trivsel-consent"
+                      checked={signupConsent}
+                      onChange={e => setSignupConsent(e.target.checked)}
+                      className="mt-1 flex-shrink-0"
+                    />
+                    <label htmlFor="trivsel-consent" className="font-body text-[13px] text-text-medium">
+                      Jeg giver samtykke til, at MitLivMed opbevarer mine oplysninger med henblik på at kontakte mig om Trivsels Grupper. Læs mere i vores{" "}
+                      <a href="/privatlivspolitik" className="underline">privatlivspolitik</a>.
+                    </label>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => { void handleSignup(); }}
+                    disabled={!signupValid || signupStatus === "submitting"}
+                    className="block w-full text-center font-body font-bold text-base text-white bg-mountain-orange px-8 py-4 rounded-full hover:bg-mountain-orange-110 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {signupStatus === "submitting" ? "Sender…" : "Skriv mig op"}
+                  </button>
+                  {signupStatus === "error" && (
+                    <p className="font-body text-[13px] text-mountain-orange">
+                      Noget gik galt. Prøv igen, eller skriv til{" "}
+                      <a href="mailto:kontakt@mitlivmed.dk" className="underline">kontakt@mitlivmed.dk</a>.
+                    </p>
+                  )}
                 </div>
-                <div>
-                  <label className="block font-body text-[14px] font-bold text-soft-black mb-2">
-                    Hvad vil du gerne have til fælles med de andre i din gruppe? (valgfrit)
-                  </label>
-                  <textarea
-                    rows={3}
-                    onChange={e => setFormHasContent(e.target.value.length > 0)}
-                    className="w-full font-body text-[15px] px-4 py-3.5 rounded-xl border border-[#E8DED4] bg-warm-white text-soft-black outline-none focus:border-mountain-orange transition-colors resize-y"
-                  />
-                </div>
-                <button
-                  type="button"
-                  className="block w-full text-center font-body font-bold text-base text-white bg-mountain-orange px-8 py-4 rounded-full hover:bg-mountain-orange-110 transition-colors"
-                >
-                  Skriv mig op
-                </button>
-                <p className="font-body text-[12px] text-text-light">
-                  Vi bruger kun dine oplysninger til at kontakte dig om Trivsels Grupper. Læs mere i vores{" "}
-                  <a href="/privatlivspolitik" className="underline">privatlivspolitik</a>.
-                </p>
-              </div>
+              )}
             </div>
           </div>
         </section>
