@@ -214,10 +214,10 @@ const SupportMembership = () => {
         {/* Stipendie */}
         <section className="px-6 py-14 md:px-12" style={{ background: "#FFFBF3" }}>
           <div className="mx-auto max-w-[640px]">
-            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[2px] text-mountain-orange">
+            <p className="mb-4 text-center text-[10px] font-semibold uppercase tracking-[2px] text-mountain-orange">
               Din støtte går til medlemsstipendier
             </p>
-            <h2 className="mb-6 font-title text-[32px] font-semibold leading-[1.2] text-soft-black md:text-[36px]">
+            <h2 className="mb-6 text-center font-title text-[32px] font-semibold leading-[1.2] text-soft-black md:text-[36px]">
               Adgang for alle
             </h2>
             <p className="mb-4 text-[17px] leading-[1.7] text-text-medium">
