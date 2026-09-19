@@ -213,7 +213,7 @@ const SupportMembership = () => {
 
         {/* Stipendie */}
         <section className="px-6 py-14 md:px-12" style={{ background: "#FFFBF3" }}>
-          <div className="mx-auto max-w-[640px]">
+          <div className="mx-auto max-w-[640px] text-center">
             <p className="mb-4 text-[10px] font-semibold uppercase tracking-[2px] text-mountain-orange">
               Din støtte går til medlemsstipendier
             </p>
