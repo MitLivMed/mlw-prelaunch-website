@@ -211,36 +211,6 @@ const SupportMembership = () => {
           </div>
         </section>
 
-        <Wave from="#FAF6F5" to="#FFEECC" flip />
-
-        {/* Active support */}
-        <div
-          id="active-support"
-          className="flex flex-col items-start gap-4 px-6 py-5 sm:flex-row sm:items-center md:px-12"
-          style={{ background: "#FFEECC" }}
-        >
-          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-mountain-orange-10">
-            <span style={{ fontSize: 20 }}>★</span>
-          </div>
-          <p className="text-[13px] leading-relaxed text-text-medium">
-            <strong className="text-soft-black">
-              Vil du gøre mere end at bidrage økonomisk?
-            </strong>{" "}
-            Vi vil altid gerne høre fra mennesker der vil være med til at bygge
-            noget der betyder noget.{" "}
-            <a
-              href={HUBSPOT_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-mountain-orange underline"
-            >
-              Skriv til os →
-            </a>
-          </p>
-        </div>
-
-        <Wave from="#FFEECC" to="#FFFBF3" />
-
         {/* Stipendie */}
         <section className="px-6 py-14 md:px-12" style={{ background: "#FFFBF3" }}>
           <div className="mx-auto max-w-[640px]">
