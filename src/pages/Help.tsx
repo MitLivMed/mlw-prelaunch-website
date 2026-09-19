@@ -122,24 +122,26 @@ const Help = () => {
               Ring her, hvis du er i fare
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-[#FBE3E0] border-2 border-mountain-orange rounded-2xl px-6 py-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
-                <div className="flex items-center gap-4">
+              <div className="bg-[#FBE3E0] border-2 border-mountain-orange rounded-2xl px-4 py-5 sm:px-6 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                   <span className="w-12 h-12 rounded-full bg-mountain-orange flex items-center justify-center flex-shrink-0">
                     <PhoneIcon />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-title font-semibold text-xl text-soft-black mb-0.5">Ring 112</p>
                     <p className="text-text-medium text-sm">Akut fare</p>
                   </div>
                 </div>
-                <div className="font-title text-[2rem] font-semibold text-mountain-orange">112</div>
+                <div className="font-title text-xl sm:text-[1.9rem] font-semibold text-mountain-orange whitespace-nowrap flex-shrink-0">
+                  112
+                </div>
               </div>
-              <div className="bg-[#FBE3E0] border-2 border-mountain-orange rounded-2xl px-6 py-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
-                <div className="flex items-center gap-4">
+              <div className="bg-[#FBE3E0] border-2 border-mountain-orange rounded-2xl px-4 py-5 sm:px-6 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                   <span className="w-12 h-12 rounded-full bg-mountain-orange flex items-center justify-center flex-shrink-0">
                     <PhoneIcon />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-title font-semibold text-xl text-soft-black mb-0.5">Ring Livslinien</p>
                     <p className="text-text-medium text-sm">
                       Krise og selvmordstanker
@@ -148,7 +150,7 @@ const Help = () => {
                     </p>
                   </div>
                 </div>
-                <div className="font-title text-[2rem] font-semibold text-mountain-orange">
+                <div className="font-title text-lg sm:text-[1.9rem] font-semibold text-mountain-orange whitespace-nowrap flex-shrink-0">
                   70 20 12 01
                 </div>
               </div>
@@ -167,8 +169,8 @@ const Help = () => {
               sted hen for psykiatrisk hjælp.
             </p>
 
-            <div className="bg-white rounded-2xl overflow-hidden border border-[#EFE6E1] mb-4">
-              <table className="w-full border-collapse text-sm">
+            <div className="overflow-x-auto rounded-2xl border border-[#EFE6E1] mb-4">
+              <table className="w-full min-w-[520px] border-collapse text-sm bg-white">
                 <thead>
                   <tr>
                     <th className="text-left bg-[#EDFAEF] text-[#4D8055] text-[10px] uppercase tracking-[2px] font-semibold px-5 py-3">Region</th>
