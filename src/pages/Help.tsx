@@ -519,7 +519,8 @@ const Help = () => {
           </div>
         </section>
 
-        {/* Foreslå ressource */}
+        {/* Foreslå ressource — hidden until a real form endpoint exists (MLM-2388) */}
+        {/*
         <section className="bg-warm-white px-6 py-10 pb-16">
           <div className="max-w-[1040px] mx-auto">
             <div className="bg-white border border-[#EFE6E1] rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 flex-wrap">
@@ -556,6 +557,7 @@ const Help = () => {
             </div>
           </div>
         </section>
+        */}
       </main>
 
       <Footer />
