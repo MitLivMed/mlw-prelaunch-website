@@ -3,6 +3,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 
+const telHref = (num: string) => `tel:${num.replace(/\s+/g, "")}`;
+
 const PhoneIcon = () => (
   <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
     <path d="M6.6 10.8c1.5 3 4 5.5 7 7l2.3-2.3c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C10.9 22 2 13.1 2 2c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1L6.6 10.8z" />
@@ -40,7 +42,14 @@ const ResourceCard = ({ name, href, description, hours, phone, badge }: Resource
     </h3>
     <p className="text-text-medium text-sm mb-1">{description}</p>
     {hours && <p className="text-text-medium text-sm">{hours}</p>}
-    {phone && <p className="font-semibold text-mountain-orange text-base mt-2 font-title">{phone}</p>}
+    {phone && (
+      <a
+        href={telHref(phone)}
+        className="block font-semibold text-mountain-orange text-base mt-2 font-title hover:underline"
+      >
+        {phone}
+      </a>
+    )}
   </div>
 );
 
@@ -132,9 +141,12 @@ const Help = () => {
                     <p className="text-text-medium text-sm">Akut fare</p>
                   </div>
                 </div>
-                <div className="font-title text-xl sm:text-[1.9rem] font-semibold text-mountain-orange whitespace-nowrap flex-shrink-0">
+                <a
+                  href={telHref("112")}
+                  className="font-title text-xl sm:text-[1.9rem] font-semibold text-mountain-orange whitespace-nowrap flex-shrink-0 hover:underline"
+                >
                   112
-                </div>
+                </a>
               </div>
               <div className="bg-[#FBE3E0] border-2 border-mountain-orange rounded-2xl px-4 py-5 sm:px-6 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3 sm:gap-4 min-w-0">
@@ -150,9 +162,12 @@ const Help = () => {
                     </p>
                   </div>
                 </div>
-                <div className="font-title text-lg sm:text-[1.9rem] font-semibold text-mountain-orange whitespace-nowrap flex-shrink-0">
+                <a
+                  href={telHref("70 20 12 01")}
+                  className="font-title text-lg sm:text-[1.9rem] font-semibold text-mountain-orange whitespace-nowrap flex-shrink-0 hover:underline"
+                >
                   70 20 12 01
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -191,7 +206,9 @@ const Help = () => {
                         {row.region}
                       </td>
                       <td className="pl-5 pr-2 py-3.5 border-t border-[#EFE6E1] font-semibold text-mountain-orange whitespace-nowrap">
-                        {row.num}
+                        <a href={telHref(row.num)} className="hover:underline">
+                          {row.num}
+                        </a>
                       </td>
                       <td className="pl-2 pr-5 py-3.5 border-t border-[#EFE6E1] text-text-medium whitespace-pre-line">
                         {row.hours}
@@ -447,7 +464,10 @@ const Help = () => {
                   ))}
                   <li className="py-3 text-sm text-text-medium border-t border-[#EFE6E1]">
                     <strong className="text-soft-black">Har du brug for hjælp nu?</strong> Ring{" "}
-                    <span className="text-mountain-orange font-semibold">112</span>, eller se stederne ovenfor.
+                    <a href={telHref("112")} className="text-mountain-orange font-semibold hover:underline">
+                      112
+                    </a>
+                    , eller se stederne ovenfor.
                   </li>
                 </ul>
               </div>
