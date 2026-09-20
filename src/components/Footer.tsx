@@ -78,6 +78,9 @@ const Footer = () => {
                     {/* <Link to="/forum" className="hover:text-text-dark transition-colors">
                       Forum
                     </Link> */}
+                  </nav>
+                </div>
+
                 {/* Help links */}
                 <div>
                   <h4 className="font-heading font-semibold text-sm text-foreground mb-4">Hjælp</h4>
