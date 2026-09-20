@@ -11,6 +11,7 @@ import Privacy from "./pages/Privacy";
 import Cookies from "./pages/Cookies";
 import SupportMembership from "./pages/SupportMembership";
 import DonationReturn from "./pages/DonationReturn";
+import TrivselsGrupper from "./pages/TrivselsGrupper";
 import Help from "./pages/Help";
 import NotFound from "./pages/NotFound";
 
@@ -33,6 +34,7 @@ const App = () => (
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/stoettemedlemskab" element={<SupportMembership />} />
             <Route path="/donation/retur" element={<DonationReturn />} />
+            <Route path="/trivselsgruppe" element={<TrivselsGrupper />} />
             <Route path="/hjaelp" element={<Help />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

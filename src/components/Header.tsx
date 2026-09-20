@@ -53,6 +53,12 @@ const Header = () => {
             Støt
           </Link>
           <Link
+            to="/trivselsgruppe"
+            className="text-text-medium hover:text-foreground transition-colors font-body text-sm"
+          >
+            Trivsels Grupper
+          </Link>
+          <Link
             to="/hjaelp"
             className="text-text-medium hover:text-foreground transition-colors font-body text-sm"
           >
@@ -101,6 +107,13 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Støt
+            </Link>
+            <Link
+              to="/trivselsgruppe"
+              className="text-text-medium hover:text-foreground transition-colors font-body py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Trivsels Grupper
             </Link>
             <Link
               to="/hjaelp"
