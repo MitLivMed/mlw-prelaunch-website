@@ -44,6 +44,18 @@ const TrivselsGrupper = () => {
     "idle" | "submitting" | "success" | "already" | "error"
   >("idle");
 
+  // Stipendie form state — submits through the same signup endpoint with
+  // wantsStipend: true, the only path that flag is ever sent from.
+  const [stipendieName, setStipendieName] = useState("");
+  const [stipendieEmail, setStipendieEmail] = useState("");
+  const [stipendiePhone, setStipendiePhone] = useState("");
+  const [stipendieLifeStage, setStipendieLifeStage] = useState<TrivselLifeStage | null>(null);
+  const [stipendieNote, setStipendieNote] = useState("");
+  const [stipendieConsent, setStipendieConsent] = useState(false);
+  const [stipendieStatus, setStipendieStatus] = useState<
+    "idle" | "submitting" | "success" | "already" | "error"
+  >("idle");
+
   const openStipendie = () => setStipendieOpen(true);
 
   const attemptCloseStipendie = () => {
@@ -75,6 +87,31 @@ const TrivselsGrupper = () => {
       setSignupStatus("alreadySignedUp" in result ? "already" : "success");
     } catch {
       setSignupStatus("error");
+    }
+  };
+
+  const stipendieValid =
+    stipendieName.trim().length > 0 &&
+    /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(stipendieEmail.trim()) &&
+    stipendieLifeStage !== null &&
+    stipendieConsent;
+
+  const handleStipendieSubmit = async () => {
+    if (!stipendieValid || stipendieLifeStage === null) return;
+    setStipendieStatus("submitting");
+    try {
+      const result = await submitTrivselSignup({
+        name: stipendieName.trim(),
+        email: stipendieEmail.trim(),
+        phone: stipendiePhone.trim() || undefined,
+        lifeStage: stipendieLifeStage,
+        note: stipendieNote.trim() || undefined,
+        consent: stipendieConsent,
+        wantsStipend: true,
+      });
+      setStipendieStatus("alreadySignedUp" in result ? "already" : "success");
+    } catch {
+      setStipendieStatus("error");
     }
   };
 
@@ -796,61 +833,108 @@ const TrivselsGrupper = () => {
             </p>
 
             <div className="space-y-4">
-              <div>
-                <label className="block font-body text-[13px] font-bold text-soft-black mb-2">Hvad ønsker du stipendiet til?</label>
-                <select className="w-full font-body text-[14.5px] px-3.5 py-3 rounded-xl border border-[#E8DED4] bg-white text-soft-black outline-none focus:border-mountain-orange">
-                  <option>Trivsels Grupper</option>
-                  <option>Andet (beskriv nedenfor)</option>
-                </select>
-              </div>
-              <div>
-                <label className="block font-body text-[13px] font-bold text-soft-black mb-2">Hvorfor ønsker du at søge om stipendie?</label>
-                <textarea
-                  rows={3}
-                  onChange={e => setFormHasContent(e.target.value.length > 0)}
-                  className="w-full font-body text-[14.5px] px-3.5 py-3 rounded-xl border border-[#E8DED4] bg-white text-soft-black outline-none focus:border-mountain-orange resize-y"
-                />
-              </div>
-              <div>
-                <label className="block font-body text-[13px] font-bold text-soft-black mb-2">Hvor længe ønsker du at modtage støtte?</label>
-                <select className="w-full font-body text-[14.5px] px-3.5 py-3 rounded-xl border border-[#E8DED4] bg-white text-soft-black outline-none focus:border-mountain-orange">
-                  <option>1 måned</option>
-                  <option>3 måneder</option>
-                  <option>6 måneder</option>
-                  <option>Andet</option>
-                </select>
-              </div>
-              <div>
-                <label className="block font-body text-[13px] font-bold text-soft-black mb-2">Fornavn</label>
-                <input type="text" onChange={e => setFormHasContent(e.target.value.length > 0)} className="w-full font-body text-[14.5px] px-3.5 py-3 rounded-xl border border-[#E8DED4] bg-white text-soft-black outline-none focus:border-mountain-orange" />
-              </div>
-              <div>
-                <label className="block font-body text-[13px] font-bold text-soft-black mb-2">Efternavn</label>
-                <input type="text" onChange={e => setFormHasContent(e.target.value.length > 0)} className="w-full font-body text-[14.5px] px-3.5 py-3 rounded-xl border border-[#E8DED4] bg-white text-soft-black outline-none focus:border-mountain-orange" />
-              </div>
-              <div>
-                <label className="block font-body text-[13px] font-bold text-soft-black mb-2">E-mail</label>
-                <input type="email" onChange={e => setFormHasContent(e.target.value.length > 0)} className="w-full font-body text-[14.5px] px-3.5 py-3 rounded-xl border border-[#E8DED4] bg-white text-soft-black outline-none focus:border-mountain-orange" />
-              </div>
-              <div>
-                <label className="block font-body text-[13px] font-bold text-soft-black mb-2">Telefonnummer</label>
-                <input type="tel" onChange={e => setFormHasContent(e.target.value.length > 0)} className="w-full font-body text-[14.5px] px-3.5 py-3 rounded-xl border border-[#E8DED4] bg-white text-soft-black outline-none focus:border-mountain-orange" />
-              </div>
-              <div className="flex gap-3 items-start">
-                <input type="checkbox" id="gdpr" className="mt-1 flex-shrink-0" />
-                <label htmlFor="gdpr" className="font-body text-[13px] text-text-medium font-normal">
-                  Jeg giver samtykke til at MitLivMed opbevarer mine oplysninger med henblik på behandling af min stipendieansøgning. Oplysningerne opbevares i op til 6 måneder og slettes derefter, medmindre du forlænger. Læs mere i vores privatlivspolitik.
-                </label>
-              </div>
-              <button
-                type="button"
-                className="block w-full text-center font-body font-bold text-base text-white bg-mountain-orange px-8 py-4 rounded-full hover:bg-mountain-orange-110 transition-colors"
-              >
-                Send ansøgning →
-              </button>
-              <p className="font-body text-[12.5px] text-text-light">
-                Vi opbevarer dine oplysninger i op til 6 måneder. MitLivMed fællesskabet er og vil altid være gratis. Din ansøgning påvirker ikke din adgang til det.
-              </p>
+              {stipendieStatus === "success" || stipendieStatus === "already" ? (
+                <div className="text-center py-6">
+                  <h3 className="font-title text-[20px] font-bold text-soft-black mb-3">
+                    {stipendieStatus === "already" ? "Din stipendie-interesse er noteret" : "Tak — din ansøgning er modtaget"}
+                  </h3>
+                  <p className="font-body text-[14px] leading-[1.6] text-text-medium">
+                    {stipendieStatus === "already"
+                      ? "Du var allerede skrevet op til Trivsels Grupper. Vi har nu noteret, at du er interesseret i et stipendie, og vender tilbage inden for 10 dage."
+                      : "Vi gennemgår ansøgninger månedligt og vender tilbage inden for 10 dage."}
+                  </p>
+                </div>
+              ) : (
+                <>
+                  <div>
+                    <label className="block font-body text-[13px] font-bold text-soft-black mb-2">Navn</label>
+                    <input
+                      type="text"
+                      value={stipendieName}
+                      onChange={e => { setStipendieName(e.target.value); setFormHasContent(true); }}
+                      className="w-full font-body text-[14.5px] px-3.5 py-3 rounded-xl border border-[#E8DED4] bg-white text-soft-black outline-none focus:border-mountain-orange"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-body text-[13px] font-bold text-soft-black mb-2">Email</label>
+                    <input
+                      type="email"
+                      value={stipendieEmail}
+                      onChange={e => { setStipendieEmail(e.target.value); setFormHasContent(true); }}
+                      className="w-full font-body text-[14.5px] px-3.5 py-3 rounded-xl border border-[#E8DED4] bg-white text-soft-black outline-none focus:border-mountain-orange"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-body text-[13px] font-bold text-soft-black mb-2">Telefon (valgfrit)</label>
+                    <input
+                      type="tel"
+                      value={stipendiePhone}
+                      onChange={e => { setStipendiePhone(e.target.value); setFormHasContent(true); }}
+                      className="w-full font-body text-[14.5px] px-3.5 py-3 rounded-xl border border-[#E8DED4] bg-white text-soft-black outline-none focus:border-mountain-orange"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-body text-[13px] font-bold text-soft-black mb-2">Livsfase</label>
+                    <div className="flex flex-wrap gap-2">
+                      {stages.map((stage) => (
+                        <button
+                          key={stage.key}
+                          type="button"
+                          onClick={() => { setStipendieLifeStage(stage.key); setFormHasContent(true); }}
+                          className="font-body text-[13px] px-3.5 py-2 rounded-full border transition-colors"
+                          style={{
+                            borderColor: stipendieLifeStage === stage.key ? "#BF5B39" : "#E8DED4",
+                            background: stipendieLifeStage === stage.key ? "#F2D7CE" : "#FAF6F5",
+                            color: stipendieLifeStage === stage.key ? "#BF5B39" : "#5c5650",
+                          }}
+                        >
+                          {stage.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block font-body text-[13px] font-bold text-soft-black mb-2">
+                      Er der noget vi bør vide? (valgfrit)
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={stipendieNote}
+                      onChange={e => { setStipendieNote(e.target.value); setFormHasContent(true); }}
+                      className="w-full font-body text-[14.5px] px-3.5 py-3 rounded-xl border border-[#E8DED4] bg-white text-soft-black outline-none focus:border-mountain-orange resize-y"
+                    />
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <input
+                      type="checkbox"
+                      id="gdpr"
+                      checked={stipendieConsent}
+                      onChange={e => { setStipendieConsent(e.target.checked); setFormHasContent(true); }}
+                      className="mt-1 flex-shrink-0"
+                    />
+                    <label htmlFor="gdpr" className="font-body text-[13px] text-text-medium font-normal">
+                      Jeg giver samtykke til at MitLivMed opbevarer mine oplysninger med henblik på behandling af min stipendieansøgning. Oplysningerne opbevares i op til 6 måneder og slettes derefter, medmindre du forlænger. Læs mere i vores privatlivspolitik.
+                    </label>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => { void handleStipendieSubmit(); }}
+                    disabled={!stipendieValid || stipendieStatus === "submitting"}
+                    className="block w-full text-center font-body font-bold text-base text-white bg-mountain-orange px-8 py-4 rounded-full hover:bg-mountain-orange-110 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {stipendieStatus === "submitting" ? "Sender…" : "Send ansøgning →"}
+                  </button>
+                  {stipendieStatus === "error" && (
+                    <p className="font-body text-[13px] text-mountain-orange">
+                      Noget gik galt. Prøv igen, eller skriv til{" "}
+                      <a href="mailto:kontakt@mitlivmed.dk" className="underline">kontakt@mitlivmed.dk</a>.
+                    </p>
+                  )}
+                  <p className="font-body text-[12.5px] text-text-light">
+                    Vi opbevarer dine oplysninger i op til 6 måneder. MitLivMed fællesskabet er og vil altid være gratis. Din ansøgning påvirker ikke din adgang til det.
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>

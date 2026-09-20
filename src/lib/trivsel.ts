@@ -10,6 +10,8 @@ export interface TrivselSignupInput {
   lifeStage: TrivselLifeStage;
   note?: string;
   consent: boolean;
+  /** Only set by the "Søg om stipendie" flow — the main signup form never sends this. */
+  wantsStipend?: boolean;
 }
 
 export type TrivselSignupResult =
