@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ScrollToTop } from "./components/ScrollToTop";
 import Index from "./pages/Index";
@@ -12,6 +12,7 @@ import Cookies from "./pages/Cookies";
 import SupportMembership from "./pages/SupportMembership";
 import DonationReturn from "./pages/DonationReturn";
 import TrivselsGrupper from "./pages/TrivselsGrupper";
+import Help from "./pages/Help";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,13 +28,14 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/landskaber/:slug" element={<Index />} />
-            <Route path="/akut" element={<Index />} />
+            <Route path="/akut" element={<Navigate to="/hjaelp" replace />} />
             <Route path="/om-os" element={<About />} />
             <Route path="/privatlivspolitik" element={<Privacy />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/stoettemedlemskab" element={<SupportMembership />} />
             <Route path="/donation/retur" element={<DonationReturn />} />
             <Route path="/trivselsgruppe" element={<TrivselsGrupper />} />
+            <Route path="/hjaelp" element={<Help />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

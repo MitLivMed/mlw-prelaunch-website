@@ -57,6 +57,10 @@ const Header = () => {
             className="text-text-medium hover:text-foreground transition-colors font-body text-sm"
           >
             Trivsels Grupper
+            to="/hjaelp"
+            className="text-text-medium hover:text-foreground transition-colors font-body text-sm"
+          >
+            Hjælp
           </Link>
           <a
             href="https://shop.mitlivmed.dk"
@@ -108,6 +112,11 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Trivsels Grupper
+              to="/hjaelp"
+              className="text-text-medium hover:text-foreground transition-colors font-body py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Hjælp
             </Link>
             <a
               href="https://shop.mitlivmed.dk"

@@ -78,6 +78,16 @@ const Footer = () => {
                     {/* <Link to="/forum" className="hover:text-text-dark transition-colors">
                       Forum
                     </Link> */}
+                {/* Help links */}
+                <div>
+                  <h4 className="font-heading font-semibold text-sm text-foreground mb-4">Hjælp</h4>
+                  <nav className="flex flex-col gap-3 text-sm font-body text-text-medium">
+                    <Link to="/hjaelp#akut-fare" className="hover:text-text-dark transition-colors">
+                      Akut hjælp
+                    </Link>
+                    <Link to="/hjaelp#ring" className="hover:text-text-dark transition-colors">
+                      Gratis rådgivning
+                    </Link>
                   </nav>
                 </div>
 
