@@ -8,6 +8,7 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
 import SupportMembership from "./pages/SupportMembership";
 import DonationReturn from "./pages/DonationReturn";
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/akut" element={<Navigate to="/hjaelp" replace />} />
             <Route path="/om-os" element={<About />} />
             <Route path="/privatlivspolitik" element={<Privacy />} />
+            <Route path="/brugerbetingelser" element={<Terms />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/stoettemedlemskab" element={<SupportMembership />} />
             <Route path="/donation/retur" element={<DonationReturn />} />
