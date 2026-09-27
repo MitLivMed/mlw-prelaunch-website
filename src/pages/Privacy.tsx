@@ -134,17 +134,34 @@ const Privacy = () => {
                       </td>
                     </tr>
                     <tr className="bg-mountain-orange-10">
-                      <td className="px-4 py-3 font-semibold text-foreground">Formulardata</td>
-                      <td className="px-4 py-3">Svar på valgfrie trivselsmålinger</td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3 border-b border-border font-semibold text-foreground">
+                        Formulardata
+                      </td>
+                      <td className="px-4 py-3 border-b border-border">
+                        Svar på valgfrie trivselsmålinger
+                      </td>
+                      <td className="px-4 py-3 border-b border-border">
                         GDPR art. 6, stk. 1, litra f, fordi det er i vores legitime interesse at
                         behandle dine svar til forbedring af vores ydelser, hvilken ikke
                         overstiger dine rettigheder og frihedsrettigheder, fordi det er frivilligt
                         at svare
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3 border-b border-border">
                         Trivselsmålinger — valgfrie spørgeskemaer, der hjælper os med at forstå, om
                         fællesskabet gør en positiv forskel og forbedre vores ydelser
+                      </td>
+                    </tr>
+                    <tr className="bg-warm-white">
+                      <td className="px-4 py-3 font-semibold text-foreground">Adfærdsdata</td>
+                      <td className="px-4 py-3">
+                        Engagement-mønstre, tidsstempler, rumdeltagelse
+                      </td>
+                      <td className="px-4 py-3">
+                        GDPR art. 6, stk. 1, litra f, fordi det er i vores legitime interesse at
+                        sikre stabil og sikker drift af platformen
+                      </td>
+                      <td className="px-4 py-3">
+                        Sikring af platformens drift og sikkerhed
                       </td>
                     </tr>
                   </tbody>
