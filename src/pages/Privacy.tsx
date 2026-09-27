@@ -313,7 +313,7 @@ const Privacy = () => {
               <ul className="list-disc list-inside font-body text-text-medium leading-relaxed space-y-2 ml-2 mb-4">
                 <li>Dine strukturerede sundhedsrelaterede oplysninger slettes</li>
                 <li>Du mister adgang til diagnosespecifikke rum og personaliserede funktioner</li>
-                <li>Dit øvrige indhold slettes i overensstemmelse med afsnit 9</li>
+                <li>Dit øvrige indhold slettes i overensstemmelse med afsnit 6</li>
               </ul>
               <p className="font-body text-text-medium leading-relaxed">
                 Tilbagetrækning af samtykke berører ikke lovligheden af den behandling, der er
@@ -321,10 +321,10 @@ const Privacy = () => {
               </p>
             </section>
 
-            {/* Section 6 */}
+            {/* Section 4 */}
             <section className="mb-10">
               <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-4">
-                6. Databehandlere
+                4. Databehandlere
               </h2>
               <p className="font-body text-text-medium leading-relaxed mb-4">
                 Vi benytter følgende databehandlere:
@@ -420,10 +420,10 @@ const Privacy = () => {
               </p>
             </section>
 
-            {/* Section 8 */}
+            {/* Section 5 */}
             <section className="mb-10">
               <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-4">
-                8. Cookies og analyse
+                5. Cookies og analyse
               </h2>
               <p className="font-body text-text-medium leading-relaxed mb-4">
                 MitLivMed bruger PostHog til cookiefri analyse på vores øvrige platforme. PostHog
@@ -458,10 +458,10 @@ const Privacy = () => {
               </p>
             </section>
 
-            {/* Section 9 */}
+            {/* Section 6 */}
             <section className="mb-10">
               <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-4">
-                9. Opbevaring og sletning
+                6. Opbevaring og sletning
               </h2>
               <p className="font-body text-text-medium leading-relaxed mb-4">
                 Dine data opbevares, så længe din konto eksisterer i MitLivMed-fællesskabet.
@@ -548,10 +548,10 @@ const Privacy = () => {
               </div>
             </section>
 
-            {/* Section 10 */}
+            {/* Section 7 */}
             <section className="mb-10">
               <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-4">
-                10. Dine rettigheder
+                7. Dine rettigheder
               </h2>
               <p className="font-body text-text-medium leading-relaxed mb-4">
                 Du har nedenstående rettigheder, som du kan udøve ved at kontakte os via
@@ -602,10 +602,10 @@ const Privacy = () => {
               </p>
             </section>
 
-            {/* Section 13 */}
+            {/* Section 8 */}
             <section className="mb-10">
               <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-4">
-                13. Ændringer til denne politik
+                8. Ændringer til denne politik
               </h2>
               <p className="font-body text-text-medium leading-relaxed mb-3">
                 Vi opdaterer denne privatlivspolitik, når det er nødvendigt — f.eks. ved nye
