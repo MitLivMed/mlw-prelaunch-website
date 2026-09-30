@@ -437,7 +437,7 @@ const TrivselsGrupper = () => {
               Bygget på metoder med over 50 års historik
             </h2>
             <p className="font-body text-[19px] leading-[1.55] text-text-medium mb-4">
-              Trivsels Grupper bygger på værktøjer fra Thrive-appen — metoder, der har været brugt og videreudviklet i foreningslivet i over 50 år. Det er ikke en ny, uafprøvet idé, men en tilgang med en lang praksis bag sig, som i dag anvendes af flere organisationer i Danmark.
+              Trivsels Grupper bygger på velafprøvede værktøjer fra kognitiv adfærdsterapi (CBT) og REBT, kombineret med peer-støtte - en tilgang, der har udviklet sig gennem årtiers praksis.
             </p>
             <p className="font-body text-[19px] leading-[1.55] text-text-medium">
               Facilitatorerne, der leder grupperne, er uddannet i netop disse metoder og modtager løbende faglig supervision, så kvaliteten holdes ensartet på tværs af alle grupper.
