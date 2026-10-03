@@ -34,7 +34,7 @@ const Consent = () => {
                 Version 1.0
               </span>
               <span className="text-sm text-text-light">
-                Sidst opdateret: 27. september 2026
+                Sidst opdateret: 3. oktober 2026
               </span>
             </div>
 
@@ -101,10 +101,9 @@ const Consent = () => {
                 til denne samtykkeerklæring, jf. GDPR artikel 9, stk. 2, litra a.
               </p>
               <p className="font-body text-text-medium leading-relaxed mb-4">
-                Samtykket er frivilligt. Det vil sige, at du kan bruge fællesskabets basale
+                Samtykket er obligatorisk. Det vil sige, at du ikke kan bruge fællesskabets
                 funktioner uden at give samtykke til behandling af disse strukturerede
-                sundhedsdata, mens personaliserede funktioner (diagnosespecifikke rum, matchning)
-                ikke vil være tilgængelige.
+                sundhedsdata.
               </p>
               <p className="font-body text-text-medium leading-relaxed">
                 Strukturerede sundhedsdata opbevares på MitLivMeds egen, selv hostede
