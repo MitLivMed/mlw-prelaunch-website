@@ -86,8 +86,7 @@ const Marketing = () => {
                 nej igen med ét klik.
               </p>
               <p className={p}>
-                Denne politik forklarer, hvordan MitLivMed, et brand under [Wiiths juridiske navn,
-                CVR-nr.], kontakter dig om nye produkter, tilbud og medlemskaber. Den gælder for
+                Denne politik forklarer, hvordan MitLivMed ApS (CVR: 46193040) kontakter dig om nye produkter, tilbud og medlemskaber. Den gælder for
                 mitlivmed.dk og for vores fællesskab på fællesskab.mitlivmed.dk.
               </p>
               <p className={p}>
@@ -201,7 +200,7 @@ const Marketing = () => {
             <section className="mb-10">
               <h2 className={h2}>5. Hvordan og hvor ofte</h2>
               <p className={lead}>
-                Vi sender kun markedsføring på e-mail og højst [X] beskeder om måneden.
+                Vi sender kun markedsføring på e-mail.
               </p>
               <p className={p}>
                 Vi sender ikke markedsføring via sms, telefonopkald eller private beskeder i
