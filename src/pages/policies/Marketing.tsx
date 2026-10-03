@@ -222,13 +222,25 @@ const Marketing = () => {
               <ul className={ul}>
                 <li>Klik på "Afmeld" nederst i enhver markedsførings-e-mail.</li>
                 <li>
-                  Ret dine valg under [Kontoindstillinger → Kommunikation] på hjemmesiden eller
-                  [Præferencer → E-mails] i fællesskabet.
+                  Ret dine valg i dine{" "}
+                  <a
+                    href="https://fællesskab.mitlivmed.dk/u/mitlivmed/preferences/profile"
+                    className="text-mountain-orange hover:text-mountain-orange/90 underline"
+                  >
+                    præferencer i fællesskabet
+                  </a>
+                  .
                 </li>
-                <li>Skriv til os på [e-mail til markedsføring].</li>
+                <li>
+                  Skriv til os på{" "}
+                  <a href="mailto:kontakt@mitlivmed.dk" className="text-mountain-orange hover:text-mountain-orange/90 underline">
+                    kontakt@mitlivmed.dk
+                  </a>
+                  .
+                </li>
               </ul>
               <p className={p}>
-                Vi stopper inden for [48 timer]. Tilbagetrækningen påvirker ikke markedsføring, der
+                Vi stopper inden for 48 timer. Tilbagetrækningen påvirker ikke markedsføring, der
                 allerede er sendt, og du beholder fuld adgang til dit medlemskab og fællesskabet.
               </p>
             </section>
