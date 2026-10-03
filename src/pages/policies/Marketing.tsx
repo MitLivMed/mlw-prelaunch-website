@@ -261,11 +261,11 @@ const Marketing = () => {
                   ],
                   [
                     "Opbevaring",
-                    "Markedsføringsdata slettes, når du trækker dit samtykke tilbage. Dokumentation for samtykket gemmes i [2 år] efter, at vi sidst har brugt det, så vi kan dokumentere, at vi overholder reglerne",
+                    "Markedsføringsdata slettes, når du trækker dit samtykke tilbage. Dokumentation for samtykket gemmes i 2 år efter, at vi sidst har brugt det, så vi kan dokumentere, at vi overholder reglerne",
                   ],
                   [
                     "Databehandlere",
-                    "[E-mailudbyder], OVHcloud (hosting, EU). Alle med databehandleraftaler og med data opbevaret i EU/EØS",
+                    "Brevo, OVHcloud (hosting, EU). Alle med databehandleraftaler og med data opbevaret i EU/EØS",
                   ],
                   [
                     "Dine rettigheder",
