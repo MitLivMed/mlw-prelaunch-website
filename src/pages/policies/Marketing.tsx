@@ -208,8 +208,8 @@ const Marketing = () => {
                 samtykke til den kanal.
               </p>
               <p className={p}>
-                Påmindelser om at gøre tilmeldingen færdig stopper efter [2] beskeder, eller så
-                snart du har gennemført din tilmelding.
+                Vi sender kun påmindelser, hvis du begynder på en tilmelding, men ikke gør den
+                færdig. De stopper, så snart du har gennemført din tilmelding.
               </p>
             </section>
 
