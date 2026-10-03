@@ -69,6 +69,16 @@ const Marketing = () => {
               Markedsføringspolitik
             </h1>
 
+            {/* Version badge */}
+            <div className="flex items-center gap-3 mb-10">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-plain-green-30 text-plain-green-100 border border-plain-green-30">
+                Version 1.0
+              </span>
+              <span className="text-sm text-text-light">
+                Sidst opdateret: 3. oktober 2026
+              </span>
+            </div>
+
             <section className="mb-10">
               <h2 className={h2}>1. Formål og omfang</h2>
               <p className={lead}>
