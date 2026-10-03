@@ -271,7 +271,7 @@ const Marketing = () => {
                     "Dine rettigheder",
                     "Indsigt, berigtigelse, sletning, begrænsning, dataportabilitet og indsigelse mod direkte markedsføring (databeskyttelsesforordningens art. 21)",
                   ],
-                  ["Kontakt", "[Den dataansvarliges navn, adresse, privacy-e-mail]"],
+                  ["Kontakt", "MitLivMed ApS, Otto Busses Vej 5, 2. tv, 2450 København SV. E-mail: privacy@mitlivmed.dk"],
                   ["Klager", "Datatilsynet, datatilsynet.dk"],
                 ]}
               />
