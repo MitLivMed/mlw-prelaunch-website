@@ -163,10 +163,6 @@ const Marketing = () => {
                   ],
                   ["Kun aktivt tilvalg.", "Samtykkefeltet er aldrig forudafkrydset. Du sætter selv krydset."],
                   [
-                    "Dobbelt tilmelding.",
-                    "Efter du har sat kryds, sender vi en bekræftelsesmail. Vi sender først markedsføring, når du har klikket på linket i den.",
-                  ],
-                  [
                     "Adskilt fra vores vilkår.",
                     "Når du accepterer vores medlemsvilkår eller privatlivspolitik, siger du ikke ja til markedsføring.",
                   ],
@@ -176,7 +172,7 @@ const Marketing = () => {
                   ],
                   [
                     "Vi registrerer det.",
-                    "Vi gemmer, hvornår du gav samtykke, hvornår du bekræftede det, hvad du fik vist, og hvor (hjemmeside eller fællesskab), så vi kan dokumentere det.",
+                    "Vi gemmer, hvornår du gav samtykke, hvad du fik vist, og hvor (hjemmeside eller fællesskab), så vi kan dokumentere det.",
                   ],
                   [
                     "Aldersgrænse.",
