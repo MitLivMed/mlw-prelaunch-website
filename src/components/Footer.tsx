@@ -60,9 +60,6 @@ const Footer = () => {
                     <a href="mailto:kontakt@mitlivmed.dk" className="hover:text-text-dark transition-colors">
                       Kontakt
                     </a>
-                    <a href="https://shop.mitlivmed.dk" className="hover:text-text-dark transition-colors" target="_blank" rel="noopener noreferrer">
-                      Butik
-                    </a>
                   </nav>
                 </div>
 
