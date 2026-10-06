@@ -106,6 +106,9 @@ const Footer = () => {
                     <Link to="/cookies" className="hover:text-text-dark transition-colors">
                       Cookiepolitik
                     </Link>
+                    <Link to="/markedsfoeringspolitik" className="hover:text-text-dark transition-colors">
+                      Markedsføringspolitik
+                    </Link>
                   </nav>
                 </div>
               </div>
