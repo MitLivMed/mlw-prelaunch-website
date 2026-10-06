@@ -81,7 +81,7 @@ const Marketing = () => {
                 Version 1.1
               </span>
               <span className="text-sm text-text-light">
-                Sidst opdateret: 3. oktober 2026 · Træder i kraft: 3. oktober 2026
+                Sidst opdateret: 6. oktober 2026 · Træder i kraft: 6. oktober 2026
               </span>
             </div>
 
