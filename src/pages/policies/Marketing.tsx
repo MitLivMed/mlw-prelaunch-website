@@ -43,6 +43,12 @@ const Bullets = ({ items }: { items: string[][] }) => (
   </ul>
 );
 
+const A = ({ href, children }: { href: string; children: React.ReactNode }) => (
+  <a href={href} className="text-mountain-orange hover:text-mountain-orange/90 underline">
+    {children}
+  </a>
+);
+
 const Marketing = () => {
   return (
     <div className="min-h-screen bg-warm-white">
@@ -70,12 +76,12 @@ const Marketing = () => {
             </h1>
 
             {/* Version badge */}
-            <div className="flex items-center gap-3 mb-10">
+            <div className="flex flex-wrap items-center gap-3 mb-10">
               <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-plain-green-30 text-plain-green-100 border border-plain-green-30">
-                Version 1.0
+                Version 1.1
               </span>
               <span className="text-sm text-text-light">
-                Sidst opdateret: 3. oktober 2026
+                Sidst opdateret: 3. oktober 2026 · Træder i kraft: 3. oktober 2026
               </span>
             </div>
 
@@ -86,25 +92,31 @@ const Marketing = () => {
                 nej igen med ét klik.
               </p>
               <p className={p}>
-                Denne politik forklarer, hvordan MitLivMed ApS (CVR: 46193040) kontakter dig om nye produkter, tilbud og medlemskaber. Den gælder for
-                mitlivmed.dk og for vores fællesskab på fællesskab.mitlivmed.dk.
+                Denne politik forklarer, hvordan MitLivMed ApS (CVR: 46193040) kontakter dig om nye
+                produkter, tilbud og medlemskaber. Den gælder for mitlivmed.dk og for vores
+                fællesskab på fællesskab.mitlivmed.dk.
               </p>
               <p className={p}>
                 Politikken dækker kun markedsføring. Beskeder, som vi skal sende for at drive din
                 konto, fx login-links, kvitteringer, betalingsbeskeder, sikkerhedsadvarsler og
                 ændringer i vores vilkår, er ikke markedsføring og er omfattet af vores{" "}
-                <a href="/privatlivspolitik" className="text-mountain-orange hover:text-mountain-orange/90 underline">
-                  privatlivspolitik
-                </a>
-                .
+                <A href="/privatlivspolitik">privatlivspolitik</A>.
+              </p>
+              <p className={p}>
+                Vi bruger ikke undtagelsen for eksisterende kunder i markedsføringsloven. Det
+                betyder, at vi altid beder om dit samtykke, også hvis du allerede er medlem.
+              </p>
+              <p className={p}>
+                Wiith er MitLivMed ApS&apos; engelske brand. Politikken gælder også, når vi skriver
+                til dig under navnet Wiith.
               </p>
             </section>
 
             <section className="mb-10">
               <h2 className={h2}>2. Hvad vi kan sende dig</h2>
               <p className={lead}>
-                Med dit samtykke kan vi sende dig e-mails om tre ting, som alle er dækket af ét
-                samtykke.
+                Med dit samtykke kan vi sende dig e-mails om fire ting. Alle fire er dækket af ét
+                samtykke (se afsnit 3).
               </p>
               <Table
                 head={["Type", "Indhold", "Eksempel"]}
@@ -122,7 +134,12 @@ const Marketing = () => {
                   [
                     "Påmindelser om at gøre tilmeldingen færdig",
                     "En kort opfølgning, hvis du er begyndt at blive medlem, men ikke er blevet færdig",
-                    "\"Du er begyndt på dit medlemskab – vil du gøre det færdigt?\"",
+                    "\"Du er begyndt på dit medlemskab, vil du gøre det færdigt?\"",
+                  ],
+                  [
+                    "Besked om udløbende prøveperiode",
+                    "En kort besked, når din prøveperiode eller gratis periode er ved at udløbe",
+                    "\"Din prøveperiode udløber om tre dage\"",
                   ],
                 ]}
               />
@@ -135,27 +152,39 @@ const Marketing = () => {
             <section className="mb-10">
               <h2 className={h2}>3. Dit samtykke</h2>
               <p className={lead}>
-                Vi beder aktivt om dit samtykke, og et nej påvirker aldrig din adgang til MitLivMed
-                eller fællesskabet.
+                Vi beder aktivt om dit udtrykkelige samtykke, og et nej påvirker aldrig din adgang
+                til MitLivMed eller fællesskabet.
               </p>
               <Bullets
                 items={[
+                  [
+                    "Udtrykkeligt samtykke.",
+                    "Fordi det at være medlem kan sige noget om dit helbred, beder vi om dit udtrykkelige samtykke, jf. databeskyttelsesforordningens art. 9, stk. 2, litra a.",
+                  ],
                   ["Kun aktivt tilvalg.", "Samtykkefeltet er aldrig forudafkrydset. Du sætter selv krydset."],
+                  [
+                    "Dobbelt tilmelding.",
+                    "Efter du har sat kryds, sender vi en bekræftelsesmail. Vi sender først markedsføring, når du har klikket på linket i den.",
+                  ],
                   [
                     "Adskilt fra vores vilkår.",
                     "Når du accepterer vores medlemsvilkår eller privatlivspolitik, siger du ikke ja til markedsføring.",
                   ],
                   [
                     "Klart, hvad du får.",
-                    "Samtykketeksten nævner alle typer beskeder, vi sender, og kanalen (e-mail).",
+                    "Ét samtykke dækker alle fire typer beskeder, vi sender. Samtykketeksten nævner dem alle, kanalen (e-mail) og, at vi følger, om du åbner og klikker i vores e-mails (se afsnit 4).",
                   ],
                   [
                     "Vi registrerer det.",
-                    "Vi gemmer, hvornår du gav samtykke, hvad du fik vist, og hvor (hjemmeside eller fællesskab), så vi kan dokumentere det.",
+                    "Vi gemmer, hvornår du gav samtykke, hvornår du bekræftede det, hvad du fik vist, og hvor (hjemmeside eller fællesskab), så vi kan dokumentere det.",
                   ],
                   [
-                    "Samtykket kan bortfalde.",
-                    "Hvis vi ikke har brugt dit samtykke i længere tid, spørger vi dig igen, før vi sender noget.",
+                    "Aldersgrænse.",
+                    "Vi sender kun markedsføring til personer, der er fyldt 18 år.",
+                  ],
+                  [
+                    "Samtykket bortfalder.",
+                    "Hvis du ikke har haft kontakt med os i 24 måneder (login, åbning eller klik), spørger vi dig igen, før vi sender noget.",
                   ],
                 ]}
               />
@@ -172,16 +201,28 @@ const Marketing = () => {
               <ul className={ul}>
                 <li>Du har oprettet en konto eller profil i fællesskabet, men ikke valgt et medlemskab.</li>
                 <li>Du har påbegyndt betalingen, men ikke gennemført den.</li>
-                <li>Du har åbnet eller klikket på et link i en af vores markedsførings-e-mails.</li>
                 <li>Din prøveperiode eller gratis periode er ved at udløbe.</li>
+                <li>Du har åbnet eller klikket på et link i en af vores markedsførings-e-mails.</li>
               </ul>
+              <p className={p}>
+                <strong className="text-foreground">Sporing af åbninger og klik.</strong> Vi følger,
+                om du åbner og klikker i vores markedsførings-e-mails, via et lille usynligt billede
+                og sporede links. Det er en del af dit samtykke og stopper, når du trækker det
+                tilbage.
+              </p>
+              <p className={p}>
+                <strong className="text-foreground">Profilering.</strong> Fordi vi vælger, hvem der
+                får en påmindelse, ud fra disse handlinger, er det profilering i
+                databeskyttelsesreglernes forstand. Vi træffer ingen afgørelser, der har retlig
+                eller tilsvarende betydning for dig.
+              </p>
               <p className={lead}>Det bruger vi aldrig til markedsføring:</p>
               <ul className={ul}>
                 <li>Det, du skriver i fællesskabet, i opslag, beskeder eller på din profil.</li>
                 <li>Hvilke grupper, kategorier eller emner i fællesskabet du læser eller er med i.</li>
                 <li>
-                  Oplysninger om din diagnose, dit helbred eller dit velbefindende, heller ikke dem
-                  du giver os ved tilmelding.
+                  Oplysninger om din diagnose, dit helbred eller dit velbefindende, også dem du
+                  giver os ved tilmelding.
                 </li>
                 <li>Data købt af eller delt af andre virksomheder.</li>
               </ul>
@@ -200,16 +241,27 @@ const Marketing = () => {
             <section className="mb-10">
               <h2 className={h2}>5. Hvordan og hvor ofte</h2>
               <p className={lead}>
-                Vi sender kun markedsføring på e-mail.
+                Vi sender kun markedsføring på e-mail, og højst så ofte som her:
+              </p>
+              <Table
+                head={["Hvad", "Hvor ofte"]}
+                rows={[
+                  ["Nyheder, produkter og tilbud", "Højst 4 e-mails pr. måned"],
+                  [
+                    "Påmindelser om at gøre tilmeldingen færdig",
+                    "Højst 2 e-mails pr. påbegyndt tilmelding, inden for 7 dage. De stopper, så snart du har gennemført tilmeldingen",
+                  ],
+                  ["Besked om udløbende prøveperiode", "Én e-mail pr. prøveperiode"],
+                ]}
+              />
+              <p className={p}>
+                Vi sender ikke markedsføring via sms, telefonopkald, push-beskeder, i Companion App
+                eller via private beskeder i fællesskabet. Hvis vi en dag ønsker at bruge en anden
+                kanal, beder vi først om dit samtykke til den kanal.
               </p>
               <p className={p}>
-                Vi sender ikke markedsføring via sms, telefonopkald eller private beskeder i
-                fællesskabet. Hvis vi en dag ønsker at bruge en anden kanal, beder vi først om dit
-                samtykke til den kanal.
-              </p>
-              <p className={p}>
-                Vi sender kun påmindelser, hvis du begynder på en tilmelding, men ikke gør den
-                færdig. De stopper, så snart du har gennemført din tilmelding.
+                Vi uploader ikke din e-mailadresse til annonceplatforme som Meta, Google eller
+                TikTok, og vi bruger den ikke til målrettede annoncer.
               </p>
             </section>
 
@@ -217,37 +269,38 @@ const Marketing = () => {
               <h2 className={h2}>6. Sådan siger du nej igen</h2>
               <p className={lead}>
                 Du kan til enhver tid trække dit samtykke tilbage, gratis og lige så nemt, som du
-                gav det.
+                gav det. Det gælder alle typer markedsføring.
               </p>
               <ul className={ul}>
-                <li>Klik på "Afmeld" nederst i enhver markedsførings-e-mail.</li>
+                <li>Klik på "Afmeld" nederst i enhver markedsførings-e-mail. Afmeldingen gælder med det samme.</li>
                 <li>
                   Ret dine valg i dine{" "}
-                  <a
-                    href="https://fællesskab.mitlivmed.dk/u/mitlivmed/preferences/profile"
-                    className="text-mountain-orange hover:text-mountain-orange/90 underline"
-                  >
+                  <A href="https://fællesskab.mitlivmed.dk/u/mitlivmed/preferences/profile">
                     præferencer i fællesskabet
-                  </a>
-                  .
+                  </A>
+                  . Det gælder også med det samme.
                 </li>
                 <li>
-                  Skriv til os på{" "}
-                  <a href="mailto:kontakt@mitlivmed.dk" className="text-mountain-orange hover:text-mountain-orange/90 underline">
-                    kontakt@mitlivmed.dk
-                  </a>
-                  .
+                  Skriv til os på <A href="mailto:kontakt@mitlivmed.dk">kontakt@mitlivmed.dk</A>.
+                  Vi behandler din henvendelse inden for 48 timer.
                 </li>
               </ul>
               <p className={p}>
-                Vi stopper inden for 48 timer. Tilbagetrækningen påvirker ikke markedsføring, der
-                allerede er sendt, og du beholder fuld adgang til dit medlemskab og fællesskabet.
+                Når du har afmeldt dig, gemmer vi din e-mailadresse på en intern spærreliste, så du
+                ikke ved en fejl får markedsføring igen. Spærrelisten bruges kun til det formål.
+              </p>
+              <p className={p}>
+                Tilbagetrækningen gør ikke vores tidligere behandling af dine oplysninger ulovlig,
+                og du beholder fuld adgang til dit medlemskab og fællesskabet. Hvis du lukker eller
+                sletter din konto, trækkes dit samtykke til markedsføring tilbage samtidig.
               </p>
             </section>
 
             <section className="mb-10">
               <h2 className={h2}>7. Dine data og dine rettigheder</h2>
-              <p className={lead}>Vi bruger så få data som muligt, og grundlaget er dit samtykke.</p>
+              <p className={lead}>
+                Vi bruger så få data som muligt, og grundlaget er dit udtrykkelige samtykke.
+              </p>
               <Table
                 head={["Emne", "Hvad gælder"]}
                 rows={[
@@ -257,27 +310,31 @@ const Marketing = () => {
                   ],
                   [
                     "Retsgrundlag",
-                    "Dit samtykke (databeskyttelsesforordningens art. 6, stk. 1, litra a) og markedsføringslovens § 10",
+                    "Dit udtrykkelige samtykke (databeskyttelsesforordningens art. 6, stk. 1, litra a og art. 9, stk. 2, litra a) og markedsføringslovens § 10",
                   ],
                   [
                     "Opbevaring",
-                    "Markedsføringsdata slettes, når du trækker dit samtykke tilbage. Dokumentation for samtykket gemmes i 2 år efter, at vi sidst har brugt det, så vi kan dokumentere, at vi overholder reglerne",
+                    "Markedsføringsdata slettes, når du trækker dit samtykke tilbage. Dokumentation for samtykket gemmes i 2 år efter, at vi sidst har brugt det, og din e-mailadresse bliver på spærrelisten, så vi ikke sender igen",
                   ],
                   [
                     "Databehandlere",
-                    "Brevo, OVHcloud (hosting, EU). Alle med databehandleraftaler og med data opbevaret i EU/EØS",
+                    "Brevo og OVHcloud (hosting, EU). Begge med databehandleraftaler og med data opbevaret i EU/EØS",
                   ],
                   [
                     "Dine rettigheder",
-                    "Indsigt, berigtigelse, sletning, begrænsning, dataportabilitet og indsigelse mod direkte markedsføring (databeskyttelsesforordningens art. 21)",
+                    "Indsigt, berigtigelse, sletning, begrænsning, dataportabilitet, tilbagetrækning af samtykke og indsigelse mod direkte markedsføring (databeskyttelsesforordningens art. 21)",
                   ],
                   ["Kontakt", "MitLivMed ApS, Otto Busses Vej 5, 2. tv, 2450 København SV. E-mail: privacy@mitlivmed.dk"],
-                  ["Klager", "Datatilsynet, datatilsynet.dk"],
+                  [
+                    "Klager",
+                    "Datatilsynet (datatilsynet.dk) for databeskyttelse. Forbrugerombudsmanden (forbrugerombudsmanden.dk) for markedsføring",
+                  ],
                 ]}
               />
               <p className={p}>
                 Vi kan opdatere denne politik. Hvis en ændring påvirker det, du har givet samtykke
-                til, spørger vi dig igen.
+                til, spørger vi dig igen. Tidligere versioner af politikken gemmer vi, så vi kan
+                vise, hvad der gjaldt, da du gav dit samtykke.
               </p>
             </section>
           </div>
