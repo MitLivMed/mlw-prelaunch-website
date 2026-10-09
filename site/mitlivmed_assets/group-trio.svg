@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="260" height="260" fill="none">
+  <g fill="#BF5B39">
+    <path d="M26 178 Q28 96 60 96 Q92 96 94 178 Z"></path>
+    <path d="M90 178 Q92 74 130 74 Q168 74 170 178 Z"></path>
+    <path d="M166 178 Q168 108 200 108 Q232 108 234 178 Z"></path>
+    <circle cx="70" cy="70" r="20"></circle><circle cx="144" cy="44" r="22"></circle><circle cx="189" cy="84" r="19"></circle>
+  </g>
+</svg>

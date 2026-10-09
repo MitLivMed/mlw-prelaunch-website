@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="da">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Støt MitLivMed</title>
+<link rel="icon" href="mitlivmed_assets/logo-rund.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,900;1,400;1,900&family=DM+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #FFFFFF; --surface: #FAF6F5; --text: #2B2B2B; --muted: #5C6B4E; --nav: #595959;
+    --border: #E4DBCD; --orange: #BF5B39; --orange-dark: #663D29; --orange-tint: #F2D7CE; --orange-light: #E5B2A1;
+    --blue-tint: #EDF4FA; --blue: #688BAE; --blue-dark: #46698C;
+    --green-tint: #EDFAEF; --green: #4A6E46; --gold: #C29844; --gold-tint: #FFEECC;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--bg); color: var(--text); font-family: "DM Sans", Calibri, sans-serif; font-weight: 400; line-height: 1.3; }
+  h1, h2, h3 { font-family: "Crimson Pro", Georgia, serif; font-weight: 900; line-height: .95; margin: 0; text-wrap: balance; }
+  h4 { font-family: "DM Sans", Calibri, sans-serif; font-weight: 900; line-height: 1.3; margin: 0; }
+  em, .accent { font-style: italic; }
+  p { margin: 0; }
+  .kicker { font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-weight: 400; font-size: clamp(24px, 3vw, 32px); line-height: .95; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 24px; }
+  section { padding-block: 72px; }
+  @media (max-width: 640px) { section { padding-block: 48px; } .wrap { padding-inline: 18px; } }
+  .accent { color: var(--orange-t); }
+  .muted { color: var(--muted); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; border: none; border-radius: 6px; padding: 14px 24px; font: 500 16px "DM Sans", sans-serif; cursor: pointer; background: var(--orange); color: var(--bg); }
+  .btn.ghost { background: transparent; color: var(--orange-dark); border: 1.5px solid var(--orange-light); }
+  .btn:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  .sec-head { max-width: 640px; margin-bottom: 36px; }
+  .sec-head h2 { font-size: clamp(26px, 3.4vw, 36px); }
+  .sec-head p { margin-top: 14px; color: var(--muted); font-size: 18px; }
+
+  nav { display: flex; align-items: center; justify-content: space-between; padding-block: 18px; gap: 16px; }
+  .brand { display: block; } .brand img { height: 34px; width: auto; display: block; }
+  .ic { width: 22px; height: 22px; fill: currentColor; flex: none; }
+  .proof .ic { width: 42px; height: 42px; margin-bottom: 10px; }
+  .trust .ic { width: 44px; height: 44px; color: var(--orange-t); margin-bottom: 10px; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; } .badge .ic { width: 15px; height: 15px; }
+  .trust-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; } .trust-head img { width: 150px; height: auto; }
+  .final .crowd { display: block; width: min(260px, 70%); height: auto; aspect-ratio: 2 / 1; margin: 0 auto 18px; }
+  .links { display: flex; gap: 26px; font-size: 15px; color: var(--nav); }
+  .nav-act { display: flex; gap: 18px; align-items: center; }
+  .nav-act .signin { font-size: 15px; color: var(--nav); }
+  .nav-act .btn { padding: 10px 18px; font-size: 14.5px; }
+  @media (max-width: 760px) { .links { display: none; } }
+
+  .hero { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; padding-block: 36px 40px; }
+  @media (max-width: 880px) { .hero { grid-template-columns: 1fr; } }
+  .hero h1 { font-size: clamp(34px, 5vw, 52px); margin-top: 8px; }
+  .hero .lede { font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-size: 24px; line-height: .95; margin-top: 18px; max-width: 500px; }
+  .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+  .micro { font-size: 13.5px; color: var(--muted); margin-top: 12px; }
+
+  .video { display: block; text-decoration: none; position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid var(--border); background: var(--orange-tint); }
+  .video svg.bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .video .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,20,15,.62), rgba(30,20,15,.1) 42%, rgba(30,20,15,0) 62%); }
+  .video .title { position: absolute; top: 16px; left: 18px; color: #fff; font-weight: 700; font-size: 15px; }
+  .video .title small { display: block; font-weight: 500; font-size: 12px; opacity: .85; }
+  .video .play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; border-radius: 50%; background: #BF5B39; display: grid; place-items: center; box-shadow: 0 8px 20px rgba(20,10,5,.28); }
+  .video .pill { position: absolute; bottom: 14px; right: 14px; background: #BF5B39; color: #fff; font-size: 13px; font-weight: 700; padding: 8px 14px; border-radius: 6px; }
+
+  .scrollcue { display: flex; flex-direction: column; align-items: center; gap: 6px; width: max-content; margin: 8px auto 0; color: var(--orange-t); text-decoration: none; font-size: 15px; font-weight: 700; transition: opacity .3s; }
+  .scrollcue.gone { opacity: 0; pointer-events: none; }
+  html { scroll-behavior: smooth; }
+  .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 760px) { .proof { grid-template-columns: 1fr; } }
+  .proof div { padding: 22px 24px; border-radius: 12px; }
+  .proof .n { font-family: "Crimson Pro", Georgia, serif; font-size: 44px; line-height: .95; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .proof .l { font-size: 15px; color: var(--muted); }
+
+  .viewport { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+  .track { display: flex; gap: 20px; width: max-content; animation: scroll 50s linear infinite; }
+  .viewport:hover .track { animation-play-state: paused; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .track { animation: none; } .viewport { overflow-x: auto; } }
+  .mc { flex: 0 0 300px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  @media (max-width: 700px) { .mc { flex-basis: 250px; } }
+  .mc .th { position: relative; aspect-ratio: 16 / 9; background: var(--orange-tint); }
+  .mc .th img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .mc .th .sh { display: none; }
+  .mc .th .pl { position: absolute; bottom: 12px; left: 12px; width: 36px; height: 36px; box-shadow: 0 2px 8px rgba(20,10,5,.3); border-radius: 50%; background: rgba(255,255,255,.92); display: grid; place-items: center; }
+  .mc .th .lock { position: absolute; top: 10px; right: 10px; background: rgba(20,14,10,.55); color: #fff; font-size: 10.5px; font-weight: 700; padding: 4px 9px; border-radius: 999px; }
+  .mc .bd { padding: 14px 16px 16px; }
+  .mc h3 { font-size: 15px; margin-bottom: 4px; }
+  .mc p { font-size: 12.5px; color: var(--muted); }
+  .cta-row { margin-top: 28px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .cta-row p { font-size: 14px; color: var(--muted); }
+
+  .need { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 26px; }
+  @media (max-width: 700px) { .need { grid-template-columns: 1fr; } }
+  .need-btn { text-align: left; font: inherit; color: var(--text); background: var(--surface); border: 1.5px solid var(--border); border-radius: 12px; padding: 18px 20px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; }
+  .need-btn strong { font-family: "Crimson Pro", Georgia, serif; font-size: 24px; line-height: .95; font-weight: 900; }
+  .need-btn span { font-size: 14px; color: var(--muted); }
+  .need-btn.on { border-color: var(--orange); background: var(--orange-tint); }
+  .need-btn.on span { color: var(--orange-dark); }
+  .need-btn:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  .arts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 900px) { .arts { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .arts { grid-template-columns: 1fr; } }
+  .art { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .art img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; display: block; }
+  .art .bd { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .art h3 { font-size: 24px; }
+  .art p { font-size: 14.5px; color: var(--muted); }
+  .art .by { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--orange-t); margin-top: auto; }
+  .art.more { background: var(--orange-tint); border-color: transparent; justify-content: center; text-align: left; padding: 24px; gap: 12px; }
+  .art.more .n { font-family: "Crimson Pro", Georgia, serif; font-size: 52px; line-height: .95; font-weight: 900; color: var(--orange-dark); }
+
+  .land { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 760px) { .land { grid-template-columns: 1fr; } }
+  .land .c { display: flex; flex-direction: column; gap: 18px; }
+  .land .pic { position: relative; width: 100%; aspect-ratio: 1 / 1; max-height: 340px; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 24px rgba(43,43,43,.12); margin-top: auto; }
+  .land .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .land .pic .fig { position: absolute; width: 24%; height: auto; }
+    .land .t { padding: 0; }
+  .land h3 { font-size: 30px; color: var(--green); margin-bottom: 6px; }
+  .land p { font-size: 14.5px; color: var(--muted); }
+
+  .evs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 1000px) { .evs { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .evs { grid-template-columns: 1fr; } }
+  .ev { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .ev img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+  .ev .bd { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .badge { align-self: flex-start; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px; letter-spacing: .02em; }
+  .badge.on { background: var(--blue-tint); color: var(--blue-dark); }
+  .badge.off { background: var(--green-tint); color: var(--green); }
+  .ev .date { font-size: 13px; font-weight: 700; color: var(--orange-t); font-variant-numeric: tabular-nums; }
+  .ev h3 { font-size: 22px; }
+
+  .trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .trust { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .trust { grid-template-columns: 1fr; } }
+  .trust div { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .trust h3 { font-size: 22px; margin-bottom: 6px; }
+  .trust p { font-size: 14px; color: var(--muted); }
+  .note { margin-top: 20px; font-size: 14px; color: var(--muted); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
+  .note strong { color: var(--text); }
+
+  .band { background: var(--blue-tint); }
+  .band.green { background: var(--green-tint); }
+  .final { background: var(--orange-dark); color: #FFFFFF; border-radius: 20px; padding: 40px 28px 44px; text-align: center; }
+  .final h2 { color: #FFFFFF; font-size: clamp(26px, 4vw, 36px); }
+  .final p { color: #FFFFFF; margin-top: 10px; }
+  .final form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; max-width: 480px; margin: 22px auto 0; }
+  .final input { flex: 1 1 220px; padding: 14px 16px; border-radius: 6px; border: 0; font: 500 15px "DM Sans", sans-serif; background: #FFFFFF; color: var(--text); }
+  .final .btn { background: #FFFFFF; color: var(--orange-dark); }
+  .final .ok { margin-top: 12px; color: #CDEBD0; font-weight: 700; }
+  footer { padding-block: 36px; border-top: 1px solid var(--border); font-size: 13.5px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  /* ---- støtteside ---- */
+  .mpanel { background: var(--orange-tint); border-radius: 18px; aspect-ratio: 4 / 3; display: grid; place-items: end center; padding: 28px 24px 0; overflow: hidden; }
+  .mpanel { position: relative; text-decoration: none; cursor: pointer; }
+  .mpanel img { width: min(100%, 460px); height: auto; display: block; }
+  .mpanel .mplay { position: absolute; top: 16px; right: 16px; display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: var(--bg); font-weight: 700; font-size: 15px; padding: 10px 16px; border-radius: 999px; }
+  .mpanel.playing { aspect-ratio: 16 / 9; padding: 0; background: #000; }
+  .mpanel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .words { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 960px) { .words { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .words { grid-template-columns: 1fr; } }
+  .word { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px 22px 26px; }
+  .word h3 { font-size: 34px; font-style: italic; color: var(--orange-t); margin-bottom: 10px; }
+  .word p { font-size: 16px; color: var(--muted); }
+  .gives { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 700px) { .gives { grid-template-columns: 1fr; } }
+  .give { display: flex; gap: 16px; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; }
+  .give .ic { width: 44px; height: 44px; color: var(--orange-t); flex: none; }
+  .give h3 { font-size: 16px; margin-bottom: 4px; }
+  .give p { font-size: 15px; color: var(--muted); }
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 760px) { .tiers { grid-template-columns: 1fr; } }
+  .tier { position: relative; text-align: left; font: inherit; color: var(--text); background: var(--surface); border: 2px solid var(--border); border-radius: 16px; padding: 28px 24px; cursor: pointer; display: flex; flex-direction: column; gap: 8px; }
+  .tier .amt { font-family: "Crimson Pro", Georgia, serif; font-weight: 900; font-size: 64px; line-height: .95; color: var(--text); font-variant-numeric: tabular-nums; }
+  .tier .amt small { font-family: "DM Sans", sans-serif; font-weight: 900; font-size: 20px; margin-left: 6px; }
+  .tier .txt { font-size: 15px; color: var(--muted); }
+  .tier .flag { position: absolute; top: -12px; left: 20px; background: var(--orange); color: var(--bg); font-size: 12px; font-weight: 900; padding: 4px 12px; border-radius: 999px; }
+  .tier[aria-checked="true"] { border-color: var(--orange); background: var(--orange-tint); }
+  .tier:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  .pay { margin-top: 26px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .pay .fine { font-size: 14px; color: var(--muted); }
+  .good { background: var(--surface); border: 2px solid var(--orange); border-radius: 16px; padding: 28px 30px; display: grid; gap: 14px; }
+  .good h2 { font-size: 30px; }
+  .good ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .good li { display: flex; gap: 12px; align-items: flex-start; font-size: 18px; }
+  .good li::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--orange); margin-top: 9px; flex: none; }
+  .good strong { font-weight: 900; }
+  nav { flex-wrap: wrap; }
+  .links a { color: var(--nav); text-decoration: none; font-weight: 700; }
+  .links a[aria-current] { color: var(--orange-t); }
+  .nav-act .signin { text-decoration: none; }
+  a.btn { text-decoration: none; }
+  @media (max-width: 760px) { .links { display: flex !important; } }
+  .sitefoot { background: var(--surface); border-top: 1px solid var(--border); margin-top: 40px; padding-block: 44px 28px; }
+  .fgrid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 28px; }
+  @media (max-width: 768px) { .fgrid { grid-template-columns: 1fr 1fr; } .fabout { grid-column: 1 / -1; } }
+  .sitefoot h4 { font-size: 15px; margin-bottom: 12px; }
+  .sitefoot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .sitefoot li a { color: var(--nav); text-decoration: none; font-size: 16px; }
+  .sitefoot li a:hover { color: var(--orange-t); text-decoration: underline; }
+  .sitefoot .copy { margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 13.5px; color: var(--muted); }
+  .mainnav { display: flex; align-items: center; justify-content: space-between; gap: 18px 24px; padding-block: 22px; flex-wrap: wrap; }
+  .menu { list-style: none; margin: 0; padding: 6px; display: flex; align-items: center; gap: 6px; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; }
+  .menuitem { display: block; padding: 12px 20px; border-radius: 999px; font-size: 17px; font-weight: 700; color: var(--text); text-decoration: none; }
+  .menuitem:hover { background: var(--orange-tint); }
+  .menuitem[aria-current] { background: var(--orange-tint); color: var(--orange-dark); }
+  .menubtn { padding: 13px 22px; font-size: 17px; border-radius: 999px; }
+  @media (max-width: 640px) {
+    .menu { width: 100%; justify-content: space-between; }
+    .menuitem { padding: 11px 12px; font-size: 15px; }
+    .menubtn { padding: 11px 14px; font-size: 15px; }
+  }
+  .sitefoot .some { list-style: none; margin: 0 0 0 -11px; padding: 0; display: flex; flex-wrap: wrap; gap: 0 18px; align-items: center; }
+  .some a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--nav); text-decoration: none; border-radius: 50%; }
+  .some a:hover, .some a:focus-visible { color: var(--orange-t); background: var(--orange-tint); }
+  .some svg { width: 22px; height: 22px; flex: none; }
+  .some span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .fabout .fm { font-size: 18px; line-height: 1.35; color: var(--text); max-width: 380px; }
+  .fabout .fm strong { color: var(--muted); font-weight: 900; }
+  .fabout .fadr { font-size: 14px; color: var(--muted); }
+  :root { --logo-w: clamp(170px, 12vw + 100px, 260px); --logo-w-footer: calc(var(--logo-w) * 0.9); }
+  .brand img.header-logo, .header-logo { width: var(--logo-w); height: auto; display: block; flex-shrink: 0; }
+  .footer-logo { width: var(--logo-w-footer); height: auto; display: block; }
+  .mainnav { align-items: center; }
+  .mainnav .brand { flex-shrink: 0; }
+  .footer-brand { display: flex; flex-direction: column; gap: 20px; }
+  .footer-brand p { margin: 0; }
+  .nowrap { white-space: nowrap; }
+  .good .goodlink { display: inline-block; margin-top: 6px; color: var(--orange-t); font-weight: 900; text-decoration: underline; }
+  .copyrow { display: flex; justify-content: space-between; align-items: center; gap: 14px 24px; flex-wrap: wrap; margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .copyrow .copy { margin: 0; padding: 0; border: 0; }
+  .sitefoot .lang { display: flex; flex-direction: row; gap: 10px; align-items: center; margin: 0; padding: 0; }
+  .lang { list-style: none; margin: 0; padding: 0; display: flex; gap: 10px; align-items: center; }
+  .flag { display: block; border-radius: 4px; overflow: hidden; line-height: 0; border: 2px solid transparent; opacity: .6; transition: opacity .2s, transform .2s; }
+  .flag svg { display: block; }
+  .flag.on { opacity: 1; border-color: var(--orange); }
+  .flag:hover, .flag:focus-visible { opacity: 1; transform: translateY(-1px); }
+  .flag:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+  [hidden] { display: none !important; }
+
+  /* Footer: sociale ikoner som runde knapper, skillelinje, copyright og runde sprogflag */
+  .sitefoot .fabout .some { display: none; }
+  .sitefoot .some.row { display: flex; margin: 36px 0 0; gap: 0 18px; }
+  .sitefoot .some.row a { width: 44px; height: 44px; background: var(--orange); color: var(--bg); }
+  .sitefoot .some.row a:hover, .sitefoot .some.row a:focus-visible { background: var(--orange-dark); color: #fff; }
+  .sitefoot .some.row svg { width: 22px; height: 22px; }
+  .copyrow { margin-top: 28px; padding-top: 28px; }
+  .copyrow .copy { font-family: "Crimson Pro", Georgia, serif; font-size: 18px; color: var(--orange-dark); line-height: .95;}
+  .sitefoot .lang { gap: 14px; }
+  .sitefoot .flag { width: 40px; height: 40px; box-sizing: border-box; border-radius: 50%; border: 2px solid transparent; padding: 3px; opacity: 1; }
+  .sitefoot .flag svg { width: 100%; height: 100%; border-radius: 50%; }
+  .sitefoot .flag.on { border-color: var(--orange); }
+  .sitefoot .flag:not(.on) { border-color: transparent; }
+  .skip { position: absolute; left: 8px; top: -60px; z-index: 100; background: var(--orange-dark); color: #fff; padding: 12px 18px; border-radius: 8px; font-weight: 700; text-decoration: none; }
+  .skip:focus { top: 8px; outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 6px var(--orange-dark); }
+  main:focus { outline: none; }
+  .mc h3, .give h3 { font-family: "DM Sans", Calibri, sans-serif; font-weight: 900; line-height: 1.3; }
+  /* WCAG 2.x AA: kontrast, links, fokus */
+  :root { --muted: #4F5E42; }
+  .opt .tag, .help a, .tier .flag { color: var(--orange-dark); }
+  .tier .flag { position: absolute; top: 16px; right: 18px; left: auto; display: inline-flex; align-items: center; gap: 8px; background: none; border: 0; border-radius: 0; padding: 0; opacity: 1; transform: none; font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-weight: 700; font-size: 20px; line-height: .95; color: var(--orange-dark); }
+  .tier .flag .ic { width: 40px; height: 30px; overflow: visible; flex: none; color: var(--orange-t); }
+  .sitefoot .fh { font-family: "DM Sans", Calibri, sans-serif; font-weight: 900; line-height: 1.3; margin: 0 0 12px; font-size: 15px; color: var(--muted); }
+  p a, li a, .legal a { text-decoration: underline; text-underline-offset: 2px; }
+  .menuitem, .btn, .sitefoot li a, .flag, .some a, .brand { text-decoration: none; }
+  .sitefoot li a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-visible, [role=button]:focus-visible, summary:focus-visible { outline: 3px solid var(--orange-dark); outline-offset: 3px; }
+  .tblwrap:focus-visible { outline: 3px solid var(--orange-dark); outline-offset: 2px; }
+  .copyrow .wcag { margin-left: auto; font-weight: 900; font-size: 13px; letter-spacing: .04em; color: var(--orange-dark); border: 2px solid var(--orange-dark); border-radius: 999px; padding: 6px 12px; text-decoration: none; }
+  .copyrow .wcag:hover { background: var(--orange-dark); color: #fff; }
+  /* Typografi: mindste tekststørrelser og linjehøjder efter designet */
+  .micro, .disc, .hint, .dx, .pill, .date, th, .eyebrow2, .mini-p, .mc .bd p { font-size: max(1em, 14px); }
+  .micro, .disc { font-size: 14px !important; }
+  .disc { font-style: normal !important; }
+  .pill, .date, .hint, .dx, th, .eyebrow2 { font-size: 14px !important; }
+  .mc .bd p { font-size: 14px !important; }
+  .lock { font-size: 12.5px !important; }
+  .badge, .by, .tag { font-size: 13px !important; }
+  .tel, .need-label { line-height: 1.05 !important; }
+  .tier .flag { font-weight: 900 !important; }
+  /* Lasse Skovmand / Wiith-handover: linjeafstand 95 % på Crimson Pro, H1 i Mountain Red, farvedosering */
+  h1, h2, h3, .kicker, .lede, .lead, .nlcard h2, .sharetxt .lede { line-height: .95; }
+  h1 { color: var(--orange); }
+  h1 .accent, .accent { color: var(--orange); }
+  .btn { font-weight: 700; font-size: 18.7px; }
+  .btn.menubtn, .menubtn { font-weight: 700; font-size: 18.7px; }
+  .pill, .mplay { font-weight: 700; font-size: 18.7px; }
+  .nlband .kick { font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 28px; line-height: .95; }
+  .nlband .intro { font-size: 24px; }
+  /* Farvedosering (Lasse): ren hvid dominerer, off-white sparsomt, Mountain Red som markant flade, sekundærfarver kun få steder */
+  .band:not(.green) { background: #FFFFFF; }
+  .final { background: var(--orange); }
+  .final p { font-size: 24px; line-height: 1.3; }
+  .final .micro { font-size: 18.7px; font-weight: 700; }
+  .consent { font-size: 14px; }
+  /* Slutjustering: små tekster på Mountain Red må kun være store/fede, Crimson altid 95 %, links i samtykke */
+  .pill, .mplay { font-size: 18.7px !important; font-weight: 700 !important; }
+  .final .micro, .final p.micro { font-size: 18.7px !important; font-weight: 700 !important; }
+  .n, .need-label, .tel, .num { line-height: .95 !important; }
+  .consent a { color: var(--orange-t); text-decoration: underline; }
+  /* Mountain Red som på mylifewiith.com: rød top (menu + hero), rød afslutning. Hvid tekst på rød er altid stor eller fed (WCAG AA). */
+  html.redtop { overflow-x: clip; }
+  html.redtop header.wrap, html.redtop header.wrap nav, html.redtop .mainnav { border-bottom: 0; box-shadow: none; }
+  html.redtop header.wrap, html.redtop .hero, html.redtop .nl-hero { position: relative; }
+  html.redtop header.wrap::before, html.redtop .hero::before, html.redtop .nl-hero::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; margin-left: -50vw; background: var(--orange); z-index: -1; }
+  html.redtop .hero { padding-bottom: 56px; }
+  html.redtop .hero h1, html.redtop .nl-hero h1, html.redtop .hero .kicker, html.redtop .nl-hero .kicker, html.redtop .hero .lede, html.redtop .nl-hero .lede, html.redtop .hero .accent, html.redtop .nl-hero .accent, html.redtop .hero .hl { color: #fff; }
+  html.redtop .hero .micro, html.redtop .nl-hero .body2 { color: #fff; font-size: 18.7px; font-weight: 700; line-height: 1.3; }
+  html.redtop .nl-hero .body2 { font-size: 24px; font-weight: 400; }
+  html.redtop .hero .btn, html.redtop .nl-hero .btn { background: #fff; color: var(--orange-dark); }
+  html.redtop .hero .btn:hover { background: var(--orange-tint); }
+  html.redtop .hero .btn.ghost { background: transparent; color: #fff; border: 2px solid #fff; }
+  html.redtop .hero .btn.ghost:hover { background: rgba(255,255,255,.16); }
+  html.redtop .nlpanel { background: transparent; padding: 0; overflow: visible; }
+  html.redtop .nlpanel .crowd { display: none; }
+  html.redtop .nlcard .btn { background: var(--orange); color: #fff; }
+  html.redtop .sharehero a, html.redtop .sharehero2 a { color: #fff; }
+  .sharehero { border-top: 2px dashed var(--orange-light); padding-top: 12px; margin-top: 16px; max-width: 520px; font-size: 17px; line-height: 1.3; color: var(--text); }
+  .sharehero a { color: var(--orange-t); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  .sharehero2 { font-weight: 700; }
+  .band.red { background: var(--orange); color: #fff; }
+  .band.red h2, .band.red .accent, .band.red p { color: #fff; }
+  .band.red p { font-size: 24px; line-height: 1.3; }
+  .seg { display: inline-flex; gap: 8px; margin: 18px 0 4px; flex-wrap: wrap; justify-content: center; }
+  .seg button { min-height: 44px; padding: 0 18px; border-radius: 999px; border: 2px solid #fff; background: transparent; color: #fff; font: 700 18.7px "DM Sans", sans-serif; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: #fff; color: var(--orange-dark); }
+  .final [hidden] { display: none; }
+  .final .btn { margin-top: 14px; }
+  .share { padding-block: 40px 8px; }
+  .sharegrid { display: grid; grid-template-columns: minmax(0, 1fr) 520px; gap: 64px; align-items: start; }
+  .sharecopy h2 { font-size: clamp(34px, 5vw, 52px); line-height: .95; margin-top: 8px; }
+  .sharecopy .lede { font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-size: 24px; line-height: .95; margin-top: 16px; max-width: 480px; }
+  .sharebul { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 8px; font-size: 19px; }
+  .sharepanel { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 28px; }
+  .sharecompact { display: none; flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 20px; }
+  .sharecompact .btn { display: inline-flex; align-items: center; gap: 8px; }
+  .sharecompact .mlm-link { color: var(--orange-t); font-size: 18px; min-height: 44px; }
+  @media (max-width: 880px) { .sharegrid { grid-template-columns: 1fr; gap: 20px; } .sharepanel { display: none; } .sharecompact { display: flex; } }
+  .payrow { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .payshare { margin-top: 10px; font-size: 16px; color: var(--muted); }
+  @media (max-width: 520px) { .menu { width: 100%; justify-content: space-between; } .menu { gap: 4px 0; padding: 6px; flex-wrap: wrap; border-radius: 28px; } .menuitem { font-size: 15px; white-space: nowrap; padding-inline: 8px; } .menubtn, .btn.menubtn { white-space: nowrap; padding-inline: 12px; font-size: 18.7px; } }
+  /* Mobil-finpudsning: ingen enlige ord, telefonnumre brydes ikke, ens justering */
+  p, li, td, th, summary, label, blockquote, .txt, .desc { text-wrap: pretty; }
+  h1, h2, h3, h4, .kicker, .lede, .btn { text-wrap: balance; }
+  .alarm .al .num, .hc .tel, a.num, a.tel { white-space: nowrap; }
+  .alarm .al .num { font-size: clamp(30px, 9.5vw, 52px); }
+  .hc .tel { font-size: clamp(24px, 7.4vw, 30px); }
+  .art.more h3, .art.more p { text-align: center; }
+  .art.more .btn { align-self: center !important; }
+  .vhint { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 2; background: rgba(51,41,39,.9); color: #fff; font: 700 15px "DM Sans", sans-serif; padding: 8px 14px; border-radius: 999px; white-space: nowrap; pointer-events: none; }
+  /* Wiith-bånd over footeren (design 1c) */
+  .wiithband { background: color-mix(in srgb, var(--orange-tint) 55%, #fff); margin-top: 40px; }
+  .wiithband + .sitefoot { margin-top: 0; }
+  .wb-in { display: flex; align-items: center; gap: 24px; padding-block: 22px; }
+  .wb-in img { height: 30px; width: auto; flex: none; display: block; }
+  .wb-div { width: 1px; align-self: stretch; min-height: 32px; background: var(--orange-light); flex: none; }
+  .wb-in p { margin: 0; flex: 1; font-family: "Crimson Pro", Georgia, serif; font-size: 22px; line-height: .95; color: var(--orange-dark); text-wrap: pretty; }
+  .wb-in a { font-weight: 700; font-size: 17px; color: var(--orange-t); white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 760px) { .wb-in { flex-direction: column; align-items: flex-start; gap: 12px; } .wb-div { display: none; } }
+  .wiithnote { display: flex; align-items: center; gap: 14px; margin-top: 14px; padding: 12px 16px; border-radius: 12px; background: color-mix(in srgb, var(--orange-tint) 55%, #fff); }
+  .wiithnote img { height: 22px; width: auto; flex: none; }
+  .wiithnote p { margin: 0; font-family: "Crimson Pro", Georgia, serif; font-size: 18px; line-height: .95; color: var(--orange-dark); }
+  .wiithnote a { font-weight: 700; color: var(--orange-t); white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 760px) { .wiithnote { flex-wrap: wrap; } }
+  /* Mindre kursiv: kun fremhævede ord i overskrifter står i kursiv */
+  .lede, .sharecopy .lede, .tak .lede { font-family: "DM Sans", Calibri, sans-serif !important; font-style: normal !important; font-weight: 400 !important; font-size: clamp(18px, 2.1vw, 21px) !important; line-height: 1.3 !important; }
+  .lede .hl { font-family: inherit !important; font-weight: 700 !important; color: inherit; }
+  .kicker, .nlband .kick, .mlm-from { font-style: normal !important; }
+</style>
+<link rel="stylesheet" href="share.css">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-secure" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 20C9 18.8954 9.89543 18 11 18H14V16C14 10.4772 18.4772 6 24 6C29.5228 6 34 10.4772 34 16V18H37C38.1046 18 39 18.8954 39 20V40C39 41.1046 38.1046 42 37 42H11C9.89543 42 9 41.1046 9 40V20ZM24 10C27.3137 10 30 12.6863 30 16V18H18V16C18 12.6863 20.6863 10 24 10ZM32.9999 26H15V24H32.9999V26ZM15 31H32.9999V29H15V31ZM32.9999 36H15V34H32.9999V36Z" fill="currentColor"/>
+</symbol><symbol id="i-comm" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4 20.5C4 12.4919 10.4919 6 18.5 6H29.5C37.5081 6 44 12.4919 44 20.5C44 28.5081 37.5081 35 29.5 35H28V42L25.5 41.5C9 37.5 4 28.5081 4 20.5ZM27.3333 18.0001H29V27.0001H19V18.0001H20.6667V15.2292C20.6667 13.6759 22.159 12.4167 24 12.4167C25.841 12.4167 27.3333 13.6759 27.3333 15.2292V18.0001ZM24 14.4167C24.4703 14.4167 24.8413 14.5783 25.0673 14.769C25.289 14.9561 25.3333 15.1264 25.3333 15.2292V17.9167H22.6667V15.2292C22.6667 15.1264 22.711 14.9561 22.9327 14.769C23.1587 14.5783 23.5297 14.4167 24 14.4167Z" fill="currentColor"/>
+</symbol><symbol id="i-group" viewBox="0 0 48 48">
+<path d="M24 12.0417C24 8.70495 21.2951 6 17.9583 6H12.0417C8.70495 6 6 8.70495 6 12.0417C6 15.3784 8.70495 18.0833 12.0417 18.0833H13.2V21C13.2 21 24 19.5417 24 12.0417Z" fill="currentColor"/>
+<path d="M18.5 28C18.5 30.21 16.71 32 14.5 32C12.29 32 10.5 30.21 10.5 28C10.5 25.79 12.29 24 14.5 24C16.71 24 18.5 25.79 18.5 28Z" fill="currentColor"/>
+<path d="M14.5 34C11.6631 34 6 35.4293 6 38.2667V42H23V38.2667C23 35.4293 17.3369 34 14.5 34Z" fill="currentColor"/>
+<path d="M33.5 32C35.71 32 37.5 30.21 37.5 28C37.5 25.79 35.71 24 33.5 24C31.29 24 29.5 25.79 29.5 28C29.5 30.21 31.29 32 33.5 32Z" fill="currentColor"/>
+<path d="M33.5 34C30.6631 34 25 35.4293 25 38.2667V42H42V38.2667C42 35.4293 36.3369 34 33.5 34Z" fill="currentColor"/>
+<path d="M32.0417 7C28.7049 7 26 9.70495 26 13.0417C26 20.5417 35.6 22 35.6 22V19.0833H35.9583C39.2951 19.0833 42 16.3784 42 13.0417C42 9.70495 39.2951 7 35.9583 7H32.0417Z" fill="currentColor"/>
+</symbol><symbol id="i-video" viewBox="0 0 48 48">
+<path d="M4 13C4 11.3431 5.34315 10 7 10H33C34.6569 10 36 11.3431 36 13V19.4286L44 14V34L36 28.8571V35C36 36.6569 34.6569 38 33 38H7C5.34315 38 4 36.6569 4 35V13Z" fill="currentColor"/>
+</symbol><symbol id="i-book" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 10C9 7.23858 11.2386 5 14 5H38C38.5523 5 39 5.44772 39 6V36C39 36.5523 38.5523 37 38 37H14C12.3431 37 11 38.3431 11 40V41H38V43H10C9.44772 43 9 42.5523 9 42V10ZM23 26V21H18V19H23V14H25V19H30V21H25V26H23Z" fill="currentColor"/>
+</symbol><symbol id="i-cal" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15 23C13.8954 23 13 23.8954 13 25V27C13 28.1046 13.8954 29 15 29H17C18.1046 29 19 28.1046 19 27V25C19 23.8954 18.1046 23 17 23H15ZM15 25V27H17V25H15Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M21 25C21 23.8954 21.8954 23 23 23H25C26.1046 23 27 23.8954 27 25V27C27 28.1046 26.1046 29 25 29H23C21.8954 29 21 28.1046 21 27V25ZM23 25H25V27H23V25Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M31 23C29.8954 23 29 23.8954 29 25V27C29 28.1046 29.8954 29 31 29H33C34.1046 29 35 28.1046 35 27V25C35 23.8954 34.1046 23 33 23H31ZM31 25V27H33V25H31Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M13 33C13 31.8954 13.8954 31 15 31H17C18.1046 31 19 31.8954 19 33V35C19 36.1046 18.1046 37 17 37H15C13.8954 37 13 36.1046 13 35V33ZM15 35V33H17V35H15Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M23 31C21.8954 31 21 31.8954 21 33V35C21 36.1046 21.8954 37 23 37H25C26.1046 37 27 36.1046 27 35V33C27 31.8954 26.1046 31 25 31H23ZM25 33H23V35H25V33Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M29 33C29 31.8954 29.8954 31 31 31H33C34.1046 31 35 31.8954 35 33V35C35 36.1046 34.1046 37 33 37H31C29.8954 37 29 36.1046 29 35V33ZM31 35V33H33V35H31Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C15.4477 6 15 6.44772 15 7V10H11C8.79086 10 7 11.7909 7 14V38C7 40.2092 8.79086 42 11 42H37C39.2091 42 41 40.2092 41 38V14C41 11.7909 39.2091 10 37 10H35V13C35 13.5523 34.5523 14 34 14C33.4477 14 33 13.5523 33 13V7C33 6.44772 32.5523 6 32 6C31.4477 6 31 6.44772 31 7V10H19V13C19 13.5523 18.5523 14 18 14C17.4477 14 17 13.5523 17 13V7C17 6.44772 16.5523 6 16 6ZM9 38V21H39V38C39 39.1046 38.1046 40 37 40H11C9.89543 40 9 39.1046 9 38Z" fill="currentColor"/>
+</symbol><symbol id="i-laptop" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9.00002 10C7.89545 10 7.00002 10.8954 7.00002 12V31C7.00002 32.1046 7.89545 33 9.00002 33H39C40.1046 33 41 32.1046 41 31V12C41 10.8954 40.1046 10 39 10H9.00002ZM11 29V14H37V29H11ZM9.00002 13C9.00002 12.4477 9.44773 12 10 12H38C38.5523 12 39 12.4477 39 13V30C39 30.5523 38.5523 31 38 31H10C9.44773 31 9.00002 30.5523 9.00002 30V13Z" fill="currentColor"/>
+<path d="M7.06003 31.4719C7.24254 31.1784 7.56362 31 7.9092 31H39.8823C40.2198 31 40.5346 31.1703 40.7193 31.4528L43.9884 36.4528C44.4233 37.1179 43.9461 38 43.1514 38H4.79957C4.01512 38 3.53612 37.138 3.9504 36.4719L7.06003 31.4719Z" fill="currentColor"/>
+</symbol><symbol id="i-pin" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M23.4236 41.8172C23.424 41.8174 23.4243 41.8176 24 41L23.4236 41.8172ZM24.5764 41.8172L24.58 41.8146L24.5891 41.8082L24.6209 41.7854C24.6482 41.7658 24.6875 41.7374 24.7379 41.7004C24.8387 41.6263 24.9842 41.5178 25.1681 41.3765C25.5357 41.0938 26.0571 40.6794 26.6811 40.1459C27.9277 39.08 29.5908 37.5328 31.2565 35.6059C34.5639 31.7799 38 26.3195 38 20.0769C38 16.3454 36.5264 12.7655 33.9016 10.1251C31.2765 7.48454 27.7149 6 24 6C20.2851 6 16.7235 7.48454 14.0984 10.1251C11.4736 12.7655 10 16.3454 10 20.0769C10 26.3195 13.4361 31.7799 16.7435 35.6059C18.4092 37.5328 20.0723 39.08 21.3189 40.1459C21.9429 40.6794 22.4643 41.0938 22.8319 41.3765C23.0158 41.5178 23.1613 41.6263 23.2621 41.7004C23.3125 41.7374 23.3518 41.7658 23.3791 41.7854L23.4109 41.8082L23.42 41.8146L23.4236 41.8172C23.7689 42.0603 24.2311 42.0603 24.5764 41.8172ZM24 41L24.5764 41.8172C24.576 41.8174 24.5757 41.8176 24 41ZM29 20C29 22.7614 26.7614 25 24 25C21.2386 25 19 22.7614 19 20C19 17.2386 21.2386 15 24 15C26.7614 15 29 17.2386 29 20Z" fill="currentColor"/>
+</symbol></defs></svg>
+<a class="skip" href="#main">Gå til indhold</a>
+<header class="wrap">
+  <nav class="mainnav" aria-label="Hovedmenu">
+    <a class="brand" href="index.html" aria-label="MitLivMed forside"><img class="header-logo" src="mitlivmed_assets/logo-wordmark-beskaaret.svg" alt="MitLivMed" width="1390" height="175"></a>
+    <ul class="menu">
+      <li><a class="menuitem" href="trivselsgrupper.html" data-nav="trivselsgrupper">Trivselsgrupper</a></li>
+      <li><a class="menuitem" href="https://xn--fllesskab-g3a.mitlivmed.dk/login">Log ind</a></li>
+      <li><a class="btn menubtn" href="opret.html">Opret profil</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+<div class="wrap">
+  <section class="hero" style="padding-top:24px;">
+    <div>
+      <p class="kicker">Støttemedlem</p>
+      <h1>At leve med bipolar er svært. At finde ud af det <span class="accent">alene</span> er sværere.</h1>
+      <p class="lede">Som støttemedlem er du med til at holde fællesskabet kørende, så ingen med bipolar behøver stå alene. Dit bidrag bliver til arrangementer, artikler, videoer og et trygt og støttende fællesskab.</p>
+      <div class="cta"><a class="btn" href="#bidrag" style="text-decoration:none;">Bliv støttemedlem →</a></div>
+      <p class="micro">Fra 50 kr. Opsig når som helst.</p>
+    </div>
+    <div class="mcol"><a class="mpanel" id="mvideo" data-yt="JflPGNrcofg" href="https://youtu.be/JflPGNrcofg" target="_blank" rel="noopener" aria-label="Afspil videoen"><img src="mitlivmed_assets/group-trio.svg" alt="" aria-hidden="true"><span class="mplay"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5Z" fill="#fff"/></svg>Se videoen</span></a></div>
+  </section>
+  <a class="scrollcue" id="scrollcue" href="#hvorfor" aria-label="Scroll ned for at se mere"><svg width="88" height="28" viewBox="0 0 88 28" fill="none" aria-hidden="true"><path d="M6 5L44 23L82 5" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+
+<section id="hvorfor">
+  <div class="wrap">
+    <div class="sec-head"><h2>Hvorfor støtter man?</h2><p>Mange af os, der står tæt på en med bipolar, genkender disse fire aspekter:</p></div>
+    <div class="words">
+      <div class="word"><h3>Samvittighed</h3><p>Du kan ikke tage det svære væk. Men du kan gøre noget, der gør en forskel for andre i samme situation.</p></div>
+      <div class="word"><h3>Skyld</h3><p>Skyld er sjældent et tegn på, at du har gjort noget forkert. Ofte er det omsorg uden et sted at gå hen. Her er et sted.</p></div>
+      <div class="word"><h3>Håb</h3><p>Din støtte holder døren åben for en, der lige har fået diagnosen og leder efter nogen, der kender det.</p></div>
+      <div class="word"><h3>Forståelse</h3><p>Når flere forstår bipolar indefra, bliver det lettere at tale om, også i familien.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head"><h2>Det får fællesskabet ud af dit bidrag</h2><p>Fællesskabet er gratis for alle. Støtten betaler for de omkostninger, der er forbundet med at drive fællesskabet.</p></div>
+    <div class="gives">
+      <div class="give"><svg class="ic" aria-hidden="true"><use href="#i-video"/></svg><div><h3>Artikler og videoer</h3><p>Vi kan blive ved med at udgive artikler og interviews, fortalt af mennesker med bipolar.</p></div></div>
+      <div class="give"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg><div><h3>5-10 arrangementer om året</h3><p>Fysisk og online, på tværs af Danmark, med adgang for alle uanset indkomst.</p></div></div>
+      <div class="give"><svg class="ic" aria-hidden="true"><use href="#i-comm"/></svg><div><h3>Nyhedsbrev og 20 % rabat på merchandise</h3><p>Et nyhedsbrev hvert kvartal om, hvad MitLivMed laver, og 20 % rabat på vores merchandise som tak fra os.</p></div></div>
+      <div class="give"><svg class="ic" aria-hidden="true"><use href="#i-group"/></svg><div><h3>Understøtter dem, der ikke har råd</h3><p>Adgang og produkter vil have en pris, og her giver stipendierne bred adgang. Stipendierne finansieres af MitLivMed og af støttemedlemmer.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="bidrag">
+  <div class="wrap">
+    <div class="sec-head"><h2>Vælg dit bidrag</h2><p>Minimum 50 kr. Betal, hvad du kan. Der er ingen forkert pris.</p></div>
+    <div class="tiers" role="radiogroup" aria-label="Vælg beløb">
+      <button class="tier" role="radio" aria-checked="false" data-a="50"><span class="amt">50<small>kr</small></span><span class="txt">Du er med til at holde fællesskabet kørende.</span></button>
+      <button class="tier" role="radio" aria-checked="true" data-a="75"><span class="flag"><svg class="ic" viewBox="16 14 228 170" aria-hidden="true" fill="currentColor"><path d="M26 178 Q28 96 60 96 Q92 96 94 178 Z"/><path d="M90 178 Q92 74 130 74 Q168 74 170 178 Z"/><path d="M166 178 Q168 108 200 108 Q232 108 234 178 Z"/><circle cx="70" cy="70" r="20"/><circle cx="144" cy="44" r="22"/><circle cx="189" cy="84" r="19"/></svg>Mest valgt</span><span class="amt">75<small>kr</small></span><span class="txt">Du støtter fællesskabet og fortsætter udviklingen.</span></button>
+      <button class="tier" role="radio" aria-checked="false" data-a="100"><span class="amt">100<small>kr</small></span><span class="txt">Du gør en mærkbar forskel for flere.</span></button>
+    </div>
+    <div class="pay">
+      <div class="payrow"><button class="btn" id="payBtn">Bliv støttemedlem for 75 kr →</button><button type="button" class="btn ghost" data-share="forside">Del i stedet</button></div>
+      <p class="payshare">Kan du ikke give lige nu? At sende os videre til én person er også støtte.</p>
+      <p class="fine">Betales hver måned. Opsig når som helst, ingen binding. Vil du give mere, vælger du selv beløbet, når du tilmelder dig.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band green">
+  <div class="wrap">
+    <div class="sec-head"><h2>Din støtte går til medlemsstipendier</h2><p>MitLivMed er en socialøkonomisk virksomhed, og vores formål er, at økonomi ikke skal stå i vejen. Fællesskabet er gratis for alle. Noget af den mere strukturerede støtte koster penge, og ikke alle kan selv betale. Derfor findes MitLivMed Stipendier, så de, der har overskud, kan række hånden ud til dem, der har brug for det. Stipendierne finansieres af MitLivMed og af støttemedlemmer. Dit bidrag bliver til konkret hjælp for et menneske.</p></div>
+    <a class="btn ghost" href="stipendier.html" style="text-decoration:none;">Læs om stipendier →</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="good">
+      <h2>Godt at vide, før du støtter</h2>
+      <ul>
+        <li><span><strong>MitLivMed er en virksomhed, ikke en forening.</strong> Vi er en socialøkonomisk virksomhed, stiftet af mennesker, der selv lever med bipolar. <a class="goodlink" href="om-os.html#holdet">Se personerne bag MitLivMed her →</a></span></li>
+        <li><span><strong>Dit bidrag er ikke skatteberettiget.</strong> Du kan ikke trække det fra i skat.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="final">
+      <img class="crowd" src="mitlivmed_assets/group-crowd-hvid.svg" alt="" aria-hidden="true">
+      <h2>Ingen skal stå alene med det</h2>
+      <p>Vi planlægger at udvide til andre psykiske lidelser og andre lande i 2027, med din og fællesskabets hjælp.</p>
+      <p style="margin-top:20px;"><a class="btn" href="#bidrag" style="background:#FFFFFF;color:var(--orange-dark);text-decoration:none;">Bliv støttemedlem →</a></p>
+      <p style="font-size:18.7px;font-weight:700;margin-top:14px;">Opsig når som helst. Ingen binding.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fabout footer-brand">
+        <img class="footer-logo" src="mitlivmed_assets/logo-wordmark-beskaaret.svg" alt="MitLivMed" width="1390" height="175">
+        <p class="fm"><strong>MitLivMed ApS er en socialøkonomisk virksomhed.</strong><br>Vi giver mennesker, der lever med psykiske lidelser, fortællinger de kan spejle sig i, guidet refleksion og et trygt fællesskab.</p>
+        <p class="fadr">Otto Busses Vej 2 sal th · 2450 København SV <span class="nowrap">· CVR 46193040</span></p>
+      </div>
+      <div><p class="fh">Virksomhed</p><ul><li><a href="om-os.html">Om MitLivMed</a></li><li><a href="stoet.html">Støt</a></li><li><a href="kontakt.html">Kontakt</a></li><li><a href="https://shop.mitlivmed.dk/">Butik</a></li></ul></div>
+      <div><p class="fh">Produkter</p><ul><li><a href="trivselsgrupper.html">Trivselsgrupper</a></li></ul></div>
+      <div><p class="fh">Hjælp og støtte</p><ul><li><a href="hjaelp.html">Hjælp</a></li><li><a href="hjaelp.html#akut">Akut hjælp</a></li><li><a href="hjaelp.html#ring">Gratis rådgivning</a></li><li><a href="stipendier.html">Stipendier</a></li></ul></div>
+      <div><p class="fh">Politikker</p><ul><li><a href="privatlivspolitik.html">Privatlivspolitik</a></li><li><a href="brugerbetingelser.html">Brugerbetingelser</a></li><li><a href="cookies.html">Cookiepolitik</a></li><li><a href="tilgaengelighed.html">Tilgængelighed</a></li></ul></div>
+    </div>
+    <ul class="some row" aria-label="MitLivMed på sociale medier"><li><a href="https://www.instagram.com/mitlivmed/" target="_blank" rel="noopener" aria-label="Instagram (åbner i ny fane)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="17.4" cy="6.6" r="1.6" fill="currentColor"/></svg><span>Instagram</span></a></li><li><a href="https://www.facebook.com/profile.php?id=61581994267641" target="_blank" rel="noopener" aria-label="Facebook (åbner i ny fane)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M13.6 22v-8.6h3l.5-3.6h-3.5V7.6c0-1 .3-1.7 1.8-1.7h1.9V2.7c-.3 0-1.4-.2-2.8-.2-2.8 0-4.7 1.7-4.7 4.8v2.5H6v3.6h2.8V22z" fill="currentColor"/></svg><span>Facebook</span></a></li><li><a href="https://www.linkedin.com/company/mitlivmed/" target="_blank" rel="noopener" aria-label="LinkedIn (åbner i ny fane)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill-rule="evenodd" d="M5 2.5h14A2.5 2.5 0 0 1 21.5 5v14a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 19V5A2.5 2.5 0 0 1 5 2.5zM7.2 9.6v8.2h2.7V9.6zM8.55 5.6a1.55 1.55 0 1 0 0 3.1 1.55 1.55 0 0 0 0-3.1zM11.5 9.6v8.2h2.7v-4.4c0-1.2.5-1.9 1.5-1.9s1.4.7 1.4 1.9v4.4h2.7v-4.9c0-2.4-1.3-3.5-3-3.5-1.2 0-2 .6-2.6 1.4V9.6z" fill="currentColor"/></svg><span>LinkedIn</span></a></li><li><a href="https://www.tiktok.com/@mitlivmed" target="_blank" rel="noopener" aria-label="TikTok (åbner i ny fane)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.2 3.5v10.6a3.5 3.5 0 1 1-3.5-3.5M14.2 3.5c.3 2.4 1.9 4 4.4 4.3" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>TikTok</span></a></li><li><a href="https://www.youtube.com/@MitLivMed" target="_blank" rel="noopener" aria-label="YouTube (åbner i ny fane)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill-rule="evenodd" d="M5 4.8h14a4 4 0 0 1 4 4v6.4a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4V8.8a4 4 0 0 1 4-4zM9.8 8.6v6.8l6-3.4z" fill="currentColor"/></svg><span>YouTube</span></a></li></ul>
+    <div class="copyrow"><p class="copy">© Copyright 2026 MitLivMed® ApS · Internationalt brand: Wiith · Ikke krisestøtte og ikke medicinsk rådgivning</p><ul class="lang" aria-label="Sprog">
+    <li><a class="flag on" href="index.html" lang="da" hreflang="da" aria-current="true" aria-label="Dansk (valgt)" title="Dansk"><svg viewBox="0 0 37 28" width="34" height="34" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="37" height="28" fill="#BF5B39"/><rect x="12" width="4" height="28" fill="#fff"/><rect y="12" width="37" height="4" fill="#fff"/></svg></a></li>
+    <li><a class="flag" href="https://www.mylifewiith.com" lang="en" hreflang="en" aria-label="English (skifter til mylifewiith.com)" title="English"><svg viewBox="0 0 60 30" width="34" height="34" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="2.4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg></a></li>
+  </ul></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c=document.getElementById("scrollcue");
+  if(c) window.addEventListener("scroll",function(){c.classList.toggle("gone",window.scrollY>80);},{passive:true});
+  var tiers=document.querySelectorAll('.tier'), pay=document.getElementById('payBtn');
+  var mv=document.getElementById('mvideo');
+  if(mv && !/claude/i.test(location.hostname)) mv.addEventListener('click',function(e){
+    e.preventDefault();
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+mv.dataset.yt+'?autoplay=1&playsinline=1&rel=0';
+    f.title='Video';
+    f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+    f.allowFullscreen=true; f.referrerPolicy='strict-origin-when-cross-origin';
+    mv.classList.add('playing'); mv.replaceChildren(f);var h=document.createElement("span");h.className="vhint";h.setAttribute("role","status");h.textContent="Indlæser videoen …";mv.appendChild(h);var ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);f.addEventListener("load",function(){if(ios){h.textContent="Tryk på afspil for at starte videoen";setTimeout(function(){h.remove();},7000);}else{h.remove();}}); mv.removeAttribute('href'); mv.style.cursor='default';
+  });
+  pay.dataset.amt='75';
+  /* Stand-in til betalingsudbyder: udvikleren sender her videre til betaling og lader udbyderen vende tilbage til tak-stoette.html, når betalingen er gennemført. */
+  pay.addEventListener('click',function(){try{sessionStorage.setItem('mlm_amt',pay.dataset.amt);}catch(e){}location.href='tak-stoette.html';});
+  tiers.forEach(function(t){t.addEventListener('click',function(){
+    tiers.forEach(function(x){x.setAttribute('aria-checked',x===t);});
+    pay.textContent='Bliv støttemedlem for '+t.dataset.a+' kr →'; pay.dataset.amt=t.dataset.a;
+  });});
+})();
+</script>
+<script src="share.js" defer></script>
+<script src="widow.js" defer></script>

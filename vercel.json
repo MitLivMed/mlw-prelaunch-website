@@ -1,5 +1,9 @@
 {
+  "framework": null,
+  "installCommand": "",
+  "buildCommand": "",
+  "outputDirectory": "site",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/til-dig", "destination": "/index.html" }
   ]
 }
