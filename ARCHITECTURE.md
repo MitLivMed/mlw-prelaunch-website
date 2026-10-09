@@ -13,7 +13,6 @@ Browser ── mitlivmed.dk (Vercel: static HTML from dist/)
    │      └── Discourse (fællesskab.mitlivmed.dk)
    ├── js.stripe.com / checkout.stripe.com (Embedded Checkout on /stoet)
    ├── eu.i.posthog.com (cookieless analytics)
-   ├── tally.so (the "Opret profil" popup, until Phase 6)
    └── youtube-nocookie.com (videos, loaded on click)
 ```
 
@@ -36,7 +35,7 @@ The website has no server code of its own. Everything that stores data or sends 
 
 1. Replaces each `<!-- partial:name -->` marker with `site/partials/name.html`.
 2. Bundles `site/js/mlm.js` and its npm packages (`posthog-js`, `@stripe/stripe-js`) into `dist/assets/mlm-<hash>.js`.
-3. Writes every page to `dist/`. `opret.html` is left out until Phase 6 (the `unpublished` list in `vite.config.js`).
+3. Writes every page to `dist/`.
 
 The pages' inline CSS is passed through untouched (no transform, no minify), so the built pages look exactly like the source.
 
@@ -44,7 +43,7 @@ The pages' inline CSS is passed through untouched (no transform, no minify), so 
 
 | Page | Purpose | Talks to |
 |---|---|---|
-| `index` | Home: landscapes, articles, events, share panel | Tally popup (Opret profil, landscape cards) |
+| `index` | Home: landscapes, articles, events, share panel | Landscape cards go to `opret` (see below) |
 | `trivselsgrupper` | Trivselsgruppe signup | `POST /api/trivsel/signup`, then `tak-trivselsgruppe` |
 | `tak-trivselsgruppe` | Thank-you after signup (noindex) | — |
 | `stoet` | Monthly support, 50/75/100 kr or a custom amount ≥ 50 | `POST /api/donations/checkout`, then Stripe Embedded Checkout in the page |
@@ -55,7 +54,7 @@ The pages' inline CSS is passed through untouched (no transform, no minify), so 
 | `hjaelp`, `om-os` | Content | — |
 | Legal pages | `privatlivspolitik`, `brugerbetingelser`, `cookies`, `markedsfoeringspolitik`, `samtykkeerklaering`, `tilgaengelighed` | — |
 | `404` | Not found (noindex) | — |
-| `opret` | Discourse signup, **not deployed** until Phase 6 (MLM-2557) | — |
+| `opret` | Forum signup: account, 7 questions, consents | `POST /api/community/signup` |
 
 "Log ind" links go straight to `https://fællesskab.mitlivmed.dk/login`.
 
@@ -69,9 +68,8 @@ Loaded on every page through `partials/head.html`. It exposes `window.MLM` for t
 | `MLM.track(event, props)` | Sends a PostHog event |
 | `MLM.stripe()` | Loads Stripe.js on first use (only `/stoet`) |
 | `MLM.wireForm(form, options)` | Sends a form to the API: honeypot, disabled button while sending, `form_start`/`form_submit` events, error messages |
-| `MLM.openSignup(place, onClose)` | Opens the Tally "Opret profil" popup (Tally's script loads on the first click) |
 
-Every "Opret profil" link points at `https://tally.so/r/0Q87J0`. `mlm.js` catches the click and opens the popup instead; without JS the link opens the form on tally.so.
+Every "Opret profil" link points at `opret.html`; `mlm.js` sends a `cta_click` event for it.
 
 ### Analytics (PostHog)
 
@@ -82,7 +80,7 @@ Cookieless (`persistence: "memory"`), so no consent banner is needed. Autocaptur
 | `$pageview` | Every page load |
 | `scroll_depth` | 25/50/75/100 % |
 | `cta_click` | An "Opret profil" button (`location`: where it sits) |
-| `form_start`, `form_submit` | A form or the Tally popup is opened/sent (`form_id` only) |
+| `form_start`, `form_submit` | A form is started/sent (`form_id` only) |
 | `video_play` | A YouTube video starts |
 | `404` | The 404 page is shown |
 
@@ -155,7 +153,22 @@ Vercel deploys directly from this repo (`MitLivMed/mlw-prelaunch-website`):
 
 **Rollback:** revert the merge commit on `main` (or promote the previous deployment in the Vercel dashboard).
 
+## Signup flow (`/opret`, MLM-2557)
+
+1. **Landscape cards** on the home page store the chosen landscape in `sessionStorage` (`mlm_landskab`) and go to `opret.html`. The page reads it once to preselect the landscape, then removes it. **Landskab never goes in a URL or an analytics event.**
+2. **Steps:** account (e-mail, username, password), 7 questions, consents.
+   - Anyone under 18 is stopped at the birth-date step.
+   - Any bipolar answer other than the first goes to `nyhedsbrev?gruppe=…` and gets no profile.
+3. **"Opret profil"** sends everything to `POST /api/community/signup`.
+   - The password is read from the account step and sent only in that HTTPS request body. It is cleared from the page after success.
+   - Answer values are the exact Discourse option texts, so they must match the API's `src/config/communitySignup.ts`.
+4. **Success:** "Tjek din indbakke". Discourse sends the activation e-mail.
+   - An e-mail that already has a profile gets the same screen; the API e-mails the owner instead, so the page never reveals who is a member.
+5. **Errors:**
+   - username taken, or password refused: back to the account step with the message at the field;
+   - otherwise a message on the consent step.
+6. **The consent texts on the page are stored word for word in the API** (`SIGNUP_CONSENT_WORDING`). **If a consent text on `opret.html` changes, update it there the same day.**
+
 ## Planned changes
 
-- **Phase 6 (MLM-2557):** `opret.html` creates Discourse accounts through the API. The Tally popup goes away, "Opret profil" links point to `/opret`, and the chosen landscape is passed via `sessionStorage` (never the URL).
 - The shop link is commented out in the footer (`<!-- SHOP: hidden … -->`) until the shop bug is fixed.

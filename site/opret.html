@@ -4,7 +4,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Opret profil | MitLivMed</title>
 <!-- partial:head -->
-<meta name="robots" content="noindex">
+<meta name="description" content="Opret en gratis profil i MitLivMeds fællesskab for mennesker med bipolar. Tre korte trin: din konto, et par spørgsmål og dine samtykker.">
+<link rel="canonical" href="https://mitlivmed.dk/opret">
+<meta property="og:url" content="https://mitlivmed.dk/opret">
+<meta property="og:title" content="Opret profil | MitLivMed">
+<meta property="og:description" content="Opret en gratis profil i MitLivMeds fællesskab for mennesker med bipolar. Tre korte trin: din konto, et par spørgsmål og dine samtykker.">
+<meta name="twitter:title" content="Opret profil | MitLivMed">
+<meta name="twitter:description" content="Opret en gratis profil i MitLivMeds fællesskab for mennesker med bipolar. Tre korte trin: din konto, et par spørgsmål og dine samtykker.">
 <link rel="stylesheet" href="fonts.css">
 <style>
   :root {
@@ -537,6 +543,7 @@
     <div class="bar" id="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Samlet fremdrift"><i></i></div>
     <p class="where" id="where" aria-live="polite"></p>
     <section class="screen" id="screen"></section>
+    <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden"><label>Lad dette felt være tomt<input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off"></label></div>
     <p class="alt">Har du allerede en profil?&nbsp;<a href="https://xn--fllesskab-g3a.mitlivmed.dk/login">Log ind</a></p>
   </div>
 </div>
@@ -561,7 +568,8 @@
   ];
   var FIT={"Ørkenen": "Du er i udredning, eller noget føles forkert, og du leder efter ord.", "Skoven": "Du finder vej i hverdagen, også når du ikke kan se, hvad der venter.", "Bjerget": "Du har, for nu, fundet en måde at leve godt med din bipolar på, og du vil gerne vedligeholde eller forbedre det eller give noget tilbage til andre."};
   var S={account:{email:'',username:'',password:''},a:{gender:'',birth_date:'',relation:'',landscape:'',need:'',info:[],events:[]},c:{health:false,terms:false,privacy:false,marketing:false}};
-  (function(){var m=/[?&]landskab=([^&]+)/.exec(location.search);if(!m)return;var k=decodeURIComponent(m[1]);var map={'Ørkenen':L_O,'Skoven':L_S,'Bjerget':L_B};if(map[k])S.a.landscape=map[k];})();
+  /* Landskabet fra forsidens kort kommer via sessionStorage, aldrig adressen (MLM-2552). Bruges én gang. */
+  (function(){var k=null;try{k=sessionStorage.getItem('mlm_landskab');sessionStorage.removeItem('mlm_landskab');}catch(e){}var map={'Ørkenen':L_O,'Skoven':L_S,'Bjerget':L_B};if(k&&map[k])S.a.landscape=map[k];})();
   var steps=[{t:'account'}];Q.forEach(function(q,i){steps.push({t:'q',i:i});});steps.push({t:'consent'},{t:'done'});
   var cur=0;
   var el=function(i){return document.getElementById(i);};
@@ -660,35 +668,41 @@
     c('marketing','Valgfrit','Jeg vil gerne have nyt fra MitLivMed i min indbakke','Ja, MitLivMed må sende mig e-mails om nye produkter, funktioner, indhold og tilbud og sende mig påmindelser, hvis jeg begynder på en tilmelding, men ikke gør den færdig.')+
     '<div id="cerr" class="err" role="alert" style="margin-top:12px;"></div>'+nav({label:'Opret profil'});
   }
-  function payload(){
-    var a=S.a;
-    return {account:{email:S.account.email,username:S.account.username,password:'[sendes ikke og gemmes ikke i forhåndsvisningen]'},
-      user_fields:{
-        'Hvilket køn er du?':a.gender,
-        'Hvornår er du født?':a.birth_date,
-        'Hvilket år er du født i?':a.birth_date?a.birth_date.slice(0,4):'',
-        'Er over 18 år (beregnet af fødselsdatoen)':!!a.birth_date,
-        'Hvordan relaterer du til bipolar?':a.relation,
-        'Vælg det landskab der passer bedst på hvor du er lige nu':a.landscape,
-        'Hvad har du mest brug for fra fællesskabet lige nu? (valgfri)':a.need||null,
-        'Hvordan tager du bedst information ind, når du skal lære noget nyt eller forstå noget vigtigt? (valgfri)':a.info,
-        'Hvad er dine event preferencer? (valgfri)':a.events
-      },
-      consents:{health_data:S.c.health,terms:S.c.terms,privacy_policy_read:S.c.privacy,marketing_email:S.c.marketing,
-        documents:{terms:'brugerbetingelser v1.0',privacy:'privatlivspolitik v2.0'},recorded_at:new Date().toISOString()}};
+  /* Sender profilen til API'et (MLM-2557). Adgangskoden læses fra kontotrinnet og sendes kun i selve forespørgslen over HTTPS. */
+  var sending=false;
+  function submit(btn){
+    if(sending)return;
+    if(!window.MLM){el('cerr').textContent='Siden kunne ikke indlæses helt. Genindlæs siden, og prøv igen.';return;}
+    sending=true;btn.disabled=true;var label=btn.innerHTML;btn.textContent='Opretter din profil …';
+    var a=S.a,body={email:S.account.email,username:S.account.username,password:S.account.password,
+      gender:a.gender,birthDate:a.birth_date,relation:a.relation,landscape:a.landscape,
+      info:a.info,events:a.events,
+      consents:{health:S.c.health,terms:S.c.terms,privacy:S.c.privacy,marketing:S.c.marketing}};
+    if(a.need)body.need=a.need;
+    var hp=el('f-website');if(hp&&hp.value)body.website=hp.value;
+    MLM.api.post('/api/community/signup',body).then(function(){
+      MLM.track('form_submit',{form_id:'opret'});
+      S.account.password='';sending=false;go(cur+1);
+    }).catch(function(err){
+      sending=false;btn.disabled=false;btn.innerHTML=label;
+      var code=err&&err.code,status=err&&err.status;
+      if(code==='username_unavailable'){go(0);el('e-user').textContent='Brugernavnet er optaget eller ikke tilladt. Vælg et andet.';el('f-user').focus();return;}
+      if(code==='invalid_password'){go(0);el('e-pw').textContent='Adgangskoden blev ikke godkendt. Vælg en længere eller mindre almindelig adgangskode.';el('f-pw').focus();return;}
+      el('cerr').textContent=status===429?'Du har prøvet flere gange på kort tid. Vent lidt, og prøv igen.'
+        :'Det lykkedes ikke at oprette profilen. Prøv igen, eller skriv til kontakt@mitlivmed.dk.';
+    });
   }
   function done(){
-    return '<h1>Forløbet er færdigt</h1><p class="why">Det her er en forhåndsvisning, så der er ikke oprettet nogen profil, og der er ikke sendt noget. Når forløbet kobles til fællesskabet, er det her, profilen oprettes.</p>'+
-    '<details style="margin-top:22px;"><summary style="font-weight:700;cursor:pointer;">Til udvikleren: sådan er svarene struktureret</summary><p class="hint" style="margin:10px 0;">Nøglerne i user_fields er teksten fra feltnavnene i invitationsformularen. Værdierne er de nøjagtige svarmuligheder. Flervalg er lister. Adgangskoden er ikke med.</p><pre class="json">'+esc(JSON.stringify(payload(),null,2))+'</pre></details>'+
-    '<div class="nav2"><button type="button" class="btn sec" data-restart>Start forfra</button></div>';
+    return '<h1>Tjek din indbakke</h1><p class="why">Vi har sendt en e-mail til <strong>'+esc(S.account.email)+'</strong>. Klik på linket i den for at aktivere din profil. Kan du ikke finde den, så kig i din spam-mappe.</p>'+
+    '<p class="why">Når profilen er aktiveret, kan du logge ind i fællesskabet.</p>'+
+    '<div class="nav2"><a class="btn" href="https://xn--fllesskab-g3a.mitlivmed.dk/login">Gå til log ind →</a></div>';
   }
   function go(n){cur=n;render();window.scrollTo({top:0,behavior:'smooth'});}
   function wire(){
     var s=steps[cur],sc=el('screen');
     var b=sc.querySelector('[data-back]');if(b)b.addEventListener('click',function(){save();go(cur-1);});
     var sk=sc.querySelector('[data-skip]');if(sk)sk.addEventListener('click',function(){var q=Q[s.i];S.a[q.key]=q.type==='multi'?[]:'';go(cur+1);});
-    var nx=sc.querySelector('[data-next]');if(nx)nx.addEventListener('click',function(){if(!validate())return;var st=steps[cur];if(st.t==='q'&&Q[st.i].key==='relation'&&S.a.relation!==Q[st.i].opts[0]){var gm={};gm[Q[st.i].opts[1]]='paaroerende';gm[Q[st.i].opts[2]]='fagperson';location.href='nyhedsbrev.html?gruppe='+(gm[S.a.relation]||'andre');return;}go(cur+1);});
-    var rs=sc.querySelector('[data-restart]');if(rs)rs.addEventListener('click',function(){S={account:{email:'',username:'',password:''},a:{gender:'',birth_date:'',relation:'',landscape:'',need:'',info:[],events:[]},c:{health:false,terms:false,privacy:false,marketing:false}};go(0);});
+    var nx=sc.querySelector('[data-next]');if(nx)nx.addEventListener('click',function(){if(!validate())return;var st=steps[cur];if(st.t==='q'&&Q[st.i].key==='relation'&&S.a.relation!==Q[st.i].opts[0]){var gm={};gm[Q[st.i].opts[1]]='paaroerende';gm[Q[st.i].opts[2]]='fagperson';location.href='nyhedsbrev.html?gruppe='+(gm[S.a.relation]||'andre');return;}if(st.t==='consent'){submit(nx);return;}go(cur+1);});
     sc.querySelectorAll('input').forEach(function(i){i.addEventListener('keydown',function(e){if(e.key==='Enter'&&i.type!=='checkbox'&&i.type!=='radio'){e.preventDefault();if(validate())go(cur+1);}});});
     var pt=el('pwtoggle');if(pt)pt.addEventListener('click',function(){var f=el('f-pw'),on=f.type==='password';f.type=on?'text':'password';pt.textContent=on?'Skjul':'Vis';pt.setAttribute('aria-pressed',on);});
     if(s.t==='q'){
@@ -738,6 +752,8 @@
     }
     return true;
   }
+  /* form_start én gang, uden feltværdier */
+  var started=false;el('screen').addEventListener('focusin',function(){if(!started&&window.MLM){started=true;MLM.track('form_start',{form_id:'opret'});}});
   render();
 })();
 </script>
