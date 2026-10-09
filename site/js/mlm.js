@@ -8,6 +8,7 @@
  *   MLM.api.get(path) / MLM.api.post(path, body)  -> parsed JSON
  *   MLM.track(event, props)                        -> PostHog event
  *   MLM.stripe()                                   -> Promise<Stripe> (Stripe.js)
+ *   MLM.wireForm(form, options)                    -> sends a form to the API
  * Never put form values, landskab or other health data in events.
  */
 import posthog from "posthog-js";
@@ -129,4 +130,47 @@ function stripe() {
   return stripePromise;
 }
 
-window.MLM = { api, ApiError, track, stripe };
+// ── Forms (MLM-2556) ──────────────────────────────────────────────────────
+// Sends a form to an API endpoint. Options:
+//   name     form id for analytics (never field values)
+//   path     API path, e.g. "/api/contact"
+//   build()  returns the JSON body, or null to stop (e.g. failed validation)
+//   done(result, body)  shows the success state
+//   error    element for error messages (role="alert")
+//   fallback e-mail address to offer when sending fails (default kontakt@)
+// Each form has a hidden honeypot field name="website" that only bots fill in.
+function wireForm(form, { name, path, build, done, error, fallback = "kontakt@mitlivmed.dk" }) {
+  let started = false;
+  form.addEventListener("focusin", () => {
+    if (!started) {
+      started = true;
+      track("form_start", { form_id: name });
+    }
+  });
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const body = build();
+    if (!body) return;
+    const honeypot = form.querySelector('input[name="website"]');
+    if (honeypot && honeypot.value) body.website = honeypot.value;
+    const button = form.querySelector('[type="submit"]');
+    button.disabled = true;
+    error.hidden = true;
+    try {
+      const result = await api.post(path, body);
+      track("form_submit", { form_id: name });
+      done(result, body);
+    } catch (err) {
+      const to = typeof fallback === "function" ? fallback() : fallback;
+      error.textContent =
+        err instanceof ApiError && err.status === 429
+          ? "Du har sendt flere gange på kort tid. Vent lidt, og prøv igen."
+          : `Det lykkedes ikke at sende. Prøv igen, eller skriv til ${to}.`;
+      error.hidden = false;
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+
+window.MLM = { api, ApiError, track, stripe, wireForm };

@@ -643,12 +643,14 @@
       <label for="mail">E-mail<input type="email" id="mail" required autocomplete="email"></label>
       <label for="tlf">Telefon (valgfrit)<input type="tel" id="tlf" autocomplete="tel"></label>
       <fieldset><legend>Hvilket landskab passer bedst lige nu?</legend>
-        <label class="ra"><input type="radio" name="fase" value="Ørkenen"> Ørkenen</label>
-        <label class="ra"><input type="radio" name="fase" value="Skoven" checked> Skoven</label>
-        <label class="ra"><input type="radio" name="fase" value="Bjerget"> Bjerget</label>
+        <label class="ra"><input type="radio" name="fase" value="oerkenen"> Ørkenen</label>
+        <label class="ra"><input type="radio" name="fase" value="skoven" checked> Skoven</label>
+        <label class="ra"><input type="radio" name="fase" value="bjerget"> Bjerget</label>
       </fieldset>
       <label for="fælles">Hvad vil du gerne have til fælles med de andre i din gruppe? (valgfrit)<textarea id="fælles"></textarea></label>
       <label class="consent" for="samtykke"><input type="checkbox" id="samtykke" required><span>Jeg giver samtykke til, at MitLivMed opbevarer mine oplysninger for at kontakte mig om Trivselsgrupper. Læs mere i <a href="privatlivspolitik.html" target="_blank" rel="noopener">privatlivspolitikken</a>.</span></label>
+      <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden"><label>Lad dette felt være tomt<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <p id="t-err" role="alert" hidden style="color:var(--orange-dark);font-weight:700;"></p>
       <button class="btn" type="submit" style="justify-self:start;">Skriv mig op</button>
     </form>
   </div>
@@ -679,7 +681,21 @@
   if(c) window.addEventListener("scroll",function(){c.classList.toggle("gone",window.scrollY>80);},{passive:true});
   document.querySelectorAll('[data-fase]').forEach(function(a){a.addEventListener('click',function(){
     var r=document.querySelector('input[name=fase][value="'+a.dataset.fase+'"]'); if(r) r.checked=true;});});
-  document.getElementById('signup').addEventListener('submit',function(e){e.preventDefault();/* Stand-in: udvikleren gemmer tilmeldingen og sender bekræftelsesmailen, før der sendes videre. */location.href='tak-trivselsgruppe.html';});
+  /* Tilmelding (MLM-2556): gemmes via API'et, som også sender bekræftelsesmailen.
+     Landskab er en helbredsoplysning: det sendes kun i selve tilmeldingen,
+     aldrig i adresser eller analyse. */
+  /* Sikring: send aldrig formularen som almindelig adresse (felterne, fx landskab,
+     ville ende i URL'en). Mangler scriptet, vises en fejl i stedet. */
+  document.getElementById('signup').addEventListener('submit',function(e){e.preventDefault();if(!window.MLM){var x=document.getElementById('t-err');x.textContent='Det lykkedes ikke at sende. Prøv igen, eller skriv til kontakt@mitlivmed.dk.';x.hidden=false;}});
+  document.addEventListener('DOMContentLoaded',function(){
+    var f=document.getElementById('signup'),v=function(id){return document.getElementById(id).value.trim();};
+    MLM.wireForm(f,{name:'trivselsgruppe',path:'/api/trivsel/signup',error:document.getElementById('t-err'),
+      build:function(){return {name:v('navn'),email:v('mail'),phone:v('tlf')||undefined,landskab:f.querySelector('input[name=fase]:checked').value,note:v('fælles')||undefined,consent:true};},
+      done:function(r){
+        if(r&&r.alreadySignedUp){var e=document.getElementById('t-err');e.style.color='var(--green)';e.textContent='Du er allerede skrevet op. Vi kontakter dig, når din gruppe er klar.';e.hidden=false;return;}
+        location.href='tak-trivselsgruppe.html';
+      }});
+  });
 })();
 </script>
 <script>

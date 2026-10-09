@@ -574,14 +574,16 @@
       <label for="s-mail">E-mail<input type="email" id="s-mail" required autocomplete="email"></label>
       <label for="s-hvad">Hvad søger du stipendie til?
         <select id="s-hvad" style="font:400 16px 'DM Sans',sans-serif;padding:13px 14px;border:1.5px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);">
-          <option>Trivselsgrupper</option>
-          <option>Andet, jeg beskriver nedenfor</option>
+          <option value="trivselsgrupper">Trivselsgrupper</option>
+          <option value="andet">Andet, jeg beskriver nedenfor</option>
         </select>
       </label>
       <label for="s-tekst">Fortæl kort om din situation (valgfrit)<textarea id="s-tekst"></textarea></label>
       <label class="consent" for="s-samtykke"><input type="checkbox" id="s-samtykke" required><span>Jeg giver samtykke til, at MitLivMed bruger mine oplysninger til at behandle min ansøgning. Læs mere i <a href="privatlivspolitik.html" target="_blank" rel="noopener">privatlivspolitikken</a>.</span></label>
+      <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden"><label>Lad dette felt være tomt<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <p id="s-err" role="alert" hidden style="color:var(--orange-dark);font-weight:700;"></p>
       <button class="btn" type="submit" style="justify-self:start;">Send ansøgning</button>
-      <p id="s-ok" hidden style="color:var(--green);font-weight:700;">Din mailapp åbner nu med ansøgningen klar. Tryk send dér. Åbner den ikke, kan du skrive direkte til <a href="mailto:kontakt@mitlivmed.dk" style="color:var(--orange-t);">kontakt@mitlivmed.dk</a>.</p>
+      <p id="s-ok" role="status" hidden style="color:var(--green);font-weight:700;">Tak, vi har modtaget din ansøgning. Du får en kvittering på e-mail, og vi vender tilbage til dig.</p>
     </form>
   </div>
 </section>
@@ -590,11 +592,16 @@
 <script>
 (function(){
   var c=document.getElementById("scrollcue");if(c)window.addEventListener("scroll",function(){c.classList.toggle("gone",window.scrollY>80);},{passive:true});
-  document.getElementById('stip').addEventListener('submit',function(e){
-    e.preventDefault();
-    var body='Stipendie til: '+document.getElementById('s-hvad').value+'\n\n'+document.getElementById('s-tekst').value+'\n\n'+document.getElementById('s-navn').value+'\n'+document.getElementById('s-mail').value;
-    document.getElementById('s-ok').hidden=false;
-    window.location.href='mailto:kontakt@mitlivmed.dk?subject='+encodeURIComponent('[Hjemmeside] Stipendieansøgning')+'&body='+encodeURIComponent(body);
+  /* Ansøgning (MLM-2556): sendes til API'et, ikke via mail, fordi teksten
+     kan handle om økonomi. */
+  /* Sikring: send aldrig formularen som almindelig adresse (felterne, fx landskab,
+     ville ende i URL'en). Mangler scriptet, vises en fejl i stedet. */
+  document.getElementById('stip').addEventListener('submit',function(e){e.preventDefault();if(!window.MLM){var x=document.getElementById('s-err');x.textContent='Det lykkedes ikke at sende. Prøv igen, eller skriv til kontakt@mitlivmed.dk.';x.hidden=false;}});
+  document.addEventListener('DOMContentLoaded',function(){
+    var f=document.getElementById('stip'),v=function(id){return document.getElementById(id).value.trim();};
+    MLM.wireForm(f,{name:'stipendie',path:'/api/stipend/apply',error:document.getElementById('s-err'),
+      build:function(){return {name:v('s-navn'),email:v('s-mail'),purpose:v('s-hvad'),message:v('s-tekst')||undefined,consent:true};},
+      done:function(){f.reset();document.getElementById('s-ok').hidden=false;}});
   });
 })();
 </script>
