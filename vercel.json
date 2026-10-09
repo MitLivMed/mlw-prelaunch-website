@@ -48,7 +48,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://checkout.stripe.com https://tally.so; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://*.stripe.com; frame-src https://www.youtube-nocookie.com https://js.stripe.com https://checkout.stripe.com https://hooks.stripe.com https://tally.so; connect-src 'self' https://api.mitlivmed.dk https://eu.i.posthog.com https://eu-assets.i.posthog.com https://api.stripe.com https://checkout.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://checkout.stripe.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://*.stripe.com; frame-src https://www.youtube-nocookie.com https://js.stripe.com https://checkout.stripe.com https://hooks.stripe.com; connect-src 'self' https://api.mitlivmed.dk https://eu.i.posthog.com https://eu-assets.i.posthog.com https://api.stripe.com https://checkout.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
         },
         {
           "key": "X-Frame-Options",
