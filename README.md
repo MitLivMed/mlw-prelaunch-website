@@ -37,6 +37,19 @@ To change the footer, edit `site/partials/footer.html`: every page picks it up.
 
 Redirects, clean URLs and security headers (incl. the Content-Security-Policy) live in `vercel.json` and only apply on Vercel. To test them locally, link the project once (`npx vercel link`) and run `npx vercel dev`. **When a page starts loading something from a new domain (e.g. Stripe, PostHog, the API), add that domain to the CSP in `vercel.json`**, or the browser will block it.
 
+## Keys and environment variables
+
+Like the old site, keys are never in the code. `site/js/mlm.js` reads them at build time from Vercel's environment variables (`import.meta.env.VITE_*`):
+
+| Variable | Used for | Default |
+|---|---|---|
+| `VITE_API_BASE_URL` | MitLivMed API | `https://api.mitlivmed.dk` |
+| `VITE_POSTHOG_KEY` | PostHog analytics (public `phc_` key) | analytics off |
+| `VITE_POSTHOG_HOST` | PostHog host | `https://eu.i.posthog.com` |
+| `VITE_STRIPE_PUBLISHABLE_KEY` | Stripe (public `pk_` key) | none |
+
+Locally, put overrides in `.env.local` in the repo root (gitignored), e.g. `VITE_API_BASE_URL=http://localhost:3001` to use the local API. Analytics is always off on `localhost`.
+
 ## Contributing
 
 We're a small team in early stages. If you're curious about what we're building or want to get involved, reach out at [kontakt@mitlivmed.dk](mailto:kontakt@mitlivmed.dk).
