@@ -614,7 +614,7 @@
     return '<h1>Opret din profil</h1><p class="why">Tre korte trin: din konto, et par spørgsmål om dig og til sidst dine samtykker. Du kan gå tilbage hele vejen. Fællesskabet er lige nu kun for mennesker med bipolar.</p>'+
     '<div class="fieldset">'+
     '<div class="field"><label class="lab" for="f-email">E-mail</label><p class="hint">Vises aldrig offentligt.</p><input type="email" id="f-email" autocomplete="email" value="'+esc(S.account.email)+'"><div class="err" id="e-email" role="alert"></div></div>'+
-    '<div class="field"><label class="lab" for="f-user">Brugernavn</label><p class="hint">Det er det navn, andre ser i fællesskabet. Du bestemmer selv, om det er dit eget navn.</p><input type="text" id="f-user" autocomplete="username" value="'+esc(S.account.username)+'"><div class="err" id="e-user" role="alert"></div></div>'+
+    '<div class="field"><label class="lab" for="f-user">Brugernavn</label><p class="hint">Det er det navn, andre ser i fællesskabet. Du bestemmer selv, om det er dit eget navn. 3-20 tegn: bogstaverne a-z, tal og . _ -</p><input type="text" id="f-user" autocomplete="username" value="'+esc(S.account.username)+'"><div class="err" id="e-user" role="alert"></div></div>'+
     '<div class="field"><label class="lab" for="f-pw">Adgangskode</label><p class="hint">Vælg en adgangskode, du ikke bruger andre steder. Mindst 10 tegn.</p><div class="pw"><input type="password" id="f-pw" autocomplete="new-password" value="'+esc(S.account.password)+'"><button type="button" id="pwtoggle" aria-pressed="false">Vis</button></div><div class="err" id="e-pw" role="alert"></div></div>'+
     '</div>'+nav({});
   }
@@ -688,6 +688,10 @@
     }).catch(function(err){
       sending=false;btn.disabled=false;btn.innerHTML=label;
       var code=err&&err.code,status=err&&err.status;
+      var fe=err&&err.body&&err.body.details&&err.body.details.fieldErrors||{};
+      if(fe.username){go(0);el('e-user').textContent=userErr(S.account.username)||'Brugernavnet er ikke tilladt. Vælg et andet.';el('f-user').focus();return;}
+      if(fe.password){go(0);el('e-pw').textContent='Adgangskoden skal være 10-200 tegn.';el('f-pw').focus();return;}
+      if(fe.email){go(0);el('e-email').textContent='Skriv en gyldig e-mailadresse.';el('f-email').focus();return;}
       if(code==='username_unavailable'){go(0);el('e-user').textContent='Brugernavnet er optaget eller ikke tilladt. Vælg et andet.';el('f-user').focus();return;}
       if(code==='invalid_password'){go(0);el('e-pw').textContent='Adgangskoden blev ikke godkendt. Vælg en længere eller mindre almindelig adgangskode.';el('f-pw').focus();return;}
       el('cerr').textContent=status===429?'Du har prøvet flere gange på kort tid. Vent lidt, og prøv igen.'
@@ -727,12 +731,23 @@
     var s=steps[cur];
     if(s.t==='account'){S.account.email=el('f-email').value.trim();S.account.username=el('f-user').value.trim();S.account.password=el('f-pw').value;}
   }
+  /* Discourses regler for brugernavne (standardindstillinger, se app/models/username_validator.rb). Samme regler i API'et. */
+  function userErr(u){
+    if(u.length<3)return 'Vælg et brugernavn på mindst 3 tegn.';
+    if(u.length>20)return 'Brugernavnet må højst være 20 tegn.';
+    if(/[^A-Za-z0-9._-]/.test(u))return 'Brugernavnet må kun indeholde bogstaverne a-z, tal og tegnene . _ - (ingen mellemrum og ingen æ, ø eller å).';
+    if(!/^[A-Za-z0-9_]/.test(u))return 'Brugernavnet skal starte med et bogstav, et tal eller _.';
+    if(!/[A-Za-z0-9]$/.test(u))return 'Brugernavnet skal slutte med et bogstav eller et tal.';
+    if(/[-_.]{2,}/.test(u))return 'Brugernavnet må ikke have to af tegnene . _ - lige efter hinanden.';
+    if(/\.(js|json|css|htm|html|xml|jpg|jpeg|png|gif|bmp|ico|tif|tiff|woff)$/i.test(u))return 'Brugernavnet må ikke ende på en filendelse som .png eller .json.';
+    return '';
+  }
   function validate(){
     var s=steps[cur],ok=true;
     if(s.t==='account'){
       save();var set=function(i,m){el(i).textContent=m;if(m)ok=false;};
       set('e-email',/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(S.account.email)?'':'Skriv en gyldig e-mailadresse.');
-      set('e-user',S.account.username.length>=3?'':'Vælg et brugernavn på mindst 3 tegn.');
+      set('e-user',userErr(S.account.username));
       set('e-pw',S.account.password.length>=10?'':'Adgangskoden skal være mindst 10 tegn.');
       if(!ok){var f=document.querySelector('.err:not(:empty)');if(f){var inp=f.parentElement.querySelector('input');if(inp)inp.focus();}}
       return ok;
