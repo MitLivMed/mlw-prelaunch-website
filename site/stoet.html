@@ -186,7 +186,7 @@
   .tier .flag { position: absolute; top: -12px; left: 20px; background: var(--orange); color: var(--bg); font-size: 12px; font-weight: 900; padding: 4px 12px; border-radius: 999px; }
   .tier[aria-checked="true"] { border-color: var(--orange); background: var(--orange-tint); }
   .tier:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
-  .pay { margin-top: 26px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .pay { margin-top: 26px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
   .pay .fine { font-size: 14px; color: var(--muted); }
   .good { background: var(--surface); border: 2px solid var(--orange); border-radius: 16px; padding: 28px 30px; display: grid; gap: 14px; }
   .good h2 { font-size: 30px; }
@@ -352,11 +352,12 @@
   .payfields label { font-size: 15px; font-weight: 700; display: grid; gap: 6px; }
   .payfields input { font: 400 16px "DM Sans", sans-serif; padding: 13px 14px; border: 1.5px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); }
   .payerr { width: 100%; font-size: 15px; color: var(--orange-dark); }
-  .custom { margin-top: 18px; max-width: 320px; }
-  .custom label { font-size: 15px; font-weight: 700; display: grid; gap: 6px; }
-  .custom .field { position: relative; }
-  .custom input { width: 100%; font: 400 16px "DM Sans", sans-serif; padding: 13px 44px 13px 14px; border: 1.5px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); }
-  .custom .unit { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+  #payBtn { min-width: 18em; }
+  .custom { margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .custom .linkbtn { font: inherit; font-size: 16px; color: var(--orange-t); text-decoration: underline; background: none; border: 0; padding: 0; cursor: pointer; }
+  .custom .field { display: inline-flex; align-items: center; gap: 8px; }
+  .custom .field[hidden] { display: none; }
+  .custom input { width: 7em; font: 400 16px "DM Sans", sans-serif; padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); }
   #checkout { margin-top: 26px; }
   @media (max-width: 520px) { .menu { width: 100%; justify-content: space-between; } .menu { gap: 4px 0; padding: 6px; flex-wrap: wrap; border-radius: 28px; } .menuitem { font-size: 15px; white-space: nowrap; padding-inline: 8px; } .menubtn, .btn.menubtn { white-space: nowrap; padding-inline: 12px; font-size: 18.7px; } }
   /* Mobil-finpudsning: ingen enlige ord, telefonnumre brydes ikke, ens justering */
@@ -478,7 +479,8 @@
       <button class="tier" role="radio" aria-checked="false" data-a="100"><span class="amt">100<small>kr</small></span><span class="txt">Du gør en mærkbar forskel for flere.</span></button>
     </div>
     <div class="custom">
-      <label for="p-beloeb">Eller vælg selv (min. 50 kr)<span class="field"><input type="number" id="p-beloeb" inputmode="numeric" min="50" step="1" placeholder="Andet beløb"><span class="unit" aria-hidden="true">kr</span></span></label>
+      <button type="button" class="linkbtn" id="customToggle" aria-expanded="false" aria-controls="customField">Eller vælg selv beløbet (min. 50 kr)</button>
+      <span class="field" id="customField" hidden><input type="number" id="p-beloeb" inputmode="numeric" min="50" step="1" aria-label="Andet beløb i kr" placeholder="Beløb"><span aria-hidden="true">kr</span></span>
     </div>
     <div class="pay">
       <div class="payfields">
@@ -552,7 +554,7 @@
   pay.addEventListener('click',async function(){
     err.hidden=true;
     var amt=Number(pay.dataset.amt);
-    if(!Number.isFinite(amt)||amt<50){fail('Beløbet skal være mindst 50 kr.');custom.focus();return;}
+    if(!Number.isFinite(amt)||amt<50){fail('Beløbet skal være mindst 50 kr.');showCustom(true);custom.focus();return;}
     if(!mail.checkValidity()||!mail.value.trim()){fail('Skriv din e-mailadresse, så vi kan sende en bekræftelse.');mail.focus();return;}
     if(!window.MLM){fail('Betalingen kunne ikke åbnes. Genindlæs siden, eller skriv til kontakt@mitlivmed.dk.');return;}
     pay.disabled=true; pay.textContent='Åbner betaling …';
@@ -569,10 +571,12 @@
       fail('Betalingen kunne ikke åbnes lige nu. Prøv igen, eller skriv til kontakt@mitlivmed.dk.');
     }
   });
-  var custom=document.getElementById('p-beloeb');
+  var custom=document.getElementById('p-beloeb'), toggle=document.getElementById('customToggle'), field=document.getElementById('customField');
+  function showCustom(on){field.hidden=!on;toggle.setAttribute('aria-expanded',String(on));}
+  toggle.addEventListener('click',function(){showCustom(true);custom.focus();});
   tiers.forEach(function(t){t.addEventListener('click',function(){
     tiers.forEach(function(x){x.setAttribute('aria-checked',x===t);});
-    custom.value='';
+    custom.value=''; showCustom(false);
     pay.textContent='Bliv støttemedlem for '+t.dataset.a+' kr →'; pay.dataset.amt=t.dataset.a;
   });});
   /* Eget beløb, som i det gamle flow: hele kroner, mindst 50 kr. */
