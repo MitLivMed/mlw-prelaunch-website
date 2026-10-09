@@ -19,6 +19,7 @@ We're based in Copenhagen and currently launching in Danish, with international 
 - Plain **HTML, CSS and vanilla JavaScript** pages in `site/` (each page has its CSS inline)
 - **Vite** builds the site, only to insert shared parts: a page includes `site/partials/<name>.html` with the marker `<!-- partial:<name> -->` (e.g. the footer). CSS and scripts pass through untouched
 - `site/public/`: scripts, styles, images and favicons, copied as-is
+- Fonts are self-hosted (`site/public/fonts.css` + `site/public/fonts/`): the same Crimson Pro and DM Sans files Google Fonts served, so no visitor data goes to Google
 - Forms and payments talk to the MitLivMed API (`mitlivmed-api`)
 - Deployed on **Vercel** (`vercel.json`: `npm run build`, output `dist/`)
 
