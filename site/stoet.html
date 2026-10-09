@@ -347,6 +347,12 @@
   @media (max-width: 880px) { .sharegrid { grid-template-columns: 1fr; gap: 20px; } .sharepanel { display: none; } .sharecompact { display: flex; } }
   .payrow { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
   .payshare { margin-top: 10px; font-size: 16px; color: var(--muted); }
+  .payfields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; max-width: 640px; }
+  @media (max-width: 560px) { .payfields { grid-template-columns: 1fr; } }
+  .payfields label { font-size: 15px; font-weight: 700; display: grid; gap: 6px; }
+  .payfields input { font: 400 16px "DM Sans", sans-serif; padding: 13px 14px; border: 1.5px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); }
+  .payerr { width: 100%; font-size: 15px; color: var(--orange-dark); }
+  #checkout { margin-top: 26px; }
   @media (max-width: 520px) { .menu { width: 100%; justify-content: space-between; } .menu { gap: 4px 0; padding: 6px; flex-wrap: wrap; border-radius: 28px; } .menuitem { font-size: 15px; white-space: nowrap; padding-inline: 8px; } .menubtn, .btn.menubtn { white-space: nowrap; padding-inline: 12px; font-size: 18.7px; } }
   /* Mobil-finpudsning: ingen enlige ord, telefonnumre brydes ikke, ens justering */
   p, li, td, th, summary, label, blockquote, .txt, .desc { text-wrap: pretty; }
@@ -467,10 +473,16 @@
       <button class="tier" role="radio" aria-checked="false" data-a="100"><span class="amt">100<small>kr</small></span><span class="txt">Du gør en mærkbar forskel for flere.</span></button>
     </div>
     <div class="pay">
+      <div class="payfields">
+        <label for="p-mail">E-mail<input type="email" id="p-mail" required autocomplete="email"></label>
+        <label for="p-navn">Navn (valgfrit)<input type="text" id="p-navn" autocomplete="name"></label>
+      </div>
+      <p class="payerr" id="payErr" role="alert" hidden></p>
       <div class="payrow"><button class="btn" id="payBtn">Bliv støttemedlem for 75 kr →</button><button type="button" class="btn ghost" data-share="forside">Del i stedet</button></div>
       <p class="payshare">Kan du ikke give lige nu? At sende os videre til én person er også støtte.</p>
       <p class="fine">Betales hver måned. Opsig når som helst, ingen binding. Vil du give mere, vælger du selv beløbet, når du tilmelder dig.</p>
     </div>
+    <div id="checkout" hidden></div>
   </div>
 </section>
 
@@ -524,8 +536,29 @@
     mv.classList.add('playing'); mv.replaceChildren(f);var h=document.createElement("span");h.className="vhint";h.setAttribute("role","status");h.textContent="Indlæser videoen …";mv.appendChild(h);var ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);f.addEventListener("load",function(){if(ios){h.textContent="Tryk på afspil for at starte videoen";setTimeout(function(){h.remove();},7000);}else{h.remove();}}); mv.removeAttribute('href'); mv.style.cursor='default';
   });
   pay.dataset.amt='75';
-  /* Stand-in til betalingsudbyder: udvikleren sender her videre til betaling og lader udbyderen vende tilbage til tak-stoette.html, når betalingen er gennemført. */
-  pay.addEventListener('click',function(){try{sessionStorage.setItem('mlm_amt',pay.dataset.amt);}catch(e){}location.href='tak-stoette.html';});
+  /* Betaling (MLM-2555): API'et opretter en Stripe Checkout Session, og Stripe
+     vises her på siden. Efter betaling sender Stripe til /donation/retur, som
+     viser tak-stoette.html, der selv tjekker, at betalingen er gennemført. */
+  var mail=document.getElementById('p-mail'), navn=document.getElementById('p-navn'), err=document.getElementById('payErr'), box=document.getElementById('checkout');
+  function fail(msg){err.textContent=msg;err.hidden=false;pay.disabled=false;pay.textContent='Bliv støttemedlem for '+pay.dataset.amt+' kr →';}
+  pay.addEventListener('click',async function(){
+    err.hidden=true;
+    if(!mail.checkValidity()||!mail.value.trim()){fail('Skriv din e-mailadresse, så vi kan sende en bekræftelse.');mail.focus();return;}
+    if(!window.MLM){fail('Betalingen kunne ikke åbnes. Genindlæs siden, eller skriv til kontakt@mitlivmed.dk.');return;}
+    pay.disabled=true; pay.textContent='Åbner betaling …';
+    try{
+      var res=await MLM.api.post('/api/donations/checkout',{amountDkk:Number(pay.dataset.amt),email:mail.value.trim(),name:navn.value.trim()||undefined,recurring:true});
+      var stripe=await MLM.stripe();
+      if(!stripe) throw new Error('stripe');
+      var checkout=await stripe.createEmbeddedCheckoutPage({fetchClientSecret:function(){return Promise.resolve(res.clientSecret);}});
+      try{sessionStorage.setItem('mlm_amt',pay.dataset.amt);}catch(e){}
+      MLM.track('cta_click',{location:'stoet',label:'betaling'});
+      document.querySelector('.tiers').style.display='none'; document.querySelector('.pay').style.display='none';
+      box.hidden=false; checkout.mount(box); box.scrollIntoView({block:'start'});
+    }catch(e){
+      fail('Betalingen kunne ikke åbnes lige nu. Prøv igen, eller skriv til kontakt@mitlivmed.dk.');
+    }
+  });
   tiers.forEach(function(t){t.addEventListener('click',function(){
     tiers.forEach(function(x){x.setAttribute('aria-checked',x===t);});
     pay.textContent='Bliv støttemedlem for '+t.dataset.a+' kr →'; pay.dataset.amt=t.dataset.a;

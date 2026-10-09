@@ -4,6 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tak for dit bidrag | MitLivMed</title>
 <meta name="robots" content="noindex">
+<!-- Also served at /donation/retur (Stripe's return URL): resolve relative links from the site root. -->
+<base href="/">
 <!-- partial:head -->
 <link rel="stylesheet" href="fonts.css">
 <style>
@@ -499,6 +501,13 @@
 <main id="main" tabindex="-1"><div class="wrap tak">
 <img class="mark" src="mitlivmed_assets/group-trio.svg" alt="" aria-hidden="true">
 <p class="kicker">Støttemedlem</p>
+<div id="checking" role="status"><h1 tabindex="-1">Vi tjekker din betaling …</h1></div>
+<div id="notpaid" hidden>
+<h1 tabindex="-1">Vi kan ikke bekræfte din betaling</h1>
+<p class="lede">Hvis du har gennemført betalingen, får du en bekræftelse på e-mail. Ellers kan du prøve igen.</p>
+<div class="acts"><a class="btn" href="stoet.html#bidrag">Prøv igen</a><a class="btn ghost" href="kontakt.html">Kontakt os</a></div>
+</div>
+<div id="paid" hidden>
 <h1 tabindex="-1">Tusind tak for dit bidrag</h1>
 <p class="lede">Du er med til at holde fællesskabet kørende, så ingen med bipolar behøver stå alene. Det betyder noget, og vi er taknemmelige.</p>
 <p id="amt" class="fine" hidden></p>
@@ -510,8 +519,23 @@
 </ol>
 <div class="acts"><a class="btn" href="index.html">Til forsiden</a><button type="button" class="btn ghost" data-share="forside">Del med en, du holder af</button></div>
 <p class="fine">MitLivMed er en socialøkonomisk virksomhed, ikke en forening. Dit bidrag er ikke skattefradragsberettiget.</p>
+</div>
 </div></main>
-<script>(function(){try{var a=parseInt(sessionStorage.getItem('mlm_amt'),10);if(a>=50&&a<=10000){var p=document.getElementById('amt');p.textContent='Dit bidrag: '+a+' kr. om måneden.';p.hidden=false;}}catch(e){}})();</script>
+<script>
+/* Show the thanks only after Stripe has confirmed the payment (MLM-2555).
+   Stripe returns via /donation/retur?session_id=…, which serves this page. */
+document.addEventListener('DOMContentLoaded',async function(){
+  function show(id){['checking','notpaid','paid'].forEach(function(x){document.getElementById(x).hidden=(x!==id);});var h=document.querySelector('#'+id+' h1');if(h)h.focus();}
+  var sid=new URLSearchParams(location.search).get('session_id');
+  if(!sid||!window.MLM){show('notpaid');return;}
+  try{
+    var r=await MLM.api.get('/api/payments/session-status?session_id='+encodeURIComponent(sid));
+    if(r.status!=='complete'){show('notpaid');return;}
+  }catch(e){show('notpaid');return;}
+  try{var a=parseInt(sessionStorage.getItem('mlm_amt'),10);if(a>=50&&a<=10000){var p=document.getElementById('amt');p.textContent='Dit bidrag: '+a+' kr. om måneden.';p.hidden=false;}}catch(e){}
+  show('paid');
+});
+</script>
 
 <!-- partial:footer -->
 <script src="share.js" defer></script>
