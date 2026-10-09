@@ -7,9 +7,13 @@
  * hard-coded. Exposed as window.MLM for the pages' inline scripts:
  *   MLM.api.get(path) / MLM.api.post(path, body)  -> parsed JSON
  *   MLM.track(event, props)                        -> PostHog event
+ *   MLM.stripe()                                   -> Promise<Stripe> (Stripe.js)
  * Never put form values, landskab or other health data in events.
  */
 import posthog from "posthog-js";
+// "pure": Stripe.js is only fetched when MLM.stripe() is called (the støt page),
+// not on every page load.
+import { loadStripe } from "@stripe/stripe-js/pure";
 
 // ── API client ────────────────────────────────────────────────────────────
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "https://api.mitlivmed.dk";
@@ -113,4 +117,16 @@ new MutationObserver((mutations) => {
   }
 }).observe(document.body, { childList: true, subtree: true });
 
-window.MLM = { api, ApiError, track };
+// ── Stripe (ported from src/lib/stripe.ts) ────────────────────────────────
+// The publishable key is public by design; it comes from the env like the rest.
+let stripePromise = null;
+function stripe() {
+  if (!stripePromise) {
+    const key = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
+    if (!key) console.error("[stripe] VITE_STRIPE_PUBLISHABLE_KEY is not set: checkout will not load.");
+    stripePromise = loadStripe(key ?? "");
+  }
+  return stripePromise;
+}
+
+window.MLM = { api, ApiError, track, stripe };
