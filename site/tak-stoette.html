@@ -532,7 +532,7 @@ document.addEventListener('DOMContentLoaded',async function(){
     var r=await MLM.api.get('/api/payments/session-status?session_id='+encodeURIComponent(sid));
     if(r.status!=='complete'){show('notpaid');return;}
   }catch(e){show('notpaid');return;}
-  try{var a=parseInt(sessionStorage.getItem('mlm_amt'),10);if(a>=50&&a<=10000){var p=document.getElementById('amt');p.textContent='Dit bidrag: '+a+' kr. om måneden.';p.hidden=false;}}catch(e){}
+  try{var a=parseInt(sessionStorage.getItem('mlm_amt'),10);if(a>=50){var p=document.getElementById('amt');p.textContent='Dit bidrag: '+a+' kr. om måneden.';p.hidden=false;}}catch(e){}
   show('paid');
 });
 </script>
