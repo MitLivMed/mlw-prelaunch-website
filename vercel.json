@@ -1,8 +1,8 @@
 {
   "framework": null,
-  "installCommand": "",
-  "buildCommand": "",
-  "outputDirectory": "site",
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "rewrites": [
     { "source": "/til-dig", "destination": "/index.html" }
   ]
