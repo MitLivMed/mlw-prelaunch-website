@@ -690,10 +690,10 @@
       var code=err&&err.code,status=err&&err.status;
       var fe=err&&err.body&&err.body.details&&err.body.details.fieldErrors||{};
       if(fe.username){go(0);el('e-user').textContent=userErr(S.account.username)||'Brugernavnet er ikke tilladt. Vælg et andet.';el('f-user').focus();return;}
-      if(fe.password){go(0);el('e-pw').textContent='Adgangskoden skal være 10-200 tegn.';el('f-pw').focus();return;}
+      if(fe.password){go(0);el('e-pw').textContent=pwErr(S.account.password,S.account.username,S.account.email)||'Adgangskoden blev ikke godkendt. Vælg en anden.';el('f-pw').focus();return;}
       if(fe.email){go(0);el('e-email').textContent='Skriv en gyldig e-mailadresse.';el('f-email').focus();return;}
       if(code==='username_unavailable'){go(0);el('e-user').textContent='Brugernavnet er optaget eller ikke tilladt. Vælg et andet.';el('f-user').focus();return;}
-      if(code==='invalid_password'){go(0);el('e-pw').textContent='Adgangskoden blev ikke godkendt. Vælg en længere eller mindre almindelig adgangskode.';el('f-pw').focus();return;}
+      if(code==='invalid_password'){go(0);el('e-pw').textContent='Adgangskoden er for almindelig og nem at gætte. Vælg en anden.';el('f-pw').focus();return;}
       el('cerr').textContent=status===429?'Du har prøvet flere gange på kort tid. Vent lidt, og prøv igen.'
         :'Det lykkedes ikke at oprette profilen. Prøv igen, eller skriv til kontakt@mitlivmed.dk.';
     });
@@ -742,13 +742,21 @@
     if(/\.(js|json|css|htm|html|xml|jpg|jpeg|png|gif|bmp|ico|tif|tiff|woff)$/i.test(u))return 'Brugernavnet må ikke ende på en filendelse som .png eller .json.';
     return '';
   }
+  /* Discourses regler for adgangskoder (standardindstillinger, se lib/validators/user_password_validator.rb). Samme regler i API'et; listen over almindelige adgangskoder tjekker Discourse selv. */
+  function pwErr(p,u,e){
+    if(p.length<10)return 'Adgangskoden skal være mindst 10 tegn.';
+    if(p.length>200)return 'Adgangskoden må højst være 200 tegn.';
+    if(new Set(p).size<6)return 'Adgangskoden skal have mindst 6 forskellige tegn.';
+    if(p===u||p===e.toLowerCase()||p===e)return 'Adgangskoden må ikke være det samme som dit brugernavn eller din e-mail.';
+    return '';
+  }
   function validate(){
     var s=steps[cur],ok=true;
     if(s.t==='account'){
       save();var set=function(i,m){el(i).textContent=m;if(m)ok=false;};
       set('e-email',/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(S.account.email)?'':'Skriv en gyldig e-mailadresse.');
       set('e-user',userErr(S.account.username));
-      set('e-pw',S.account.password.length>=10?'':'Adgangskoden skal være mindst 10 tegn.');
+      set('e-pw',pwErr(S.account.password,S.account.username,S.account.email));
       if(!ok){var f=document.querySelector('.err:not(:empty)');if(f){var inp=f.parentElement.querySelector('input');if(inp)inp.focus();}}
       return ok;
     }
