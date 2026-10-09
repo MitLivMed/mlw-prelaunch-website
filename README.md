@@ -16,20 +16,23 @@ We're based in Copenhagen and currently launching in Danish, with international 
 
 ## Tech stack
 
-- Plain static **HTML, CSS and vanilla JavaScript**: no framework, no build step
-- Everything that is published lives in `site/` (each page has its CSS inline; shared: `share.css`, `share.js`, `widow.js`)
+- Plain **HTML, CSS and vanilla JavaScript** pages in `site/` (each page has its CSS inline)
+- **Vite** builds the site, only to insert shared parts: a page includes `site/partials/<name>.html` with the marker `<!-- partial:<name> -->` (e.g. the footer). CSS and scripts pass through untouched
+- `site/public/`: scripts, styles, images and favicons, copied as-is
 - Forms and payments talk to the MitLivMed API (`mitlivmed-api`)
-- Deployed on **Vercel** (`vercel.json`: no build, output folder `site`)
+- Deployed on **Vercel** (`vercel.json`: `npm run build`, output `dist/`)
 
 ## Local development
 
 ```sh
 git clone https://github.com/MitLivMed/mlw-prelaunch-website.git
-cd mlw-prelaunch-website/site
-python3 -m http.server 8000
+cd mlw-prelaunch-website
+npm install
+npm run dev      # dev server with partials
+npm run build    # build into dist/
 ```
 
-Open http://localhost:8000. Rewrites and redirects from `vercel.json` only work with `npx vercel dev` from the repo root.
+To change the footer, edit `site/partials/footer.html`: every page picks it up. Rewrites and redirects from `vercel.json` only apply on Vercel (or with `npx vercel dev`).
 
 ## Contributing
 
