@@ -32,7 +32,9 @@ npm run dev      # dev server with partials
 npm run build    # build into dist/
 ```
 
-To change the footer, edit `site/partials/footer.html`: every page picks it up. Rewrites and redirects from `vercel.json` only apply on Vercel (or with `npx vercel dev`).
+To change the footer, edit `site/partials/footer.html`: every page picks it up.
+
+Redirects, clean URLs and security headers (incl. the Content-Security-Policy) live in `vercel.json` and only apply on Vercel. To test them locally, link the project once (`npx vercel link`) and run `npx vercel dev`. **When a page starts loading something from a new domain (e.g. Stripe, PostHog, the API), add that domain to the CSP in `vercel.json`**, or the browser will block it.
 
 ## Contributing
 

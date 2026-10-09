@@ -27,6 +27,9 @@ const pages = Object.fromEntries(
 
 export default defineConfig({
   root,
+  // Separate pages, not a single-page app: unknown paths are a 404 in dev
+  // too, instead of silently serving index.html.
+  appType: "mpa",
   // Scripts, images, favicons etc. in site/public/ are copied as-is.
   publicDir: "public",
   plugins: [partials()],
