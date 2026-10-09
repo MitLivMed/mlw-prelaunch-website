@@ -783,7 +783,8 @@
 })();
 </script>
 <script>
-/* Alle links på siden åbner i ny fane, så oprettelsen aldrig afbrydes */
-(function(){function f(){document.querySelectorAll('a[href]').forEach(function(a){if(a.getAttribute('href').charAt(0)==='#')return;a.target='_blank';a.rel='noopener';});}f();new MutationObserver(f).observe(document.body,{childList:true,subtree:true});})();
+/* Politiksiderne åbner i ny fane, så man kan læse dem uden at miste oprettelsen. Alle andre links åbner i samme fane. */
+(function(){var P=['privatlivspolitik.html','brugerbetingelser.html','cookies.html','markedsfoeringspolitik.html','samtykkeerklaering.html','tilgaengelighed.html'];
+function f(){document.querySelectorAll('a[href]').forEach(function(a){if(P.indexOf(a.getAttribute('href').split('#')[0])>-1){a.target='_blank';a.rel='noopener';}});}f();new MutationObserver(f).observe(document.body,{childList:true,subtree:true});})();
 </script>
 <script src="widow.js" defer></script>
