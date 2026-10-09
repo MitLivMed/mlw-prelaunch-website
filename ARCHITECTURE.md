@@ -97,7 +97,7 @@ Cookieless (`persistence: "memory"`), so no consent banner is needed. Autocaptur
 
 Each form has:
 
-- a hidden honeypot field `website` that bots fill in. The contact, stipend and newsletter endpoints then answer "success" without doing anything; `/api/trivsel/signup` does not check it yet;
+- a hidden honeypot field `website` that bots fill in. The API then answers "success" without storing or sending anything;
 - a guard that always blocks the browser's native submit, so field values can never end up in the URL if `mlm.js` fails to load;
 - an error line (`role="alert"`) with a fallback e-mail address.
 
