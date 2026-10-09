@@ -10,10 +10,13 @@ const root = resolve(import.meta.dirname, "site");
 function partials() {
   return {
     name: "partials",
-    transformIndexHtml(html) {
-      return html.replace(/<!-- partial:([\w-]+) -->/g, (_, name) =>
+    // "pre": insert partials before Vite processes the HTML, so a module
+    // script in a partial (js/mlm.js) gets bundled like any other.
+    transformIndexHtml: {
+      order: "pre",
+      handler: (html) => html.replace(/<!-- partial:([\w-]+) -->/g, (_, name) =>
         readFileSync(resolve(root, "partials", `${name}.html`), "utf-8").trimEnd(),
-      );
+      ),
     },
   };
 }
@@ -27,6 +30,9 @@ const pages = Object.fromEntries(
 
 export default defineConfig({
   root,
+  // .env files (VITE_* keys for local dev) live in the repo root, like on the
+  // old site; on Vercel the values come from the project's env variables.
+  envDir: import.meta.dirname,
   // Separate pages, not a single-page app: unknown paths are a 404 in dev
   // too, instead of silently serving index.html.
   appType: "mpa",
