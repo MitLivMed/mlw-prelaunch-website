@@ -9,6 +9,7 @@
  *   MLM.track(event, props)                        -> PostHog event
  *   MLM.stripe()                                   -> Promise<Stripe> (Stripe.js)
  *   MLM.wireForm(form, options)                    -> sends a form to the API
+ *   MLM.openSignup(place, onClose)                 -> "Opret profil" Tally popup
  * Never put form values, landskab or other health data in events.
  */
 import posthog from "posthog-js";
@@ -173,4 +174,52 @@ function wireForm(form, { name, path, build, done, error, fallback = "kontakt@mi
   });
 }
 
-window.MLM = { api, ApiError, track, stripe, wireForm };
+// ── "Opret profil" (MLM-2567) ─────────────────────────────────────────────
+// Until the Discourse signup ships (Phase 6, MLM-2557), every "Opret profil"
+// link points at the Tally form and opens it as a popup, like on the old site
+// (src/lib/tally.ts). Tally's script is only fetched on the first click, so
+// no page view reaches Tally. Without JS the link opens the form on tally.so.
+const TALLY_FORM = "0Q87J0";
+const TALLY_URL = `https://tally.so/r/${TALLY_FORM}`;
+let tallyPromise = null;
+function loadTally() {
+  if (!tallyPromise) {
+    tallyPromise = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "https://tally.so/widgets/embed.js";
+      script.onload = () => (window.Tally ? resolve(window.Tally) : reject(new Error("Tally missing")));
+      script.onerror = reject;
+      document.head.append(script);
+    });
+    tallyPromise.catch(() => (tallyPromise = null));
+  }
+  return tallyPromise;
+}
+
+// place: where the button sits, for analytics (never landskab or other answers)
+function openSignup(place, onClose) {
+  track("cta_click", { location: place, label: "opret_profil" });
+  loadTally()
+    .then((Tally) =>
+      Tally.openPopup(TALLY_FORM, {
+        emoji: { text: "👋", animation: "wave" },
+        onOpen: () => track("form_start", { form_id: TALLY_FORM, location: place }),
+        onSubmit: () => track("form_submit", { form_id: TALLY_FORM, location: place }),
+        onClose,
+      }),
+    )
+    // Blocked or offline: open the form on tally.so instead.
+    .catch(() => (window.location.href = TALLY_URL));
+}
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest(`a[href="${TALLY_URL}"]`);
+  if (!link || event.metaKey || event.ctrlKey || event.shiftKey) return;
+  event.preventDefault();
+  const place = link.classList.contains("menubtn")
+    ? "header"
+    : link.closest("section[id]")?.id || link.closest("[id]")?.id || "page";
+  openSignup(place);
+});
+
+window.MLM = { api, ApiError, track, stripe, wireForm, openSignup };
