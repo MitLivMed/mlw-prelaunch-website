@@ -23,6 +23,8 @@ We're based in Copenhagen and currently launching in Danish, with international 
 - Forms and payments talk to the MitLivMed API (`mitlivmed-api`)
 - Deployed on **Vercel** (`vercel.json`: `npm run build`, output `dist/`)
 
+How it all fits together (pages, shared script, forms, payments, environments, deploy): see [ARCHITECTURE.md](ARCHITECTURE.md).
+
 ## Local development
 
 ```sh

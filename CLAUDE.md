@@ -7,22 +7,9 @@
 
 ## Deployment
 
-This project uses a dual-remote setup for Vercel deployment (free tier limitation).
+Vercel deploys directly from this repo (`MitLivMed/mlw-prelaunch-website`). The old mirror to a personal repo is no longer used.
 
-**Repos:**
-- `origin` = `MitLivMed/mlw-prelaunch-website` (org repo, source of truth)
-- `personal` = `Fuhr/mlw-prelaunch-website` (personal repo, Vercel deploys from here)
+- Every PR gets a Vercel preview deployment.
+- **A merge to `main` is a production deploy.** Never merge to `main` without Tonni's explicit approval.
 
-**To deploy to production:**
-Use the `/deploy` skill, or manually:
-```bash
-git push origin main
-git push personal main --force
-```
-
-**Setup (one-time):**
-```bash
-git remote add personal git@github.com:Fuhr/mlw-prelaunch-website.git
-```
-
-Never commit directly to the personal repo - it's only a mirror.
+See [ARCHITECTURE.md](ARCHITECTURE.md) for how the site is built and deployed.
