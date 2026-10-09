@@ -484,19 +484,21 @@
       <label for="k-mail">E-mail<input type="email" id="k-mail" required autocomplete="email"></label>
       <label for="k-emne">Hvad drejer det sig om?
         <select id="k-emne">
-          <option value="kontakt">Generelt spørgsmål</option>
-          <option value="kontakt">Feedback eller en idé</option>
-          <option value="kontakt">Trivselsgrupper</option>
-          <option value="kontakt">Støttemedlemskab</option>
-          <option value="kontakt">Frivillig eller samarbejde</option>
-          <option value="kontakt">Presse</option>
+          <option value="generelt">Generelt spørgsmål</option>
+          <option value="feedback">Feedback eller en idé</option>
+          <option value="trivselsgrupper">Trivselsgrupper</option>
+          <option value="stoettemedlemskab">Støttemedlemskab</option>
+          <option value="frivillig">Frivillig eller samarbejde</option>
+          <option value="presse">Presse</option>
           <option value="privacy">Privatliv og mine data (GDPR)</option>
         </select>
       </label>
       <label for="k-besked">Din besked<textarea id="k-besked" required></textarea></label>
       <label class="consent" for="k-samtykke"><input type="checkbox" id="k-samtykke" required><span>Jeg giver samtykke til, at MitLivMed bruger mine oplysninger til at svare på min henvendelse. Læs mere i <a href="privatlivspolitik.html" target="_blank" rel="noopener">privatlivspolitikken</a>.</span></label>
+      <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden"><label>Lad dette felt være tomt<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <p id="k-err" role="alert" hidden style="color:var(--orange-dark);font-weight:700;"></p>
       <button class="btn" type="submit" style="justify-self:start;">Send besked</button>
-      <p id="k-ok" hidden style="color:var(--green);font-weight:700;">Din mailapp åbner nu med beskeden klar. Tryk send dér. Åbner den ikke, kan du skrive direkte til <a id="k-direkte" href="mailto:kontakt@mitlivmed.dk" style="color:var(--orange-t);">kontakt@mitlivmed.dk</a>.</p>
+      <p id="k-ok" role="status" hidden style="color:var(--green);font-weight:700;">Tak for din besked. Vi svarer så hurtigt, vi kan.</p>
     </form>
     <aside class="side">
       <h2 style="font-size:22px;">MitLivMed ApS</h2>
@@ -510,16 +512,16 @@
 <!-- partial:footer -->
 <script>
 (function(){
-  var f=document.getElementById('kontakt');
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    var sel=document.getElementById('k-emne');
-    var to=sel.value==='privacy'?'privacy@mitlivmed.dk':'kontakt@mitlivmed.dk';
-    var subject='[Hjemmeside] '+sel.options[sel.selectedIndex].text;
-    var body=document.getElementById('k-besked').value+'\n\n'+document.getElementById('k-navn').value+'\n'+document.getElementById('k-mail').value;
-    document.getElementById('k-ok').hidden=false;
-    var d=document.getElementById('k-direkte'); d.href='mailto:'+to; d.textContent=to;
-    window.location.href='mailto:'+to+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  /* Kontakt (MLM-2556): API'et sender beskeden til kontakt@ eller privacy@. */
+  /* Sikring: send aldrig formularen som almindelig adresse (felterne, fx landskab,
+     ville ende i URL'en). Mangler scriptet, vises en fejl i stedet. */
+  document.getElementById('kontakt').addEventListener('submit',function(e){e.preventDefault();if(!window.MLM){var x=document.getElementById('k-err');x.textContent='Det lykkedes ikke at sende. Prøv igen, eller skriv til kontakt@mitlivmed.dk.';x.hidden=false;}});
+  document.addEventListener('DOMContentLoaded',function(){
+    var f=document.getElementById('kontakt'),v=function(id){return document.getElementById(id).value.trim();};
+    MLM.wireForm(f,{name:'kontakt',path:'/api/contact',error:document.getElementById('k-err'),
+      fallback:function(){return v('k-emne')==='privacy'?'privacy@mitlivmed.dk':'kontakt@mitlivmed.dk';},
+      build:function(){return {name:v('k-navn'),email:v('k-mail'),topic:v('k-emne'),message:v('k-besked'),consent:true};},
+      done:function(){f.reset();document.getElementById('k-ok').hidden=false;}});
   });
 })();
 </script>

@@ -646,6 +646,8 @@
           </fieldset>
           <label class="consent"><input type="checkbox" id="n-consent"><span class="tag">Påkrævet</span><strong>Jeg vil gerne have nyhedsbrevet fra MitLivMed</strong><span>MitLivMed må sende mig e-mails om, hvornår fællesskabet åbner for min gruppe, og om nyt fra MitLivMed. Du kan afmelde dig når som helst. Læs <a href="privatlivspolitik.html" target="_blank" rel="noopener">privatlivspolitikken</a>.</span></label>
           <div class="err" id="e-consent" role="alert"></div>
+          <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden"><label>Lad dette felt være tomt<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <p id="n-err" role="alert" hidden style="color:#A3261A;font-weight:700;font-size:14.5px;"></p>
           <div class="nav2"><button type="submit" class="btn">Skriv mig op →</button></div>
         </form>
       </section>
@@ -679,16 +681,27 @@
   var el=function(i){return document.getElementById(i);};
   var m=/[?&]gruppe=([^&]+)/.exec(location.search);
   if(m){var r=document.querySelector('input[name=gruppe][value="'+decodeURIComponent(m[1])+'"]');if(r)r.checked=true;}
-  el('nf').addEventListener('submit',function(e){
-    e.preventDefault();var ok=true;
-    var email=el('n-email').value.trim(),g=document.querySelector('input[name=gruppe]:checked');
-    el('e-email').textContent=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)?'':'Skriv en gyldig e-mailadresse.';
-    el('e-gruppe').textContent=g?'':'Vælg den gruppe, du tilhører.';
-    el('e-consent').textContent=el('n-consent').checked?'':'Du skal give samtykke for at få nyhedsbrevet.';
-    if(document.querySelector('.err:not(:empty)')){var f=document.querySelector('.err:not(:empty)');var i=f.parentElement.querySelector('input');if(i)i.focus();return;}
-    var sc=el('screen');
-    sc.innerHTML='<h2 tabindex="-1">Tak, du er skrevet op</h2><p class="sub">Vi skriver til dig på '+email.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];})+', når der åbnes for din gruppe.</p><div class="nav2"><a class="btn" href="index.html" style="text-decoration:none;display:inline-flex;justify-content:center;">Til forsiden →</a></div>';
-    sc.querySelector('h2').focus();
+  var esc=function(t){return t.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+  function screen(h,p){var sc=el('screen');sc.innerHTML='<h2 tabindex="-1">'+h+'</h2><p class="sub">'+p+'</p><div class="nav2"><a class="btn" href="index.html" style="text-decoration:none;display:inline-flex;justify-content:center;">Til forsiden →</a></div>';sc.querySelector('h2').focus();}
+  /* Fra linket i bekræftelsesmailen (dobbelt opt-in, MLM-2543/2556) */
+  var st=/[?&]status=(\w+)/.exec(location.search);
+  if(st&&st[1]==='bekraeftet') screen('Din tilmelding er bekræftet','Tak. Vi skriver til dig, når der åbnes for din gruppe.');
+  if(st&&st[1]==='ugyldigt'){var n=el('n-err');n.textContent='Linket virker ikke længere. Det kan være udløbet eller allerede brugt. Skriv dig op igen herunder.';n.hidden=false;}
+  /* Sikring: send aldrig formularen som almindelig adresse (felterne, fx gruppen,
+     ville ende i URL'en). Mangler scriptet, vises en fejl i stedet. */
+  if(el('nf')) el('nf').addEventListener('submit',function(e){e.preventDefault();if(!window.MLM){var x=document.getElementById('n-err');x.textContent='Det lykkedes ikke at sende. Prøv igen, eller skriv til kontakt@mitlivmed.dk.';x.hidden=false;}});
+  document.addEventListener('DOMContentLoaded',function(){
+    if(!el('nf')) return;
+    MLM.wireForm(el('nf'),{name:'nyhedsbrev',path:'/api/newsletter/subscribe',error:el('n-err'),
+      build:function(){
+        var email=el('n-email').value.trim(),g=document.querySelector('input[name=gruppe]:checked');
+        el('e-email').textContent=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)?'':'Skriv en gyldig e-mailadresse.';
+        el('e-gruppe').textContent=g?'':'Vælg den gruppe, du tilhører.';
+        el('e-consent').textContent=el('n-consent').checked?'':'Du skal give samtykke for at få nyhedsbrevet.';
+        if(document.querySelector('.err:not(:empty)')){var f=document.querySelector('.err:not(:empty)');var i=f.parentElement.querySelector('input');if(i)i.focus();return null;}
+        return {email:email,gruppe:g.value,consent:true};
+      },
+      done:function(r,body){screen('Tjek din indbakke','Vi har sendt en mail til '+esc(body.email)+'. Klik på linket i mailen for at bekræfte din tilmelding. Linket virker i 7 dage.');}});
   });
 })();
 </script>
