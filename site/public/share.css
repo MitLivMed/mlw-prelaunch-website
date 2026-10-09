@@ -1,0 +1,43 @@
+/* Del med en, du holder af. Lasse: Crimson Pro 95 %, DM Sans 130 %, Mountain Red, ren hvid. AA: hvid tekst på rød kun fed 18,7 px eller større. */
+.mlm-panel { display: flex; flex-direction: column; gap: 20px; }
+.mlm-panel h3, .mlm-sheet h2 { font-family: "Crimson Pro", Georgia, serif; font-weight: 900; line-height: .95; margin: 0; }
+.mlm-label { font-weight: 700; font-size: 17px; margin: 0 0 8px; display: block; }
+.mlm-hint { font-size: 14px; color: var(--muted); font-weight: 400; }
+.mlm-chips, .mlm-tones { display: flex; flex-wrap: wrap; gap: 8px; }
+.mlm-chip { min-height: 44px; padding: 0 18px; border-radius: 999px; border: 2px solid var(--border); background: #fff; color: var(--text); font: 400 17px "DM Sans", sans-serif; cursor: pointer; }
+.mlm-chip[aria-pressed="true"] { border-color: var(--orange); background: var(--orange-tint); font-weight: 700; }
+.mlm-tones { background: var(--surface); padding: 4px; border-radius: 10px; gap: 4px; display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); }
+.mlm-tone { min-height: 44px; border: 0; border-radius: 7px; background: transparent; color: var(--text); font: 400 16px "DM Sans", sans-serif; cursor: pointer; }
+.mlm-tone[aria-pressed="true"] { background: #fff; font-weight: 700; box-shadow: 0 1px 3px rgba(51,41,39,.18); }
+.mlm-text { width: 100%; box-sizing: border-box; border: 2px solid var(--border); border-radius: 12px; padding: 12px 14px; font: 400 17px/1.3 "DM Sans", sans-serif; background: #fff; color: var(--text); resize: vertical; min-height: 110px; }
+.mlm-prev { display: flex; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px; align-items: center; }
+.mlm-prev img { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; flex: none; }
+.mlm-prev strong { display: block; font-size: 17px; line-height: 1.2; }
+.mlm-prev span { display: block; font-size: 15px; color: var(--muted); line-height: 1.3; word-break: break-all; }
+.mlm-acts { display: grid; gap: 10px; }
+.mlm-btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; }
+.mlm-b { min-height: 48px; border-radius: 8px; border: 2px solid var(--orange-light); background: transparent; color: var(--orange-dark); font: 700 18.7px "DM Sans", sans-serif; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 14px; }
+.mlm-b:hover { background: var(--orange-tint); }
+.mlm-b.pri { background: var(--orange); border-color: var(--orange); color: #fff; min-height: 54px; }
+.mlm-b.pri:hover { background: var(--orange-dark); border-color: var(--orange-dark); }
+.mlm-note { font-size: 15px; color: var(--muted); margin: 0; }
+.mlm-stat { min-height: 22px; margin: 0; font-size: 15px; font-weight: 700; color: var(--orange-dark); }
+.mlm-thanks { display: flex; flex-direction: column; gap: 16px; }
+.mlm-thanks img { height: 64px; align-self: flex-start; width: auto; }
+.mlm-thanks h3 { font-size: 32px; }
+.mlm-thanks h3 em { font-style: italic; font-weight: 400; }
+.mlm-you { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+.mlm-you strong { display: block; font-size: 17px; margin-bottom: 4px; }
+.mlm-you a { color: var(--orange-t); font-weight: 700; }
+.mlm-sheet { border: 0; padding: 0; background: #fff; color: var(--text); width: min(560px, 100%); max-height: 92vh; border-radius: 22px; overflow: auto; font-family: "DM Sans", sans-serif; }
+.mlm-sheet::backdrop { background: rgba(51,41,39,.5); }
+.mlm-sheet .in { padding: 14px 20px 26px; display: flex; flex-direction: column; gap: 16px; }
+.mlm-sheet .hd { display: flex; justify-content: space-between; align-items: center; }
+.mlm-sheet h2 { font-size: 30px; }
+.mlm-x { width: 44px; height: 44px; border: 0; background: transparent; font-size: 30px; line-height: 1; color: var(--text); cursor: pointer; border-radius: 50%; }
+@media (max-width: 640px) { .mlm-sheet { margin: auto 0 0; width: 100%; max-width: 100%; border-radius: 22px 22px 0 0; } }
+.mlm-from { background: var(--surface); text-align: center; padding: 10px 16px; margin: 0; font: 400 22px/.95 "Crimson Pro", Georgia, serif; color: var(--text); }
+.mlm-sharebtn { position: absolute; right: 10px; bottom: 10px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; color: var(--orange-dark); display: grid; place-items: center; cursor: pointer; box-shadow: 0 2px 8px rgba(51,41,39,.3); }
+.mlm-sharebtn:hover { background: var(--orange-tint); }
+.mlm-link { color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--orange-dark); border: 2px solid var(--orange-light); }

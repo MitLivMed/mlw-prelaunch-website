@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="da">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brugerbetingelser | MitLivMed</title>
+<!-- partial:head -->
+<meta name="description" content="Læs MitLivMeds brugerbetingelser for adgang til og brug af fællesskabsplatformen.">
+<link rel="canonical" href="https://mitlivmed.dk/brugerbetingelser">
+<meta property="og:url" content="https://mitlivmed.dk/brugerbetingelser">
+<meta property="og:title" content="Brugerbetingelser | MitLivMed">
+<meta property="og:description" content="Læs MitLivMeds brugerbetingelser for adgang til og brug af fællesskabsplatformen.">
+<meta name="twitter:title" content="Brugerbetingelser | MitLivMed">
+<meta name="twitter:description" content="Læs MitLivMeds brugerbetingelser for adgang til og brug af fællesskabsplatformen.">
+<link rel="stylesheet" href="fonts.css">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #FFFFFF; --surface: #FAF6F5; --text: #2B2B2B; --muted: #5C6B4E; --nav: #595959;
+    --border: #E4DBCD; --orange: #BF5B39; --orange-dark: #663D29; --orange-tint: #F2D7CE; --orange-light: #E5B2A1;
+    --blue-tint: #EDF4FA; --blue: #688BAE; --blue-dark: #46698C;
+    --green-tint: #EDFAEF; --green: #4A6E46; --gold: #C29844; --gold-tint: #FFEECC;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--bg); color: var(--text); font-family: "DM Sans", Calibri, sans-serif; font-weight: 400; line-height: 1.3; }
+  h1, h2, h3 { font-family: "Crimson Pro", Georgia, serif; font-weight: 900; line-height: .95; margin: 0; text-wrap: balance; }
+  h4 { font-family: "DM Sans", Calibri, sans-serif; font-weight: 900; line-height: 1.3; margin: 0; }
+  em, .accent { font-style: italic; }
+  p { margin: 0; }
+  .kicker { font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-weight: 400; font-size: clamp(24px, 3vw, 32px); line-height: .95; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 24px; }
+  section { padding-block: 72px; }
+  @media (max-width: 640px) { section { padding-block: 48px; } .wrap { padding-inline: 18px; } }
+  .accent { color: var(--orange-t); }
+  .muted { color: var(--muted); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; border: none; border-radius: 6px; padding: 14px 24px; font: 500 16px "DM Sans", sans-serif; cursor: pointer; background: var(--orange); color: var(--bg); }
+  .btn.ghost { background: transparent; color: var(--orange-dark); border: 1.5px solid var(--orange-light); }
+  .btn:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  .sec-head { max-width: 640px; margin-bottom: 36px; }
+  .sec-head h2 { font-size: clamp(26px, 3.4vw, 36px); }
+  .sec-head p { margin-top: 14px; color: var(--muted); font-size: 18px; }
+
+  nav { display: flex; align-items: center; justify-content: space-between; padding-block: 18px; gap: 16px; }
+  .brand { display: block; } .brand img { height: 34px; width: auto; display: block; }
+  .ic { width: 22px; height: 22px; fill: currentColor; flex: none; }
+  .proof .ic { width: 42px; height: 42px; margin-bottom: 10px; }
+  .trust .ic { width: 44px; height: 44px; color: var(--orange-t); margin-bottom: 10px; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; } .badge .ic { width: 15px; height: 15px; }
+  .trust-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; } .trust-head img { width: 150px; height: auto; }
+  .final .crowd { display: block; width: min(260px, 70%); height: auto; aspect-ratio: 2 / 1; margin: 0 auto 18px; }
+  .links { display: flex; gap: 26px; font-size: 15px; color: var(--nav); }
+  .nav-act { display: flex; gap: 18px; align-items: center; }
+  .nav-act .signin { font-size: 15px; color: var(--nav); }
+  .nav-act .btn { padding: 10px 18px; font-size: 14.5px; }
+  @media (max-width: 760px) { .links { display: none; } }
+
+  .hero { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; padding-block: 36px 40px; }
+  @media (max-width: 880px) { .hero { grid-template-columns: 1fr; } }
+  .hero h1 { font-size: clamp(34px, 5vw, 52px); margin-top: 8px; }
+  .hero .lede { font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-size: 24px; line-height: .95; margin-top: 18px; max-width: 500px; }
+  .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+  .micro { font-size: 13.5px; color: var(--muted); margin-top: 12px; }
+
+  .video { display: block; text-decoration: none; position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid var(--border); background: var(--orange-tint); }
+  .video svg.bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .video .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,20,15,.62), rgba(30,20,15,.1) 42%, rgba(30,20,15,0) 62%); }
+  .video .title { position: absolute; top: 16px; left: 18px; color: #fff; font-weight: 700; font-size: 15px; }
+  .video .title small { display: block; font-weight: 500; font-size: 12px; opacity: .85; }
+  .video .play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; border-radius: 50%; background: #BF5B39; display: grid; place-items: center; box-shadow: 0 8px 20px rgba(20,10,5,.28); }
+  .video .pill { position: absolute; bottom: 14px; right: 14px; background: #BF5B39; color: #fff; font-size: 13px; font-weight: 700; padding: 8px 14px; border-radius: 6px; }
+
+  .scrollcue { display: flex; flex-direction: column; align-items: center; gap: 6px; width: max-content; margin: 8px auto 0; color: var(--orange-t); text-decoration: none; font-size: 15px; font-weight: 700; transition: opacity .3s; }
+  .scrollcue.gone { opacity: 0; pointer-events: none; }
+  html { scroll-behavior: smooth; }
+  .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 760px) { .proof { grid-template-columns: 1fr; } }
+  .proof div { padding: 22px 24px; border-radius: 12px; }
+  .proof .n { font-family: "Crimson Pro", Georgia, serif; font-size: 44px; line-height: .95; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .proof .l { font-size: 15px; color: var(--muted); }
+
+  .viewport { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+  .track { display: flex; gap: 20px; width: max-content; animation: scroll 50s linear infinite; }
+  .viewport:hover .track { animation-play-state: paused; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .track { animation: none; } .viewport { overflow-x: auto; } }
+  .mc { flex: 0 0 300px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  @media (max-width: 700px) { .mc { flex-basis: 250px; } }
+  .mc .th { position: relative; aspect-ratio: 16 / 9; background: var(--orange-tint); }
+  .mc .th img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .mc .th .sh { display: none; }
+  .mc .th .pl { position: absolute; bottom: 12px; left: 12px; width: 36px; height: 36px; box-shadow: 0 2px 8px rgba(20,10,5,.3); border-radius: 50%; background: rgba(255,255,255,.92); display: grid; place-items: center; }
+  .mc .th .lock { position: absolute; top: 10px; right: 10px; background: rgba(20,14,10,.55); color: #fff; font-size: 10.5px; font-weight: 700; padding: 4px 9px; border-radius: 999px; }
+  .mc .bd { padding: 14px 16px 16px; }
+  .mc h3 { font-size: 15px; margin-bottom: 4px; }
+  .mc p { font-size: 12.5px; color: var(--muted); }
+  .cta-row { margin-top: 28px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .cta-row p { font-size: 14px; color: var(--muted); }
+
+  .need { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 26px; }
+  @media (max-width: 700px) { .need { grid-template-columns: 1fr; } }
+  .need-btn { text-align: left; font: inherit; color: var(--text); background: var(--surface); border: 1.5px solid var(--border); border-radius: 12px; padding: 18px 20px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; }
+  .need-btn strong { font-family: "Crimson Pro", Georgia, serif; font-size: 24px; line-height: .95; font-weight: 900; }
+  .need-btn span { font-size: 14px; color: var(--muted); }
+  .need-btn.on { border-color: var(--orange); background: var(--orange-tint); }
+  .need-btn.on span { color: var(--orange-dark); }
+  .need-btn:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  .arts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 900px) { .arts { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .arts { grid-template-columns: 1fr; } }
+  .art { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .art img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; display: block; }
+  .art .bd { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .art h3 { font-size: 24px; }
+  .art p { font-size: 14.5px; color: var(--muted); }
+  .art .by { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--orange-t); margin-top: auto; }
+  .art.more { background: var(--orange-tint); border-color: transparent; justify-content: center; text-align: left; padding: 24px; gap: 12px; }
+  .art.more .n { font-family: "Crimson Pro", Georgia, serif; font-size: 52px; line-height: .95; font-weight: 900; color: var(--orange-dark); }
+
+  .land { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 760px) { .land { grid-template-columns: 1fr; } }
+  .land .c { display: flex; flex-direction: column; gap: 18px; }
+  .land .pic { position: relative; width: 100%; aspect-ratio: 1 / 1; max-height: 340px; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 24px rgba(43,43,43,.12); margin-top: auto; }
+  .land .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .land .pic .fig { position: absolute; width: 24%; height: auto; }
+    .land .t { padding: 0; }
+  .land h3 { font-size: 30px; color: var(--green); margin-bottom: 6px; }
+  .land p { font-size: 14.5px; color: var(--muted); }
+
+  .evs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 1000px) { .evs { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .evs { grid-template-columns: 1fr; } }
+  .ev { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .ev img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+  .ev .bd { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .badge { align-self: flex-start; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px; letter-spacing: .02em; }
+  .badge.on { background: var(--blue-tint); color: var(--blue-dark); }
+  .badge.off { background: var(--green-tint); color: var(--green); }
+  .ev .date { font-size: 13px; font-weight: 700; color: var(--orange-t); font-variant-numeric: tabular-nums; }
+  .ev h3 { font-size: 22px; }
+
+  .trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .trust { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .trust { grid-template-columns: 1fr; } }
+  .trust div { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .trust h3 { font-size: 22px; margin-bottom: 6px; }
+  .trust p { font-size: 14px; color: var(--muted); }
+  .note { margin-top: 20px; font-size: 14px; color: var(--muted); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
+  .note strong { color: var(--text); }
+
+  .band { background: var(--blue-tint); }
+  .band.green { background: var(--green-tint); }
+  .final { background: var(--orange-dark); color: #FFFFFF; border-radius: 20px; padding: 40px 28px 44px; text-align: center; }
+  .final h2 { color: #FFFFFF; font-size: clamp(26px, 4vw, 36px); }
+  .final p { color: #FFFFFF; margin-top: 10px; }
+  .final form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; max-width: 480px; margin: 22px auto 0; }
+  .final input { flex: 1 1 220px; padding: 14px 16px; border-radius: 6px; border: 0; font: 500 15px "DM Sans", sans-serif; background: #FFFFFF; color: var(--text); }
+  .final .btn { background: #FFFFFF; color: var(--orange-dark); }
+  .final .ok { margin-top: 12px; color: #CDEBD0; font-weight: 700; }
+  footer { padding-block: 36px; border-top: 1px solid var(--border); font-size: 13.5px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  /* ---- støtteside ---- */
+  .mpanel { background: var(--orange-tint); border-radius: 18px; aspect-ratio: 4 / 3; display: grid; place-items: end center; padding: 28px 24px 0; overflow: hidden; }
+  .mpanel { position: relative; text-decoration: none; cursor: pointer; }
+  .mpanel img { width: min(100%, 460px); height: auto; display: block; }
+  .mpanel .mplay { position: absolute; top: 16px; right: 16px; display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: var(--bg); font-weight: 700; font-size: 15px; padding: 10px 16px; border-radius: 999px; }
+  .mpanel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .words { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 960px) { .words { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .words { grid-template-columns: 1fr; } }
+  .word { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px 22px 26px; }
+  .word h3 { font-size: 34px; font-style: italic; color: var(--orange-t); margin-bottom: 10px; }
+  .word p { font-size: 16px; color: var(--muted); }
+  .gives { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 700px) { .gives { grid-template-columns: 1fr; } }
+  .give { display: flex; gap: 16px; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; }
+  .give .ic { width: 44px; height: 44px; color: var(--orange-t); flex: none; }
+  .give h3 { font-size: 16px; margin-bottom: 4px; }
+  .give p { font-size: 15px; color: var(--muted); }
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 760px) { .tiers { grid-template-columns: 1fr; } }
+  .tier { position: relative; text-align: left; font: inherit; color: var(--text); background: var(--surface); border: 2px solid var(--border); border-radius: 16px; padding: 28px 24px; cursor: pointer; display: flex; flex-direction: column; gap: 8px; }
+  .tier .amt { font-family: "Crimson Pro", Georgia, serif; font-weight: 900; font-size: 64px; line-height: .95; color: var(--text); font-variant-numeric: tabular-nums; }
+  .tier .amt small { font-family: "DM Sans", sans-serif; font-weight: 900; font-size: 20px; margin-left: 6px; }
+  .tier .txt { font-size: 15px; color: var(--muted); }
+  .tier .flag { position: absolute; top: -12px; left: 20px; background: var(--orange); color: var(--bg); font-size: 12px; font-weight: 900; padding: 4px 12px; border-radius: 999px; }
+  .tier[aria-checked="true"] { border-color: var(--orange); background: var(--orange-tint); }
+  .tier:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  .pay { margin-top: 26px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .pay .fine { font-size: 14px; color: var(--muted); }
+  .good { background: var(--surface); border: 2px solid var(--orange); border-radius: 16px; padding: 28px 30px; display: grid; gap: 14px; }
+  .good h2 { font-size: 30px; }
+  .good ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .good li { display: flex; gap: 12px; align-items: flex-start; font-size: 18px; }
+  .good li::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--orange); margin-top: 9px; flex: none; }
+  .good strong { font-weight: 900; }
+
+  /* ---- trivselsgrupper ---- */
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .facts { grid-template-columns: 1fr; } }
+  .fact { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+  .fact .big { font-family: "Crimson Pro", Georgia, serif; font-weight: 900; font-size: 46px; line-height: .95; color: var(--orange-t); }
+  .fact h3 { font-size: 22px; margin: 8px 0 6px; }
+  .fact p { font-size: 15px; color: var(--muted); }
+  .greb4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 700px) { .greb4 { grid-template-columns: 1fr; } }
+  .greb { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; }
+  .greb h3 { font-size: 26px; margin-bottom: 6px; }
+  .greb p { font-size: 16px; color: var(--muted); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 760px) { .two { grid-template-columns: 1fr; } }
+  .opt { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 26px; }
+  .opt .tag { font-size: 12px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-t); }
+  .opt h3 { font-size: 30px; margin: 8px 0 10px; }
+  .opt p { color: var(--muted); font-size: 16px; }
+  .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 860px) { .phases { grid-template-columns: 1fr; } }
+  .phase { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+  .phase .age { font-size: 13px; font-weight: 900; letter-spacing: .06em; color: var(--orange-t); text-transform: uppercase; }
+  .phase h3 { font-size: 28px; }
+  .phase p { font-size: 16px; color: var(--muted); }
+  .phase .pic { position: relative; width: 100%; aspect-ratio: 1 / 1; max-height: 300px; border-radius: 12px; overflow: hidden; margin-top: 4px; }
+  .phase .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .phase .pic .fig { position: absolute; width: 24%; height: auto; }
+  .phase h3 { color: var(--green); }
+  .phase .sub { font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-size: 22px; line-height: .95; color: var(--text); }
+  .phase .btn { margin-top: auto; align-self: flex-start; padding: 12px 18px; font-size: 15px; }
+  .checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .checks li { display: flex; gap: 12px; font-size: 18px; align-items: flex-start; }
+  .checks li::before { content: "✓"; color: var(--orange-t); font-weight: 900; flex: none; }
+  .is, .isnt { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 26px; }
+  .is h3, .isnt h3 { font-size: 28px; margin-bottom: 14px; }
+  .isnt { border-color: var(--orange); }
+  .is ul, .isnt ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; font-size: 16px; }
+  .is li::before { content: "+  "; color: var(--green); font-weight: 900; }
+  .isnt li::before { content: "−  "; color: var(--orange-t); font-weight: 900; }
+  .price { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+  @media (max-width: 760px) { .price { grid-template-columns: 1fr; } }
+  .price .amt { font-family: "Crimson Pro", Georgia, serif; font-weight: 900; font-size: 84px; line-height: .95; color: var(--orange-t); }
+  .price .amt small { font-family: "DM Sans", sans-serif; font-weight: 900; font-size: 22px; color: var(--text); margin-left: 8px; }
+  form.signup { display: grid; gap: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+  form.signup label { font-size: 15px; font-weight: 700; display: grid; gap: 6px; }
+  form.signup input[type=text], form.signup input[type=email], form.signup input[type=tel], form.signup textarea { font: 400 16px "DM Sans", sans-serif; padding: 13px 14px; border: 1.5px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); }
+  form.signup textarea { min-height: 90px; resize: vertical; }
+  form.signup fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
+  form.signup legend { font-size: 15px; font-weight: 700; margin-bottom: 8px; padding: 0; }
+  form.signup .ra { display: flex; gap: 10px; align-items: center; font-weight: 400; font-size: 16px; }
+  form.signup .consent { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: 14px; color: var(--muted); }
+  details.faq { border-bottom: 1px solid var(--border); padding-block: 16px; }
+  details.faq summary { font-family: "Crimson Pro", Georgia, serif; font-weight: 900; font-size: 24px; cursor: pointer; line-height: .95;}
+  details.faq p { margin-top: 10px; color: var(--muted); font-size: 16px; max-width: 640px; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; margin-top: 36px; }
+  @media (max-width: 800px) { .split { grid-template-columns: 1fr; } }
+  .split img { width: 100%; border-radius: 16px; display: block; aspect-ratio: 4 / 3; object-fit: cover; }
+  .split h3 { font-size: 34px; margin-bottom: 10px; }
+  .split p { font-size: 17px; color: var(--muted); }
+
+  /* ---- om os ---- */
+  .need3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  @media (max-width: 820px) { .need3 { grid-template-columns: 1fr; } }
+  .need3 div { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; font-size: 17px; }
+  .story { max-width: 720px; }
+  .story p { font-size: 19px; margin-top: 18px; color: var(--text); }
+  .team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 960px) { .team { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .team { grid-template-columns: 1fr; } }
+  .member { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .member .av { aspect-ratio: 1 / 1; overflow: hidden; background: var(--orange-tint); }
+  .member .av img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+  .member .tx { padding: 14px 16px 18px; }
+  .member h3 { font-size: 22px; }
+  .member p { font-size: 14.5px; color: var(--muted); margin-top: 4px; }
+  .member .dx { font-size: 13px; font-weight: 700; color: var(--orange-t); margin-top: 6px; }
+  .grp { width: 100%; height: auto; display: block; border-radius: 16px; margin-bottom: 28px; aspect-ratio: 3 / 2; object-fit: cover; }
+
+  /* ---- hjælp ---- */
+  .alarm { background: var(--orange-dark); color: #FFFFFF; border-radius: 18px; padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 760px) { .alarm { grid-template-columns: 1fr; } }
+  .alarm .al { background: #FFFFFF; color: var(--text); border-radius: 14px; padding: 22px 24px; }
+  .alarm .al .lab { font-size: 15px; font-weight: 700; }
+  .alarm .al .sub { font-size: 14px; color: var(--muted); margin-top: 2px; }
+  .alarm .al .num { display: inline-block; margin-top: 8px; font-family: "Crimson Pro", Georgia, serif; font-weight: 900; font-size: 52px; line-height: .95; color: var(--orange-t); text-decoration: none; font-variant-numeric: tabular-nums; }
+  .eyebrow2 { font-size: 13px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; color: var(--orange-t); margin-bottom: 8px; }
+  .tbl { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; font-size: 16px; }
+  .tbl th, .tbl td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .tbl th { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .tbl a { color: var(--orange-t); font-weight: 900; text-decoration: none; font-variant-numeric: tabular-nums; }
+  .tblwrap { overflow-x: auto; }
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
+  .hc { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; }
+  .hc h3 { font-size: 24px; }
+  .hc h3 a { color: inherit; text-decoration: none; }
+  .hc h3 a::after { content: " ↗"; color: var(--orange-t); font-family: "DM Sans", sans-serif; font-size: 16px; }
+  .hc p { font-size: 15.5px; color: var(--muted); }
+  .hc .tm { font-size: 14px; color: var(--muted); }
+  .hc .tel { font-family: "Crimson Pro", Georgia, serif; font-weight: 900; font-size: 30px; color: var(--orange-t); text-decoration: none; font-variant-numeric: tabular-nums; margin-top: auto; line-height: .95;}
+  .info { background: var(--blue-tint); border-radius: 12px; padding: 16px 20px; font-size: 16px; margin-top: 16px; }
+  .small { font-size: 14.5px; color: var(--muted); margin-top: 14px; }
+  .small a { color: var(--orange-t); }
+  .legal { max-width: 860px; }
+  .legal h1 { font-size: clamp(36px,5vw,54px); margin-bottom: 8px; }
+  .legal .meta { color: var(--muted); font-size: 15px; margin-bottom: 28px; }
+  .legal section { padding-block: 0; margin-top: 34px; }
+  .legal h2 { font-size: 30px; margin-bottom: 12px; }
+  .legal h3 { font-size: 22px; margin: 22px 0 8px; }
+  .legal p { margin-top: 12px; font-size: 17px; }
+  .legal ul { margin: 12px 0 0; padding-left: 22px; display: grid; gap: 8px; font-size: 17px; }
+  .legal a { color: var(--orange-t); }
+  .legal .short { background: var(--orange-tint); border-radius: 14px; padding: 22px 26px; }
+  .legal .short h2 { margin-bottom: 4px; }
+  .legal .tblwrap { overflow-x: auto; margin-top: 14px; }
+  .legal table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); font-size: 15px; min-width: 560px; }
+  .legal th, .legal td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--border); }
+  .legal th { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  nav { flex-wrap: wrap; }
+  .links a { color: var(--nav); text-decoration: none; font-weight: 700; }
+  .links a[aria-current] { color: var(--orange-t); }
+  .nav-act .signin { text-decoration: none; }
+  a.btn { text-decoration: none; }
+  @media (max-width: 760px) { .links { display: flex !important; } }
+  .sitefoot { background: var(--surface); border-top: 1px solid var(--border); margin-top: 40px; padding-block: 44px 28px; }
+  .fgrid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 28px; }
+  @media (max-width: 768px) { .fgrid { grid-template-columns: 1fr 1fr; } .fabout { grid-column: 1 / -1; } }
+  .sitefoot h4 { font-size: 15px; margin-bottom: 12px; }
+  .sitefoot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .sitefoot li a { color: var(--nav); text-decoration: none; font-size: 16px; }
+  .sitefoot li a:hover { color: var(--orange-t); text-decoration: underline; }
+  .sitefoot .copy { margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 13.5px; color: var(--muted); }
+  .mainnav { display: flex; align-items: center; justify-content: space-between; gap: 18px 24px; padding-block: 22px; flex-wrap: wrap; }
+  .menu { list-style: none; margin: 0; padding: 6px; display: flex; align-items: center; gap: 6px; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; }
+  .menuitem { display: block; padding: 12px 20px; border-radius: 999px; font-size: 17px; font-weight: 700; color: var(--text); text-decoration: none; }
+  .menuitem:hover { background: var(--orange-tint); }
+  .menuitem[aria-current] { background: var(--orange-tint); color: var(--orange-dark); }
+  .menubtn { padding: 13px 22px; font-size: 17px; border-radius: 999px; }
+  @media (max-width: 640px) {
+    .menu { width: 100%; justify-content: space-between; }
+    .menuitem { padding: 11px 12px; font-size: 15px; }
+    .menubtn { padding: 11px 14px; font-size: 15px; }
+  }
+  .sitefoot .some { list-style: none; margin: 0 0 0 -11px; padding: 0; display: flex; flex-wrap: wrap; gap: 0 18px; align-items: center; }
+  .some a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--nav); text-decoration: none; border-radius: 50%; }
+  .some a:hover, .some a:focus-visible { color: var(--orange-t); background: var(--orange-tint); }
+  .some svg { width: 22px; height: 22px; flex: none; }
+  .some span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .fabout .fm { font-size: 18px; line-height: 1.35; color: var(--text); max-width: 380px; }
+  .fabout .fm strong { color: var(--muted); font-weight: 900; }
+  .fabout .fadr { font-size: 14px; color: var(--muted); }
+  :root { --logo-w: clamp(170px, 12vw + 100px, 260px); --logo-w-footer: calc(var(--logo-w) * 0.9); }
+  .brand img.header-logo, .header-logo { width: var(--logo-w); height: auto; display: block; flex-shrink: 0; }
+  .footer-logo { width: var(--logo-w-footer); height: auto; display: block; }
+  .mainnav { align-items: center; }
+  .mainnav .brand { flex-shrink: 0; }
+  .footer-brand { display: flex; flex-direction: column; gap: 20px; }
+  .footer-brand p { margin: 0; }
+  .nowrap { white-space: nowrap; }
+  .copyrow { display: flex; justify-content: space-between; align-items: center; gap: 14px 24px; flex-wrap: wrap; margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .copyrow .copy { margin: 0; padding: 0; border: 0; }
+  .sitefoot .lang { display: flex; flex-direction: row; gap: 10px; align-items: center; margin: 0; padding: 0; }
+  .lang { list-style: none; margin: 0; padding: 0; display: flex; gap: 10px; align-items: center; }
+  .flag { display: block; border-radius: 4px; overflow: hidden; line-height: 0; border: 2px solid transparent; opacity: .6; transition: opacity .2s, transform .2s; }
+  .flag svg { display: block; }
+  .flag.on { opacity: 1; border-color: var(--orange); }
+  .flag:hover, .flag:focus-visible { opacity: 1; transform: translateY(-1px); }
+  .flag:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+  [hidden] { display: none !important; }
+
+  /* Footer: sociale ikoner som runde knapper, skillelinje, copyright og runde sprogflag */
+  .sitefoot .fabout .some { display: none; }
+  .sitefoot .some.row { display: flex; margin: 36px 0 0; gap: 0 18px; }
+  .sitefoot .some.row a { width: 44px; height: 44px; background: var(--orange); color: var(--bg); }
+  .sitefoot .some.row a:hover, .sitefoot .some.row a:focus-visible { background: var(--orange-dark); color: #fff; }
+  .sitefoot .some.row svg { width: 22px; height: 22px; }
+  .copyrow { margin-top: 28px; padding-top: 28px; }
+  .copyrow .copy { font-family: "Crimson Pro", Georgia, serif; font-size: 18px; color: var(--orange-dark); line-height: .95;}
+  .sitefoot .lang { gap: 14px; }
+  .sitefoot .flag { width: 40px; height: 40px; box-sizing: border-box; border-radius: 50%; border: 2px solid transparent; padding: 3px; opacity: 1; }
+  .sitefoot .flag svg { width: 100%; height: 100%; border-radius: 50%; }
+  .sitefoot .flag.on { border-color: var(--orange); }
+  .sitefoot .flag:not(.on) { border-color: transparent; }
+  .skip { position: absolute; left: 8px; top: -60px; z-index: 100; background: var(--orange-dark); color: #fff; padding: 12px 18px; border-radius: 8px; font-weight: 700; text-decoration: none; }
+  .skip:focus { top: 8px; outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 6px var(--orange-dark); }
+  main:focus { outline: none; }
+  .mc h3, .give h3 { font-family: "DM Sans", Calibri, sans-serif; font-weight: 900; line-height: 1.3; }
+  /* WCAG 2.x AA: kontrast, links, fokus */
+  :root { --muted: #4F5E42; }
+  .opt .tag, .help a, .tier .flag { color: var(--orange-dark); }
+  .tier .flag { color: #fff; background: var(--orange-dark); }
+  .sitefoot .fh { font-family: "DM Sans", Calibri, sans-serif; font-weight: 900; line-height: 1.3; margin: 0 0 12px; font-size: 15px; color: var(--muted); }
+  p a, li a, .legal a { text-decoration: underline; text-underline-offset: 2px; }
+  .menuitem, .btn, .sitefoot li a, .flag, .some a, .brand { text-decoration: none; }
+  .sitefoot li a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-visible, [role=button]:focus-visible, summary:focus-visible { outline: 3px solid var(--orange-dark); outline-offset: 3px; }
+  .tblwrap:focus-visible { outline: 3px solid var(--orange-dark); outline-offset: 2px; }
+  .copyrow .wcag { margin-left: auto; font-weight: 900; font-size: 13px; letter-spacing: .04em; color: var(--orange-dark); border: 2px solid var(--orange-dark); border-radius: 999px; padding: 6px 12px; text-decoration: none; }
+  .copyrow .wcag:hover { background: var(--orange-dark); color: #fff; }
+  /* Typografi: mindste tekststørrelser og linjehøjder efter designet */
+  .micro, .disc, .hint, .dx, .pill, .date, th, .eyebrow2, .mini-p, .mc .bd p { font-size: max(1em, 14px); }
+  .micro, .disc { font-size: 14px !important; }
+  .disc { font-style: normal !important; }
+  .pill, .date, .hint, .dx, th, .eyebrow2 { font-size: 14px !important; }
+  .mc .bd p { font-size: 14px !important; }
+  .lock { font-size: 12.5px !important; }
+  .badge, .by, .tag { font-size: 13px !important; }
+  .tel, .need-label { line-height: 1.05 !important; }
+  .tier .flag { font-weight: 900 !important; }
+  /* Lasse Skovmand / Wiith-handover: linjeafstand 95 % på Crimson Pro, H1 i Mountain Red, farvedosering */
+  h1, h2, h3, .kicker, .lede, .lead, .nlcard h2, .sharetxt .lede { line-height: .95; }
+  h1 { color: var(--orange); }
+  h1 .accent, .accent { color: var(--orange); }
+  .btn { font-weight: 700; font-size: 18.7px; }
+  .btn.menubtn, .menubtn { font-weight: 700; font-size: 18.7px; }
+  /* Farvedosering (Lasse): ren hvid dominerer, off-white sparsomt, Mountain Red som markant flade, sekundærfarver kun få steder */
+  .band:not(.green) { background: #FFFFFF; }
+  .final { background: var(--orange); }
+  .final p { font-size: 24px; line-height: 1.3; }
+  .final .micro { font-size: 18.7px; font-weight: 700; }
+  .consent { font-size: 14px; }
+  /* Slutjustering: små tekster på Mountain Red må kun være store/fede, Crimson altid 95 %, links i samtykke */
+  .pill, .mplay { font-size: 18.7px !important; font-weight: 700 !important; }
+  .final .micro, .final p.micro { font-size: 18.7px !important; font-weight: 700 !important; }
+  .n, .need-label, .tel, .num { line-height: .95 !important; }
+  .consent a { color: var(--orange-t); text-decoration: underline; }
+  @media (max-width: 520px) { .menu { width: 100%; justify-content: space-between; } .menu { gap: 4px 0; padding: 6px; flex-wrap: wrap; border-radius: 28px; } .menuitem { font-size: 15px; white-space: nowrap; padding-inline: 8px; } .menubtn, .btn.menubtn { white-space: nowrap; padding-inline: 12px; font-size: 18.7px; } }
+  /* Mobil-finpudsning: ingen enlige ord, telefonnumre brydes ikke, ens justering */
+  p, li, td, th, summary, label, blockquote, .txt, .desc { text-wrap: pretty; }
+  h1, h2, h3, h4, .kicker, .lede, .btn { text-wrap: balance; }
+  .alarm .al .num, .hc .tel, a.num, a.tel { white-space: nowrap; }
+  .alarm .al .num { font-size: clamp(30px, 9.5vw, 52px); }
+  .hc .tel { font-size: clamp(24px, 7.4vw, 30px); }
+  .art.more h3, .art.more p { text-align: center; }
+  .art.more .btn { align-self: center !important; }
+  /* Wiith-bånd over footeren (design 1c) */
+  .wiithband { background: color-mix(in srgb, var(--orange-tint) 55%, #fff); margin-top: 40px; }
+  .wiithband + .sitefoot { margin-top: 0; }
+  .wb-in { display: flex; align-items: center; gap: 24px; padding-block: 22px; }
+  .wb-in img { height: 30px; width: auto; flex: none; display: block; }
+  .wb-div { width: 1px; align-self: stretch; min-height: 32px; background: var(--orange-light); flex: none; }
+  .wb-in p { margin: 0; flex: 1; font-family: "Crimson Pro", Georgia, serif; font-size: 22px; line-height: .95; color: var(--orange-dark); text-wrap: pretty; }
+  .wb-in a { font-weight: 700; font-size: 17px; color: var(--orange-t); white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 760px) { .wb-in { flex-direction: column; align-items: flex-start; gap: 12px; } .wb-div { display: none; } }
+  .wiithnote { display: flex; align-items: center; gap: 14px; margin-top: 14px; padding: 12px 16px; border-radius: 12px; background: color-mix(in srgb, var(--orange-tint) 55%, #fff); }
+  .wiithnote img { height: 22px; width: auto; flex: none; }
+  .wiithnote p { margin: 0; font-family: "Crimson Pro", Georgia, serif; font-size: 18px; line-height: .95; color: var(--orange-dark); }
+  .wiithnote a { font-weight: 700; color: var(--orange-t); white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 760px) { .wiithnote { flex-wrap: wrap; } }
+  /* Mindre kursiv: kun fremhævede ord i overskrifter står i kursiv */
+  .lede, .sharecopy .lede, .tak .lede { font-family: "DM Sans", Calibri, sans-serif !important; font-style: normal !important; font-weight: 400 !important; font-size: clamp(18px, 2.1vw, 21px) !important; line-height: 1.3 !important; }
+  .lede .hl { font-family: inherit !important; font-weight: 700 !important; color: inherit; }
+  .kicker, .nlband .kick, .mlm-from { font-style: normal !important; }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-secure" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 20C9 18.8954 9.89543 18 11 18H14V16C14 10.4772 18.4772 6 24 6C29.5228 6 34 10.4772 34 16V18H37C38.1046 18 39 18.8954 39 20V40C39 41.1046 38.1046 42 37 42H11C9.89543 42 9 41.1046 9 40V20ZM24 10C27.3137 10 30 12.6863 30 16V18H18V16C18 12.6863 20.6863 10 24 10ZM32.9999 26H15V24H32.9999V26ZM15 31H32.9999V29H15V31ZM32.9999 36H15V34H32.9999V36Z" fill="currentColor"/>
+</symbol><symbol id="i-comm" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4 20.5C4 12.4919 10.4919 6 18.5 6H29.5C37.5081 6 44 12.4919 44 20.5C44 28.5081 37.5081 35 29.5 35H28V42L25.5 41.5C9 37.5 4 28.5081 4 20.5ZM27.3333 18.0001H29V27.0001H19V18.0001H20.6667V15.2292C20.6667 13.6759 22.159 12.4167 24 12.4167C25.841 12.4167 27.3333 13.6759 27.3333 15.2292V18.0001ZM24 14.4167C24.4703 14.4167 24.8413 14.5783 25.0673 14.769C25.289 14.9561 25.3333 15.1264 25.3333 15.2292V17.9167H22.6667V15.2292C22.6667 15.1264 22.711 14.9561 22.9327 14.769C23.1587 14.5783 23.5297 14.4167 24 14.4167Z" fill="currentColor"/>
+</symbol><symbol id="i-group" viewBox="0 0 48 48">
+<path d="M24 12.0417C24 8.70495 21.2951 6 17.9583 6H12.0417C8.70495 6 6 8.70495 6 12.0417C6 15.3784 8.70495 18.0833 12.0417 18.0833H13.2V21C13.2 21 24 19.5417 24 12.0417Z" fill="currentColor"/>
+<path d="M18.5 28C18.5 30.21 16.71 32 14.5 32C12.29 32 10.5 30.21 10.5 28C10.5 25.79 12.29 24 14.5 24C16.71 24 18.5 25.79 18.5 28Z" fill="currentColor"/>
+<path d="M14.5 34C11.6631 34 6 35.4293 6 38.2667V42H23V38.2667C23 35.4293 17.3369 34 14.5 34Z" fill="currentColor"/>
+<path d="M33.5 32C35.71 32 37.5 30.21 37.5 28C37.5 25.79 35.71 24 33.5 24C31.29 24 29.5 25.79 29.5 28C29.5 30.21 31.29 32 33.5 32Z" fill="currentColor"/>
+<path d="M33.5 34C30.6631 34 25 35.4293 25 38.2667V42H42V38.2667C42 35.4293 36.3369 34 33.5 34Z" fill="currentColor"/>
+<path d="M32.0417 7C28.7049 7 26 9.70495 26 13.0417C26 20.5417 35.6 22 35.6 22V19.0833H35.9583C39.2951 19.0833 42 16.3784 42 13.0417C42 9.70495 39.2951 7 35.9583 7H32.0417Z" fill="currentColor"/>
+</symbol><symbol id="i-video" viewBox="0 0 48 48">
+<path d="M4 13C4 11.3431 5.34315 10 7 10H33C34.6569 10 36 11.3431 36 13V19.4286L44 14V34L36 28.8571V35C36 36.6569 34.6569 38 33 38H7C5.34315 38 4 36.6569 4 35V13Z" fill="currentColor"/>
+</symbol><symbol id="i-book" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 10C9 7.23858 11.2386 5 14 5H38C38.5523 5 39 5.44772 39 6V36C39 36.5523 38.5523 37 38 37H14C12.3431 37 11 38.3431 11 40V41H38V43H10C9.44772 43 9 42.5523 9 42V10ZM23 26V21H18V19H23V14H25V19H30V21H25V26H23Z" fill="currentColor"/>
+</symbol><symbol id="i-cal" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15 23C13.8954 23 13 23.8954 13 25V27C13 28.1046 13.8954 29 15 29H17C18.1046 29 19 28.1046 19 27V25C19 23.8954 18.1046 23 17 23H15ZM15 25V27H17V25H15Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M21 25C21 23.8954 21.8954 23 23 23H25C26.1046 23 27 23.8954 27 25V27C27 28.1046 26.1046 29 25 29H23C21.8954 29 21 28.1046 21 27V25ZM23 25H25V27H23V25Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M31 23C29.8954 23 29 23.8954 29 25V27C29 28.1046 29.8954 29 31 29H33C34.1046 29 35 28.1046 35 27V25C35 23.8954 34.1046 23 33 23H31ZM31 25V27H33V25H31Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M13 33C13 31.8954 13.8954 31 15 31H17C18.1046 31 19 31.8954 19 33V35C19 36.1046 18.1046 37 17 37H15C13.8954 37 13 36.1046 13 35V33ZM15 35V33H17V35H15Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M23 31C21.8954 31 21 31.8954 21 33V35C21 36.1046 21.8954 37 23 37H25C26.1046 37 27 36.1046 27 35V33C27 31.8954 26.1046 31 25 31H23ZM25 33H23V35H25V33Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M29 33C29 31.8954 29.8954 31 31 31H33C34.1046 31 35 31.8954 35 33V35C35 36.1046 34.1046 37 33 37H31C29.8954 37 29 36.1046 29 35V33ZM31 35V33H33V35H31Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C15.4477 6 15 6.44772 15 7V10H11C8.79086 10 7 11.7909 7 14V38C7 40.2092 8.79086 42 11 42H37C39.2091 42 41 40.2092 41 38V14C41 11.7909 39.2091 10 37 10H35V13C35 13.5523 34.5523 14 34 14C33.4477 14 33 13.5523 33 13V7C33 6.44772 32.5523 6 32 6C31.4477 6 31 6.44772 31 7V10H19V13C19 13.5523 18.5523 14 18 14C17.4477 14 17 13.5523 17 13V7C17 6.44772 16.5523 6 16 6ZM9 38V21H39V38C39 39.1046 38.1046 40 37 40H11C9.89543 40 9 39.1046 9 38Z" fill="currentColor"/>
+</symbol><symbol id="i-laptop" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9.00002 10C7.89545 10 7.00002 10.8954 7.00002 12V31C7.00002 32.1046 7.89545 33 9.00002 33H39C40.1046 33 41 32.1046 41 31V12C41 10.8954 40.1046 10 39 10H9.00002ZM11 29V14H37V29H11ZM9.00002 13C9.00002 12.4477 9.44773 12 10 12H38C38.5523 12 39 12.4477 39 13V30C39 30.5523 38.5523 31 38 31H10C9.44773 31 9.00002 30.5523 9.00002 30V13Z" fill="currentColor"/>
+<path d="M7.06003 31.4719C7.24254 31.1784 7.56362 31 7.9092 31H39.8823C40.2198 31 40.5346 31.1703 40.7193 31.4528L43.9884 36.4528C44.4233 37.1179 43.9461 38 43.1514 38H4.79957C4.01512 38 3.53612 37.138 3.9504 36.4719L7.06003 31.4719Z" fill="currentColor"/>
+</symbol><symbol id="i-pin" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M23.4236 41.8172C23.424 41.8174 23.4243 41.8176 24 41L23.4236 41.8172ZM24.5764 41.8172L24.58 41.8146L24.5891 41.8082L24.6209 41.7854C24.6482 41.7658 24.6875 41.7374 24.7379 41.7004C24.8387 41.6263 24.9842 41.5178 25.1681 41.3765C25.5357 41.0938 26.0571 40.6794 26.6811 40.1459C27.9277 39.08 29.5908 37.5328 31.2565 35.6059C34.5639 31.7799 38 26.3195 38 20.0769C38 16.3454 36.5264 12.7655 33.9016 10.1251C31.2765 7.48454 27.7149 6 24 6C20.2851 6 16.7235 7.48454 14.0984 10.1251C11.4736 12.7655 10 16.3454 10 20.0769C10 26.3195 13.4361 31.7799 16.7435 35.6059C18.4092 37.5328 20.0723 39.08 21.3189 40.1459C21.9429 40.6794 22.4643 41.0938 22.8319 41.3765C23.0158 41.5178 23.1613 41.6263 23.2621 41.7004C23.3125 41.7374 23.3518 41.7658 23.3791 41.7854L23.4109 41.8082L23.42 41.8146L23.4236 41.8172C23.7689 42.0603 24.2311 42.0603 24.5764 41.8172ZM24 41L24.5764 41.8172C24.576 41.8174 24.5757 41.8176 24 41ZM29 20C29 22.7614 26.7614 25 24 25C21.2386 25 19 22.7614 19 20C19 17.2386 21.2386 15 24 15C26.7614 15 29 17.2386 29 20Z" fill="currentColor"/>
+</symbol></defs></svg>
+<a class="skip" href="#main">Gå til indhold</a>
+<header class="wrap">
+  <nav class="mainnav" aria-label="Hovedmenu">
+    <a class="brand" href="index.html" aria-label="MitLivMed forside"><img class="header-logo" src="mitlivmed_assets/logo-wordmark-beskaaret.svg" alt="MitLivMed" width="1390" height="175"></a>
+    <ul class="menu">
+      <li><a class="menuitem" href="trivselsgrupper.html" data-nav="trivselsgrupper">Trivselsgrupper</a></li>
+      <li><a class="menuitem" href="https://xn--fllesskab-g3a.mitlivmed.dk/login">Log ind</a></li>
+      <li><a class="btn menubtn" href="opret.html">Opret profil</a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main" tabindex="-1"><div class="wrap legal" style="padding-block:40px 20px;">
+<h1>Brugerbetingelser</h1><div class="meta">Version 1.0 · Sidst opdateret: 27. september 2026</div><section><h2>1. Definitioner</h2><p>I disse betingelser gælder følgende definitioner:</p><ul><li><strong>"MitLivMed"</strong> betyder MitLivMed ApS, CVR-nr. 46193040, Otto Busses Vej 5, 2. th, 2450 København SV. E-mail: <a href="mailto:kontakt@mitlivmed.dk">kontakt@mitlivmed.dk</a>.</li><li><strong>"Platformen"</strong> betyder MitLivMeds digitale tjenester, herunder fællesskab, rum, indhold, funktioner og værktøjer, der stilles til rådighed af MitLivMed – uanset hvilken teknisk løsning de leveres via.</li><li><strong>"Bruger"</strong> eller <strong>"du"</strong> betyder enhver person, der opretter en konto på Platformen og accepterer disse betingelser.</li><li><strong>"Indhold"</strong> betyder alt bruger-genereret materiale, herunder opslag, kommentarer, personlige historier, billeder og øvrige bidrag.</li><li><strong>"Guides"</strong> betyder frivillige moderatorer, der er udpeget af MitLivMed til at facilitere og moderere fællesskabet.</li></ul></section><section><h2>2. Betingelser for brug</h2><div><p>2.1. Du skal være mindst <strong>18 år</strong> for at oprette en konto og bruge Platformen.</p><p>2.2. Hver person må kun oprette <strong>én konto</strong>. Duplikerede konti kan blive lukket uden varsel.</p><p>2.3. Du skal opgive <strong>korrekte oplysninger</strong> ved oprettelse af din konto. Du er ansvarlig for at holde dine kontooplysninger opdaterede.</p><p>2.4. Din konto er <strong>personlig</strong> og må ikke deles med eller overdrages til andre.</p><p>2.5. Ved at oprette en konto accepterer du disse brugerbetingelser, samt at du har læst vores <a href="privatlivspolitik.html">privatlivspolitik</a>.</p><p>2.6. MitLivMed er et <strong>peer-support-fællesskab</strong> — ikke en sundhedsudbyder eller sundhedsperson. Se § 3 for mere information.</p></div></section><section><h2>3. Sundhedsoplysninger — VIGTIGT!</h2><p><strong>Læs dette afsnit grundigt. Det vedrører din sundhed og sikkerhed.</strong></p><div><p>3.1. <strong>MitLivMed er IKKE en sundhedsudbyder, behandler eller klinik og har ingen ansatte sundhedspersoner.</strong> Hverken MitLivMed, vores Guides eller andre brugere yder sundhedsfaglig rådgivning, diagnose eller behandling. MitLivMed har heller ingen sundhedspersoner ansat eller tilknyttet.</p><p>3.2. <strong>Intet indhold på Platformen udgør medicinsk rådgivning.</strong> Alt Indhold er udtryk for personlige oplevelser og ikke klinisk vejledning. Indhold på Platformen kan ikke erstatte professionel sundhedsrådgivning.</p><p>3.3. <strong>Kontakt altid en sundhedsperson</strong>, hvis du har spørgsmål om din sundhed, medicinering eller behandling. Træf ikke beslutninger om din sundhed udelukkende på baggrund af Indhold delt i fællesskabet.</p></div><p>3.4. I krise:</p><div><p><strong>Livslinien:</strong> <a href="tel:70201201">70 201 201</a> (alle dage kl. 09.00-05.00)</p><p><strong>Akut fare:</strong> Ring <a href="tel:112">112</a></p></div><p>3.5. <strong>MitLivMed kan ikke holdes ansvarlig</strong> for beslutninger, handlinger eller undladelser, der er truffet på baggrund af Indhold. Du bruger Platformen og Indholdet på eget ansvar.</p></section><section><h2>4. Brugerindhold og licens</h2><div><p>4.1. <strong>Du ejer dit indhold.</strong> MitLivMed gør ikke krav på ejerskab over det Indhold, du deler på Platformen, bortset fra hvad fremgår under punkt 4.2 nedenfor.</p><p>4.2. Ved at dele Indhold på Platformen giver du MitLivMed en <strong>ikke-eksklusiv, vederlagsfri licens</strong> til at vise, kuratere og moderere Indholdet. Denne licens gives udelukkende med det formål at drifte fællesskabet — herunder at vise opslag, moderere Indhold og tilrettelægge Platformens rum.</p><p>4.3. Licensen <strong>ophører</strong>, når dit Indhold eller din konto slettes.</p><p>4.4. <strong>Ved kontosletning</strong> slettes alt dit Indhold. Se § 8 for nærmere detaljer om sletning.</p><p>4.5. <strong>Video- og interviewindhold</strong> (f.eks. brugerhistorier til ekstern brug) kræver <strong>separat, skriftligt samtykke</strong> og en selvstændig aftale om immaterielle rettigheder. Sådant samtykke er ikke dækket af disse betingelser.</p></div></section><section><h2>5. Adfærdsregler</h2><p>MitLivMed bygger på gensidig respekt og omsorg. Følgende regler gælder for al aktivitet på Platformen:</p><div><p>5.1. <strong>Vær venlig.</strong> Mød hinanden med varme og respekt — også på svære dage.</p><p>5.2. <strong>Del fra din egen oplevelse.</strong> Brug "jeg"-sprog. Vi giver ikke medicinsk rådgivning til hinanden.</p><p>5.3. <strong>Respekter fortrolighed.</strong> Det, der deles i fællesskabet, bliver i fællesskabet. Del ikke andres historier uden for Platformen.</p><p>5.4. <strong>Pas på dig selv.</strong> Det er okay at tage pauser, sige nej og trække sig fra en samtale.</p></div><p>5.5. Vi tolererer ikke:</p><ul><li>Nedladende, diskriminerende eller krænkende sprog</li><li>Uopfordret medicinsk rådgivning eller "diagnosering" af andre</li><li>Deling af andres private oplysninger (doxxing)</li><li>Spam, reklame eller selvpromovering</li><li>Indhold, der opfordrer til selvskade eller er ulovligt</li></ul><div><p>5.6. Se vores fulde fællesskabsregler i MitLivMed-fællesskabet for detaljerede retningslinjer.</p><p>5.7. MitLivMed forbeholder sig ret til at <strong>moderere, fjerne indhold eller suspendere konti</strong> ved overtrædelse af disse adfærdsregler eller de fulde fællesskabsregler.</p></div></section><section><h2>6. Immaterielle rettigheder</h2><div><p>6.1. MitLivMed forbeholder sig alle rettigheder til Platformen.</p><p>6.2. <strong>Brugere ejer deres eget indhold</strong>, jf. § 4.</p><p>6.3. MitLivMeds navn, logo og varemærker må <strong>ikke bruges uden forudgående skriftlig tilladelse</strong> fra MitLivMed.</p><p>6.4. Intet i disse betingelser overfører immaterielle rettigheder fra den ene part til den anden, ud over den licens, der er beskrevet i § 4.</p></div></section><section><h2>7. Ansvarsfraskrivelse og ansvarsbegrænsning</h2><div><p>7.1. Platformen leveres <strong>"som den er"</strong> (as-is) og <strong>"som tilgængelig"</strong> (as available). MitLivMed giver ingen garantier — hverken udtrykkelige eller stiltiende — vedrørende Platformens tilgængelighed, nøjagtighed eller egnethed til et bestemt formål.</p><p>7.2. MitLivMed garanterer ikke uafbrudt drift eller fejlfri tjeneste. Platformen kan være midlertidigt utilgængelig som følge af vedligeholdelse, opdateringer eller forhold uden for MitLivMeds kontrol.</p></div><p>7.3. MitLivMed er <strong>ikke ansvarlig</strong> for:</p><ul><li>Indhold delt af brugere (herunder rigtigheden, fuldstændigheden eller lovligheden heraf)</li><li>Tab, skade eller ulempe, der direkte eller indirekte følger af brug af Platformen</li><li>Handlinger eller beslutninger truffet på baggrund af brugerindhold</li></ul><p>7.4. Den ansvarsfraskrivelse, der er beskrevet i § 3.5, gælder i tillæg til dette afsnit.</p></section><section><h2>8. Opsigelse og sletning</h2><div><p>8.1. <strong>Du kan til enhver tid slette din konto</strong> via Platformen eller ved at sende en e-mail til <a href="mailto:privacy@mitlivmed.dk">privacy@mitlivmed.dk</a>.</p><p>8.2. <strong>MitLivMed kan opsige din konto</strong> ved overtrædelse af disse betingelser. Hvor det er rimeligt, giver MitLivMed dig besked med en passende frist.</p><p>8.3. Ved <strong>alvorlige overtrædelser</strong> — herunder chikane, trusler eller deling af ulovligt indhold — kan MitLivMed suspendere din konto med øjeblikkelig virkning og uden forudgående varsel.</p><p>8.4. <strong>Ved kontosletning</strong> slettes alle dine personoplysninger og dit indhold i overensstemmelse med vores privatlivspolitik.</p><p>8.5. MitLivMed kan opbevare <strong>anonymiserede, aggregerede data</strong>, som ikke kan henføres til individuelle brugere, også efter kontosletning.</p></div></section><section><h2>9. Ændringer af betingelserne</h2><div><p>9.1. MitLivMed kan opdatere disse betingelser fra tid til anden.</p><p>9.2. Ved <strong>væsentlige ændringer</strong> giver MitLivMed dig besked pr. e-mail mindst <strong>30 dage</strong> før ændringerne træder i kraft.</p><p>9.3. Fortsat brug af Platformen efter udløbet af varslingsperioden anses som accept af de opdaterede betingelser.</p><p>9.4. Hvis du <strong>ikke accepterer</strong> de opdaterede betingelser, kan du slette din konto inden ændringerne træder i kraft, jf. § 8.1.</p></div></section><section><h2>10. Lovvalg og tvister</h2><div><p>10.1. Disse betingelser er underlagt <strong>dansk ret</strong>.</p><p>10.2. Eventuelle tvister, der udspringer af eller relaterer sig til disse betingelser, afgøres ved de <strong>danske domstole</strong> med Københavns Byret som rette værneting i første instans.</p><p>10.3. Dine rettigheder i henhold til ufravigelig EU- og dansk forbrugerlovgivning berøres ikke af disse betingelser.</p></div></section><section><h2>Kontakt</h2><p>Har du spørgsmål til disse betingelser, er du velkommen til at kontakte os:</p><div><p>MitLivMed ApS</p><p>Otto Busses Vej 5, 2. th</p><p>2450 København SV</p><p>CVR-nr.: 46193040</p><p>E-mail: <a href="mailto:kontakt@mitlivmed.dk">kontakt@mitlivmed.dk</a></p><p>Persondata: <a href="mailto:privacy@mitlivmed.dk">privacy@mitlivmed.dk</a></p></div></section>
+</div></main>
+<!-- partial:footer -->
+<script src="widow.js" defer></script>
