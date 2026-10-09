@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="da">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MitLivMed | Fællesskab for mennesker med bipolar</title>
+<link rel="icon" href="mitlivmed_assets/logo-rund.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,900;1,400;1,900&family=DM+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #FFFFFF; --surface: #FAF6F5; --text: #2B2B2B; --muted: #5C6B4E; --nav: #595959;
+    --border: #E4DBCD; --orange: #BF5B39; --orange-dark: #663D29; --orange-tint: #F2D7CE; --orange-light: #E5B2A1;
+    --blue-tint: #EDF4FA; --blue: #688BAE; --blue-dark: #46698C;
+    --green-tint: #EDFAEF; --green: #4A6E46; --gold: #C29844; --gold-tint: #FFEECC;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--bg); color: var(--text); font-family: "DM Sans", Calibri, sans-serif; font-weight: 400; line-height: 1.3; }
+  h1, h2, h3 { font-family: "Crimson Pro", Georgia, serif; font-weight: 900; line-height: .95; margin: 0; text-wrap: balance; }
+  h4 { font-family: "DM Sans", Calibri, sans-serif; font-weight: 900; line-height: 1.3; margin: 0; }
+  em, .accent { font-style: italic; }
+  p { margin: 0; }
+  .kicker { font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-weight: 400; font-size: clamp(24px, 3vw, 32px); line-height: .95; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 24px; }
+  section { padding-block: 72px; }
+  @media (max-width: 640px) { section { padding-block: 48px; } .wrap { padding-inline: 18px; } }
+  .accent { color: var(--orange-t); }
+  .muted { color: var(--muted); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; border: none; border-radius: 6px; padding: 14px 24px; font: 500 16px "DM Sans", sans-serif; cursor: pointer; background: var(--orange); color: var(--bg); }
+  .btn.ghost { background: transparent; color: var(--orange-dark); border: 1.5px solid var(--orange-light); }
+  .btn:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  .sec-head { max-width: 640px; margin-bottom: 36px; }
+  .sec-head h2 { font-size: clamp(26px, 3.4vw, 36px); }
+  .sec-head p { margin-top: 14px; color: var(--muted); font-size: 18px; }
+
+  nav { display: flex; align-items: center; justify-content: space-between; padding-block: 18px; gap: 16px; }
+  .brand { display: block; } .brand img { height: 34px; width: auto; display: block; }
+  .ic { width: 22px; height: 22px; fill: currentColor; flex: none; }
+  .proof .ic { width: 42px; height: 42px; margin-bottom: 10px; }
+  .trust .ic { width: 44px; height: 44px; color: var(--orange-t); margin-bottom: 10px; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; } .badge .ic { width: 15px; height: 15px; }
+  .trust-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; } .trust-head img { width: 150px; height: auto; }
+  .final .crowd { display: block; width: min(260px, 70%); height: auto; aspect-ratio: 2 / 1; margin: 0 auto 18px; }
+  .links { display: flex; gap: 26px; font-size: 15px; color: var(--nav); }
+  .nav-act { display: flex; gap: 18px; align-items: center; }
+  .nav-act .signin { font-size: 15px; color: var(--nav); }
+  .nav-act .btn { padding: 10px 18px; font-size: 14.5px; }
+  @media (max-width: 760px) { .links { display: none; } }
+
+  .hero { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; padding-block: 36px 40px; }
+  @media (max-width: 880px) { .hero { grid-template-columns: 1fr; } }
+  .hero h1 { font-size: clamp(34px, 5vw, 52px); margin-top: 8px; }
+  .hero .lede { font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-size: 24px; line-height: .95; margin-top: 18px; max-width: 500px; }
+  .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+  .micro { font-size: 13.5px; color: var(--muted); margin-top: 12px; }
+
+  .video { display: block; text-decoration: none; position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid var(--border); background: var(--orange-tint); }
+  .video svg.bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .video .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,20,15,.62), rgba(30,20,15,.1) 42%, rgba(30,20,15,0) 62%); }
+  .video .title { position: absolute; top: 16px; left: 18px; color: #fff; font-weight: 700; font-size: 15px; }
+  .video .title small { display: block; font-weight: 500; font-size: 12px; opacity: .85; }
+  .video .play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; border-radius: 50%; background: #BF5B39; display: grid; place-items: center; box-shadow: 0 8px 20px rgba(20,10,5,.28); }
+  .video .pill { position: absolute; bottom: 14px; right: 14px; background: #BF5B39; color: #fff; font-size: 13px; font-weight: 700; padding: 8px 14px; border-radius: 6px; }
+
+  .scrollcue { display: flex; flex-direction: column; align-items: center; gap: 6px; width: max-content; margin: 8px auto 0; color: var(--orange-t); text-decoration: none; font-size: 15px; font-weight: 700; transition: opacity .3s; }
+  .scrollcue.gone { opacity: 0; pointer-events: none; }
+  html { scroll-behavior: smooth; }
+  .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 760px) { .proof { grid-template-columns: 1fr; } }
+  .proof div { padding: 22px 24px; border-radius: 12px; }
+  .proof .n { font-family: "Crimson Pro", Georgia, serif; font-size: 44px; line-height: .95; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .proof .l { font-size: 15px; color: var(--muted); }
+
+  .viewport { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+  .track { display: flex; gap: 20px; width: max-content; animation: scroll 50s linear infinite; }
+  .viewport:hover .track, .viewport:focus-within .track, .track.paused { animation-play-state: paused; }
+  .btn.sec { background: transparent; color: var(--orange-dark); border: 2px solid var(--orange-light); }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .track { animation: none; } .viewport { overflow-x: auto; } }
+  .mc { flex: 0 0 300px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  @media (max-width: 700px) { .mc { flex-basis: 250px; } }
+  .mc .th { position: relative; aspect-ratio: 16 / 9; background: var(--orange-tint); }
+  .mc .th img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .mc .th .sh { display: none; }
+  .mc .th .pl { position: absolute; bottom: 12px; left: 12px; width: 36px; height: 36px; box-shadow: 0 2px 8px rgba(20,10,5,.3); border-radius: 50%; background: rgba(255,255,255,.92); display: grid; place-items: center; }
+  .mc .th .lock { position: absolute; top: 10px; right: 10px; background: rgba(20,14,10,.55); color: #fff; font-size: 10.5px; font-weight: 700; padding: 4px 9px; border-radius: 999px; }
+  .mc .bd { padding: 14px 16px 16px; }
+  .mc h3 { font-size: 15px; margin-bottom: 4px; }
+  .mc p { font-size: 12.5px; color: var(--muted); }
+  .cta-row { margin-top: 28px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .cta-row p { font-size: 14px; color: var(--muted); }
+
+  .need { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 26px; }
+  @media (max-width: 700px) { .need { grid-template-columns: 1fr; } }
+  .need-btn { text-align: left; font: inherit; color: var(--text); background: var(--surface); border: 1.5px solid var(--border); border-radius: 12px; padding: 18px 20px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; }
+  .need-btn strong { font-family: "Crimson Pro", Georgia, serif; font-size: 24px; line-height: .95; font-weight: 900; }
+  .need-btn span { font-size: 14px; color: var(--muted); }
+  .need-btn.on { border-color: var(--orange); background: var(--orange-tint); }
+  .need-btn.on span { color: var(--orange-dark); }
+  .need-btn:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  .arts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 900px) { .arts { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .arts { grid-template-columns: 1fr; } }
+  .art { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .art img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; display: block; }
+  .art .bd { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .art h3 { font-size: 24px; }
+  .art p { font-size: 14.5px; color: var(--muted); }
+  .art .by { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--orange-t); margin-top: auto; }
+  .art.more { background: var(--orange-tint); border-color: transparent; justify-content: center; text-align: left; padding: 24px; gap: 12px; }
+  .art.more .n { font-family: "Crimson Pro", Georgia, serif; font-size: 52px; line-height: .95; font-weight: 900; color: var(--orange-dark); }
+
+  .land { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 760px) { .land { grid-template-columns: 1fr; } }
+  .land .c { display: flex; flex-direction: column; gap: 18px; }
+  .land .pic { position: relative; width: 100%; aspect-ratio: 1 / 1; max-height: 340px; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 24px rgba(43,43,43,.12); margin-top: auto; }
+  .land .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .land .pic .fig { position: absolute; width: 24%; height: auto; }
+    .land .t { padding: 0; }
+  .land h3 { font-size: 30px; color: var(--green); margin-bottom: 6px; }
+  .land p { font-size: 14.5px; color: var(--muted); }
+
+  .evs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 1000px) { .evs { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .evs { grid-template-columns: 1fr; } }
+  .ev { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .ev img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+  .ev .bd { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .badge { align-self: flex-start; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px; letter-spacing: .02em; }
+  .badge.on { background: var(--blue-tint); color: var(--blue-dark); }
+  .badge.off { background: var(--green-tint); color: var(--green); }
+  .ev .date { font-size: 13px; font-weight: 700; color: var(--orange-t); font-variant-numeric: tabular-nums; }
+  .ev h3 { font-size: 22px; }
+
+  .trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .trust { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .trust { grid-template-columns: 1fr; } }
+  .trust div { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .trust h3 { font-size: 22px; margin-bottom: 6px; }
+  .trust p { font-size: 14px; color: var(--muted); }
+  .note { margin-top: 20px; font-size: 14px; color: var(--muted); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
+  .note strong { color: var(--text); }
+
+  .band { background: var(--blue-tint); }
+  .band.green { background: var(--green-tint); }
+  .final { background: var(--orange-dark); color: #FFFFFF; border-radius: 20px; padding: 40px 28px 44px; text-align: center; }
+  .final h2 { color: #FFFFFF; font-size: clamp(26px, 4vw, 36px); }
+  .final p { color: #FFFFFF; margin-top: 10px; }
+  .final form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; max-width: 480px; margin: 22px auto 0; }
+  .final input { flex: 1 1 220px; padding: 14px 16px; border-radius: 6px; border: 0; font: 500 15px "DM Sans", sans-serif; background: #FFFFFF; color: var(--text); }
+  .final .btn { background: #FFFFFF; color: var(--orange-dark); }
+  .final .ok { margin-top: 12px; color: #CDEBD0; font-weight: 700; }
+  footer { padding-block: 36px; border-top: 1px solid var(--border); font-size: 13.5px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .onl { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; margin-bottom: 32px; }
+  @media (max-width: 800px) { .onl { grid-template-columns: 1fr; } }
+  .onl img { width: 100%; border-radius: 16px; display: block; aspect-ratio: 16 / 10; object-fit: cover; }
+  .onl h3 { font-size: 30px; margin-bottom: 8px; }
+  .onl p { color: var(--muted); font-size: 17px; }
+  nav { flex-wrap: wrap; }
+  .links a { color: var(--nav); text-decoration: none; font-weight: 700; }
+  .links a[aria-current] { color: var(--orange-t); }
+  .nav-act .signin { text-decoration: none; }
+  a.btn { text-decoration: none; }
+  @media (max-width: 760px) { .links { display: flex !important; } }
+  .sitefoot { background: var(--surface); border-top: 1px solid var(--border); margin-top: 40px; padding-block: 44px 28px; }
+  .fgrid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 28px; }
+  @media (max-width: 768px) { .fgrid { grid-template-columns: 1fr 1fr; } .fabout { grid-column: 1 / -1; } }
+  .sitefoot h4 { font-size: 15px; margin-bottom: 12px; }
+  .sitefoot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .sitefoot li a { color: var(--nav); text-decoration: none; font-size: 16px; }
+  .sitefoot li a:hover { color: var(--orange-t); text-decoration: underline; }
+  .sitefoot .copy { margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 13.5px; color: var(--muted); }
+  .mainnav { display: flex; align-items: center; justify-content: space-between; gap: 18px 24px; padding-block: 22px; flex-wrap: wrap; }
+  .menu { list-style: none; margin: 0; padding: 6px; display: flex; align-items: center; gap: 6px; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; }
+  .menuitem { display: block; padding: 12px 20px; border-radius: 999px; font-size: 17px; font-weight: 700; color: var(--text); text-decoration: none; }
+  .menuitem:hover { background: var(--orange-tint); }
+  .menuitem[aria-current] { background: var(--orange-tint); color: var(--orange-dark); }
+  .menubtn { padding: 13px 22px; font-size: 17px; border-radius: 999px; }
+  @media (max-width: 640px) {
+    .menu { width: 100%; justify-content: space-between; }
+    .menuitem { padding: 11px 12px; font-size: 15px; }
+    .menubtn { padding: 11px 14px; font-size: 15px; }
+  }
+  .go { cursor: pointer; }
+  .go:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; border-radius: 16px; }
+  .go .enter { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-weight: 900; font-size: 17px; color: var(--orange-t); }
+  .go:hover .pic { box-shadow: 0 12px 30px rgba(43,43,43,.22); }
+  .go .pic img { transition: transform .5s ease; }
+  .go:hover .pic img { transform: scale(1.04); }
+  .go.dim { opacity: .3; transition: opacity .4s ease; pointer-events: none; }
+  .go.alive { pointer-events: none; }
+  .go.alive .pic img { animation: lifeZoom 1.4s ease-in-out forwards; }
+  .go.alive .pic::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 70% 25%, rgba(255,240,200,.85), rgba(255,240,200,0) 60%); opacity: 0; animation: lifeGlow 1.4s ease-in-out forwards; }
+  .go.alive .fig { animation: figLift 1.4s ease-in-out forwards; }
+  .go.alive .fig .hd { transform-box: fill-box; transform-origin: 50% 100%; animation: figNod 1.4s ease-in-out forwards; }
+  @keyframes lifeZoom { 0% { transform: scale(1) translateY(0); } 100% { transform: scale(1.16) translateY(-2.5%); } }
+  @keyframes lifeGlow { 0% { opacity: 0; } 55% { opacity: 1; } 100% { opacity: .75; } }
+  @keyframes figLift { 0% { transform: translateY(0); } 35% { transform: translateY(-7%); } 70% { transform: translateY(-2%); } 100% { transform: translateY(-4%); } }
+  @keyframes figNod { 0%, 20% { transform: translateY(0); } 45% { transform: translateY(8%); } 70% { transform: translateY(-3%); } 100% { transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .go.alive .pic img, .go.alive .fig, .go.alive .fig .hd { animation: none; } .go.alive .pic::after { display: none; } }
+  .flip { perspective: 1400px; width: 100%; aspect-ratio: 16 / 10; }
+  .flip-in { position: relative; width: 100%; height: 100%; transition: transform .8s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; }
+  .flip.flipped .flip-in { transform: rotateY(180deg); }
+  .flip .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 16px; overflow: hidden; background: var(--surface); }
+  .flip .back { transform: rotateY(180deg); }
+  .flip .face img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; border-radius: 0; display: block; }
+  .flip .front { cursor: pointer; }
+  .flip .cal { filter: blur(1.2px); }
+  .flip .flipbtn { position: absolute; right: 14px; bottom: 14px; background: var(--orange); color: var(--bg); border: 0; border-radius: 999px; padding: 12px 18px; font: 700 16px "DM Sans", sans-serif; cursor: pointer; box-shadow: 0 4px 14px rgba(20,10,5,.3); }
+  .flip .lockbox { background: rgba(250,246,245,.94); border-radius: 14px; padding: 22px 26px; display: flex; flex-direction: column; align-items: center; gap: 12px; box-shadow: 0 8px 26px rgba(43,43,43,.18); }
+  .flip .lock { position: absolute; inset: 0; background: rgba(250,246,245,.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; padding: 24px; }
+  .flip .lock p { font-family: "Crimson Pro", Georgia, serif; font-weight: 900; font-size: clamp(24px, 3vw, 34px); line-height: .95; max-width: 420px; }
+  .flip .backbtn { background: transparent; border: 0; font: 700 15px "DM Sans", sans-serif; color: var(--orange-dark); cursor: pointer; text-decoration: underline; }
+  .flip button:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { .flip-in { transition: none; } }
+  .hl { color: var(--orange-t); font-style: normal; font-weight: 900; }
+  .sitefoot .some { list-style: none; margin: 0 0 0 -11px; padding: 0; display: flex; flex-wrap: wrap; gap: 0 18px; align-items: center; }
+  .some a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--nav); text-decoration: none; border-radius: 50%; }
+  .some a:hover, .some a:focus-visible { color: var(--orange-t); background: var(--orange-tint); }
+  .some svg { width: 22px; height: 22px; flex: none; }
+  .some span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .fabout .fm { font-size: 18px; line-height: 1.35; color: var(--text); max-width: 380px; }
+  .fabout .fm strong { color: var(--muted); font-weight: 900; }
+  .fabout .fadr { font-size: 14px; color: var(--muted); }
+  :root { --logo-w: clamp(170px, 12vw + 100px, 260px); --logo-w-footer: calc(var(--logo-w) * 0.9); }
+  .brand img.header-logo, .header-logo { width: var(--logo-w); height: auto; display: block; flex-shrink: 0; }
+  .footer-logo { width: var(--logo-w-footer); height: auto; display: block; }
+  .mainnav { align-items: center; }
+  .mainnav .brand { flex-shrink: 0; }
+  .footer-brand { display: flex; flex-direction: column; gap: 20px; }
+  .footer-brand p { margin: 0; }
+  .nowrap { white-space: nowrap; }
+  .fliphint { margin-top: 14px; font-weight: 900; color: var(--orange-t); font-size: 17px; }
+  .flip .front { transition: transform .25s ease, box-shadow .25s ease; }
+  .flip .front:hover { transform: scale(1.015); box-shadow: 0 10px 28px rgba(43,43,43,.22); }
+  .need-hint { font-size: 18px; margin-bottom: 14px; }
+  .need { position: relative; }
+  .need-btn { position: relative; border: 2px solid var(--border); padding: 20px 22px 18px; }
+  .need-btn .pick { font-size: 14px; font-weight: 900; color: var(--orange-t); margin-top: 4px; }
+  .need-btn .pick::after { content: "Tryk for at vælge"; }
+  .need-btn.on .pick::after { content: "✓ Valgt"; }
+  .need-btn:not(.on) { opacity: .85; }
+  .need-btn:not(.on):hover { opacity: 1; border-color: var(--orange); }
+  .need .or { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--bg); border: 2px solid var(--border); border-radius: 999px; padding: 6px 14px; font-weight: 900; font-size: 15px; z-index: 2; }
+  .need-label { font-family: "Crimson Pro", Georgia, serif; font-weight: 900; font-size: 26px; margin: 8px 0 16px; line-height: .95;}
+  .art.more { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+  .art.more .n { margin: 0; }
+  .copyrow { display: flex; justify-content: space-between; align-items: center; gap: 14px 24px; flex-wrap: wrap; margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .copyrow .copy { margin: 0; padding: 0; border: 0; }
+  .sitefoot .lang { display: flex; flex-direction: row; gap: 10px; align-items: center; margin: 0; padding: 0; }
+  .lang { list-style: none; margin: 0; padding: 0; display: flex; gap: 10px; align-items: center; }
+  .flag { display: block; border-radius: 4px; overflow: hidden; line-height: 0; border: 2px solid transparent; opacity: .6; transition: opacity .2s, transform .2s; }
+  .flag svg { display: block; }
+  .flag.on { opacity: 1; border-color: var(--orange); }
+  .flag:hover, .flag:focus-visible { opacity: 1; transform: translateY(-1px); }
+  .flag:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+  .land .fit { margin-top: 8px; font-size: 14.5px; color: var(--text); } .land .fit strong { color: var(--orange-dark); }
+  [hidden] { display: none !important; }
+
+  /* Footer: sociale ikoner som runde knapper, skillelinje, copyright og runde sprogflag */
+  .sitefoot .fabout .some { display: none; }
+  .sitefoot .some.row { display: flex; margin: 36px 0 0; gap: 0 18px; }
+  .sitefoot .some.row a { width: 44px; height: 44px; background: var(--orange); color: var(--bg); }
+  .sitefoot .some.row a:hover, .sitefoot .some.row a:focus-visible { background: var(--orange-dark); color: #fff; }
+  .sitefoot .some.row svg { width: 22px; height: 22px; }
+  .copyrow { margin-top: 28px; padding-top: 28px; }
+  .copyrow .copy { font-family: "Crimson Pro", Georgia, serif; font-size: 18px; color: var(--orange-dark); line-height: .95;}
+  .sitefoot .lang { gap: 14px; }
+  .sitefoot .flag { width: 40px; height: 40px; box-sizing: border-box; border-radius: 50%; border: 2px solid transparent; padding: 3px; opacity: 1; }
+  .sitefoot .flag svg { width: 100%; height: 100%; border-radius: 50%; }
+  .sitefoot .flag.on { border-color: var(--orange); }
+  .sitefoot .flag:not(.on) { border-color: transparent; }
+  .proof { gap: 16px; }
+  .proof .pt { padding: 22px 24px 22px; border-radius: 20px; display: flex; flex-direction: column; }
+  .proof .pt .ic, .proof .pt .ic.mascot { width: 40px; height: 40px; margin: 0 0 14px; }
+  .proof .pt .n { font-size: 40px; line-height: 1; padding: 0; }
+  .proof .pt .l { font-family: "Crimson Pro", Georgia, serif; font-size: 18px; line-height: .95; margin-top: 6px; padding: 0; color: inherit; }
+  .proof .p-o { background: #EDD5CC; color: #663D29; }
+  .proof .p-b { background: #EDF2FA; color: #4F6A97; }
+  .proof .p-g { background: #F0F7EF; color: #4A6E46; }
+  .skip { position: absolute; left: 8px; top: -60px; z-index: 100; background: var(--orange-dark); color: #fff; padding: 12px 18px; border-radius: 8px; font-weight: 700; text-decoration: none; }
+  .skip:focus { top: 8px; outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 6px var(--orange-dark); }
+  main:focus { outline: none; }
+  .mc h3, .give h3 { font-family: "DM Sans", Calibri, sans-serif; font-weight: 900; line-height: 1.3; }
+  /* WCAG 2.x AA: kontrast, links, fokus */
+  :root { --muted: #4F5E42; }
+  .opt .tag, .help a, .tier .flag { color: var(--orange-dark); }
+  .tier .flag { color: #fff; background: var(--orange-dark); }
+  .sitefoot .fh { font-family: "DM Sans", Calibri, sans-serif; font-weight: 900; line-height: 1.3; margin: 0 0 12px; font-size: 15px; color: var(--muted); }
+  p a, li a, .legal a { text-decoration: underline; text-underline-offset: 2px; }
+  .menuitem, .btn, .sitefoot li a, .flag, .some a, .brand { text-decoration: none; }
+  .sitefoot li a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-visible, [role=button]:focus-visible, summary:focus-visible { outline: 3px solid var(--orange-dark); outline-offset: 3px; }
+  .tblwrap:focus-visible { outline: 3px solid var(--orange-dark); outline-offset: 2px; }
+  .copyrow .wcag { margin-left: auto; font-weight: 900; font-size: 13px; letter-spacing: .04em; color: var(--orange-dark); border: 2px solid var(--orange-dark); border-radius: 999px; padding: 6px 12px; text-decoration: none; }
+  .copyrow .wcag:hover { background: var(--orange-dark); color: #fff; }
+  .carctl { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+  #carPause { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--muted); background: transparent; color: var(--muted); display: grid; place-items: center; cursor: pointer; padding: 0; }
+  #carPause:hover { background: var(--orange-tint); color: var(--orange-dark); border-color: var(--orange-dark); }
+  #carPause .ico-play { display: none; }
+  #carPause[aria-pressed="true"] .ico-pause { display: none; }
+  #carPause[aria-pressed="true"] .ico-play { display: inline; }
+  /* Typografi: mindste tekststørrelser og linjehøjder efter designet */
+  .micro, .disc, .hint, .dx, .pill, .date, th, .eyebrow2, .mini-p, .mc .bd p { font-size: max(1em, 14px); }
+  .micro, .disc { font-size: 14px !important; }
+  .disc { font-style: normal !important; }
+  .pill, .date, .hint, .dx, th, .eyebrow2 { font-size: 14px !important; }
+  .mc .bd p { font-size: 14px !important; }
+  .lock { font-size: 12.5px !important; }
+  .badge, .by, .tag { font-size: 13px !important; }
+  .tel, .need-label { line-height: 1.05 !important; }
+  .tier .flag { font-weight: 900 !important; }
+  /* Lasse Skovmand / Wiith-handover: linjeafstand 95 % på Crimson Pro, H1 i Mountain Red, farvedosering */
+  h1, h2, h3, .kicker, .lede, .lead, .nlcard h2, .sharetxt .lede { line-height: .95; }
+  h1 { color: var(--orange); }
+  h1 .accent, .accent { color: var(--orange); }
+  .btn { font-weight: 700; font-size: 18.7px; }
+  .btn.menubtn, .menubtn { font-weight: 700; font-size: 18.7px; }
+  .pill, .mplay { font-weight: 700; font-size: 18.7px; }
+  .nlband .kick { font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 28px; line-height: .95; }
+  .nlband .intro { font-size: 24px; }
+  /* Farvedosering (Lasse): ren hvid dominerer, off-white sparsomt, Mountain Red som markant flade, sekundærfarver kun få steder */
+  .band:not(.green) { background: #FFFFFF; }
+  .final { background: var(--orange); }
+  .final p { font-size: 24px; line-height: 1.3; }
+  .final .micro { font-size: 18.7px; font-weight: 700; }
+  .consent { font-size: 14px; }
+  /* Slutjustering: små tekster på Mountain Red må kun være store/fede, Crimson altid 95 %, links i samtykke */
+  .pill, .mplay { font-size: 18.7px !important; font-weight: 700 !important; }
+  .final .micro, .final p.micro { font-size: 18.7px !important; font-weight: 700 !important; }
+  .n, .need-label, .tel, .num { line-height: .95 !important; }
+  .consent a { color: var(--orange-t); text-decoration: underline; }
+  /* Mountain Red som på mylifewiith.com: rød top (menu + hero), rød afslutning. Hvid tekst på rød er altid stor eller fed (WCAG AA). */
+  html.redtop { overflow-x: clip; }
+  html.redtop header.wrap, html.redtop header.wrap nav, html.redtop .mainnav { border-bottom: 0; box-shadow: none; }
+  html.redtop header.wrap, html.redtop .hero, html.redtop .nl-hero { position: relative; }
+  html.redtop header.wrap::before, html.redtop .hero::before, html.redtop .nl-hero::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; margin-left: -50vw; background: var(--orange); z-index: -1; }
+  html.redtop .hero { padding-bottom: 56px; }
+  html.redtop .hero h1, html.redtop .nl-hero h1, html.redtop .hero .kicker, html.redtop .nl-hero .kicker, html.redtop .hero .lede, html.redtop .nl-hero .lede, html.redtop .hero .accent, html.redtop .nl-hero .accent, html.redtop .hero .hl { color: #fff; }
+  html.redtop .hero .micro, html.redtop .nl-hero .body2 { color: #fff; font-size: 18.7px; font-weight: 700; line-height: 1.3; }
+  html.redtop .nl-hero .body2 { font-size: 24px; font-weight: 400; }
+  html.redtop .hero .btn, html.redtop .nl-hero .btn { background: #fff; color: var(--orange-dark); }
+  html.redtop .hero .btn:hover { background: var(--orange-tint); }
+  html.redtop .hero .btn.ghost { background: transparent; color: #fff; border: 2px solid #fff; }
+  html.redtop .hero .btn.ghost:hover { background: rgba(255,255,255,.16); }
+  html.redtop .nlpanel { background: transparent; padding: 0; overflow: visible; }
+  html.redtop .nlpanel .crowd { display: none; }
+  html.redtop .nlcard .btn { background: var(--orange); color: #fff; }
+  html.redtop .sharehero a, html.redtop .sharehero2 a { color: #fff; }
+  .sharehero { border-top: 2px dashed var(--orange-light); padding-top: 12px; margin-top: 16px; max-width: 520px; font-size: 17px; line-height: 1.3; color: var(--text); }
+  .sharehero a { color: var(--orange-t); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  .sharehero2 { font-weight: 700; }
+  .band.red { background: var(--orange); color: #fff; }
+  .band.red h2, .band.red .accent, .band.red p { color: #fff; }
+  .band.red p { font-size: 24px; line-height: 1.3; }
+  .seg { display: inline-flex; gap: 8px; margin: 18px 0 4px; flex-wrap: wrap; justify-content: center; }
+  .seg button { min-height: 44px; padding: 0 18px; border-radius: 999px; border: 2px solid #fff; background: transparent; color: #fff; font: 700 18.7px "DM Sans", sans-serif; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: #fff; color: var(--orange-dark); }
+  .final [hidden] { display: none; }
+  .final .btn { margin-top: 14px; }
+  .share { padding-block: 40px 8px; }
+  .sharegrid { display: grid; grid-template-columns: minmax(0, 1fr) 520px; gap: 64px; align-items: start; }
+  .sharecopy h2 { font-size: clamp(34px, 5vw, 52px); line-height: .95; margin-top: 8px; }
+  .sharecopy .lede { font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-size: 24px; line-height: .95; margin-top: 16px; max-width: 480px; }
+  .sharebul { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 8px; font-size: 19px; }
+  .sharepanel { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 28px; }
+  .sharecompact { display: none; flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 20px; }
+  .sharecompact .btn { display: inline-flex; align-items: center; gap: 8px; }
+  .sharecompact .mlm-link { color: var(--orange-t); font-size: 18px; min-height: 44px; }
+  @media (max-width: 880px) { .sharegrid { grid-template-columns: 1fr; gap: 20px; } .sharepanel { display: none; } .sharecompact { display: flex; } }
+  .payrow { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .payshare { margin-top: 10px; font-size: 16px; color: var(--muted); }
+  @media (max-width: 520px) { .menu { width: 100%; justify-content: space-between; } .menu { gap: 4px 0; padding: 6px; flex-wrap: wrap; border-radius: 28px; } .menuitem { font-size: 15px; white-space: nowrap; padding-inline: 8px; } .menubtn, .btn.menubtn { white-space: nowrap; padding-inline: 12px; font-size: 18.7px; } }
+  /* Mobil-finpudsning: ingen enlige ord, telefonnumre brydes ikke, ens justering */
+  p, li, td, th, summary, label, blockquote, .txt, .desc { text-wrap: pretty; }
+  h1, h2, h3, h4, .kicker, .lede, .btn { text-wrap: balance; }
+  .alarm .al .num, .hc .tel, a.num, a.tel { white-space: nowrap; }
+  .alarm .al .num { font-size: clamp(30px, 9.5vw, 52px); }
+  .hc .tel { font-size: clamp(24px, 7.4vw, 30px); }
+  .art.more h3, .art.more p { text-align: center; }
+  .art.more .btn { align-self: center !important; }
+  .vhint { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 2; background: rgba(51,41,39,.9); color: #fff; font: 700 15px "DM Sans", sans-serif; padding: 8px 14px; border-radius: 999px; white-space: nowrap; pointer-events: none; }
+  .note { font-size: 17px; color: var(--text); } .note a { color: var(--orange-t); text-decoration: underline; text-underline-offset: 3px; }
+  a.pt { text-decoration: none; color: inherit; } .proof a.pt:hover { box-shadow: 0 6px 18px rgba(51,41,39,.14); transform: translateY(-2px); } .proof a.pt { transition: box-shadow .2s, transform .2s; } html { scroll-behavior: smooth; } #video, #artikler { scroll-margin-top: 16px; } @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .proof a.pt { transition: none; } }
+  /* Wiith-bånd over footeren (design 1c) */
+  .wiithband { background: color-mix(in srgb, var(--orange-tint) 55%, #fff); margin-top: 40px; }
+  .wiithband + .sitefoot { margin-top: 0; }
+  .wb-in { display: flex; align-items: center; gap: 24px; padding-block: 22px; }
+  .wb-in img { height: 30px; width: auto; flex: none; display: block; }
+  .wb-div { width: 1px; align-self: stretch; min-height: 32px; background: var(--orange-light); flex: none; }
+  .wb-in p { margin: 0; flex: 1; font-family: "Crimson Pro", Georgia, serif; font-size: 22px; line-height: .95; color: var(--orange-dark); text-wrap: pretty; }
+  .wb-in a { font-weight: 700; font-size: 17px; color: var(--orange-t); white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 760px) { .wb-in { flex-direction: column; align-items: flex-start; gap: 12px; } .wb-div { display: none; } }
+  .wiithnote { display: flex; align-items: center; gap: 14px; margin-top: 14px; padding: 12px 16px; border-radius: 12px; background: color-mix(in srgb, var(--orange-tint) 55%, #fff); }
+  .wiithnote img { height: 22px; width: auto; flex: none; }
+  .wiithnote p { margin: 0; font-family: "Crimson Pro", Georgia, serif; font-size: 18px; line-height: .95; color: var(--orange-dark); }
+  .wiithnote a { font-weight: 700; color: var(--orange-t); white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 760px) { .wiithnote { flex-wrap: wrap; } }
+  .vcol { display: flex; flex-direction: column; min-width: 0; }
+  .vshare { margin: 14px 0 0; font-size: 17px; line-height: 1.3; color: var(--text); } .vshare a { color: var(--orange-t); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  /* Mindre kursiv: kun fremhævede ord i overskrifter står i kursiv */
+  .lede, .sharecopy .lede, .tak .lede { font-family: "DM Sans", Calibri, sans-serif !important; font-style: normal !important; font-weight: 400 !important; font-size: clamp(18px, 2.1vw, 21px) !important; line-height: 1.3 !important; }
+  .lede .hl { font-family: inherit !important; font-weight: 700 !important; color: inherit; }
+  .kicker, .nlband .kick, .mlm-from { font-style: normal !important; }
+</style>
+<link rel="stylesheet" href="share.css">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-secure" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 20C9 18.8954 9.89543 18 11 18H14V16C14 10.4772 18.4772 6 24 6C29.5228 6 34 10.4772 34 16V18H37C38.1046 18 39 18.8954 39 20V40C39 41.1046 38.1046 42 37 42H11C9.89543 42 9 41.1046 9 40V20ZM24 10C27.3137 10 30 12.6863 30 16V18H18V16C18 12.6863 20.6863 10 24 10ZM32.9999 26H15V24H32.9999V26ZM15 31H32.9999V29H15V31ZM32.9999 36H15V34H32.9999V36Z" fill="currentColor"/>
+</symbol><symbol id="i-comm" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4 20.5C4 12.4919 10.4919 6 18.5 6H29.5C37.5081 6 44 12.4919 44 20.5C44 28.5081 37.5081 35 29.5 35H28V42L25.5 41.5C9 37.5 4 28.5081 4 20.5ZM27.3333 18.0001H29V27.0001H19V18.0001H20.6667V15.2292C20.6667 13.6759 22.159 12.4167 24 12.4167C25.841 12.4167 27.3333 13.6759 27.3333 15.2292V18.0001ZM24 14.4167C24.4703 14.4167 24.8413 14.5783 25.0673 14.769C25.289 14.9561 25.3333 15.1264 25.3333 15.2292V17.9167H22.6667V15.2292C22.6667 15.1264 22.711 14.9561 22.9327 14.769C23.1587 14.5783 23.5297 14.4167 24 14.4167Z" fill="currentColor"/>
+</symbol><symbol id="i-group" viewBox="0 0 48 48">
+<path d="M24 12.0417C24 8.70495 21.2951 6 17.9583 6H12.0417C8.70495 6 6 8.70495 6 12.0417C6 15.3784 8.70495 18.0833 12.0417 18.0833H13.2V21C13.2 21 24 19.5417 24 12.0417Z" fill="currentColor"/>
+<path d="M18.5 28C18.5 30.21 16.71 32 14.5 32C12.29 32 10.5 30.21 10.5 28C10.5 25.79 12.29 24 14.5 24C16.71 24 18.5 25.79 18.5 28Z" fill="currentColor"/>
+<path d="M14.5 34C11.6631 34 6 35.4293 6 38.2667V42H23V38.2667C23 35.4293 17.3369 34 14.5 34Z" fill="currentColor"/>
+<path d="M33.5 32C35.71 32 37.5 30.21 37.5 28C37.5 25.79 35.71 24 33.5 24C31.29 24 29.5 25.79 29.5 28C29.5 30.21 31.29 32 33.5 32Z" fill="currentColor"/>
+<path d="M33.5 34C30.6631 34 25 35.4293 25 38.2667V42H42V38.2667C42 35.4293 36.3369 34 33.5 34Z" fill="currentColor"/>
+<path d="M32.0417 7C28.7049 7 26 9.70495 26 13.0417C26 20.5417 35.6 22 35.6 22V19.0833H35.9583C39.2951 19.0833 42 16.3784 42 13.0417C42 9.70495 39.2951 7 35.9583 7H32.0417Z" fill="currentColor"/>
+</symbol><symbol id="i-video" viewBox="0 0 48 48">
+<path d="M4 13C4 11.3431 5.34315 10 7 10H33C34.6569 10 36 11.3431 36 13V19.4286L44 14V34L36 28.8571V35C36 36.6569 34.6569 38 33 38H7C5.34315 38 4 36.6569 4 35V13Z" fill="currentColor"/>
+</symbol><symbol id="i-book" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 10C9 7.23858 11.2386 5 14 5H38C38.5523 5 39 5.44772 39 6V36C39 36.5523 38.5523 37 38 37H14C12.3431 37 11 38.3431 11 40V41H38V43H10C9.44772 43 9 42.5523 9 42V10ZM23 26V21H18V19H23V14H25V19H30V21H25V26H23Z" fill="currentColor"/>
+</symbol><symbol id="i-cal" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15 23C13.8954 23 13 23.8954 13 25V27C13 28.1046 13.8954 29 15 29H17C18.1046 29 19 28.1046 19 27V25C19 23.8954 18.1046 23 17 23H15ZM15 25V27H17V25H15Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M21 25C21 23.8954 21.8954 23 23 23H25C26.1046 23 27 23.8954 27 25V27C27 28.1046 26.1046 29 25 29H23C21.8954 29 21 28.1046 21 27V25ZM23 25H25V27H23V25Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M31 23C29.8954 23 29 23.8954 29 25V27C29 28.1046 29.8954 29 31 29H33C34.1046 29 35 28.1046 35 27V25C35 23.8954 34.1046 23 33 23H31ZM31 25V27H33V25H31Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M13 33C13 31.8954 13.8954 31 15 31H17C18.1046 31 19 31.8954 19 33V35C19 36.1046 18.1046 37 17 37H15C13.8954 37 13 36.1046 13 35V33ZM15 35V33H17V35H15Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M23 31C21.8954 31 21 31.8954 21 33V35C21 36.1046 21.8954 37 23 37H25C26.1046 37 27 36.1046 27 35V33C27 31.8954 26.1046 31 25 31H23ZM25 33H23V35H25V33Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M29 33C29 31.8954 29.8954 31 31 31H33C34.1046 31 35 31.8954 35 33V35C35 36.1046 34.1046 37 33 37H31C29.8954 37 29 36.1046 29 35V33ZM31 35V33H33V35H31Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C15.4477 6 15 6.44772 15 7V10H11C8.79086 10 7 11.7909 7 14V38C7 40.2092 8.79086 42 11 42H37C39.2091 42 41 40.2092 41 38V14C41 11.7909 39.2091 10 37 10H35V13C35 13.5523 34.5523 14 34 14C33.4477 14 33 13.5523 33 13V7C33 6.44772 32.5523 6 32 6C31.4477 6 31 6.44772 31 7V10H19V13C19 13.5523 18.5523 14 18 14C17.4477 14 17 13.5523 17 13V7C17 6.44772 16.5523 6 16 6ZM9 38V21H39V38C39 39.1046 38.1046 40 37 40H11C9.89543 40 9 39.1046 9 38Z" fill="currentColor"/>
+</symbol><symbol id="i-laptop" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9.00002 10C7.89545 10 7.00002 10.8954 7.00002 12V31C7.00002 32.1046 7.89545 33 9.00002 33H39C40.1046 33 41 32.1046 41 31V12C41 10.8954 40.1046 10 39 10H9.00002ZM11 29V14H37V29H11ZM9.00002 13C9.00002 12.4477 9.44773 12 10 12H38C38.5523 12 39 12.4477 39 13V30C39 30.5523 38.5523 31 38 31H10C9.44773 31 9.00002 30.5523 9.00002 30V13Z" fill="currentColor"/>
+<path d="M7.06003 31.4719C7.24254 31.1784 7.56362 31 7.9092 31H39.8823C40.2198 31 40.5346 31.1703 40.7193 31.4528L43.9884 36.4528C44.4233 37.1179 43.9461 38 43.1514 38H4.79957C4.01512 38 3.53612 37.138 3.9504 36.4719L7.06003 31.4719Z" fill="currentColor"/>
+</symbol><symbol id="i-pin" viewBox="0 0 48 48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M23.4236 41.8172C23.424 41.8174 23.4243 41.8176 24 41L23.4236 41.8172ZM24.5764 41.8172L24.58 41.8146L24.5891 41.8082L24.6209 41.7854C24.6482 41.7658 24.6875 41.7374 24.7379 41.7004C24.8387 41.6263 24.9842 41.5178 25.1681 41.3765C25.5357 41.0938 26.0571 40.6794 26.6811 40.1459C27.9277 39.08 29.5908 37.5328 31.2565 35.6059C34.5639 31.7799 38 26.3195 38 20.0769C38 16.3454 36.5264 12.7655 33.9016 10.1251C31.2765 7.48454 27.7149 6 24 6C20.2851 6 16.7235 7.48454 14.0984 10.1251C11.4736 12.7655 10 16.3454 10 20.0769C10 26.3195 13.4361 31.7799 16.7435 35.6059C18.4092 37.5328 20.0723 39.08 21.3189 40.1459C21.9429 40.6794 22.4643 41.0938 22.8319 41.3765C23.0158 41.5178 23.1613 41.6263 23.2621 41.7004C23.3125 41.7374 23.3518 41.7658 23.3791 41.7854L23.4109 41.8082L23.42 41.8146L23.4236 41.8172C23.7689 42.0603 24.2311 42.0603 24.5764 41.8172ZM24 41L24.5764 41.8172C24.576 41.8174 24.5757 41.8176 24 41ZM29 20C29 22.7614 26.7614 25 24 25C21.2386 25 19 22.7614 19 20C19 17.2386 21.2386 15 24 15C26.7614 15 29 17.2386 29 20Z" fill="currentColor"/>
+</symbol></defs></svg>
+<a class="skip" href="#main">Gå til indhold</a>
+<header class="wrap">
+  <nav class="mainnav" aria-label="Hovedmenu">
+    <a class="brand" href="index.html" aria-label="MitLivMed forside"><img class="header-logo" src="mitlivmed_assets/logo-wordmark-beskaaret.svg" alt="MitLivMed" width="1390" height="175"></a>
+    <ul class="menu">
+      <li><a class="menuitem" href="trivselsgrupper.html" data-nav="trivselsgrupper">Trivselsgrupper</a></li>
+      <li><a class="menuitem" href="https://xn--fllesskab-g3a.mitlivmed.dk/login">Log ind</a></li>
+      <li><a class="btn menubtn" href="opret.html">Opret profil</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+<!-- HERO: bipolar + video + primær handling -->
+<div class="wrap">
+  <section class="hero" style="padding-top:24px;">
+    <div>
+      <p class="kicker">Fællesskab for mennesker med bipolar</p>
+      <h1>Hvad sker der <span class="accent">efter</span> diagnosen?</h1>
+      <p class="lede"><span class="hl">Over 100 artikler</span> og <span class="hl">mere end 20 video interviews</span>, skrevet og fortalt af andre med bipolar. Nyt udgives løbende. Hvor vi sammen bygger et trygt og støttende <span class="hl">fællesskab</span>.</p>
+      <div class="cta"><a class="btn" href="opret.html">Opret din gratis profil →</a><a class="btn ghost" href="https://xn--fllesskab-g3a.mitlivmed.dk/login">Log ind</a></div>
+      <p class="micro">Gratis at oprette profil. Ikke krisestøtte og ikke medicinsk rådgivning.</p>
+    </div>
+    <div class="vcol"><a class="video" id="heroVideo" data-yt="yG6mfqxQs2U" href="https://youtu.be/yG6mfqxQs2U" target="_blank" rel="noopener" aria-label="Afspil videoen Velkommen til MitLivMed Bipolar"><img src="mitlivmed_assets/video_hero.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="shade"></div><div class="play"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5Z" fill="#fff"/></svg></div><div class="pill">Afspil video</div></a><p class="vshare">Har du ikke selv bipolar? <a href="#del" data-share="forside">Del siden med en, du holder af</a></p></div>
+  </section>
+  <a class="scrollcue" id="scrollcue" href="#mere" aria-label="Scroll ned for at se mere"><svg width="88" height="28" viewBox="0 0 88 28" fill="none" aria-hidden="true"><path d="M6 5L44 23L82 5" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+
+<!-- INDHOLDSBEVIS -->
+<div class="wrap" id="mere" style="padding-bottom:24px;">
+  <div class="proof">
+    <a class="pt p-o" href="#artikler"><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 11.5C4 10.4 5 9.6 6.1 9.8 12.8 11 18.6 12.4 23 15.2V40.3C18.4 37.6 12.6 36.6 5.9 37.3 4.8 37.4 4 36.6 4 35.6Z" fill="currentColor"/><path d="M44 11.5C44 10.4 43 9.6 41.9 9.8 35.2 11 29.4 12.4 25 15.2V40.3C29.6 37.6 35.4 36.6 42.1 37.3 43.2 37.4 44 36.6 44 35.6Z" fill="currentColor"/></svg><div class="n">100+</div><div class="l">artikler skrevet af mennesker med bipolar, udgives løbende</div></a>
+    <a class="pt p-b" href="#video"><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M24 4C35.05 4 44 12.95 44 24S35.05 44 24 44 4 35.05 4 24 12.95 4 24 4ZM19.5 15.4V32.6C19.5 33.4 20.4 33.9 21.1 33.5L34.2 25C34.8 24.6 34.8 23.7 34.2 23.3L21.1 14.5C20.4 14.1 19.5 14.6 19.5 15.4Z" fill="currentColor"/></svg><div class="n">20+</div><div class="l">video interviews, mere end 15 timer i alt, udgives løbende</div></a>
+    <div class="pt p-g"><svg class="ic mascot" viewBox="40 0 120 180" aria-hidden="true"><path d="M58 178 Q60 70 100 70 Q140 70 142 178 Z" fill="currentColor"/><circle cx="122" cy="32" r="26" fill="currentColor"/></svg><div class="n">Dit eget</div><div class="l">publicér artikler, videoer, kunst og det, du selv skaber</div></div>
+  </div>
+</div>
+
+<!-- VIDEOKARRUSEL -->
+<section id="video">
+  <div class="wrap">
+    <div class="sec-head"><h2>Mere end 20 video interviews med mennesker med bipolar</h2><p>Mere end 15 timers interviews, hvor de fortæller om op- og nedture, om at erkende sygdommen, om deres indsigter og om de mestringsforslag, der har fungeret for dem selv. Fem af interviewene ser du her. Der udgives nye løbende, og du kan se dem alle, når du har en profil.</p></div>
+  </div>
+  <div class="wrap">
+    <div class="carctl"><button type="button" id="carPause" aria-pressed="false" aria-label="Sæt videoerne på pause" title="Sæt på pause"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g class="ico-pause"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></g><path class="ico-play" d="M8 5v14l11-7z" fill="currentColor"/></svg></button></div>
+    <div class="viewport"><div class="track">
+      <div class="mc"><div class="th"><img src="mitlivmed_thumbs/5O2ZbTmSR8k.jpg" alt="" loading="lazy"><div class="sh"></div><span class="lock">Kræver profil</span><button type="button" class="mlm-sharebtn" data-share="interview" data-title="Sandras fortælling" data-img="mitlivmed_thumbs/5O2ZbTmSR8k.jpg" aria-label="Del Sandras fortælling"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z" fill="#663D29"/></svg></span></div><div class="bd"><h3>Sandras fortælling</h3><p>Om selvkritik, accept og arbejdsliv</p></div></div>
+      <div class="mc"><div class="th"><img src="mitlivmed_thumbs/5te320RwMSs.jpg" alt="" loading="lazy"><div class="sh"></div><span class="lock">Kræver profil</span><button type="button" class="mlm-sharebtn" data-share="interview" data-title="Rachids fortælling" data-img="mitlivmed_thumbs/5te320RwMSs.jpg" aria-label="Del Rachids fortælling"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z" fill="#663D29"/></svg></span></div><div class="bd"><h3>Rachids fortælling</h3><p>Om identitet, karriere og drømmen om at blive ingeniør</p></div></div>
+      <div class="mc"><div class="th"><img src="mitlivmed_thumbs/oOfDygm2G3w.jpg" alt="" loading="lazy"><div class="sh"></div><span class="lock">Kræver profil</span><button type="button" class="mlm-sharebtn" data-share="interview" data-title="Maries fortælling" data-img="mitlivmed_thumbs/oOfDygm2G3w.jpg" aria-label="Del Maries fortælling"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z" fill="#663D29"/></svg></span></div><div class="bd"><h3>Maries fortælling</h3><p>Om lægelivet, åbenhed og stabilitet</p></div></div>
+      <div class="mc"><div class="th"><img src="mitlivmed_thumbs/EGgXIu2tdww.jpg" alt="" loading="lazy"><div class="sh"></div><span class="lock">Kræver profil</span><button type="button" class="mlm-sharebtn" data-share="interview" data-title="Lisas fortælling" data-img="mitlivmed_thumbs/EGgXIu2tdww.jpg" aria-label="Del Lisas fortælling"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z" fill="#663D29"/></svg></span></div><div class="bd"><h3>Lisas fortælling</h3><p>Om OL-drømmen og aldrig at give op</p></div></div>
+      <div class="mc"><div class="th"><img src="mitlivmed_thumbs/wxKLawZNsFE.jpg" alt="" loading="lazy"><div class="sh"></div><span class="lock">Kræver profil</span><button type="button" class="mlm-sharebtn" data-share="interview" data-title="Jespers fortælling" data-img="mitlivmed_thumbs/wxKLawZNsFE.jpg" aria-label="Del Jespers fortælling"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z" fill="#663D29"/></svg></span></div><div class="bd"><h3>Jespers fortælling</h3><p>Om arbejde, identitet og stabilitet</p></div></div>
+      <div class="mc" aria-hidden="true"><div class="th"><img src="mitlivmed_thumbs/5O2ZbTmSR8k.jpg" alt="" loading="lazy"><div class="sh"></div><span class="lock">Kræver profil</span><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z" fill="#663D29"/></svg></span></div><div class="bd"><h3>Sandras fortælling</h3><p>Om selvkritik, accept og arbejdsliv</p></div></div>
+      <div class="mc" aria-hidden="true"><div class="th"><img src="mitlivmed_thumbs/5te320RwMSs.jpg" alt="" loading="lazy"><div class="sh"></div><span class="lock">Kræver profil</span><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z" fill="#663D29"/></svg></span></div><div class="bd"><h3>Rachids fortælling</h3><p>Om identitet, karriere og drømmen om at blive ingeniør</p></div></div>
+      <div class="mc" aria-hidden="true"><div class="th"><img src="mitlivmed_thumbs/oOfDygm2G3w.jpg" alt="" loading="lazy"><div class="sh"></div><span class="lock">Kræver profil</span><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z" fill="#663D29"/></svg></span></div><div class="bd"><h3>Maries fortælling</h3><p>Om lægelivet, åbenhed og stabilitet</p></div></div>
+      <div class="mc" aria-hidden="true"><div class="th"><img src="mitlivmed_thumbs/EGgXIu2tdww.jpg" alt="" loading="lazy"><div class="sh"></div><span class="lock">Kræver profil</span><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z" fill="#663D29"/></svg></span></div><div class="bd"><h3>Lisas fortælling</h3><p>Om OL-drømmen og aldrig at give op</p></div></div>
+      <div class="mc" aria-hidden="true"><div class="th"><img src="mitlivmed_thumbs/wxKLawZNsFE.jpg" alt="" loading="lazy"><div class="sh"></div><span class="lock">Kræver profil</span><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z" fill="#663D29"/></svg></span></div><div class="bd"><h3>Jespers fortælling</h3><p>Om arbejde, identitet og stabilitet</p></div></div>
+    </div></div>
+    <div class="cta-row"><a class="btn" href="opret.html">Opret profil og se de udgivne interviews →</a></div>
+  </div>
+</section>
+
+<!-- ARTIKLER -->
+<section class="band" id="artikler">
+  <div class="wrap">
+    <div class="sec-head"><h2>Over 100 artikler, skrevet af mennesker med bipolar</h2><p>Nogle dage har du brug for at blive forstået. Andre dage leder du efter noget konkret. Mange af os har begge dele, nogle gange i samme uge. Vælg selv, hvad du har brug for lige nu. Der udgives nye artikler løbende.</p></div>
+    <p class="need-hint"><strong>Vælg, hvad du har brug for lige nu.</strong> Tryk på et af de to kort for at se artikler til dig.</p>
+    <div class="need" role="tablist" aria-label="Hvad har du brug for lige nu? Vælg en af to">
+      <button class="need-btn on" role="tab" aria-selected="true" data-t="emp"><strong>Jeg har brug for at blive forstået</strong><span class="desc">Ærlige beretninger, hvor du kan genkende dig selv. Ingen gode råd, bare nogen der har stået der.</span><span class="pick" aria-hidden="true"></span></button>
+      <span class="or" aria-hidden="true">eller</span>
+      <button class="need-btn" role="tab" aria-selected="false" data-t="sol"><strong>Jeg leder efter noget konkret</strong><span class="desc">Hvad andre gør i praksis: rutiner, planlægning og små greb, der har virket for dem selv.</span><span class="pick" aria-hidden="true"></span></button>
+    </div>
+    <p class="need-label" id="needlabel">Artikler, hvor du kan blive forstået</p>
+    <div class="arts" id="tab-emp">
+      <article class="art"><img src="mitlivmed_assets/art2.jpg" alt=""><div class="bd"><h3>Min frygt for at opsøge viden om bipolar</h3><p>Da jeg kom hjem fra Psyk, nydiagnosticeret, var jeg to ting på én gang: nysgerrig og bange.</p><span class="by">Artikel fra et medlem</span></div></article>
+      <article class="art"><img src="mitlivmed_assets/art3.jpg" alt=""><div class="bd"><h3>Det er ikke svaghed at spørge om hjælp</h3><p>“Jeg vil ikke være til besvær.” Det tænkte jeg dengang, og jeg kan stadig mærke den refleks.</p><span class="by">Artikel fra et medlem</span></div></article>
+      <article class="art"><img src="mitlivmed_assets/art6.jpg" alt=""><div class="bd"><h3>Splittelsen da jeg endelig fik diagnosen</h3><p>Efter en længere periode med undersøgelser og samtaler kom diagnosen. En ny realitet, som skabte splittelse i mig.</p><span class="by">Artikel fra et medlem</span></div></article>
+      <article class="art more"><div class="n">100+</div><h3>artikler, og der kommer nye løbende</h3><p>Skriv selv, eller læs med. Du bestemmer.</p><a class="btn" style="align-self:flex-start;" href="opret.html">Opret profil →</a></article>
+    </div>
+    <div class="arts" id="tab-sol" hidden>
+      <article class="art"><img src="mitlivmed_assets/art1.jpg" alt=""><div class="bd"><h3>At gå direkte i seng efter en lang arbejdsdag var nyt for mig</h3><p>I mange år sagde jeg stolt, at jeg var B-menneske. Mine rutiner var løse.</p><span class="by">Artikel fra et medlem</span></div></article>
+      <article class="art"><img src="mitlivmed_assets/art5.jpg" alt=""><div class="bd"><h3>Bulking: at handle stort ind, når jeg har overskuddet</h3><p>Det er ikke et sexet ord, men det er noget af det mest praktiske, jeg gør.</p><span class="by">Artikel fra et medlem</span></div></article>
+      <article class="art"><img src="mitlivmed_assets/art7.jpg" alt=""><div class="bd"><h3>Søndag er min plandag</h3><p>Jeg opdagede ved et tilfælde, at det at gennemgå den kommende uge søndag eftermiddag ændrede hele min mandag.</p><span class="by">Artikel fra et medlem</span></div></article>
+      <article class="art more"><div class="n">100+</div><h3>artikler, og der kommer nye løbende</h3><p>Skriv selv, eller læs med. Du bestemmer.</p><a class="btn" style="align-self:flex-start;" href="opret.html">Opret profil →</a></article>
+    </div>
+  </div>
+</section>
+
+<!-- LANDSKABER -->
+<section class="band green">
+  <div class="wrap">
+    <div class="sec-head"><h2>Uanset hvor du er, er der et landskab, der passer</h2><p>Livet med bipolar går op og ned. Fællesskabet er bygget til de forskellige faser, du bevæger dig imellem.</p></div>
+    <div class="land">
+      <div class="c go" data-l="Ørkenen" tabindex="0" role="link" aria-label="Gå ind i Ørkenen og opret din profil"><div class="t"><h3>Ørkenen</h3><p>Noget føles forkert. Du kan mærke det, før du kan forklare det. Du er ikke alene, mens du finder ordene.</p><p class="fit"><strong>Måske er du her, hvis:</strong> Du er i udredning, eller noget føles forkert, og du leder efter ord.</p></div><div class="pic"><img src="mitlivmed_assets/lasse-orken.jpg" alt="Ørkenen" loading="lazy"><svg class="fig" style="left:30%;bottom:15%;" viewBox="45 16 110 164" aria-hidden="true"><path d="M49 178 Q52 84 100 84 Q148 84 151 178 Z" fill="#BF5B39"/><circle class="hd" cx="115" cy="44" r="26" fill="#BF5B39"/></svg></div><span class="enter">Gå ind i Ørkenen →</span></div>
+      <div class="c go" data-l="Skoven" tabindex="0" role="link" aria-label="Gå ind i Skoven og opret din profil"><div class="t"><h3>Skoven</h3><p>I skoven er der dage, hvor du finder overblik, dage hvor det hele er tungt, og dage hvor du bare følger stien.</p><p class="fit"><strong>Måske er du her, hvis:</strong> Du finder vej i hverdagen, også når du ikke kan se, hvad der venter.</p></div><div class="pic"><img src="mitlivmed_assets/lasse-skov.jpg" alt="Skoven" loading="lazy"><svg class="fig" style="left:26%;bottom:4%;" viewBox="45 16 110 164" aria-hidden="true"><path d="M49 178 Q52 84 100 84 Q148 84 151 178 Z" fill="#BF5B39"/><circle class="hd" cx="115" cy="44" r="26" fill="#BF5B39"/></svg></div><span class="enter">Gå ind i Skoven →</span></div>
+      <div class="c go" data-l="Bjerget" tabindex="0" role="link" aria-label="Gå ind i Bjerget og opret din profil"><div class="t"><h3>Bjerget</h3><p>Du kender dine mønstre og dine behov. Hvis du har lyst, kan din historie og dine erfaringer også blive et lys for andre.</p><p class="fit"><strong>Måske er du her, hvis:</strong> Du har, for nu, fundet en måde at leve godt med din bipolar på, og du vil gerne vedligeholde eller forbedre det eller give noget tilbage til andre.</p></div><div class="pic"><img src="mitlivmed_assets/lasse-bjerg.jpg" alt="Bjerget" loading="lazy"></div><span class="enter">Gå ind i Bjerget →</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARRANGEMENTER -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><h2>Mød andre, online og fysisk</h2><p>Kommende arrangementer i fællesskabet. Du vælger selv, om du vil være med i et rum eller på skærmen.</p></div>
+    <div class="onl"><div class="flip" data-flip><div class="flip-in"><div class="face front" role="button" tabindex="0" aria-label="Vend kortet og se kalenderen"><img src="mitlivmed_assets/online-moede.jpg" alt="En bærbar computer med et videomøde og en kop kaffe ved siden af" loading="lazy"></div><div class="face back"><img class="cal" src="mitlivmed_assets/kalender.jpg" alt="Kalender over kommende arrangementer i fællesskabet" loading="lazy"><div class="lock"><div class="lockbox"><p>Se kalenderen, når du har oprettet en profil</p><a class="btn" href="opret.html">Opret profil →</a><button class="backbtn" type="button">Vend tilbage</button></div></div></div></div></div><div><h3>Vær med hjemmefra</h3><p>Mange af arrangementerne foregår online, så du kan deltage fra sofaen. Du bestemmer selv tempoet.</p><p class="fliphint">Opret profil for at se kalenderen her:</p><a class="btn" href="opret.html" style="margin-top:12px;text-decoration:none;display:inline-flex;">Opret profil →</a></div></div>
+    <div class="evs">
+      <article class="ev"><img src="mitlivmed_assets/event_bog.jpg" alt=""><div class="bd"><span class="badge off"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Fysisk, Zoku, 2300 København S</span><span class="date">19. oktober, kl. 17.00</span><h3>‘Bipolare Bekendelser’ boglancering</h3></div></article>
+      <article class="ev"><img src="mitlivmed_assets/event_bog.jpg" alt=""><div class="bd"><span class="badge on"><svg class="ic" aria-hidden="true"><use href="#i-laptop"/></svg>Online</span><span class="date">19. oktober, kl. 17.15</span><h3>Online: ‘Bipolare Bekendelser’ boglancering</h3></div></article>
+      <article class="ev"><img src="mitlivmed_assets/event_efteraar.avif" alt=""><div class="bd"><span class="badge off"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Fysisk, Glud, 7130 Juelsminde</span><span class="date">24. oktober, kl. 12.00</span><h3>Efterårs Fejring</h3></div></article>
+      <article class="ev"><img src="mitlivmed_assets/event_identitet.avif" alt=""><div class="bd"><span class="badge on"><svg class="ic" aria-hidden="true"><use href="#i-laptop"/></svg>Online</span><span class="date">29. oktober, kl. 17.00</span><h3>Bipolar diagnosens påvirkning af min identitet</h3></div></article>
+    </div>
+    <div class="cta-row"><a class="btn" href="opret.html">Opret profil, og se alle arrangementer →</a></div>
+  </div>
+</section>
+
+<!-- TRYGHED -->
+<section>
+  <div class="wrap">
+    <div class="trust-head"><div class="sec-head"><h2>Et støttende, fortroligt og trygt fællesskab</h2><p>Eksklusivt for mennesker med bipolar, tilgængeligt i hele landet.</p></div><img src="mitlivmed_assets/group-trio.svg" alt="" aria-hidden="true"></div>
+    <div class="trust">
+      <div><svg class="ic" aria-hidden="true"><use href="#i-group"/></svg><h3>Modereret</h3><p>Hændelseslog og fast vagtplan, bygget på over 15 års erfaring med at moderere grupper.</p></div>
+      <div><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><h3>Data i EU</h3><p>Dine oplysninger opbevares i EU, ikke USA.</p></div>
+      <div><svg class="ic" aria-hidden="true"><use href="#i-secure"/></svg><h3>GDPR</h3><p>Fællesskabet er sat op til at følge GDPR-reglerne, modsat sociale medier.</p></div>
+      <div><svg class="ic" aria-hidden="true"><use href="#i-comm"/></svg><h3>Dit valg</h3><p>Du er velkommen, som du er. Du kan være aktiv eller passiv, både online i fællesskabet og til arrangementer. Du bestemmer tempoet, altid.</p></div>
+    </div>
+    <p class="note"><strong>Til din tryghed.</strong> MitLivMed er fællesskab og peer-støtte, ikke krisestøtte og ikke medicinsk rådgivning, og erstatter ikke din behandler. Fortællinger og mestringsforslag er medlemmernes egne erfaringer. <a href="hjaelp.html#akut"><strong>Er du i krise? Find akut hjælp her.</strong></a></p>
+  </div>
+</section>
+
+<!-- BYGGET SAMMEN -->
+<section class="band red" style="padding-block:56px;">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:0;"><h2>Vi bygger MitLivMed <span class="accent">sammen</span> med jer</h2><p>Opdelte feeds og muligheden for at gemme indhold kom fra jeres tilbagemeldinger. Vi læser alt, hvad I skriver til os. Flere af os er selv bipolar, og de øvrige i teamet er peers med forståelse, enten med andre diagnoser eller som pårørende. Vi bygger det, vi selv føler mangler, som en socialøkonomisk virksomhed, ikke en forening.</p></div>
+  </div>
+</section>
+
+<!-- DEL MED EN, DU HOLDER AF -->
+<section class="share" id="del" aria-labelledby="del-h">
+  <div class="wrap">
+    <div class="sharegrid">
+      <div class="sharecopy">
+        <p class="kicker">Til pårørende, venner og kolleger</p>
+        <h2 id="del-h">Del med en, <span class="accent">du holder af</span></h2>
+        <p class="lede">Fællesskabet er kun for mennesker med bipolar. Men du kan sende det videre til en, der måske kan bruge det. Uden pres, og uden at vi ved, hvem du sender det til.</p>
+        <ul class="sharebul"><li>Linket indeholder ikke dit navn.</li><li>Modtageren skal ikke oprette noget for at læse forsiden.</li><li>Vi gemmer ikke, hvem du deler med.</li></ul>
+        <div class="sharecompact">
+          <button type="button" class="btn" data-share="forside"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Del MitLivMed</button>
+          <button type="button" class="mlm-link" id="shareQuick">Kopiér link</button>
+          <p class="mlm-stat" id="shareQuickStat" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="sharepanel" id="shareMount"></div>
+    </div>
+  </div>
+</section>
+
+<!-- AFSLUTTENDE CTA -->
+<section>
+  <div class="wrap">
+    <div class="final">
+      <img class="crowd" src="mitlivmed_assets/group-crowd-hvid.svg" alt="" aria-hidden="true">
+      <h2>Bliv en del af fællesskabet i dag</h2>
+      <div class="seg" role="group" aria-label="Hvem er det til?"><button type="button" aria-pressed="true" data-mode="me">Det er til mig</button><button type="button" aria-pressed="false" data-mode="other">Til en, jeg holder af</button></div>
+      <div id="finMe"><p>Opret din gratis profil, og få adgang til artikler, interviews og arrangementer med det samme.</p><a class="btn" href="opret.html">Opret profil</a></div>
+      <div id="finOther" hidden><p>Profilen er kun for mennesker med bipolar. Send siden videre i stedet.</p><button type="button" class="btn" data-share="forside">Del med en, du holder af</button></div>
+    </div>
+  </div>
+</section>
+</main>
+<script>
+(function(){var v=document.getElementById("heroVideo");if(!v)return;v.addEventListener("click",function(e){e.preventDefault();var f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/"+v.dataset.yt+"?autoplay=1&playsinline=1&rel=0";f.title="Velkommen til MitLivMed Bipolar";f.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";f.allowFullscreen=true;f.referrerPolicy="strict-origin-when-cross-origin";f.style.cssText="position:absolute;inset:0;width:100%;height:100%;border:0;";v.replaceChildren(f);var h=document.createElement("span");h.className="vhint";h.setAttribute("role","status");h.textContent="Indlæser videoen …";v.appendChild(h);var ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);f.addEventListener("load",function(){if(ios){h.textContent="Tryk på afspil for at starte videoen";setTimeout(function(){h.remove();},7000);}else{h.remove();}});v.removeAttribute("href");});})();
+</script>
+<script>
+(function(){var c=document.getElementById("scrollcue");if(!c)return;window.addEventListener("scroll",function(){c.classList.toggle("gone",window.scrollY>80);},{passive:true});})();
+</script>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.need-btn');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    btns.forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-selected',on);document.getElementById('tab-'+x.dataset.t).hidden=!on;});document.getElementById('needlabel').textContent=b.dataset.t==='emp'?'Artikler, hvor du kan blive forstået':'Artikler med noget konkret';
+  });});
+})();
+</script>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fabout footer-brand">
+        <img class="footer-logo" src="mitlivmed_assets/logo-wordmark-beskaaret.svg" alt="MitLivMed" width="1390" height="175">
+        <p class="fm"><strong>MitLivMed ApS er en socialøkonomisk virksomhed.</strong><br>Vi giver mennesker, der lever med psykiske lidelser, fortællinger de kan spejle sig i, guidet refleksion og et trygt fællesskab.</p>
+        <p class="fadr">Otto Busses Vej 2 sal th · 2450 København SV <span class="nowrap">· CVR 46193040</span></p>
+      </div>
+      <div><p class="fh">Virksomhed</p><ul><li><a href="om-os.html">Om MitLivMed</a></li><li><a href="stoet.html">Støt</a></li><li><a href="kontakt.html">Kontakt</a></li><li><a href="https://shop.mitlivmed.dk/">Butik</a></li></ul></div>
+      <div><p class="fh">Produkter</p><ul><li><a href="trivselsgrupper.html">Trivselsgrupper</a></li></ul></div>
+      <div><p class="fh">Hjælp og støtte</p><ul><li><a href="hjaelp.html">Hjælp</a></li><li><a href="hjaelp.html#akut">Akut hjælp</a></li><li><a href="hjaelp.html#ring">Gratis rådgivning</a></li><li><a href="stipendier.html">Stipendier</a></li></ul></div>
+      <div><p class="fh">Politikker</p><ul><li><a href="privatlivspolitik.html">Privatlivspolitik</a></li><li><a href="brugerbetingelser.html">Brugerbetingelser</a></li><li><a href="cookies.html">Cookiepolitik</a></li><li><a href="tilgaengelighed.html">Tilgængelighed</a></li></ul></div>
+    </div>
+    <ul class="some row" aria-label="MitLivMed på sociale medier"><li><a href="https://www.instagram.com/mitlivmed/" target="_blank" rel="noopener" aria-label="Instagram (åbner i ny fane)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="17.4" cy="6.6" r="1.6" fill="currentColor"/></svg><span>Instagram</span></a></li><li><a href="https://www.facebook.com/profile.php?id=61581994267641" target="_blank" rel="noopener" aria-label="Facebook (åbner i ny fane)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M13.6 22v-8.6h3l.5-3.6h-3.5V7.6c0-1 .3-1.7 1.8-1.7h1.9V2.7c-.3 0-1.4-.2-2.8-.2-2.8 0-4.7 1.7-4.7 4.8v2.5H6v3.6h2.8V22z" fill="currentColor"/></svg><span>Facebook</span></a></li><li><a href="https://www.linkedin.com/company/mitlivmed/" target="_blank" rel="noopener" aria-label="LinkedIn (åbner i ny fane)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill-rule="evenodd" d="M5 2.5h14A2.5 2.5 0 0 1 21.5 5v14a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 19V5A2.5 2.5 0 0 1 5 2.5zM7.2 9.6v8.2h2.7V9.6zM8.55 5.6a1.55 1.55 0 1 0 0 3.1 1.55 1.55 0 0 0 0-3.1zM11.5 9.6v8.2h2.7v-4.4c0-1.2.5-1.9 1.5-1.9s1.4.7 1.4 1.9v4.4h2.7v-4.9c0-2.4-1.3-3.5-3-3.5-1.2 0-2 .6-2.6 1.4V9.6z" fill="currentColor"/></svg><span>LinkedIn</span></a></li><li><a href="https://www.tiktok.com/@mitlivmed" target="_blank" rel="noopener" aria-label="TikTok (åbner i ny fane)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.2 3.5v10.6a3.5 3.5 0 1 1-3.5-3.5M14.2 3.5c.3 2.4 1.9 4 4.4 4.3" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>TikTok</span></a></li><li><a href="https://www.youtube.com/@MitLivMed" target="_blank" rel="noopener" aria-label="YouTube (åbner i ny fane)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill-rule="evenodd" d="M5 4.8h14a4 4 0 0 1 4 4v6.4a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4V8.8a4 4 0 0 1 4-4zM9.8 8.6v6.8l6-3.4z" fill="currentColor"/></svg><span>YouTube</span></a></li></ul>
+    <div class="copyrow"><p class="copy">© Copyright 2026 MitLivMed® ApS · Internationalt brand: Wiith · Ikke krisestøtte og ikke medicinsk rådgivning</p><ul class="lang" aria-label="Sprog">
+    <li><a class="flag on" href="index.html" lang="da" hreflang="da" aria-current="true" aria-label="Dansk (valgt)" title="Dansk"><svg viewBox="0 0 37 28" width="34" height="34" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="37" height="28" fill="#BF5B39"/><rect x="12" width="4" height="28" fill="#fff"/><rect y="12" width="37" height="4" fill="#fff"/></svg></a></li>
+    <li><a class="flag" href="https://www.mylifewiith.com" lang="en" hreflang="en" aria-label="English (skifter til mylifewiith.com)" title="English"><svg viewBox="0 0 60 30" width="34" height="34" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="2.4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg></a></li>
+  </ul></div>
+  </div>
+</footer>
+<script>
+(function(){
+  var cards=document.querySelectorAll('.go');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function enter(card){
+    if(document.body.classList.contains('going'))return; document.body.classList.add('going');
+    var l=card.dataset.l;
+    cards.forEach(function(c){ if(c!==card) c.classList.add('dim'); });
+    card.classList.add('alive');
+    setTimeout(function(){ window.location.href="opret.html?landskab="+encodeURIComponent(l); }, reduce?0:1500);
+  }
+  function resetCards(){
+    document.body.classList.remove('going');
+    cards.forEach(function(c){ c.classList.remove('dim','alive'); });
+  }
+  window.addEventListener('pageshow',function(){ resetCards(); });
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) resetCards(); });
+  cards.forEach(function(c){
+    c.addEventListener('click',function(e){ e.preventDefault(); enter(c); });
+    c.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); enter(c); }});
+  });
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('[data-flip]').forEach(function(card){
+    var front=card.querySelector('.front'), back=card.querySelector('.backbtn');
+    function toggle(on){card.classList.toggle('flipped',on);}
+    front.addEventListener('click',function(){toggle(true);});
+    front.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(true);}});
+    back.addEventListener('click',function(){toggle(false);});
+  });
+})();
+(function(){var b=document.getElementById("carPause"),t=document.querySelector(".track");if(!b||!t)return;b.addEventListener("click",function(){var p=t.classList.toggle("paused");b.setAttribute("aria-pressed",p);b.setAttribute("aria-label",p?"Afspil videoerne igen":"Sæt videoerne på pause");b.title=p?"Afspil igen":"Sæt på pause";});})();
+(function(){var bs=document.querySelectorAll('.final .seg button');bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b);});document.getElementById('finMe').hidden=b.dataset.mode!=='me';document.getElementById('finOther').hidden=b.dataset.mode!=='other';});});})();
+</script>
+<script src="share.js" defer></script>
+<script src="widow.js" defer></script>

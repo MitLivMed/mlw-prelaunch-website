@@ -16,27 +16,20 @@ We're based in Copenhagen and currently launching in Danish, with international 
 
 ## Tech stack
 
-- **React** + **TypeScript**
-- **Vite** for builds
-- **Tailwind CSS** + **shadcn/ui**
-- Deployed on **Vercel**
+- Plain static **HTML, CSS and vanilla JavaScript**: no framework, no build step
+- Everything that is published lives in `site/` (each page has its CSS inline; shared: `share.css`, `share.js`, `widow.js`)
+- Forms and payments talk to the MitLivMed API (`mitlivmed-api`)
+- Deployed on **Vercel** (`vercel.json`: no build, output folder `site`)
 
 ## Local development
 
 ```sh
-# Clone the repo
 git clone https://github.com/MitLivMed/mlw-prelaunch-website.git
-cd mlw-prelaunch-website
-
-# Install dependencies
-npm install
-
-# Copy environment template and fill in your keys
-cp .env.example .env
-
-# Start dev server
-npm run dev
+cd mlw-prelaunch-website/site
+python3 -m http.server 8000
 ```
+
+Open http://localhost:8000. Rewrites and redirects from `vercel.json` only work with `npx vercel dev` from the repo root.
 
 ## Contributing
 
