@@ -12,6 +12,6 @@
   },
   "dependencies": {
     "@stripe/stripe-js": "9.8.0",
-    "posthog-js": "1.321.1"
+    "posthog-js": "1.434.14"
   }
 }
