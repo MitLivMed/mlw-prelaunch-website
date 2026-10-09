@@ -21,13 +21,10 @@ function partials() {
   };
 }
 
-// Every .html file in site/ is a page, except opret.html: it is not deployed
-// until the Discourse signup ships (Phase 6, MLM-2557). Until then "Opret
-// profil" opens the Tally popup (MLM-2567).
-const unpublished = ["opret.html"];
+// Every .html file in site/ is a page.
 const pages = Object.fromEntries(
   readdirSync(root)
-    .filter((file) => file.endsWith(".html") && !unpublished.includes(file))
+    .filter((file) => file.endsWith(".html"))
     .map((file) => [file.replace(/\.html$/, ""), resolve(root, file)]),
 );
 
