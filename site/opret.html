@@ -367,6 +367,8 @@
   .field label.lab { display: block; font-weight: 700; margin-bottom: 6px; }
   .field .hint { font-size: 14px; color: var(--muted); margin-bottom: 6px; }
   .field input[type=text], .field input[type=email], .field input[type=password], .field input[type=number] { width: 100%; font: 400 17px "DM Sans", sans-serif; padding: 14px 16px; border: 2px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); }
+  /* Each step's heading gets focus so screen readers announce the new step; it isn't clickable, so no focus ring. */
+  #screen h1:focus { outline: none; }
   .field input:focus-visible { outline: 3px solid var(--orange); outline-offset: 1px; border-color: var(--orange); }
   .field .err { color: #A3261A; font-weight: 700; font-size: 14.5px; margin-top: 6px; min-height: 0; }
   .pw { position: relative; } .pw button { position: absolute; right: 8px; top: 8px; border: 0; background: var(--orange-tint); color: var(--orange-dark); font: 700 14px "DM Sans", sans-serif; border-radius: 6px; padding: 8px 12px; cursor: pointer; }
