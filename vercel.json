@@ -8,11 +8,11 @@
   "rewrites": [
     {
       "source": "/til-dig",
-      "destination": "/index.html"
+      "destination": "/index"
     },
     {
       "source": "/donation/retur",
-      "destination": "/tak-stoette.html"
+      "destination": "/tak-stoette"
     }
   ],
   "redirects": [
